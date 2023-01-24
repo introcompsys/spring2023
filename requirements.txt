@@ -1,0 +1,7 @@
+matplotlib
+numpy
+pyppeteer
+pandas
+lxml
+jupyter-book
+sphinx-panels
