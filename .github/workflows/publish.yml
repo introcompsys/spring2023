@@ -27,7 +27,7 @@ jobs:
     - name: find file list
       run: |
         pip install git+https://github.com/introcompsys/courseutils@main
-        kwlcsv
+        kwlcsv .
 
     # Build book
     - name: Build the book
