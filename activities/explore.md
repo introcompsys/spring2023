@@ -2,7 +2,7 @@
 
 
 ```{warning}
-Explore Badges are not required, but an option for higher grades 
+Explore Badges are not required, but an option for higher grades. The logistics of this could be streamlined or the instructions may become more detialed during the penalty free zone. 
 ```
 
 

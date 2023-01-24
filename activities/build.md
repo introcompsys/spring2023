@@ -1,7 +1,7 @@
 # Build Badges 
 
 ```{warning}
-This page is subject to change 
+This page is subject to change until the end of the penalty free zone
 ```
 
 ## Proposal Template

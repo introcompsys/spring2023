@@ -1,22 +1,5 @@
----
-jupytext:
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.10.3
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
 
-```{important}
-The grade free zone covers classes 1-5, ending on 2022-09-21.
-```
-
-
-# Review
+# Review Badges
 
 
 ## Review After Class

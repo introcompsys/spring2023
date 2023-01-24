@@ -4,7 +4,7 @@
 
 ## How much does activity x weigh in my grade?
 ```{toggle}
-There is no specific weight for any activities, because your grade is based on fulfilling your contract. If all items are completed to a satisfactory level, then you earn that grade, if not, then you will be prompted to revise the contract to signal that you are aware you have completed fewer items.
+There is no specific weight for any activities, because your grade is based on earning the badges. Everything at a level must be complete and correct. 
 ```
 
 <!-- 
@@ -15,7 +15,7 @@ In this class, there are feedback hours instead of deadlines for specific assign
 
 ## I don't understand the feedback  on this assignment
 ```{toggle}
-If you have questions about your grade, the best place to get feedback is to reply on the Feedback PR.  Either reply directly to one of the inline comments, or the summary.
+If you have questions about your feedback, the best thing to do is to start a discussion on the PR for that work. Either reply directly to one of the inline comments, or the summary.
 
 Be specific about what you think is wrong so that we can expand more.
 
