@@ -12,10 +12,10 @@ parts:
     - file: syllabus/uri_resources
     - file: syllabus/uri_statements
     - file: syllabus/communication
-  # - caption: Notes
-  #   numbered: True
-  #   chapters:
-      # - file: notes/2022-09-07
+  - caption: Notes
+    numbered: True
+    chapters:
+      - file: notes/2023-01-24
   - caption: Activities
     chapters:
     - file: activities/kwl
