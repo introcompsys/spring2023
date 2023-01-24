@@ -1,7 +1,7 @@
 # Book settings
 title: Computer Systems and Programming Tools
 author: Professor Sarah M Brown
-logo: logo.png
+logo: systools.png
 
 html:
   favicon                   : ""  # A path to a favicon image
