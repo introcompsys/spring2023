@@ -20,3 +20,10 @@ The grade free zone covers classes 1-5, ending on 2022-09-21.
 these are listed by the date they were *posted* (eg the content here under Feb 1, was posted Feb 1, and should be done before the Feb 3 class)
 
 ``` -->
+## 2023-01-24
+
+[related notes](../notes/2023-01-24)
+
+Activities:
+```{include} ../_prepare/2023-01-24.md
+```
