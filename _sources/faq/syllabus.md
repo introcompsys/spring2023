@@ -7,6 +7,14 @@
 There is no specific weight for any activities, because your grade is based on earning the badges. Everything at a level must be complete and correct. 
 ```
 
+
+## How do I keep track of my earned badges?
+```{toggle}
+You will have several options.  You will have a project board that you can track assigned work, in progress work and earned badges with in one place.  This is quite different than checking your grade in BrightSpace, but using tools like this represents the real tools used by developers. 
+
+Additionally, when we log them in our private gradebook, we will give you a "receipt" that is 128 characters long. You will be able to use provided command line tools and github actions to produce a report of your status at any time from those receipts.  Additionally, at particular points in the course, an in class or class preparation activity will be for you to review a "progress report" that we give you and update your success plan for the course.   
+```
+
 <!-- 
 ## Can I submit this assignment late if ...?
 ```{toggle}
