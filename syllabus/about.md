@@ -15,6 +15,11 @@ You can view the date of changes and exactly what changes were made on the Githu
 
 Creating an {{ repo_issue }} is also a good way to ask questions about anything in the course it will prompt additions and expand the FAQ section.
 
+```{admonition} Should you download the syllabus and rely on your offline copy?
+:class: anchor,dropdown
+
+No, because the syallabus changes
+```
 
 ## About your instructor
 

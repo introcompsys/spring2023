@@ -51,13 +51,19 @@ Both notes and assignment pages will have hints from time to time. Pay attention
 ```
 
 ```{admonition} Click here! 
-:class: anchor, dropdown
+:class: anchor
 
 Special tips will be formatted like this
 ```
 
 ```{admonition}  Check your Comprehension
-:class: checkin
+:class: checkin, dropdown
 
 Questions to use to check your comprehension will looklike this
+```
+
+```{admonition}  Contribute
+:class: community
+
+Chances to earn community badges will sometimes be marked like this
 ```

@@ -1,14 +1,3 @@
-<<<<<<< Updated upstream
-
-
-div .admonition-try-it-yourself {
-    border-left-color: rgba(var(--pst-color-info), 1);
-}
-div .admonition-try-it-yourself .admonition-title {
-    background-color: rgba(var(--pst-color-info), .1)
-}
-div .admonition-try-it-yourself .admonition-title:before {
-=======
 div.admonition-try-it-yourself {
     border-left-color: rgba(var(--pst-color-info), 1);
 }
@@ -18,21 +7,11 @@ div.admonition-try-it-yourself p.admonition-title {
 }
 
 div.admonition-try-it-yourself p.admonition-title:before {
->>>>>>> Stashed changes
     color: rgba(var(--pst-color-info), 1);
     content: '\f121';
 }
 
 
-<<<<<<< Updated upstream
-div .admonition-further-reading {
-    border-left-color: rgba(var(--pst-color-info), 1);
-}
-div .admonition-further-reading .admonition-title {
-    background-color: rgba(var(--pst-color-info), .1)
-}
-div .admonition-further-reading .admonition-title:before {
-=======
 div.admonition-further-reading {
     border-left-color: rgba(var(--pst-color-info), 1);
 }
@@ -42,17 +21,12 @@ div.admonition-further-reading .admonition-title {
 }
 
 div.admonition-further-reading p.admonition-title:before {
->>>>>>> Stashed changes
     color: rgba(var(--pst-color-info), 1);
     content: '\f5da';
 }
 
 
-<<<<<<< Updated upstream
-div .admonition-question-from-class {
-=======
 div.admonition-question-from-class {
->>>>>>> Stashed changes
     border-left-color: rgba(var(--pst-color-success), 1);
 }
 
@@ -148,4 +122,18 @@ div.checkin .admonition-title {
 div.checkin .admonition-title:before {
     color: rgba(104, 171, 232, 1);
     content: '\f5dc';
+}
+
+
+div.community {
+    border-left-color: rgba(var(--pst-color-warning), 1);
+}
+
+div.community .admonition-title {
+    background-color: rgba(var(--pst-color-warning), .1);
+}
+
+div.community .admonition-title:before {
+    color: rgba(var(--pst-color-warning), 1);
+    content: '\f0c0';
 }
