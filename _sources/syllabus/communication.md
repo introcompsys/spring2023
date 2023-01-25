@@ -40,7 +40,7 @@ help_df.style.hide_index()
 Online office hours locations are linked on the [GitHub Organization Page](https://github.com/introcompsys)
 
 ```{important}
-You can only see them if you are a "member" you will be invited in the first week of the course. If you do not accept via the e-mail invite, you can accept your invite from that page for 7 days.  After that, ask for a new invite by e-mailing `cscsystools-help-group@uri.edu`
+You can only see them if you are a "member" to join, use the "Whole Class Discussion" link in prismia. 
 ```
 <!-- 
 ## Getting Help 
@@ -87,9 +87,22 @@ for platform, data in df.groupby('platform'):
 ### Using issues
 
 - use issues for content directly related to assignments.  If you push your code to the repository and then open an issue, I can see your code and your question at the same time and download it to run it if I need to debug it
-- use issues for questions about this syllabus or class notes. At the top right there's a GitHub logo <i class="fab fa-github"></i> that allows you to open a issue (for a question) or suggest an edit (eg if you think there's a typo or you find an additional helpful resource related to something)
+- use issues for questions about this syllabus or class notes. At the top right there's a GitHub logo {fa}`github` that allows you to open a issue (for a question) or suggest an edit (eg if you think there's a tpo or you find an additional helpful resource related to something)
+
+
+```{admonition} ... 
+:class: anchor,dropdown
+
+You can submit a pull request for the typo above, but be sure to check the pull request tab of the repo before submitting to see if it has already been submitted.
+```
 
 ### For E-mail
 
 - use e-mail for general inquiries or notifications
 - Please include `[CSC392]`  in the subject line of your email along with the topic of your message. This is important, because your messages are important, but I also get a lot of e-mail. Consider these a cheat code to my inbox: I have setup a filter that will flag your e-mail if you include that in subject to ensure that I see it.
+
+```{admonition} Should you e-mail your work? 
+:class: anchor,dropdown
+
+No, request a pull request review or make an issue if you are stuck
+```

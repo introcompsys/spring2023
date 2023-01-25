@@ -58,17 +58,35 @@ The course is designed for you to *succeed* at a level of your choice.  As you a
 
 +++
 
+```{admonition} If you made an error in an assignment what do you need to do? 
+:class: checkin,dropdown
+
+Read the suggestions and revise the work until it is correct. 
+```
+
 ## Penalty-free Zone 
 
 Since learning developer tools is a core learning outcome of the course, we will also use them for all aspects of administering the course. This will help you learn these tools really well and create accountability for getting enough practice with core operations, but it also creates a high stakes situation: even submitting your work requires you understanding the tools. This would not be very fair at the beginning of the semester.  
 
-For the first three weeks we will have a low stakes penalty-free zone where we will provide extra help and reminders for how to get feedback on your work. In this period, deadlines are more flexible as well.
+For the first three weeks we will have a low stakes penalty-free zone where we will provide extra help and reminders for how to get feedback on your work. In this period, deadlines are more flexible as well. If work is submitted incorrectly, we will still see it because we will manually go look for all activities. After this zone, we will assume you *chose* to skip something if we do not see it. 
+
+```{admonition} What happens if you merged a PR without feedback?
+:class: checkin,dropdown
+
+During the Penalty-Free zone, it will still be graded and logged.  After that, we will not see it. 
+```
 
 ```{important}
 If there are terms in the rest of this section that do not make sense while we are in the penalty-free zone, do not panic. This zone exists to help you get familiar with the terms needed.
 ```
 
 During the third week, you will create a course plan where you establish your goals for the course and I make sure that you all understand the requirements to complete your goals. 
+
+```{admonition} What happens if you're confused by the grading scheme right now?
+:class: checkin,dropdown
+
+Nothing to worry about, we will review it again in week three after you get a chance to build the right habits and learn vocabulary.  We will also give you an activity that helps us to be sure that you understand it at that time. 
+```
 
 <!-- 
 ## Grade-Free Zone
@@ -104,6 +122,14 @@ Your grade will be based on you choosing to work with the material at different 
 - practice: a little bit more indepdendent
 - explore: posing your own directions of inquiry 
 - build: in depth- application
+
+````{margin}
+```{admonition} Visualize this
+:class: community
+
+This is important information and it is also new in spring 2023.  I would like a more visual representation of this information in particular (and any on this page). It's a chance to earn a community badge
+```
+````
 
 To earn a D you must complete:
 - 24 experience badges
@@ -147,6 +173,12 @@ These counts assume that the semester goes as planned and that there are 26 avai
 You cannot earn both practice and review badges for the same class session, but most practice badge requirements will include the review requirements plus some extra steps. 
 At the end of the semester, there will be special *integrative* badge opportunities that have multipliers attached to them. These badges will count for more than one. For example an integrative 2x review badge counts as two review badges.  These badges will be more complex than regular badges and therefore count more.  
 
+```{admonition} Can you do any combination of badges?
+:class: checkin,dropdown
+
+No, you cannot earn practice and review for the same date. 
+```
+
 ### Experience Badges 
 
 You earn an experience badge in class by:
@@ -164,6 +196,26 @@ You can make up an experience badge by:
 
 An experience report is evidence you have completed the activity and reflection questions. The exact form will vary per class, if you are unsure, reach out ASAP to get instructions. These are evaluated only for completeness/ good faith effort.  Revisions will generally not be required, but clarification and additional activity steps may be adcised if your evidence suggests you may have missed a step. 
 
+```{admonition} Do you earn badges for prepare for class? 
+:class: checkin,dropdown
+
+No, prepare for class tasks are folded into your experience badges. 
+```
+
+```{admonition} What do you do when you miss class? 
+:class: checkin,dropdown
+
+Read the notes, follow along, and produce and experience report or attend office hours. 
+```
+
+
+```{admonition} What if I have no questions?
+:class: checkin,dropdown
+
+Learning to ask questions is important.  Your questions can be clarifying (eg because you misunderstood something) or show that you understand what we
+covered well enough to think of hypothetical scenarios or options or what might come next.  Basically, focused curiosity. 
+```
+
 ### Review and Practice Badges
 
 The tasks for these badges will be defined at the bottom of the notes for each class session *and* aggregated to badge-type specific pages on the left hand side. 
@@ -176,6 +228,11 @@ You can earn review and practice badges by:
 - revising the PR until it is approved 
 - merging the PR after it is approved
 
+```{admonition} Where do you find assignments?
+:class: checkin,dropdown
+
+At the end of notes and on the separate pages in the activities section on the left hand side
+```
 
 **You should create one PR per badge**
 
@@ -280,7 +337,7 @@ If you miss class, the experience report should be at least attempted/drafted (t
 
 If you miss multiple classes, create a catch-up plan to get back on track by contacting Dr. Brown. 
 
-## Review and Practice Badges 
+### Review and Practice Badges 
 
 These badges have 5 stages: 
 - posted: tasks are on the course website

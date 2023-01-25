@@ -50,6 +50,20 @@ Questions that are asked in class, but unanswered at that time will be answered 
 Both notes and assignment pages will have hints from time to time. Pay attention to these on the notes, they'll typically relate to things that will appear in the assignment.
 ```
 
-```{admonition} Think Ahead
-Think ahead boxes will guide you to start thinking about what can go into your portfolio to build on the material at hand.
+```{admonition} Click here! 
+:class: anchor
+
+Special tips will be formatted like this
+```
+
+```{admonition}  Check your Comprehension
+:class: checkin, dropdown
+
+Questions to use to check your comprehension will looklike this
+```
+
+```{admonition}  Contribute
+:class: community
+
+Chances to earn community badges will sometimes be marked like this
 ```
