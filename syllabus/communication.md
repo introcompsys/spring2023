@@ -40,7 +40,7 @@ help_df.style.hide_index()
 Online office hours locations are linked on the [GitHub Organization Page](https://github.com/introcompsys)
 
 ```{important}
-You can only see them if you are a "member" you will be invited in the first week of the course. If you do not accept via the e-mail invite, you can accept your invite from that page for 7 days.  After that, ask for a new invite by e-mailing `cscsystools-help-group@uri.edu`
+You can only see them if you are a "member" to join, use the "Whole Class Discussion" link in prismia. 
 ```
 <!-- 
 ## Getting Help 
