@@ -16,6 +16,7 @@ parts:
     numbered: True
     chapters:
       - file: notes/2023-01-24
+      - file: notes/2023-01-26
   - caption: Activities
     chapters:
     - file: activities/kwl
@@ -25,7 +26,7 @@ parts:
     - file: activities/practice
     - file: genindex
     - file: activities/explore
-    - file: activities/projects
+    - file: activities/build
   - caption: FAQ
     chapters:
     - file: faq/syllabus
