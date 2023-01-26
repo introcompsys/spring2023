@@ -39,3 +39,10 @@ for rev_file in rev_file_list:
 Activities:
 ```{include} ../_review/2023-01-24.md
 ```
+## 2023-01-26
+
+[related notes](../notes/2023-01-26)
+
+Activities:
+```{include} ../_review/2023-01-26.md
+```

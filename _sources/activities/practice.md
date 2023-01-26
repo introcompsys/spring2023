@@ -23,3 +23,11 @@ The grade free zone covers classes .
 Activities:
 ```{include} ../_practice/2023-01-24.md
 ```
+
+## 2023-01-26
+
+[related notes](../notes/2023-01-26)
+
+Activities:
+```{include} ../_practice/2023-01-26.md
+```

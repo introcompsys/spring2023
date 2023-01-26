@@ -27,3 +27,10 @@ these are listed by the date they were *posted* (eg the content here under Feb 1
 Activities:
 ```{include} ../_prepare/2023-01-24.md
 ```
+## 2023-01-26
+
+[related notes](../notes/2023-01-26)
+
+Activities:
+```{include} ../_prepare/2023-01-26.md
+```
