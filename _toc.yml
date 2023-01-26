@@ -32,6 +32,7 @@ parts:
     - file: faq/github
   - caption: Resources
     chapters:
+    - file: resources/glossary
     - file: resources/tips
     - file: resources/learning
     - file: resources/gettinghelp
