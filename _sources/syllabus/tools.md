@@ -61,6 +61,10 @@ as the [Authentication rules](https://docs.github.com/en/github/authenticating-t
 You will also need the [gh CLI](https://cli.github.com/). It will help with authentication
 and allow you to work with other parts of github besides the core git operations. 
 
+```{important}
+You need to install this on Mac
+```
+
 <!-- In order to use the command line 
 with https, you will need to [create a Personal Access Token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) for each device you use. In order to use the command line 
 with SSH, set up your public key. -->

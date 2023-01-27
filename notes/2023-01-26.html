@@ -536,8 +536,8 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prepare-for-this-class">
-   2.6. Prepare for this class
+  <a class="reference internal nav-link" href="#admin">
+   2.6. Admin
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -546,48 +546,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#more-practice">
-   2.8. More Practice
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   2.9. Prepare for this class
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   2.10. Review today’s class
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
-   2.11. More Practice
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
-   2.12. Review today’s class
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prepare-for-next-class">
-   2.13. Prepare for Next Class
+   2.8. Prepare for Next Class
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id7">
-   2.14. More Practice
+  <a class="reference internal nav-link" href="#more-practice">
+   2.9. More Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#experience-report-evidence">
-   2.15. Experience Report Evidence
+   2.10. Experience Report Evidence
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-todays-class">
-   2.16. Questions After Today’s Class
+   2.11. Questions After Today’s Class
   </a>
  </li>
 </ul>
@@ -683,8 +658,8 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prepare-for-this-class">
-   2.6. Prepare for this class
+  <a class="reference internal nav-link" href="#admin">
+   2.6. Admin
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -693,48 +668,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#more-practice">
-   2.8. More Practice
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   2.9. Prepare for this class
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   2.10. Review today’s class
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
-   2.11. More Practice
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
-   2.12. Review today’s class
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prepare-for-next-class">
-   2.13. Prepare for Next Class
+   2.8. Prepare for Next Class
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id7">
-   2.14. More Practice
+  <a class="reference internal nav-link" href="#more-practice">
+   2.9. More Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#experience-report-evidence">
-   2.15. Experience Report Evidence
+   2.10. Experience Report Evidence
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-todays-class">
-   2.16. Questions After Today’s Class
+   2.11. Questions After Today’s Class
   </a>
  </li>
 </ul>
@@ -831,52 +781,29 @@ section under FAQ</p>
 <p>If you missed class, create a <a class="reference external" href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/managing-your-project/adding-your-project-to-a-repository">project</a> and link it</p>
 </div>
 <p>In your repository, edit the: <code class="docutils literal notranslate"><span class="pre">/.github/workflows/getassignment.yml</span></code> file to remove either the two lines about practice or the two lines about review since you can only earn one or the other of these two types of badge per date.</p>
-<p>Edit the file <code class="docutils literal notranslate"><span class="pre">/.github/workflows/track.yml</span></code> to be like this example:</p>
-<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>name: Add planned badges to grade tracker (edits required)
-#  remove the () when you edit
-
-on:
-  issues:
-    types:
-      - opened
-
-jobs:
-  add-to-project:
-    name: Add planned based badge to grade tracker
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/add-to-project@RELEASE_VERSION
-        with:
-          # add your project board&#39;s number, replaceing the &lt;projectNumber&gt;
-          project-url: https://github.com/orgs/introcompsys/projects/&lt;projectNumber&gt;
-          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
-          labeled: experience, practice, prepare, review,
-          label-operator: OR
-</pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is different from in class</p>
 </div>
+<p>delete the  <code class="docutils literal notranslate"><span class="pre">/.github/workflows/track.yml</span></code>  file, we will add items to the project a different way.</p>
 </section>
 </section>
 <section id="what-does-it-mean-to-study-computer-systems">
 <h2><span class="section-number">2.3. </span>What does it mean to study Computer Systems?<a class="headerlink" href="#what-does-it-mean-to-study-computer-systems" title="Permalink to this headline">#</a></h2>
 <p><em>“Systems”</em> in computing often refers to all the parts that help make the
 “more exciting” algorithmic parts work. Systems is like the magic that helps
-you get things done in practice, so that you can shift your attention elsewhere.</p>
-<p>In intro courses, we typically give you an environment to hide all the problems
-that could occur at the systems level.</p>
-<p>Systems programming is how to look at the file system, the operating system, etc.</p>
-<p>From ACM Transactionson Computer Systems</p>
-<blockquote>
-<div><p>ACM Transactions on Computer Systems (TOCS) presents research and development results on the design, specification, realization, behavior, and use of computer systems. The term “computer systems” is interpreted broadly and includes systems architectures, operating systems, distributed systems, and computer networks. Articles that appear in TOCS will tend either to present new techniques and concepts or to report on experiences and experiments with actual systems. Insights useful to system designers, builders, and users will be emphasized.</p>
-</div></blockquote>
-<p>“Systems” in computing often refers to all the parts that help make the
-“more exciting” algorithmic parts work. Systems is like the magic that helps
-you get things done in practice, so that you can shift your attention elsewhere.</p>
-<p>In intro courses, we typically give you an environment to hide all the problems
+you get things done in practice, so that you can shift your attention elsewhere.
+In intro courses, we typically give you an environment to hide all the problems
 that could occur at the systems level.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>In this course, we will take the time to understand all of this stuff. This means that we will use a different set of strategies to study it than we normally see in computer science.</p>
 </div>
+<p><em>Systems programming</em> is how to look at the file system, the operating system, etc.</p>
+<p>From ACM Transactions on Computer Systems</p>
+<blockquote>
+<div><p>ACM Transactions on Computer Systems (TOCS) presents research and development results on the design, specification, realization, behavior, and use of computer systems. The term “computer systems” is interpreted broadly and includes systems architectures, operating systems, distributed systems, and computer networks. Articles that appear in TOCS will tend either to present new techniques and concepts or to report on experiences and experiments with actual systems. Insights useful to system designers, builders, and users will be emphasized.</p>
+</div></blockquote>
 <p>We are going to be studying aspects <em>of</em> computer systems, but to really understand them, we also have to think about how and why they are the way they are.  We will therefore study in a broad way.</p>
 <p>We will look at blogs, surveys of developers, and actually examine the systems themselves.</p>
 </section>
@@ -884,48 +811,19 @@ that could occur at the systems level.</p>
 <h2><span class="section-number">2.4. </span>Mental Models and Learning<a class="headerlink" href="#mental-models-and-learning" title="Permalink to this headline">#</a></h2>
 <section id="what-is-it-like-to-know-something-really-well">
 <h3><span class="section-number">2.4.1. </span>What is it like to know something really well?<a class="headerlink" href="#what-is-it-like-to-know-something-really-well" title="Permalink to this headline">#</a></h3>
-<p>When we know something well, it is easier to do, we can do it multple ways,
+<blockquote>
+<div><p>When we know something well, it is easier to do, we can do it multple ways,
 it is easy to explain to others and we can explain it multiple ways.
 we can do the task almost automatically and combine and create things in new
 ways.  This is true for all sorts of things.</p>
-</section>
+</div></blockquote>
 <p>a mental model is how you think about a concept and your way of relating it.</p>
 <p>Novices have sparse mental models, experts have connected mental models.</p>
-<p>We can visualize with concept maps.</p>
-<p>When we first learn new things, we first get the basic concepts down, but we
-may not know how they relate.</p>
-<figure class="align-default" id="id8">
-<img alt="img/2022-01-27-mental_model_novice.svg" src="img/2022-01-27-mental_model_novice.svg" /><figcaption>
-<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">a novice mental model is disconnected and has few concepts</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>As we learn more, they become more connected.</p>
-<figure class="align-default" id="id9">
-<img alt="img/2022-01-27-mental_model_competent.svg" src="img/2022-01-27-mental_model_competent.svg" /><figcaption>
-<p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">a compententmental model starts to have some connections, with relationships
-between the concepts.</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-default" id="id10">
-<img alt="img/2022-01-27-mental_model_advanced.svg" src="img/2022-01-27-mental_model_advanced.svg" /><figcaption>
-<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">an expert mentla model is densley connected and has more concepts in it.</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>We can visualize with concept maps. Which connect the ideas using relationships
-on the arrows.</p>
-<figure class="align-default" id="id11">
-<img alt="img/2022-01-27-mental_model_git.svg" src="img/2022-01-27-mental_model_git.svg" /><figcaption>
-<p><span class="caption-number">Fig. 2.4 </span><span class="caption-text">a small concept map showing that git is an instance of both a file system and
-a version control system.</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<!-- We can visualize with concept maps. -->
+</section>
 </section>
 <section id="why-do-we-need-this-for-computer-systems">
 <h2><span class="section-number">2.5. </span>Why do we need this for computer systems?<a class="headerlink" href="#why-do-we-need-this-for-computer-systems" title="Permalink to this headline">#</a></h2>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>This section contain points added here that were not discussed directly in class, but are important and will come back up</p>
-</div>
 <section id="systems-are-designed-by-programmers">
 <h3><span class="section-number">2.5.1. </span>Systems are designed by programmers<a class="headerlink" href="#systems-are-designed-by-programmers" title="Permalink to this headline">#</a></h3>
 <p>Computer Science is not a natural science like biology or physics where we try
@@ -946,10 +844,14 @@ understand how things work and why they are the way they are.  The why can also
 make it easier to remember, or, it can help you know what things you can find
 alternatives for, or even where you might invent a whole new thing that is
 better in some way.</p>
-<figure class="align-default" id="id12">
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Some of this was not discussed in class</p>
+</div>
+<figure class="align-default" id="id3">
 <img alt="https://drek4537l1klr.cloudfront.net/hermans2/Figures/CH01_F02_Hermans2.png" src="https://drek4537l1klr.cloudfront.net/hermans2/Figures/CH01_F02_Hermans2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.5 </span><span class="caption-text">An overview of the three cognitive processes that <a class="reference external" href="https://www.manning.com/books/the-programmers-brain#toc">this book</a> covers: STM, LTM, and working memory. The arrows labeled 1 represent information coming into your brain. The arrows labeled 2 indicate the information that proceeds into your STM. Arrow 3 represents information traveling from the STM into the working memory, where it’s combined with information from the LTM (arrow 4). Working memory is where the information is processed while you think about it.</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">An overview of the three cognitive processes that <a class="reference external" href="https://www.manning.com/books/the-programmers-brain#toc">this book</a> covers: STM, LTM, and working memory. The arrows labeled 1 represent information coming into your brain. The arrows labeled 2 indicate the information that proceeds into your STM. Arrow 3 represents information traveling from the STM into the working memory, where it’s combined with information from the LTM (arrow 4). Working memory is where the information is processed while you think about it.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -969,43 +871,44 @@ to read.</p>
 different levels of abstraction.</p>
 </section>
 </section>
-<section id="prepare-for-this-class">
-<h2><span class="section-number">2.6. </span>Prepare for this class<a class="headerlink" href="#prepare-for-this-class" title="Permalink to this headline">#</a></h2>
+<section id="admin">
+<h2><span class="section-number">2.6. </span>Admin<a class="headerlink" href="#admin" title="Permalink to this headline">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>I created your issues for you, but GitHub’s server is in a different time zone so the issue titles have the wrong date.  You can change it, or not, your choice</p>
+</div>
+<p>Remember you can create branches to work on each badge <a class="reference external" href="https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-a-branch-for-an-issue">from the issue</a></p>
 </section>
 <section id="review-todays-class">
 <h2><span class="section-number">2.7. </span>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h2>
 </section>
-<section id="more-practice">
-<h2><span class="section-number">2.8. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
-</section>
-<section id="id3">
-<h2><span class="section-number">2.9. </span>Prepare for this class<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
-</section>
-<section id="id4">
-<h2><span class="section-number">2.10. </span>Review today’s class<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
-</section>
-<section id="id5">
-<h2><span class="section-number">2.11. </span>More Practice<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
-</section>
-<section id="id6">
-<h2><span class="section-number">2.12. </span>Review today’s class<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
-</section>
 <section id="prepare-for-next-class">
-<h2><span class="section-number">2.13. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.8. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>Find the glossary page for the course website. Preview the terms for the next class: shell, terminal, bash, git, GitHub</p></li>
 <li><p>Check your kwl repo before class and see if you have recieved feedback,reply or merge accordingly.</p></li>
 <li><p>Make sure you have a working environment, see the <a class="reference internal" href="../syllabus/tools.html#programming-env"><span class="std std-ref">list in the syllabus</span></a>. Use the discussions to ask for help</p></li>
 </ol>
 </section>
-<section id="id7">
-<h2><span class="section-number">2.14. </span>More Practice<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<section id="more-practice">
+<h2><span class="section-number">2.9. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="experience-report-evidence">
-<h2><span class="section-number">2.15. </span>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.10. </span>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
+<p>If you missed class today, there is no separate evidence beyond updates to your repo.</p>
 </section>
 <section id="questions-after-todays-class">
-<h2><span class="section-number">2.16. </span>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.11. </span>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Comming soon!</p>
+</div>
+<div class="community admonition">
+<p class="admonition-title">Make an issue or PR </p>
+<p>Add your question directly to the course website as an issue or a PR.</p>
+<p>To make a PR, use the “suggest edit” button behind the <span class="fa fa-github"></span> icon at the top.  It will have you make a fork which is a copy of the repo that lives on your own account instead of the organization and then you can submit a PR&gt;</p>
+<p>Doing this will not always be worth a community badge, but I hit a challenge in the way I had planned to, so I’m giving you an extra opportunity.</p>
+</div>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="physics"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
