@@ -321,6 +321,32 @@ Example(nonexhaustive) uses:
 
 These show that community badges can save you work at the end of the semester by reducing the number of practice badges or simplifying badges 
 
+## {fa}`gift` Free corrections
+
+All work must be correct and complete to earn credit. In general, this means that when your work is not correct, we will give you guiding questions and advice so that you can revise the work to be correct. Most of the time asking you questions is the best way to help you learn, but sometimes, especially for small things, showing you a correct example is the best way to help you learn. 
+
+Additionally, on rare occasions, a student can submit work that is incorrect or will have down-the-line consquences but does not demonstrate a misunderstanding. For example, in an experience badge, putting text below the `# ` line instead of replacing the hint within the `< >`.  Later, we will do things within the kwl repo that will rely on the title line being filled in, but it's not a big revision where the student needs to rethink about what they submitted. 
+
+````{marigin}
+```{note}
+We do not have a final exam, but URI assigns an exam time for every class.  The date of that assigned exam will be the final due date for all work
+```
+````
+In these special occasions, good effort that is not technically correct may be rewarded with a {fa}`gift`. In this case, the instructor or TA will give a suggestion, with the {fa}`gift` emoji in the comment and leave a review as "comment" instead of "changes requested" or "approved". If the student commits the suggestion to acknowledge that they read it, the instructor will then leave an approving review. Free corrections are only available when revisions are otherwise eligible.  This means that they cannot extend a deadline and they are not available on the final grading that occurs after our scheduled "exam time". 
+
+
+```{important}
+These free corrections are used at the instructional team's discretion and are not guaranteed. 
+
+This means that, for example, the same mistake the first time, might get a {fa}`gift`  and a third or fourth time might be a regular revision where we ask you to go review prior assignments to figure out what you need to fix with a broad hint instead of the specific suggestion
+```
+
+```{admonition} IDEA
+:class: anchor, dropdown
+
+If the course response rate on the IDEA survey is about 75%, {fa}`gift` will be applicable to final grading. **this includes the requirement of the student to reply** 
+```
+
 ## Deadlines 
 
 <!-- Deadlines are flexible in this course so that you can balance your workload across other courses, and instead the **feedback** schedule is fixed.  Weekly feedback hours will be announced and posted. 
@@ -328,6 +354,10 @@ These show that community badges can save you work at the end of the semester by
 However, leaving all of the work to the end of the semester is not good for you to achieve your goals or for me to manage my time giving feedback.   -->
 
 There will be fixed feedback hours each week, if your work is submitted by the start of that time it will get feedback.  If not, it will go to the next feedback hours. 
+
+
+We do not have a final exam, but URI assigns an exam time for every class.  The date of that assigned exam will be the final due date for all work including all revisions. 
+
 
 ### Experience badges
 
