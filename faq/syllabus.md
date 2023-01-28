@@ -15,6 +15,17 @@ You will have several options.  You will have a project board that you can track
 Additionally, when we log them in our private gradebook, we will give you a "receipt" that is 128 characters long. You will be able to use provided command line tools and github actions to produce a report of your status at any time from those receipts.  Additionally, at particular points in the course, an in class or class preparation activity will be for you to review a "progress report" that we give you and update your success plan for the course.   
 ```
 
+##  Also, when are each badge due, time wise?
+```{toggle}
+Review and practice must start within a week, but I recommend starting before the next class. Must be a good faith completion within 2 weeks, but again recommend finishing sooner. 
+
+Experience reports for missing class is on a case by case basis depending on why you missed class. You must have a plan by the next class. 
+
+Explore and build, we'll agree to a deadline when you propose. 
+```
+
+
+```
 <!-- 
 ## Can I submit this assignment late if ...?
 ```{toggle}
@@ -30,7 +41,7 @@ Be specific about what you think is wrong so that we can expand more.
 ```
 
 
-## What should a Deeper exploration look like and where do I put it?
+## What should work for an explore badge look like and where do I put it?
 ```{toggle}
 It should be a tutorial or blog style piece of writing, likely with code
 excerpts or screenshots embedded in it.
@@ -41,3 +52,4 @@ excerpts or screenshots embedded in it.
 
 They should be markdown files in your KWL repo.  I recommend myst markdown.
 ```
+
