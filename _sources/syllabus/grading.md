@@ -327,7 +327,7 @@ All work must be correct and complete to earn credit. In general, this means tha
 
 Additionally, on rare occasions, a student can submit work that is incorrect or will have down-the-line consquences but does not demonstrate a misunderstanding. For example, in an experience badge, putting text below the `# ` line instead of replacing the hint within the `< >`.  Later, we will do things within the kwl repo that will rely on the title line being filled in, but it's not a big revision where the student needs to rethink about what they submitted. 
 
-````{marigin}
+````{margin}
 ```{note}
 We do not have a final exam, but URI assigns an exam time for every class.  The date of that assigned exam will be the final due date for all work
 ```

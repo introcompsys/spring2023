@@ -106,7 +106,7 @@ environments to apply concepts.
 - Git and Bash with [GitBash](https://gitforwindows.org/) ([video instructions](https://youtu.be/339AEqk9c-8)). 
 ```
 
-```{tab-tem} Windows - option B
+```{tab-item} Windows - option B
 
 Create a [bootable usb stick with Linux](https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview)
 

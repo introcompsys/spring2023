@@ -37,7 +37,7 @@ For the first few classes they will be made by BrightSpace too, but that will st
 ```
 
 
-````{admonition} 
+````{admonition} Sign up to watch
 :class: community, dropdown
 
 Watch the repo and then create a file called `community.md` in your kwl repo and add a link to this section, like: 
