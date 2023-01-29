@@ -90,6 +90,7 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
 
 
 ## Required Files
+This lists the files for reference, but mostly you can keep track by badge issue checklists. 
 
 
 ```{code-cell} ipython3
@@ -97,7 +98,7 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
 
 import pandas as pd
 
-check_df = pd.read_csv('kwl.csv')
+check_df = pd.read_csv('../kwl.csv')
 
 # FIXME: update grade free dates
 penalty_free_dates = ['2022-01-24','2023-01-26']
