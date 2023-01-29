@@ -5,7 +5,7 @@
 
 Your team repo is a place to build up a glossary of key terms and a "cookbook" of "recipes" of common things you might want to do on the shell, bash commands, git commands and others.  
 
-For the glossary, follow the [jupyterbook]() syntax.  
+For the glossary, follow the [jupyterbook](https://jupyterbook.org/en/stable/reference/cheatsheet.html#) syntax.  
 
 For the cookbook, use standard markdown.
 

@@ -7,7 +7,6 @@ parts:
     - file: syllabus/about
     - file: syllabus/tools
     - file: syllabus/grading
-    - file: syllabus/contract
     - file: syllabus/schedule
     - file: syllabus/uri_resources
     - file: syllabus/uri_statements
@@ -35,6 +34,7 @@ parts:
     chapters:
     - file: resources/tips
     - file: resources/learning
+    - file: resources/github
     - file: resources/gettinghelp
     - file: resources/organization
     - file: resources/more_info_on_cpus
