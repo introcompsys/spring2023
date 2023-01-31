@@ -51,7 +51,7 @@ parse:
     - substitution
   myst_substitutions:
     time: TTh 12:30-1:45
-    location: Morris Hall 323
+    location: Morrill Hall 323
     bscalendar: |
       [course calendar](https://brightspace.uri.edu/d2l/le/calendar/222277)
     semester: Spring 2023
