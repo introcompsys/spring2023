@@ -24,21 +24,21 @@ Experience reports for missing class is on a case by case basis depending on why
 Explore and build, we'll agree to a deadline when you propose. 
 ```
 
-
-```
-<!-- 
-## Can I submit this assignment late if ...?
+## Will everything done in the penalty free zone be approved even if there are mistakes?
 ```{toggle}
-In this class, there are feedback hours instead of deadlines for specific assignments.  If your work is not in by the feedback hours, you will get feedback at the next hours. If your grading contract has dated milestones, (eg for a project) post an issue in your contract repo with title `late milestone: <name of milestone>` and in the body proposes when it will be in instead and how this delay will not affect your future work.  If you need more dramatic shift, propose a revision to your contract.
-``` -->
+No. In the penalty-free zone I still want you to learn things, but we will do extra work to make sure that you get credit for all of your effort even if you make mistakes in how to use GitHub.  We will ask you to fix things that we have taught you to fix, but not things that we will not cover until later.  
 
-## I don't understand the feedback  on this assignment
-```{toggle}
-If you have questions about your feedback, the best thing to do is to start a discussion on the PR for that work. Either reply directly to one of the inline comments, or the summary.
+The goal is to make things more fair while you get used to GitHub.  It's a nontrivial thing to learn, but getting used to it is worth it.  
 
-Be specific about what you think is wrong so that we can expand more.
-
+I want this class to be a safe place for you to try things, make mistakes and learn from them without penalty.  A job is a much higher stakes place to learn a tool as hard as GitHub, so I want this to be lower stakes, even though I cannot promise it will be easy. 
 ```
+
+## Once we make revisions on a pull request, how do we notify you that we have done them?
+```{toggle}
+You do not have to do anything, GitHub will automatically notify which ever one of us who reviewed it initially when you make changes. 
+```
+
+
 
 
 ## What should work for an explore badge look like and where do I put it?
