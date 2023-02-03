@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>3. Bash into &amp; git offline &#8212; Computer Systems and Programming Tools</title>
+    <title>3. Bash intro &amp; git offline &#8212; Computer Systems and Programming Tools</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -174,7 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   3. Bash into &amp; git offline
+   3. Bash intro &amp; git offline
   </a>
  </li>
 </ul>
@@ -478,58 +478,95 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#open-a-terminal">
+   3.1. Open a Terminal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-organized">
+   3.2. Getting Organized.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#authenticating-with-github">
+   3.3. Authenticating with GitHub
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     3.3.1. Authenticating with GitHub
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cloning-a-repository">
+     3.3.2. Cloning a repository
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-in-a-repo">
+   3.4. What is in a repo?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-todays-class">
+   3.5. Review today’s class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prepare-for-next-class">
-   3.1. Prepare for Next Class
+   3.6. Prepare for Next Class
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#more-practice">
-   3.2. More Practice
+   3.7. More Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#experience-report-evidence">
-   3.3. Experience Report Evidence
+   3.8. Experience Report Evidence
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-todays-class">
-   3.4. Questions After Today’s Class
+   3.9. Questions After Today’s Class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#questions-we-will-answer-next-class">
-     3.4.1. Questions we will answer next class
+     3.9.1. Questions we will answer next class
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#questions-i-need-clarification-from-you-to-be-able-to-answer">
-     3.4.2. Questions I need clarification from you to be able to answer
+     3.9.2. Questions I need clarification from you to be able to answer
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#why-is-ssh-less-secure-than-the-https-standard">
-     3.4.3. Why is SSH less secure than the HTTPS standard?
+     3.9.3. Why is SSH less secure than the HTTPS standard?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#why-would-we-want-to-create-files-from-git-bash-terminal-as-opposed-to-file-explorer-or-cmd-prompt">
-     3.4.4. Why would we want to create files from Git Bash terminal as opposed to File Explorer or CMD Prompt
+     3.9.4. Why would we want to create files from Git Bash terminal as opposed to File Explorer or CMD Prompt
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-do-you-move-folders-into-other-folders-in-terminal-once-youve-created-them">
-     3.4.5. How do you move folders into other folders in terminal once you’ve created them?
+     3.9.5. How do you move folders into other folders in terminal once you’ve created them?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#is-there-an-easy-way-to-remember-shortcuts-for-terminal">
-     3.4.6. Is there an easy way to remember shortcuts for terminal?
+     3.9.6. Is there an easy way to remember shortcuts for terminal?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#is-github-desktop-used-less-often-than-git-via-command-line">
-     3.4.7. is GitHub desktop used less often than git via command line?
+     3.9.7. is GitHub desktop used less often than git via command line?
     </a>
    </li>
   </ul>
@@ -543,7 +580,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Bash into & git offline</h1>
+                <h1>Bash intro & git offline</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -554,58 +591,95 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#open-a-terminal">
+   3.1. Open a Terminal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-organized">
+   3.2. Getting Organized.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#authenticating-with-github">
+   3.3. Authenticating with GitHub
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     3.3.1. Authenticating with GitHub
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cloning-a-repository">
+     3.3.2. Cloning a repository
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-in-a-repo">
+   3.4. What is in a repo?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-todays-class">
+   3.5. Review today’s class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prepare-for-next-class">
-   3.1. Prepare for Next Class
+   3.6. Prepare for Next Class
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#more-practice">
-   3.2. More Practice
+   3.7. More Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#experience-report-evidence">
-   3.3. Experience Report Evidence
+   3.8. Experience Report Evidence
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-todays-class">
-   3.4. Questions After Today’s Class
+   3.9. Questions After Today’s Class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#questions-we-will-answer-next-class">
-     3.4.1. Questions we will answer next class
+     3.9.1. Questions we will answer next class
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#questions-i-need-clarification-from-you-to-be-able-to-answer">
-     3.4.2. Questions I need clarification from you to be able to answer
+     3.9.2. Questions I need clarification from you to be able to answer
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#why-is-ssh-less-secure-than-the-https-standard">
-     3.4.3. Why is SSH less secure than the HTTPS standard?
+     3.9.3. Why is SSH less secure than the HTTPS standard?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#why-would-we-want-to-create-files-from-git-bash-terminal-as-opposed-to-file-explorer-or-cmd-prompt">
-     3.4.4. Why would we want to create files from Git Bash terminal as opposed to File Explorer or CMD Prompt
+     3.9.4. Why would we want to create files from Git Bash terminal as opposed to File Explorer or CMD Prompt
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-do-you-move-folders-into-other-folders-in-terminal-once-youve-created-them">
-     3.4.5. How do you move folders into other folders in terminal once you’ve created them?
+     3.9.5. How do you move folders into other folders in terminal once you’ve created them?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#is-there-an-easy-way-to-remember-shortcuts-for-terminal">
-     3.4.6. Is there an easy way to remember shortcuts for terminal?
+     3.9.6. Is there an easy way to remember shortcuts for terminal?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#is-github-desktop-used-less-often-than-git-via-command-line">
-     3.4.7. is GitHub desktop used less often than git via command line?
+     3.9.7. is GitHub desktop used less often than git via command line?
     </a>
    </li>
   </ul>
@@ -620,8 +694,18 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="bash-into-git-offline">
-<h1><span class="section-number">3. </span>Bash into &amp; git offline<a class="headerlink" href="#bash-into-git-offline" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="bash-intro-git-offline">
+<h1><span class="section-number">3. </span>Bash intro &amp; git offline<a class="headerlink" href="#bash-intro-git-offline" title="Permalink to this headline">#</a></h1>
+<section id="open-a-terminal">
+<h2><span class="section-number">3.1. </span>Open a Terminal<a class="headerlink" href="#open-a-terminal" title="Permalink to this headline">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="077f122a-3d70-4f61-b1bb-32674a6536e3" name="b1460116-6e23-47fc-9bc7-d7134f418c79" type="radio">
+</input><label class="sd-tab-label" for="077f122a-3d70-4f61-b1bb-32674a6536e3">
+Windows</label><div class="sd-tab-content docutils">
+<p>Use Git for Windows aka GitBash. This program emulates bash for you.</p>
+</div>
+</div>
+<p>My terminal reminds me that using bash is not Apple’s preference</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Last login: Sun Jan 29 11:50:33 on ttys017
 
 The default interactive shell is now zsh.
@@ -629,73 +713,58 @@ To update your account to use zsh, please run `chsh -s /bin/zsh`.
 For more details, please visit https://support.apple.com/kb/HT208050.
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-The default interactive shell is now zsh.
-To update your account to use zsh, please run `chsh -s /bin/zsh`.
-For more details, please visit https://support.apple.com/kb/HT208050.
-</pre></div>
-</div>
+</section>
+<section id="getting-organized">
+<h2><span class="section-number">3.2. </span>Getting Organized.<a class="headerlink" href="#getting-organized" title="Permalink to this headline">#</a></h2>
+<p>To view where we are, we <strong>p</strong>rint <strong>w</strong>orking <strong>d</strong>irectory using <code class="docutils literal notranslate"><span class="pre">pwd</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span>
 </pre></div>
 </div>
+<p>As output we see:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">brownsarahm</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+<p>It prints out the <em>absolute</em> path, that begins with a <code class="docutils literal notranslate"><span class="pre">/</span></code> above, we used a relative
+path, from the home directory.</p>
+<p>Next I can <strong>c</strong>hange <strong>d</strong>irectory with <code class="docutils literal notranslate"><span class="pre">cd</span></code>. To do this, I could use an absolute path of where I want to go or I can use the <em>relative</em> path which is the directions from one location to another.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">Documents</span><span class="o">/</span><span class="n">inclass</span><span class="o">/</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">Documents</span><span class="o">/</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">inclass</span><span class="o">/</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
+<p>Here I can <strong>l</strong>i<strong>s</strong>t the files.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fa22</span>		<span class="n">prog4dssp23</span>
 </pre></div>
 </div>
+<p>Next we’ll make a folder for this course</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">systems</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
+<p>Note that making the new folder does not move us into it.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">brownsarahm</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">inclass</span>
 </pre></div>
 </div>
+<p>For that,we use <code class="docutils literal notranslate"><span class="pre">cd</span></code> again.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">systems</span><span class="o">/</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
+<p>This is an emptry folder, we can confirm with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
+<p>To go back one step in the path, (one level up in the tree) we use <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">..</span>
 </pre></div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">..</span></code> is a special file that points to a specific relative path.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fa22</span>		<span class="n">prog4dssp23</span>	<span class="n">systems</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cds</span> <span class="n">systems</span><span class="o">/</span>
@@ -704,67 +773,40 @@ For more details, please visit https://support.apple.com/kb/HT208050.
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span><span class="p">:</span> <span class="n">cds</span><span class="p">:</span> <span class="n">command</span> <span class="ow">not</span> <span class="n">found</span>
 </pre></div>
 </div>
+<p>notice that command not found is the error when there is a typo</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">systems</span><span class="o">/</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pwdm</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span><span class="p">:</span> <span class="n">pwdm</span><span class="p">:</span> <span class="n">command</span> <span class="ow">not</span> <span class="n">found</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span>
+<span class="n">pwd</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">brownsarahm</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">inclass</span><span class="o">/</span><span class="n">systems</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">..</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span>
+<span class="n">pwd</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">brownsarahm</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">inclass</span>
 </pre></div>
 </div>
+<p>If we give no path to <code class="docutils literal notranslate"><span class="pre">cd</span></code> it brings us to home.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> 
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span>
+<span class="n">pwd</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">brownsarahm</span>
 </pre></div>
 </div>
+<p>Then we can go back.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">Documents</span><span class="o">/</span><span class="n">inclass</span><span class="o">/</span><span class="n">systems</span><span class="o">/</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span>
+<span class="n">pwd</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">brownsarahm</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">inclass</span><span class="o">/</span><span class="n">systems</span>
 </pre></div>
 </div>
+<p>We can use two levels up at once like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../../</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span>
+<span class="n">pwd</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">brownsarahm</span><span class="o">/</span><span class="n">Documents</span>
@@ -773,44 +815,55 @@ For more details, please visit https://support.apple.com/kb/HT208050.
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">inclass</span><span class="o">/</span><span class="n">systems</span><span class="o">/</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</section>
+<section id="authenticating-with-github">
+<h2><span class="section-number">3.3. </span>Authenticating with GitHub<a class="headerlink" href="#authenticating-with-github" title="Permalink to this headline">#</a></h2>
+<p>We have two choices to Download a repository:</p>
+<ol class="simple">
+<li><p>clone to maintain a link using git</p></li>
+<li><p>download zip to not have to use git, but have no link</p></li>
+</ol>
+<p>For a public repo, it won’t matter, you can use any way to download it that you wuold like, but for a private repo, we need to be authenticated.</p>
+<section id="id1">
+<h3><span class="section-number">3.3.1. </span>Authenticating with GitHub<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<hr class="docutils" />
+<p>There are many ways to authenticate securely with GitHub and other git clients.  We’re going to use <em>easier</em> ones for today, but we’ll come back to the third, which is a bit more secure and is a more general type of authentication.</p>
+<hr class="docutils" />
+<ol class="simple">
+<li><p>ssh keys</p></li>
+<li><p>GitBash built in authentication</p></li>
+</ol>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="93440223-f204-427c-925e-1a8adf74abc7" name="884c0aff-253b-4845-bd5c-0241ab211b7d" type="radio">
+</input><label class="sd-tab-label" for="93440223-f204-427c-925e-1a8adf74abc7">
+Windows (GitBash)</label><div class="sd-tab-content docutils">
+<p>Skip straight to clone, then follow the prompts, choosing to authenticate in Browser.</p>
+</div>
+<input id="64d182bc-912a-42b2-a35e-acd24901f20b" name="884c0aff-253b-4845-bd5c-0241ab211b7d" type="radio">
+</input><label class="sd-tab-label" for="64d182bc-912a-42b2-a35e-acd24901f20b">
+Windows (WSL)</label><div class="sd-tab-content docutils">
+</div>
+<input id="e23a8efe-c245-4446-9cef-dc86250eb42b" name="884c0aff-253b-4845-bd5c-0241ab211b7d" type="radio">
+</input><label class="sd-tab-label" for="e23a8efe-c245-4446-9cef-dc86250eb42b">
+MacOS X</label><div class="sd-tab-content docutils">
+<p>GitHub CLI: enter the following and follow the prompts.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```
+gh auth login
+```
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">inclass</span><span class="o">/</span><span class="n">systems</span>
-</pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span><span class="p">:</span> <span class="n">cd</span><span class="p">:</span> <span class="n">inclass</span><span class="o">/</span><span class="n">systems</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span>
-</pre></div>
+<input id="630ce9c1-bd0a-4107-81d6-f575eb25ca6b" name="884c0aff-253b-4845-bd5c-0241ab211b7d" type="radio">
+</input><label class="sd-tab-label" for="630ce9c1-bd0a-4107-81d6-f575eb25ca6b">
+If nothing else works</label><div class="sd-tab-content docutils">
+<p>Create a <a class="reference external" href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">personal access token</a>. This is a special one time password that you can use like a password, but it is limited in scope and will expire (as long as you choose settings well).</p>
+<p>Then proceed to the clone step. You may need to configure an identity later with <a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup"><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span></code></a></p>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../../</span>
-</pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">inclass</span><span class="o">/</span><span class="n">systems</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">auth</span> <span class="n">login</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>? What account do you want to log into? GitHub.com
-? You&#39;re already logged into github.com. Do you want to re-authenticate? Yes
-? What is your preferred protocol for Git operations? HTTPS
-? Authenticate Git with your GitHub credentials? Yes
-? How would you like to authenticate GitHub CLI? Login with a web browser
-
-! First copy your one-time code: F0D9-362F
-Press Enter to open github.com in your browser... 
-✓ Authentication complete.
-- gh config set -h github.com git_protocol https
-✓ Configured git protocol
-✓ Logged in as brownsarahm
-</pre></div>
-</div>
+</section>
+<section id="cloning-a-repository">
+<h3><span class="section-number">3.3.2. </span>Cloning a repository<a class="headerlink" href="#cloning-a-repository" title="Permalink to this headline">#</a></h3>
+<p>We will create a local copy by cloning</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">introcompsys</span><span class="o">/</span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">-</span><span class="mf">1.</span><span class="n">git</span>
 </pre></div>
 </div>
@@ -822,24 +875,32 @@ Press Enter to open github.com in your browser...
 <span class="n">Receiving</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">8</span><span class="o">/</span><span class="mi">8</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
 </pre></div>
 </div>
+<p>Confirm it worked with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">-</span><span class="mi">1</span>
 </pre></div>
 </div>
+<p>We see the new folder that matches our repo name</p>
+</section>
+</section>
+<section id="what-is-in-a-repo">
+<h2><span class="section-number">3.4. </span>What is in a repo?<a class="headerlink" href="#what-is-in-a-repo" title="Permalink to this headline">#</a></h2>
+<p>We can enter that folder</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
+<p>When we compare the local directory to GitHub</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">README</span><span class="o">.</span><span class="n">md</span>
 </pre></div>
 </div>
+<p>Notice that the <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code> that we see on GitHub is missing,
+that is because it is hidden.  All file names that start with <code class="docutils literal notranslate"><span class="pre">.</span></code> are hidden.</p>
+<p>We can actually see the rest with the <code class="docutils literal notranslate"><span class="pre">-a</span></code> for <strong>all</strong> <em>option</em> or <em>flag</em>.  Options are how we can pass non required parameters to command line programs.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="n">a</span>
 </pre></div>
 </div>
@@ -847,16 +908,26 @@ Press Enter to open github.com in your browser...
 <span class="o">..</span>		<span class="o">.</span><span class="n">github</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<p>We also see some special “files”, <code class="docutils literal notranslate"><span class="pre">.</span></code> the current location and <code class="docutils literal notranslate"><span class="pre">..</span></code> up one directory</p>
+</section>
+<section id="review-todays-class">
+<h2><span class="section-number">3.5. </span>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>read the notes. If you have any questions, post an issue on the course website repo.</p></li>
+<li><p>Using your terminal, download your KWL repo . Include the command used in your badge PR.</p></li>
+<li><p>Try using setting up git using your favorite IDE or GitHub Desktop. Make a file <span class="target" id="index-0"></span>gitoffline.md and include some notes of how it went. Was it hard? easy? what did you figure out or get stuck on.</p></li>
+<li><p>Reorganize a folder on your computer ( good candidate may be  desktop or downloads folder), using only a terminal to make new directories, move files, check what’s inside them, etc. Answer reflection questions (will be in notes) in a new file, <code class="docutils literal notranslate"><span class="pre">terminal.md</span></code> in your kwl repo.
+Start with a file explorer open, but then try to close it and use only command line tools to explore and make your choices. If you get stuck, make notes.</p></li>
+</ol>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gu">### Terminal File moving reflection</span>
+<span class="k">1.</span> Did this get easier toward the end?
+<span class="k">1.</span> What if anything did you get stuck on
+<span class="k">1.</span> When do you think that using the terminal will be better than using your GUI file explorer?
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## Review today&#39;s class
-
-```{include} ../_review/2023-01-31.md
-</pre></div>
-</div>
+</section>
 <section id="prepare-for-next-class">
-<h2><span class="section-number">3.1. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.6. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>Make a list of questions you have about using the terminal</p></li>
 <li><p>Be prepared to compare and contrast bash, shell, terminal, and git.</p></li>
@@ -864,11 +935,11 @@ Press Enter to open github.com in your browser...
 </ol>
 </section>
 <section id="more-practice">
-<h2><span class="section-number">3.2. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.7. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>Read the notes. If you have any questions, post an issue on the course website repo.</p></li>
 <li><p>Using your terminal, download your KWL repo . Include the command used in your badge PR.</p></li>
-<li><p>Try using setting up git using your favorite IDE or GitHub Desktop. Make a file <span class="target" id="index-0"></span>gitoffline.md and include some notes of how it went. Was it hard? easy? what did you figure out or get stuck on.</p></li>
+<li><p>Try using setting up git using your favorite IDE or GitHub Desktop. Make a file <span class="target" id="index-1"></span>gitoffline.md and include some notes of how it went. Was it hard? easy? what did you figure out or get stuck on.</p></li>
 <li><p>Reorganize a folder on your computer ( good candidate may be  desktop or downloads folder), using only a terminal to make new directories, move files, check what’s inside them, etc. Answer reflection questions (will be in notes) in a new file, <code class="docutils literal notranslate"><span class="pre">terminal.md</span></code> in your kwl repo.
 Start with a file explorer open, but then try to close it and use only command line tools to explore and make your choices. If you get stuck, look up additional commands to do acomplish your goals.</p></li>
 </ol>
@@ -883,7 +954,7 @@ Start with a file explorer open, but then try to close it and use only command l
 </div>
 </section>
 <section id="experience-report-evidence">
-<h2><span class="section-number">3.3. </span>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.8. </span>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
 <p>To show you completed this activity, show the output of the following commands in <code class="docutils literal notranslate"><span class="pre">evidence-2023-01-31.md</span></code> in the `experiences folder:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">you</span><span class="o">/</span><span class="n">choce</span><span class="o">/</span><span class="n">systems</span>
 </pre></div>
@@ -899,9 +970,9 @@ Start with a file explorer open, but then try to close it and use only command l
 </div>
 </section>
 <section id="questions-after-todays-class">
-<h2><span class="section-number">3.4. </span>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.9. </span>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
 <section id="questions-we-will-answer-next-class">
-<h3><span class="section-number">3.4.1. </span>Questions we will answer next class<a class="headerlink" href="#questions-we-will-answer-next-class" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.9.1. </span>Questions we will answer next class<a class="headerlink" href="#questions-we-will-answer-next-class" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>How do changes that I do to the repo offline update on the github website?</p></li>
 <li><p>Does github connect to a file automatically or do i have to connect it manual</p></li>
@@ -910,7 +981,7 @@ Start with a file explorer open, but then try to close it and use only command l
 </ul>
 </section>
 <section id="questions-i-need-clarification-from-you-to-be-able-to-answer">
-<h3><span class="section-number">3.4.2. </span>Questions I need clarification from you to be able to answer<a class="headerlink" href="#questions-i-need-clarification-from-you-to-be-able-to-answer" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.9.2. </span>Questions I need clarification from you to be able to answer<a class="headerlink" href="#questions-i-need-clarification-from-you-to-be-able-to-answer" title="Permalink to this headline">#</a></h3>
 <p><strong>probably go to office hours</strong></p>
 <ul class="simple">
 <li><p>I would like more clarification on how to navigate the experience reflection badge.</p></li>
@@ -919,23 +990,23 @@ Start with a file explorer open, but then try to close it and use only command l
 </ul>
 </section>
 <section id="why-is-ssh-less-secure-than-the-https-standard">
-<h3><span class="section-number">3.4.3. </span>Why is SSH less secure than the HTTPS standard?<a class="headerlink" href="#why-is-ssh-less-secure-than-the-https-standard" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.9.3. </span>Why is SSH less secure than the HTTPS standard?<a class="headerlink" href="#why-is-ssh-less-secure-than-the-https-standard" title="Permalink to this headline">#</a></h3>
 <p>SSH keys are secure, but other shell things are not.  Using SSH keys is acutally preferred, but you cannot do other types of command line password operations with GitHub.  git alone, does support HTTPS connection with passwords, but GitHub no longer does.  It only allows you to use PAT (a temporary password), SSH keys, or using the GitHub CLI tool to use your browser.  We will use SSH keys later.</p>
 </section>
 <section id="why-would-we-want-to-create-files-from-git-bash-terminal-as-opposed-to-file-explorer-or-cmd-prompt">
-<h3><span class="section-number">3.4.4. </span>Why would we want to create files from Git Bash terminal as opposed to File Explorer or CMD Prompt<a class="headerlink" href="#why-would-we-want-to-create-files-from-git-bash-terminal-as-opposed-to-file-explorer-or-cmd-prompt" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.9.4. </span>Why would we want to create files from Git Bash terminal as opposed to File Explorer or CMD Prompt<a class="headerlink" href="#why-would-we-want-to-create-files-from-git-bash-terminal-as-opposed-to-file-explorer-or-cmd-prompt" title="Permalink to this headline">#</a></h3>
 <p>bash is not operating specific, so using bash commands can work on more systems including most servers, while CMD commands can only work on Windows (and basically no servers).  File explorer is fine one file at a time, but you cannot automate it.</p>
 </section>
 <section id="how-do-you-move-folders-into-other-folders-in-terminal-once-youve-created-them">
-<h3><span class="section-number">3.4.5. </span>How do you move folders into other folders in terminal once you’ve created them?<a class="headerlink" href="#how-do-you-move-folders-into-other-folders-in-terminal-once-youve-created-them" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.9.5. </span>How do you move folders into other folders in terminal once you’ve created them?<a class="headerlink" href="#how-do-you-move-folders-into-other-folders-in-terminal-once-youve-created-them" title="Permalink to this headline">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">mv</span></code> command does this. <a class="reference external" href="https://man7.org/linux/man-pages/man1/mv.1.html">see its documentation</a></p>
 </section>
 <section id="is-there-an-easy-way-to-remember-shortcuts-for-terminal">
-<h3><span class="section-number">3.4.6. </span>Is there an easy way to remember shortcuts for terminal?<a class="headerlink" href="#is-there-an-easy-way-to-remember-shortcuts-for-terminal" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.9.6. </span>Is there an easy way to remember shortcuts for terminal?<a class="headerlink" href="#is-there-an-easy-way-to-remember-shortcuts-for-terminal" title="Permalink to this headline">#</a></h3>
 <p>Lots of practice.</p>
 </section>
 <section id="is-github-desktop-used-less-often-than-git-via-command-line">
-<h3><span class="section-number">3.4.7. </span>is GitHub desktop used less often than git via command line?<a class="headerlink" href="#is-github-desktop-used-less-often-than-git-via-command-line" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.9.7. </span>is GitHub desktop used less often than git via command line?<a class="headerlink" href="#is-github-desktop-used-less-often-than-git-via-command-line" title="Permalink to this headline">#</a></h3>
 <p>I would say yes for a few reasons:</p>
 <ul class="simple">
 <li><p>I think only novices and nonprogrammers use GitHub desktop extensively.</p></li>
