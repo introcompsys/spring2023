@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="KWL Chart" href="../activities/kwl.html" />
+    <link rel="next" title="4. How can I work with branches offline?" href="2023-02-02.html" />
     <link rel="prev" title="2. Course Logistics and Learning" href="2023-01-26.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -175,6 +175,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    3. Bash intro &amp; git offline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-02-02.html">
+   4. How can I work with branches offline?
   </a>
  </li>
 </ul>
@@ -699,10 +704,20 @@ title="Print to PDF"
 <section id="open-a-terminal">
 <h2><span class="section-number">3.1. </span>Open a Terminal<a class="headerlink" href="#open-a-terminal" title="Permalink to this headline">#</a></h2>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="077f122a-3d70-4f61-b1bb-32674a6536e3" name="b1460116-6e23-47fc-9bc7-d7134f418c79" type="radio">
-</input><label class="sd-tab-label" for="077f122a-3d70-4f61-b1bb-32674a6536e3">
+<input checked="checked" id="a3fb5db1-4361-4098-af3c-506b2bdd9458" name="89907490-54d3-4f0e-8c36-fe5b04203b65" type="radio">
+</input><label class="sd-tab-label" for="a3fb5db1-4361-4098-af3c-506b2bdd9458">
 Windows</label><div class="sd-tab-content docutils">
 <p>Use Git for Windows aka GitBash. This program emulates bash for you.</p>
+</div>
+<input id="caacab3a-a081-41ff-9265-57e633acb3a1" name="89907490-54d3-4f0e-8c36-fe5b04203b65" type="radio">
+</input><label class="sd-tab-label" for="caacab3a-a081-41ff-9265-57e633acb3a1">
+Windows with WSL</label><div class="sd-tab-content docutils">
+<p>Your linux terminal should work.</p>
+</div>
+<input id="4341a8e5-df8b-4fff-9937-4f7ce76f35fc" name="89907490-54d3-4f0e-8c36-fe5b04203b65" type="radio">
+</input><label class="sd-tab-label" for="4341a8e5-df8b-4fff-9937-4f7ce76f35fc">
+MacOS</label><div class="sd-tab-content docutils">
+<p>On mac open a terminal window. By default your terminal uses zsh. You may change to bash using the <code class="docutils literal notranslate"><span class="pre">bash</span></code> command or use <code class="docutils literal notranslate"><span class="pre">zsh</span></code>.  They are mostly the same.</p>
 </div>
 </div>
 <p>My terminal reminds me that using bash is not Apple’s preference</p>
@@ -834,17 +849,17 @@ path, from the home directory.</p>
 <li><p>GitBash built in authentication</p></li>
 </ol>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="93440223-f204-427c-925e-1a8adf74abc7" name="884c0aff-253b-4845-bd5c-0241ab211b7d" type="radio">
-</input><label class="sd-tab-label" for="93440223-f204-427c-925e-1a8adf74abc7">
+<input checked="checked" id="33881124-c96c-41f6-8a20-68961a985b33" name="e94086c7-2d70-40c8-adc6-6296c90fa415" type="radio">
+</input><label class="sd-tab-label" for="33881124-c96c-41f6-8a20-68961a985b33">
 Windows (GitBash)</label><div class="sd-tab-content docutils">
 <p>Skip straight to clone, then follow the prompts, choosing to authenticate in Browser.</p>
 </div>
-<input id="64d182bc-912a-42b2-a35e-acd24901f20b" name="884c0aff-253b-4845-bd5c-0241ab211b7d" type="radio">
-</input><label class="sd-tab-label" for="64d182bc-912a-42b2-a35e-acd24901f20b">
+<input id="69aac1b1-3ffb-4ec2-89ae-ce0cd047e39b" name="e94086c7-2d70-40c8-adc6-6296c90fa415" type="radio">
+</input><label class="sd-tab-label" for="69aac1b1-3ffb-4ec2-89ae-ce0cd047e39b">
 Windows (WSL)</label><div class="sd-tab-content docutils">
 </div>
-<input id="e23a8efe-c245-4446-9cef-dc86250eb42b" name="884c0aff-253b-4845-bd5c-0241ab211b7d" type="radio">
-</input><label class="sd-tab-label" for="e23a8efe-c245-4446-9cef-dc86250eb42b">
+<input id="411f3319-bb5b-4933-bb58-3ca98076de9d" name="e94086c7-2d70-40c8-adc6-6296c90fa415" type="radio">
+</input><label class="sd-tab-label" for="411f3319-bb5b-4933-bb58-3ca98076de9d">
 MacOS X</label><div class="sd-tab-content docutils">
 <p>GitHub CLI: enter the following and follow the prompts.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```
@@ -853,8 +868,8 @@ gh auth login
 </pre></div>
 </div>
 </div>
-<input id="630ce9c1-bd0a-4107-81d6-f575eb25ca6b" name="884c0aff-253b-4845-bd5c-0241ab211b7d" type="radio">
-</input><label class="sd-tab-label" for="630ce9c1-bd0a-4107-81d6-f575eb25ca6b">
+<input id="e1051411-d03a-491f-8833-664d4a5b100f" name="e94086c7-2d70-40c8-adc6-6296c90fa415" type="radio">
+</input><label class="sd-tab-label" for="e1051411-d03a-491f-8833-664d4a5b100f">
 If nothing else works</label><div class="sd-tab-content docutils">
 <p>Create a <a class="reference external" href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">personal access token</a>. This is a special one time password that you can use like a password, but it is limited in scope and will expire (as long as you choose settings well).</p>
 <p>Then proceed to the clone step. You may need to configure an identity later with <a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup"><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span></code></a></p>
@@ -1053,10 +1068,10 @@ Start with a file explorer open, but then try to close it and use only command l
             <p class="prev-next-title"><span class="section-number">2. </span>Course Logistics and Learning</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../activities/kwl.html" title="next page">
+    <a class='right-next' id="next-link" href="2023-02-02.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">KWL Chart</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>How can I work with branches offline?</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
