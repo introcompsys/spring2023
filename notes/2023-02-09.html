@@ -1276,7 +1276,9 @@ we changed it on the <code class="docutils literal notranslate"><span class="pre
 </section>
 <section id="how-to-get-out-of-vim-when-you-accidently-enter-git-commit-without-m">
 <h3><span class="section-number">6.10.5. </span>how to get out of VIM when you accidently enter git commit without -m<a class="headerlink" href="#how-to-get-out-of-vim-when-you-accidently-enter-git-commit-without-m" title="Permalink to this headline">#</a></h3>
-<p>escape, <code class="docutils literal notranslate"><span class="pre">:wq</span></code>, enter</p>
+<p>escape, <code class="docutils literal notranslate"><span class="pre">:wq</span></code>, enter/return</p>
+<p>if the escape button does not work, sometimes you have pressed another key that puts it in a different mode, then you can use command/control + c and then <code class="docutils literal notranslate"><span class="pre">:wq</span></code>+enter.</p>
+<p>As a last resort, you <em>can</em> close the terminal window and open a new one.  Everything important that git does edits a file on your computer, git does not use a lot of memory that you can lose by quitting. If you quit, your staging area will stay exactly how you left it. You can then navigate back to that directory and start your commit again with <code class="docutils literal notranslate"><span class="pre">-m</span></code>.</p>
 </section>
 <section id="what-does-git-rebase-actually-do">
 <h3><span class="section-number">6.10.6. </span>what does git rebase actually do?<a class="headerlink" href="#what-does-git-rebase-actually-do" title="Permalink to this headline">#</a></h3>
@@ -1307,11 +1309,11 @@ we changed it on the <code class="docutils literal notranslate"><span class="pre
 </section>
 <section id="how-do-we-fix-accidental-merges">
 <h3><span class="section-number">6.10.12. </span>How do we fix accidental merges?<a class="headerlink" href="#how-do-we-fix-accidental-merges" title="Permalink to this headline">#</a></h3>
-<p>The goal is to not have to, that’s why GitHub makes you click twice to merge a pull request.  It is possible though.  It’s on the FAQ: <a class="reference external" href="https://introcompsys.github.io/spring2023/faq/github.html#help-i-accidentally-merged-the-feedback-pull-request-before-my-assignment-was-graded">https://introcompsys.github.io/spring2023/faq/github.html#help-i-accidentally-merged-the-feedback-pull-request-before-my-assignment-was-graded</a>.</p>
+<p>The goal is to not have to, that’s why GitHub makes you click twice to merge a pull request.  It is possible though.  It’s on the FAQ: <a class="reference external" href="https://introcompsys.github.io/spring2023/faq/github.html#help-i-accidentally-merged-the-feedback-pull-request-before-my-assignment-was-graded">https://introcompsys.github.io/spring2023/faq/github.html#help-i-accidentally-merged-the-feedback-pull-request-before-my-assignment-was-graded</a>. This example is taken from my Data Science class, where they commit to main and I grade a PR from main into Feedback.  If they accidentally merge, they need to leave their main branch alone and hard reset their Feedback branch.  In other cases you may want to reset the main branch or a develop branch.  The procedure is the same, only the branch names change.</p>
 </section>
 <section id="the-prepare-work-before-class-and-the-work-we-do-in-class-are-for-the-same-grade">
 <h3><span class="section-number">6.10.13. </span>the prepare work before class and the work we do in class are for the same grade?<a class="headerlink" href="#the-prepare-work-before-class-and-the-work-we-do-in-class-are-for-the-same-grade" title="Permalink to this headline">#</a></h3>
-<p>Yes, the prepare for class is a part of the experience badge along with in class.</p>
+<p>Yes, the prepare for class is a part of the experience badge for the next class after it is posted along with in class. This is because the prepare for class work is due before the next class.  Increasingly, class sessions will rely on you having completed those items.</p>
 </section>
 </section>
 </section>
