@@ -15,6 +15,10 @@ You might get a lot of suggestions for improvement on your first one, but if you
 
 ## How do I propose?
 
+Create an issue on your kwl repo, label it explore, and "assign" @brownsarahm. 
+
+In your issue, describe the question you want to answer or topic to explore and the format you want to use. 
+
 If you propose something too big, you might be advised to consider a build badge instead.  If you propose something too small, you will get ideas as options for how to expand it and you pick which ones. 
 
 ## Where to put the work?
