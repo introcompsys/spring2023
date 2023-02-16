@@ -1,0 +1,1182 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>7. Why are these tools like this? &#8212; Computer Systems and Programming Tools</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course_admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="KWL Chart" href="../activities/kwl.html" />
+    <link rel="prev" title="6. What if I edit the file in two places?" href="2023-02-09.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/systools.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computer Systems and Programming Tools</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Site
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   Computer Systems and Programming Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Office Hours &amp; Communication
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-01-24.html">
+   1. Welcome and Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-01-26.html">
+   2. Course Logistics and Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-01-31.html">
+   3. Bash intro &amp; git offline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-02-02.html">
+   4. How can I work with branches offline?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-02-07.html">
+   5. When do I get an advantage from git and bash?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2023-02-09.html">
+   6. What if I edit the file in two places?
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   7. Why are these tools like this?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Activities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/kwl.html">
+   KWL Chart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/team.html">
+   Team Repo
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/review.html">
+   Review Badges
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/prepare.html">
+   Prepare for the next class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/practice.html">
+   More Practice Badges
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../genindex.html">
+   KWL File Information
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/explore.html">
+   Explore Badges
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/build.html">
+   Build Badges
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/github.html">
+   GitHub Interface reference
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/more_info_on_cpus.html">
+   More info on cpus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://introcompsys.github.io/spring2022/resources/testimonials.html">
+   Advice from Spring 2022 Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/introcompsys/spring2023# The URL to your book's repository"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/introcompsys/spring2023# The URL to your book's repository/issues/new?title=Issue%20on%20page%20%2Fnotes/2023-02-14.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/introcompsys/spring2023# The URL to your book's repository/edit/main/notes/2023-02-14.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notes/2023-02-14.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-do-i-decide-how-to-resolve-a-merge-conflict">
+   7.1. How do I decide how to resolve a merge conflict?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-do-i-exit-vi">
+   7.2. How do I exit vi?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-are-we-studying-developer-tools">
+   7.3. Why are we studying developer tools?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unix-philosophy">
+   7.4. Unix Philosophy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-do-we-study-computer-systems">
+   7.5. How do we Study (computer) Systems
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#behavior">
+     7.5.1. Behavior
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#components">
+     7.5.2. Components
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#abstraction">
+     7.5.3. Abstraction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-todays-class">
+   7.6. Review today’s class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   7.7. Prepare for Next Class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   7.8. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experience-report-evidence">
+   7.9. Experience Report Evidence
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-todays-class">
+   7.10. Questions After Today’s Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#questions-that-are-good-explore-badge-topics">
+     7.10.1. Questions that are good explore badge topics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#does-learning-a-little-bit-about-the-other-layers-in-layers-of-abstractions-help-create-better-software-or-applications">
+     7.10.2. Does learning a little bit about the other layers in layers of abstractions help create better software or applications?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-there-options-to-nano-that-we-can-use-and-in-what-case-would-it-be-worth-using-something-else">
+     7.10.3. Are there options to Nano that we can use, and in what case would it be worth using something else.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-is-it-better-to-work-in-the-terminal-as-opposed-to-github-desktop">
+     7.10.4. When is it better to work in the terminal as opposed to GitHub desktop?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-assembly-language-inefficient-to-be-programming-in">
+     7.10.5. Is assembly language inefficient to be programming in?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-there-different-langauges-for-machine-code">
+     7.10.6. Are there different langauges for machine code?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-does-assembly-code-look-like">
+     7.10.7. What does assembly code look like?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Why are these tools like this?</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-do-i-decide-how-to-resolve-a-merge-conflict">
+   7.1. How do I decide how to resolve a merge conflict?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-do-i-exit-vi">
+   7.2. How do I exit vi?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-are-we-studying-developer-tools">
+   7.3. Why are we studying developer tools?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unix-philosophy">
+   7.4. Unix Philosophy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-do-we-study-computer-systems">
+   7.5. How do we Study (computer) Systems
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#behavior">
+     7.5.1. Behavior
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#components">
+     7.5.2. Components
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#abstraction">
+     7.5.3. Abstraction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-todays-class">
+   7.6. Review today’s class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   7.7. Prepare for Next Class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   7.8. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experience-report-evidence">
+   7.9. Experience Report Evidence
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-todays-class">
+   7.10. Questions After Today’s Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#questions-that-are-good-explore-badge-topics">
+     7.10.1. Questions that are good explore badge topics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#does-learning-a-little-bit-about-the-other-layers-in-layers-of-abstractions-help-create-better-software-or-applications">
+     7.10.2. Does learning a little bit about the other layers in layers of abstractions help create better software or applications?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-there-options-to-nano-that-we-can-use-and-in-what-case-would-it-be-worth-using-something-else">
+     7.10.3. Are there options to Nano that we can use, and in what case would it be worth using something else.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-is-it-better-to-work-in-the-terminal-as-opposed-to-github-desktop">
+     7.10.4. When is it better to work in the terminal as opposed to GitHub desktop?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-assembly-language-inefficient-to-be-programming-in">
+     7.10.5. Is assembly language inefficient to be programming in?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-there-different-langauges-for-machine-code">
+     7.10.6. Are there different langauges for machine code?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-does-assembly-code-look-like">
+     7.10.7. What does assembly code look like?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="why-are-these-tools-like-this">
+<h1><span class="section-number">7. </span>Why are these tools like this?<a class="headerlink" href="#why-are-these-tools-like-this" title="Permalink to this headline">#</a></h1>
+<p>Today we’re going to do a bit more practical stuff, but we are also going to start to get into the philosophy of how things are organized.</p>
+<p>Understanding the context and principles will help you remember the what and help you understand when you shoudl do things as they have always been done and when you should challenge and change things.</p>
+<section id="how-do-i-decide-how-to-resolve-a-merge-conflict">
+<h2><span class="section-number">7.1. </span>How do I decide how to resolve a merge conflict?<a class="headerlink" href="#how-do-i-decide-how-to-resolve-a-merge-conflict" title="Permalink to this headline">#</a></h2>
+<p>First lets make a new branch</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">examplebranch</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Switched</span> <span class="n">to</span> <span class="n">a</span> <span class="n">new</span> <span class="n">branch</span> <span class="s1">&#39;examplebranch&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">examplebranch</span>
+<span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span><span class="p">,</span> <span class="n">working</span> <span class="n">tree</span> <span class="n">clean</span>
+</pre></div>
+</div>
+<p>Now we will add some text to a file that “tells a story” of what we might have actually done.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;edit code near a bug I did not know about&quot;</span> <span class="o">&gt;</span> <span class="n">important_classes</span><span class="o">.</span><span class="n">py</span> 
+</pre></div>
+</div>
+<p>and commit this change</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;new code&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">examplebranch</span> <span class="n">bb4e0d8</span><span class="p">]</span> <span class="n">new</span> <span class="n">code</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">insertion</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then back on the main branch</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Switched</span> <span class="n">to</span> <span class="n">branch</span> <span class="s1">&#39;main&#39;</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">ahead</span> <span class="n">of</span> <span class="s1">&#39;origin/main&#39;</span> <span class="n">by</span> <span class="mi">1</span> <span class="n">commit</span><span class="o">.</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git push&quot;</span> <span class="n">to</span> <span class="n">publish</span> <span class="n">your</span> <span class="n">local</span> <span class="n">commits</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>we will pretend a bug got fixed in that same file. This is a realistic-ish scenario.  You might be workign on adding a new feature then get a bug report and fix the bug on a different branch and get it merged into main so that others using the file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;fix a bug&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">important_classes</span><span class="o">.</span><span class="n">py</span> 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;bug fix&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">main</span> <span class="mi">4</span><span class="n">fa9114</span><span class="p">]</span> <span class="n">bug</span> <span class="n">fix</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">insertion</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">ahead</span> <span class="n">of</span> <span class="s1">&#39;origin/main&#39;</span> <span class="n">by</span> <span class="mi">2</span> <span class="n">commits</span><span class="o">.</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git push&quot;</span> <span class="n">to</span> <span class="n">publish</span> <span class="n">your</span> <span class="n">local</span> <span class="n">commits</span><span class="p">)</span>
+
+<span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span><span class="p">,</span> <span class="n">working</span> <span class="n">tree</span> <span class="n">clean</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">merge</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">examplebranch</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Switched</span> <span class="n">to</span> <span class="n">branch</span> <span class="s1">&#39;examplebranch&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">merge</span> <span class="n">main</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Auto</span><span class="o">-</span><span class="n">merging</span> <span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">CONFLICT</span> <span class="p">(</span><span class="n">content</span><span class="p">):</span> <span class="n">Merge</span> <span class="n">conflict</span> <span class="ow">in</span> <span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Automatic</span> <span class="n">merge</span> <span class="n">failed</span><span class="p">;</span> <span class="n">fix</span> <span class="n">conflicts</span> <span class="ow">and</span> <span class="n">then</span> <span class="n">commit</span> <span class="n">the</span> <span class="n">result</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">important_classes</span><span class="o">.</span><span class="n">py</span> 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="n">HEAD</span>
+<span class="n">edit</span> <span class="n">code</span> <span class="n">near</span> <span class="n">a</span> <span class="n">bug</span> <span class="n">I</span> <span class="n">did</span> <span class="ow">not</span> <span class="n">know</span> <span class="n">about</span>
+<span class="o">=======</span>
+<span class="n">fix</span> <span class="n">a</span> <span class="n">bug</span>
+<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="n">main</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">important_classes</span><span class="o">.</span><span class="n">py</span> 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">examplebranch</span>
+<span class="n">You</span> <span class="n">have</span> <span class="n">unmerged</span> <span class="n">paths</span><span class="o">.</span>
+  <span class="p">(</span><span class="n">fix</span> <span class="n">conflicts</span> <span class="ow">and</span> <span class="n">run</span> <span class="s2">&quot;git commit&quot;</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git merge --abort&quot;</span> <span class="n">to</span> <span class="n">abort</span> <span class="n">the</span> <span class="n">merge</span><span class="p">)</span>
+
+<span class="n">Unmerged</span> <span class="n">paths</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">mark</span> <span class="n">resolution</span><span class="p">)</span>
+	<span class="n">both</span> <span class="n">modified</span><span class="p">:</span>   <span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="s2">&quot;git commit -a&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="how-do-i-exit-vi">
+<h2><span class="section-number">7.2. </span>How do I exit vi?<a class="headerlink" href="#how-do-i-exit-vi" title="Permalink to this headline">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vi</span>
+</pre></div>
+</div>
+<p>If you start it this way, you exit by pressing only <code class="docutils literal notranslate"><span class="pre">q</span></code> beacuse it will already have the <code class="docutils literal notranslate"><span class="pre">:</span></code> at the bottom. if you are in <code class="docutils literal notranslate"><span class="pre">~insert~</span></code> mode then you have to press <code class="docutils literal notranslate"><span class="pre">esc</span></code> first and then <code class="docutils literal notranslate"><span class="pre">:</span></code> then you may want <code class="docutils literal notranslate"><span class="pre">w</span></code> to save first before you <code class="docutils literal notranslate"><span class="pre">q</span></code>uit</p>
+</section>
+<section id="why-are-we-studying-developer-tools">
+<h2><span class="section-number">7.3. </span>Why are we studying developer tools?<a class="headerlink" href="#why-are-we-studying-developer-tools" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>The best way to learn design is to study examples [Schon1984, Petre2016], and some of the best examples of software design come from the tools programmers use in their own work.</p>
+</div></blockquote>
+<p><a class="reference external" href="https://third-bit.com/sdxjs/">Software design by example</a></p>
+</section>
+<section id="unix-philosophy">
+<h2><span class="section-number">7.4. </span>Unix Philosophy<a class="headerlink" href="#unix-philosophy" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Unix_philosophy">wiki</a></p>
+<ul class="simple">
+<li><p>composability over monolithic design</p></li>
+<li><p>social conventions</p></li>
+</ul>
+<p>The tenets:</p>
+<ol class="simple">
+<li><p>Make it easy to write, test, and run programs.</p></li>
+<li><p>Interactive use instead of batch processing.</p></li>
+<li><p>Economy and elegance of design due to size constraints (“salvation through suffering”).</p></li>
+<li><p>Self-supporting system: all Unix software is maintained under Unix.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;hello&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;hello&quot;</span> <span class="o">&gt;</span> <span class="n">greeting</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo $PATH
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">brownsarahm</span><span class="o">/.</span><span class="n">rbenv</span><span class="o">/</span><span class="n">shims</span><span class="p">:</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Frameworks</span><span class="o">/</span><span class="n">Python</span><span class="o">.</span><span class="n">framework</span><span class="o">/</span><span class="n">Versions</span><span class="o">/</span><span class="mf">3.8</span><span class="o">/</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">condabin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="p">:</span><span class="o">/</span><span class="n">sbin</span><span class="p">:</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">TeX</span><span class="o">/</span><span class="n">texbin</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">award</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">award</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span> <span class="n">BADGE_NAME</span>
+
+  <span class="n">award</span> <span class="n">a</span> <span class="n">badge</span> <span class="n">to</span> <span class="n">a</span> <span class="n">student</span> <span class="ow">and</span> <span class="n">output</span> <span class="n">the</span> <span class="n">signature</span> <span class="k">as</span> <span class="n">a</span> <span class="n">receipt</span>
+
+  <span class="n">parameters</span> <span class="o">-</span> <span class="n">badge_name</span> <span class="p">:</span> <span class="n">string</span>     <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">badge</span>
+  <span class="n">formatted</span> <span class="n">like</span> <span class="nb">type</span><span class="o">.</span><span class="n">YYYY</span><span class="o">-</span><span class="n">MM</span><span class="o">-</span><span class="n">DD</span> <span class="k">for</span>      <span class="nb">type</span> <span class="ow">in</span> <span class="p">{</span><span class="n">experience</span><span class="p">,</span> <span class="n">review</span><span class="p">,</span>
+  <span class="n">practice</span><span class="p">,</span><span class="n">community</span><span class="p">}</span> <span class="ow">or</span> <span class="nb">type</span><span class="o">.</span><span class="n">keyword</span> <span class="k">for</span> <span class="nb">type</span>     <span class="ow">in</span> <span class="p">{</span><span class="n">explore</span><span class="p">,</span> <span class="n">build</span><span class="p">,</span>
+  <span class="n">community</span><span class="p">}</span>
+
+<span class="n">Options</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">s</span><span class="p">,</span> <span class="o">--</span><span class="n">student</span><span class="o">-</span><span class="n">gh</span><span class="o">-</span><span class="n">name</span> <span class="n">TEXT</span>
+  <span class="o">-</span><span class="n">p</span><span class="p">,</span> <span class="o">--</span><span class="n">gradebook</span><span class="o">-</span><span class="n">path</span> <span class="n">TEXT</span>
+  <span class="o">--</span><span class="n">help</span>                      <span class="n">Show</span> <span class="n">this</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">brownsarahm</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">inclass</span><span class="o">/</span><span class="n">systems</span><span class="o">/</span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+<section id="how-do-we-study-computer-systems">
+<h2><span class="section-number">7.5. </span>How do we Study (computer) Systems<a class="headerlink" href="#how-do-we-study-computer-systems" title="Permalink to this headline">#</a></h2>
+<p>When we think of something as a system, we can study it different ways:</p>
+<ul class="simple">
+<li><p>input/output behavior</p></li>
+<li><p>components</p></li>
+<li><p>abstraction layers</p></li>
+</ul>
+<p>These basic ideas apply whether a computer system or not.  We can probe things in different ways.</p>
+<p>In a lot of disciplines people are taught one or the other, or they divide professionally into theorists or experimentalists along the lines.</p>
+<p>People are the most effective at working with, within, and manipulating systems when they have multiple ways to achieve the same goal.</p>
+<p>These are not mutually exclusive we will use them all together, and trade off.</p>
+<p>When we study a system we can do so in two main ways.  We can look at the input/output behavior of the system as a whole and we can look at the individual components. For each component, we can look at its behavior or the subcomponents.  We can take what we know from all fo the components and piece that together.  However, for a complex system, we cannot match individual components up to the high level behavior.  This is true in both computers and other complex systems. In the first computers in the 1940s, the only things they did was arithmetic and you could match from their components al the way up pretty easily.  Modern computers connect to the internet, send signals, load complex graphics, play sounds and many other things that are harder to decompose all at once. Outside of computers, scientists have a pretty good idea of how neurons work and that appears to be the same across mammals and other species (eg squid) but we do not understand how the whole brain of a mammal works, not even smaller mammals with less complex social lives than humans.  Understanding the parts is not always enough to understand all of the complex ways the parts can work together.  Computers are much less complicated than brains.  They were made by brains.</p>
+<p>But that fact motivates another way to study a complex  system, across levels of abstraction. You can abstract away details and focus on one representation. This can be tied literally to components, but it can also be conceptual.  For example, in CSC211 you use a model of stack and heap for memory.  It’s useful for understanding programming, but is not exactly what the hardware does.  At times, it is even more useful though than understanding exactly what the hardware does.  These abstractions also serve a social, practical purpose.  In computing, and society at large really, we use <em>standards</em> these are sets of guidelines for how to build things.  Like when you use a function, you need to know it’s API and what it is supposed to do in order to use it.  The developers could change how it does that without impacting your program, as long as the API is not changed and the high level input/output behavior stays the same.</p>
+<section id="behavior">
+<h3><span class="section-number">7.5.1. </span>Behavior<a class="headerlink" href="#behavior" title="Permalink to this headline">#</a></h3>
+<blockquote>
+<div><p>Try something,  see what happens</p>
+</div></blockquote>
+<p>This is probably how you first learned to use a computer.  Maybe a parent showed you how to do a few things, but then you probably tried other things.  For most of you, this may have been when you were very young and much less afraid of breaking things. Over time you learned how to do things and what behaviors to expect.  You also learned categories of things.  Like once you learned one social media app and that others were also <em>social media</em> you then looked for similar features.  Maybe you learned one video game had the option to save and expected it in the next one.</p>
+<p>Video games and social media are <em>classes</em> or <em>categories</em> of software and each game and app are <em>instances</em>.  Similarly, an Integrated Development Environment (IDE) is a category of software and VS Code, … are instances.  Also, version control is a category of software and git is an instance. A git host is also a category and GitHub is an instance.  Just as before you were worried about details you transferred features from one instance to another within categories, I want you to think about what you know from one IDE and how that would help you learn another.  We will study the actual features of IDE a=and what you might want to know about them so that you can choose your own.  Becoming a more independent developer you’ll start to have your own opinions about which one is better.  Think about about a person in your life who finds computers and technology overall intimidating or frustrating.  They likely only use one social media app if at all, or maybe they only know to make documents in Microsoft word and they think that Google Docs is too much to learn, because they didn’t transfer ideas from one to the other.</p>
+<p>We have focused on the behavior of individual applications to this point, but there is also the overall behavior of the system in broad terms, typing on the keyboard we expect the characters to show (and when they don’t for example in a shell password, we’re surprised and concerned it is not working).</p>
+</section>
+<section id="components">
+<h3><span class="section-number">7.5.2. </span>Components<a class="headerlink" href="#components" title="Permalink to this headline">#</a></h3>
+<blockquote>
+<div><p>Take it apart, asess the pieces</p>
+</div></blockquote>
+<p>We have the high level parts: keyboard, mouse, monitor/screen, tower/computer. Inside we also tend to know there is a power supply, a motherboard, graphics card, memory, etc.</p>
+<p>We can study how each of these parts works while not worrying about the others but having them there.  This is probably how you learned to use a mouse. You focused your attention on the mouse and saw what else happened.</p>
+<p>Or we can take an individual component and isolate it to study it alone.  For a mouse this would be hard. Without a computer attached its output is not very visible.  To do this, we would need additional tools to interpret its output and examine it.  Most computer components actually would need additional tools, to measure the electrical signals, but we could examine what happens at each part one at a time to then build up what they do.</p>
+<p>This idea, however that we can use another tool to understand each component is an important one.  This  is also a way to again, take care and study each piece even within a software-alone system without worrying about the hardware.</p>
+</section>
+<section id="abstraction">
+<h3><span class="section-number">7.5.3. </span>Abstraction<a class="headerlink" href="#abstraction" title="Permalink to this headline">#</a></h3>
+<blockquote>
+<div><p>use a model</p>
+</div></blockquote>
+<p>As we talked about the behavior and abstraction, we talked some about software and some about hardware. These are the two coarsest ways we can think about a computer system at different levels of abstraction. We can think about it only in physical terms and examine the patterns of electricity flow or we can think about only the software and not worry about the hardware, at a higher level of abstraction.</p>
+<p>However, two levels is not really enough to understand how computer systems are designed.</p>
+<p><img alt="layers" src="https://www.secplicity.org/wp-content/uploads/2018/09/AvG0R-1.jpg" /></p>
+<p>Application - the software you run.</p>
+<p>Algorithm - the way that it is implemented, in mathematical level</p>
+<p>Programming language - the way that it is implemented for a computer.</p>
+<p>Let’s take a simple example, let’s say we are talking about a simple search program that we wrote that finds xx.  We can say that you put in a part of a file name and it shows you all the ones with a similar name. That description is at the application level it gives the high level behavior, but not the step by step of how it does it.  Let’s say we implemented it using bubble search then searches by … That’s the algorithm level, this is still abstract and could be implemented in different ways, but we know the steps and we can use this to know some things about how fast it will be, what types of result swill make it slower, etc. At the programming level language then we know which language it was done in and we see more details. At this level, we can see the specific data structures and controls structures.  These implementation details can also impact performance in terms of space(memory) or time.  Still at this level, we do not need to know how the actual hardware works, but we see it in increasing detail.
+At each level we have different types of operations.  At the application we might have input, press enter, get results. At the algorithm we have check the value, compare.  At the programming language level we need more specifics too, like assign or append.</p>
+<p>After the Programming language level, there is assembly.
+The advantage to assembly is that it is hardware independent and human readable. It is low level and limited to what the hardware <em>can</em> do, but it is a version of that that can be run on different hardware.
+It is much lower level.  When you compile a program, it is translated to assembly.  At this level, programs written in different level become indistinguishable. This has much lower level operations. We can do various calculations, but not things like compare. Things that were one step before, like assign become two, choose a memory location, then write to memory.
+This level of abstraction is the level of detail we will think about most.  We’ll look at the others, but spend much less time below here.</p>
+<p>Machine code translates to binary from assembly.</p>
+<p>The instruction set architecture is, notice, where the line between software and hardware lives.  This is because these are specific to the actual hardware, this is the level where there are different instructions if you have an Intel chip vs an Apple chip. This level reduces down the instructions even more specifically to the specifics things that an individual piece of hardware does and how they dit.</p>
+<p>The microarchitecture is the specific circuits: networks of smaller individual components. Again, we can treat the components as blocks and focus on how they work together. At this level we still have calculations like add, multiply, compare, negate, and we can store values and read them. That is all we have at this point though. At this level there are all binary numbers.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We actually only need NAND, we will see how later.</p>
+</div>
+</aside>
+<p>The actual gates (components that implement logical operations) and registers (components that hold values) break everything down to logical operations.  Instead of adding, we have a series of <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">nand</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, and <code class="docutils literal notranslate"><span class="pre">xor</span></code> put together over individual bits.  Instead of numbers, we have <code class="docutils literal notranslate"><span class="pre">registers</span></code> that store individual zeros or ones. In a modern digital, electrical computer, at this level we have to actually watch the flow of electricity through the circuit and worry about things like the number of gates and whether or not the calculations finish at the same time or having other parts wait so that they are all working together.  We will see later that when we try to allow multiple cores to work independently, we have to handle these timing issues at the higher levels as well. However, a register and gate can be implemented in different ways at the device level.</p>
+<p>The device (or transistor in modern electrical digital computers) level, is where things transition between analog and digital.  The world we live in is actually all analog.  We just pay attention to lots of things at a time scale at which they appear to be be digital.  Over time devices have changed from mechanical switches to electronic transistors.  Material science innovations at the physics level have improved the transistors further over time, allowing them to be smaller and more heat efficient.  Because of abstraction, these changes could be plugged into new hardware without having to make any changes at any software levels. However, they do <em>enable</em> improvements at the higher levels.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For example, Bayesian statistics is a philosophy that treats probability as subjective uncertainty instead of as frequency.  This has some interpretative differences, but most importantly it means that we always need an extra factor (multiplied term) in our calculations.  This makes all of the math <strong>much</strong> more complex. For many decades Bayesian statistics was not practical for anything but the simplest models.  However, with improvements to computers, that opened new options at the algorithm level.  The first large scale application of this type of statistics was by Microsoft after their researchers built a Bayesian player model for player matching in Halo.</p>
+</div>
+</section>
+</section>
+<section id="review-todays-class">
+<h2><span class="section-number">7.6. </span>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Read today’s notes when they are posted.</p></li>
+<li><p>Add to your <span class="target" id="index-0"></span>software.md a section about if that project does or does not adhere to the unix philosophy.</p></li>
+<li><p>create <span class="target" id="index-1"></span>methods.md and answer the following:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>- which of the three methods for studying a system do you use most often when debugging? 
+- do you think using a different strategy might help you debug faster sometimes? why or why not? 
+</pre></div>
+</div>
+</section>
+<section id="prepare-for-next-class">
+<h2><span class="section-number">7.7. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p><a class="reference external" href="https://jupyterbook.org/en/stable/start/overview.html#install-jupyter-book">install jupyterbook</a> on Mac or linux those instructions will work on your regular terminal, if you have python installed. On Windows those instructions will work in the Anaconda prompt or any other terminal that is set up with python. If these steps do not make sense see the <a class="reference external" href="https://introcompsys.github.io/spring2023/syllabus/tools.html#recommendation">recommendations</a> in the syllabus for more instructions including videos of the Python install process in both Mac and Windows.</p></li>
+<li><p>If you like to read about things before trying them, skim the <a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">jupyterbook docs</a>.</p></li>
+<li><p>Think about and be prepared to reply to questions in class about your past experiences with documentation, both using it and writing it.</p></li>
+</ol>
+</section>
+<section id="more-practice">
+<h2><span class="section-number">7.8. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Read today’s notes when they are posted.</p></li>
+<li><p>Add to your <span class="target" id="index-2"></span>software.md a section about if that project does or does not adhere to the unix philosophy and why.</p></li>
+<li><p>create <span class="target" id="index-3"></span>methods.md and answer the following:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>- which of the three methods for studying a system do you use most often when debugging? 
+- which do you use when you are trying to understand something new? 
+- do you think the ones you use most often are consistently the effective? why or why not? When do they work or not work? 
+- what are you most interested in trying that might be different?
+</pre></div>
+</div>
+</section>
+<section id="experience-report-evidence">
+<h2><span class="section-number">7.9. </span>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
+<p>complete the review or practice badge an link that to your experience report.</p>
+<p>Also, update your <code class="docutils literal notranslate"><span class="pre">experiencereport.yml</span></code> to match the following but with <code class="docutils literal notranslate"><span class="pre">&lt;ta-gh-name&gt;</span></code> changed
+to be your group’s TA’s actual gh user name.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>name: Experience Report (makeup)
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: &#39;missed class date&#39;
+        required: true
+        type: string
+
+
+jobs:
+  createPullRequest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Make changes to pull request
+      # TODO: modify to create template file
+        run: |
+          exptitle=&quot;experience-${{ inputs.date }}.md&quot;
+          cp .templates/experience-report.md experiences/$exptitle
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: initialize experience report
+          committer: GitHub &lt;noreply@github.com&gt;
+          author: ${{ github.actor }} &lt;${{ github.actor }}@users.noreply.github.com&gt;
+          signoff: false
+          branch: experience
+          branch-suffix: timestamp
+          title: &#39;Experience Report ${{ inputs.date }}&#39;
+          body: |
+            Checklist:
+            - [ ] Merge prepare work into this PR
+            - [ ] Link prepare issue to this PR
+            - [ ] Complete experience report
+            - [ ] Add activity completion evidence per notes
+          reviewers: &lt;ta-gh-here&gt;
+</pre></div>
+</div>
+</section>
+<section id="questions-after-todays-class">
+<h2><span class="section-number">7.10. </span>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
+<section id="questions-that-are-good-explore-badge-topics">
+<h3><span class="section-number">7.10.1. </span>Questions that are good explore badge topics<a class="headerlink" href="#questions-that-are-good-explore-badge-topics" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Why did windows deviate so heavily from these principles?</p></li>
+<li><p>Are there new text editors for the terminal? 2015 - present?</p></li>
+<li><p>what is the difference between Unix and Linux?</p></li>
+</ul>
+</section>
+<section id="does-learning-a-little-bit-about-the-other-layers-in-layers-of-abstractions-help-create-better-software-or-applications">
+<h3><span class="section-number">7.10.2. </span>Does learning a little bit about the other layers in layers of abstractions help create better software or applications?<a class="headerlink" href="#does-learning-a-little-bit-about-the-other-layers-in-layers-of-abstractions-help-create-better-software-or-applications" title="Permalink to this headline">#</a></h3>
+<p>I think so, in some cases at least.  A lot of the time the other layers are hidden because the abstractions work well.  Sometimes though you hit a limit of some sort and knowledge of other layers canhelp you realize that or even overcome it.</p>
+</section>
+<section id="are-there-options-to-nano-that-we-can-use-and-in-what-case-would-it-be-worth-using-something-else">
+<h3><span class="section-number">7.10.3. </span>Are there options to Nano that we can use, and in what case would it be worth using something else.<a class="headerlink" href="#are-there-options-to-nano-that-we-can-use-and-in-what-case-would-it-be-worth-using-something-else" title="Permalink to this headline">#</a></h3>
+<p>For this class, I recommend <a class="reference external" href="https://www.nano-editor.org/">nano</a> because it is more friendly. <a class="reference external" href="https://www.vim.org/">vim</a> and <a class="reference external" href="https://www.gnu.org/software/emacs/">emacs</a> are more popular and powerful, but less friendly.</p>
+<p>They can be worth t when you have more complex tasks to do</p>
+</section>
+<section id="when-is-it-better-to-work-in-the-terminal-as-opposed-to-github-desktop">
+<h3><span class="section-number">7.10.4. </span>When is it better to work in the terminal as opposed to GitHub desktop?<a class="headerlink" href="#when-is-it-better-to-work-in-the-terminal-as-opposed-to-github-desktop" title="Permalink to this headline">#</a></h3>
+<p>Once you get used to the terminal, it saves <em>a lot</em> of time over using the GUI. Also, you can have better ergonomics using only the keyboard and less mouse use.</p>
+<p>The biggest limitation of GitHub desktop is that it only works for GitHub repositories.  The command line git program can be used with different hosts.</p>
+<p>Also, on the terminal you can automate and use other commands in combination with your git actions.</p>
+</section>
+<section id="is-assembly-language-inefficient-to-be-programming-in">
+<h3><span class="section-number">7.10.5. </span>Is assembly language inefficient to be programming in?<a class="headerlink" href="#is-assembly-language-inefficient-to-be-programming-in" title="Permalink to this headline">#</a></h3>
+<p>It is maybe a less efficient use of your time, but otherwise not strictly speaking.  However, to get good performance from your code, you have to manually make it efficient.  In a compiled languge, when you compile it, it can be optimized for you.</p>
+</section>
+<section id="are-there-different-langauges-for-machine-code">
+<h3><span class="section-number">7.10.6. </span>Are there different langauges for machine code?<a class="headerlink" href="#are-there-different-langauges-for-machine-code" title="Permalink to this headline">#</a></h3>
+<p>Its not in a language per se, there are different kinds and different specifications, but none of it is human readable like the programming languages you have used to date.</p>
+</section>
+<section id="what-does-assembly-code-look-like">
+<h3><span class="section-number">7.10.7. </span>What does assembly code look like?<a class="headerlink" href="#what-does-assembly-code-look-like" title="Permalink to this headline">#</a></h3>
+<p>We will see more soon but it consists of simple, low level instructions and addresses to apply them to.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2023-02-09.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6. </span>What if I edit the file in two places?</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../activities/kwl.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">KWL Chart</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Professor Sarah M Brown<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
