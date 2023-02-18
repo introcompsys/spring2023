@@ -286,6 +286,7 @@ For builds, since they're bigger, you will propose intermediate milestones. Advi
 
 Community badges are awarded for extra community participation. Both programming and learning are most effective in good healthy collaboration.  Since being a good member of our class community helps you learn (and helps others learn better), some collaboration is required in other badges. Some dimensions of community participation can only be done once, for example fixing a typo on the course website, so while it's valuable, all students cannot contribute to the course community in the same way. To reward these unique contributions, you can earn a community badge. 
 
+You can see some ideas as they arise by [issues labeled `community`](https://github.com/introcompsys/spring2023/labels/community).
 
 Community badges can replace missed experience, review, and practice badges, upgrade a review to a practice badge, or they can be used as an alternate way to earn a + modifier on a D,C,or B (URI doesn't award A+s, sorry).  Community badges are smaller, so they are not 1:1 replacements for other badges. You can earn a maximum of 14 community badges, generally one per week.  Extra helpful contributions may be awarded 2 community badges, but that does not increase your limit. When you earn them, you can plan how you will use it, but they will only be officially applied to your grade at the end of the semester.  They will automatically be applied in the way that gives you the maximum benefit. 
 
