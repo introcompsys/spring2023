@@ -128,5 +128,10 @@ terminal
 tree objects
   type of git object in git that helps store multiple files with their hashes (similar to directories in a file system)
 
+yml
+    see YAML
+
+[YAML](https://yaml.org/)  
+    a file specification that stores key-value pairs. It is commonly used for configurations and settings. 
 
 ```
