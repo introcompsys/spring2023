@@ -437,3 +437,140 @@ style earned fill:#2cf
     
 
     
+
+
+```{mermaid}
+flowchart TD
+    subgraph e1[first explore]
+    proposed[[Proposed]]
+    progress[[In Progress]]
+    complete[[Complete]]
+    revision[[In Revision]]
+    earned[[Earned]]
+    proposed --> progress
+    progress -->complete
+    complete -->revision
+    revision --> earned
+    complete -->earned
+    end
+    subgraph e2[second explore]
+    proposed2[[Proposed]]
+    progress2[[In Progress]]
+    complete2[[Complete]]
+    revision2[[In Revision]]
+    earned2[[Earned]]
+    proposed2 --> progress2
+    progress2 -->complete2
+    complete2 -->revision2
+    revision2 --> earned2
+    complete2 -->earned2
+    end
+    subgraph e3[third explore]
+    proposed3[[Proposed]]
+    progress3[[In Progress]]
+    complete3[[Complete]]
+    revision3[[In Revision]]
+    earned3[[Earned]]
+    proposed3 --> progress3
+    progress3 -->complete3
+    complete3 -->revision3
+    revision3 --> earned3
+    complete3 -->earned3
+    end
+    subgraph e4[fourth explore]
+    end
+    earned -->|must earn one before second will get proceed label| progress2
+    earned -->|later two can be in progress| progress3
+
+style proposed fill:#2cf
+style progress fill:#2cf
+style complete fill:#2cf
+style revision fill:#2cf
+style earned fill:#2cf
+style proposed2 fill:#2cf
+style progress2 fill:#2cf
+style complete2 fill:#2cf
+style revision2 fill:#2cf
+style earned2 fill:#2cf
+```
+
+
+
+```{mermaid}
+sequenceDiagram
+    participant E1 as first explore badge
+    participant E2 as second explore badge
+    participant E3 as third explore badge
+    participant E4 as fourth explore badge
+    note over E1: proposed
+    note over E1: in progress
+    note over E1: in revision
+    activate E2
+    activate E3
+    note over E2: proposed
+    note over E3: proposed
+    note over E1: earned
+    note over E2: in progress
+    note over E2: in revision
+    note over E2: earned
+    note over E3: in progress
+    note over E3: in revision
+    note over E3: earned
+```
+
+
+
+
+
+
+    earned -->|you must earn one to propose more| issue
+      approvedq -->|comment|discuss
+      discuss -->prreview
+
+## Information flow
+
+```{mermaid}
+sequenceDiagram
+    participant I as issues tab
+    participant B as badge branch 
+    participant M as main branch
+    note over I: badge issue is created 
+    note over B: badge is started
+    I ->> B
+    
+
+
+    note over P: complete prepare work<br/> between feb 7 and 9
+    note over E: run experience badge workflow <br/> at the end of class feb 9
+    P ->> E: local merge or PR you that <br/> does not need approval
+    note over E: fill in experience reflection 
+    critical Badge review by instructor or TA
+        E ->> M: Experience badge PR
+    option if edits requested
+        note over E: make requested edits
+    option when approved 
+        note over M: merge badge PR
+    end
+```
+
+```
+subgraph github[Content in Repo]
+      direction TB
+      badgeissue[[Badge Issue]]
+      badgebranch[[Badge branch]]
+      badgepr[[badge PR]]
+      badgepr --> |linked to will close|badgeissue
+      badgebranch --> |compared to main with|badgepr
+    end
+    ```
+      
+      
+```{mermaid}
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
+```
+
+
+    
