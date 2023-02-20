@@ -14,7 +14,8 @@ kernelspec:
 # (experimental) Badge Visualizations 
 
 
-## Badge stat
+## Badge status 
+
 ```{warning}
 this is not guaranteed to stay up to date with current, but the listed date is accurate. 
 You can see the code that generates the figure behind the "click to show" button.  It is  Python code that you should be able to run anywhere with the required libraries installed. 
