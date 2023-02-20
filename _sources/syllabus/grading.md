@@ -112,7 +112,7 @@ Most work will be small, frequent activities so that you get a lot of practice w
  but for an A you will also do larger, more in depth activities.
 
 All contracts will include maintaining a KWL Chart for the duration of the semester, coming to class prepared, participating in class activities, and  collaborating with peers to maintain reference materials.   -->
-
+(badgecounts)=
 ## Learning Badges 
 
 Your grade will be based on you choosing to work with the material at different levels and participating in the class community in different ways. Each of these represents different types of badges that you can earn as you accumulate evidence of your learning and engagment. 
@@ -368,6 +368,7 @@ If you miss class, the experience report should be at least attempted/drafted (t
 
 If you miss multiple classes, create a catch-up plan to get back on track by contacting Dr. Brown. 
 
+(rp-status)=
 ### Review and Practice Badges 
 
 These badges have 5 stages: 

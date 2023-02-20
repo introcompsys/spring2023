@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Getting Help with Programming" href="gettinghelp.html" />
@@ -133,6 +135,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../syllabus/grading.html">
    Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/badges.html">
+   (experimental) Badge Visualizations
   </a>
  </li>
  <li class="toctree-l1">
@@ -571,8 +578,8 @@ title="Print to PDF"
 <section id="repository-specific-page">
 <h2>Repository specific page<a class="headerlink" href="#repository-specific-page" title="Permalink to this headline">#</a></h2>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="bc2745c3-a27b-4470-b0be-652d13abe3be" name="84d7b786-7e42-4ab2-b5c1-7bcfd00c69d6" type="radio">
-</input><label class="sd-tab-label" for="bc2745c3-a27b-4470-b0be-652d13abe3be">
+<input checked="checked" id="c24c4b93-ef1a-4a21-b4fc-b312dd22017e" name="a950c053-7b84-41c4-b858-9ffa093fe709" type="radio">
+</input><label class="sd-tab-label" for="c24c4b93-ef1a-4a21-b4fc-b312dd22017e">
 Code</label><div class="sd-tab-content docutils">
 <p><strong>This is the main view of the project</strong></p>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
@@ -619,42 +626,42 @@ file list: a table where the first column is the name, the second column is the 
 </div>
 </div>
 </div>
-<input id="b8bf08b7-7f3b-482b-b1c6-32739777e546" name="84d7b786-7e42-4ab2-b5c1-7bcfd00c69d6" type="radio">
-</input><label class="sd-tab-label" for="b8bf08b7-7f3b-482b-b1c6-32739777e546">
+<input id="79c12e2d-c7f7-4b91-ab38-fd7f74598b07" name="a950c053-7b84-41c4-b858-9ffa093fe709" type="radio">
+</input><label class="sd-tab-label" for="79c12e2d-c7f7-4b91-ab38-fd7f74598b07">
 Issues</label><div class="sd-tab-content docutils">
 <p>a filterable list of <a class="reference external" href="https://docs.github.com/en/issues">issues</a>. the controls here hep you sort and find specific issues.
 the green button on the right helps you make a new issue.</p>
 <p>By default it only shows open issues. to see closed ones, edit the text in the search box.</p>
 </div>
-<input id="80f7f783-02da-4c4f-a8ad-1cb507ff02b9" name="84d7b786-7e42-4ab2-b5c1-7bcfd00c69d6" type="radio">
-</input><label class="sd-tab-label" for="80f7f783-02da-4c4f-a8ad-1cb507ff02b9">
+<input id="080d345c-1825-4510-a3bb-ff2254dd2414" name="a950c053-7b84-41c4-b858-9ffa093fe709" type="radio">
+</input><label class="sd-tab-label" for="080d345c-1825-4510-a3bb-ff2254dd2414">
 Pull Requests</label><div class="sd-tab-content docutils">
 <p>A filter-able list of all the <a class="reference external" href="https://docs.github.com/en/pull-requests">pull requests</a> in the repo.</p>
 <p>By default it only shows the open pull requests, to see merged and closed ones, edit the text in the search box.</p>
 </div>
-<input id="9ca33201-c51a-4ee9-830b-2248440fdb6a" name="84d7b786-7e42-4ab2-b5c1-7bcfd00c69d6" type="radio">
-</input><label class="sd-tab-label" for="9ca33201-c51a-4ee9-830b-2248440fdb6a">
+<input id="d9041b62-ef15-4ce0-b7ad-e54237e41e82" name="a950c053-7b84-41c4-b858-9ffa093fe709" type="radio">
+</input><label class="sd-tab-label" for="d9041b62-ef15-4ce0-b7ad-e54237e41e82">
 Actions</label><div class="sd-tab-content docutils">
 <p>This page allows you to run and view output from automatically run <a class="reference external" href="https://docs.github.com/en/actions">GitHub Actions</a>.</p>
 </div>
-<input id="1b4631b7-ac83-4ce6-a177-245fb53efdf6" name="84d7b786-7e42-4ab2-b5c1-7bcfd00c69d6" type="radio">
-</input><label class="sd-tab-label" for="1b4631b7-ac83-4ce6-a177-245fb53efdf6">
+<input id="b64650ba-3a7a-4645-a1c2-51c1ec8236be" name="a950c053-7b84-41c4-b858-9ffa093fe709" type="radio">
+</input><label class="sd-tab-label" for="b64650ba-3a7a-4645-a1c2-51c1ec8236be">
 Projects</label><div class="sd-tab-content docutils">
 <p>A list of all of the  projects linked to this repository and a button to add more.</p>
 </div>
-<input id="4b756472-8bc7-4d14-a896-2e13cd099c08" name="84d7b786-7e42-4ab2-b5c1-7bcfd00c69d6" type="radio">
-</input><label class="sd-tab-label" for="4b756472-8bc7-4d14-a896-2e13cd099c08">
+<input id="b129dd88-0e56-4723-8bfb-34a6ab081ec0" name="a950c053-7b84-41c4-b858-9ffa093fe709" type="radio">
+</input><label class="sd-tab-label" for="b129dd88-0e56-4723-8bfb-34a6ab081ec0">
 Security</label><div class="sd-tab-content docutils">
 <p>This tab tells you if code dependencies have had security issues reported.  This is out of scope for this course. GitHub’s <a class="reference external" href="https://docs.github.com/en/code-security">code security</a> features are  important when you are distributing code, but the particulars are language specific, so we will not discuss this much here.</p>
 <p>This could be a topic for an explore or build badge.</p>
 </div>
-<input id="530c295a-4d93-4104-b567-f7511174ea7f" name="84d7b786-7e42-4ab2-b5c1-7bcfd00c69d6" type="radio">
-</input><label class="sd-tab-label" for="530c295a-4d93-4104-b567-f7511174ea7f">
+<input id="6f329d19-dabc-4e61-a994-2926f1dd9bba" name="a950c053-7b84-41c4-b858-9ffa093fe709" type="radio">
+</input><label class="sd-tab-label" for="6f329d19-dabc-4e61-a994-2926f1dd9bba">
 Insights</label><div class="sd-tab-content docutils">
 <p>GitHub provides analysis of the activity in the repository.</p>
 </div>
-<input id="25127671-1b59-408c-ad9b-5c57e3a9d0e2" name="84d7b786-7e42-4ab2-b5c1-7bcfd00c69d6" type="radio">
-</input><label class="sd-tab-label" for="25127671-1b59-408c-ad9b-5c57e3a9d0e2">
+<input id="2e14a544-1743-44eb-8a99-011eca8622de" name="a950c053-7b84-41c4-b858-9ffa093fe709" type="radio">
+</input><label class="sd-tab-label" for="2e14a544-1743-44eb-8a99-011eca8622de">
 Settings</label><div class="sd-tab-content docutils">
 <p>You will only see this tab if you have admin rights on the repository.  This is where you can control high level things including:</p>
 <ul class="simple">

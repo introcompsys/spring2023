@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Grading" href="grading.html" />
@@ -133,6 +135,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="grading.html">
    Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="badges.html">
+   (experimental) Badge Visualizations
   </a>
  </li>
  <li class="toctree-l1">
@@ -715,23 +722,23 @@ environments to apply concepts.</p>
 <section id="recommendation">
 <h3>Recommendation<a class="headerlink" href="#recommendation" title="Permalink to this headline">#</a></h3>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="46ff8423-29ea-4f18-aec7-d2f310730e48" name="ecc2028a-cfe9-43cb-b8e9-b9bba0efa6b7" type="radio">
-</input><label class="sd-tab-label" for="46ff8423-29ea-4f18-aec7-d2f310730e48">
+<input checked="checked" id="6a5d420e-e4ff-49d0-9665-a6f2976b7884" name="958251e5-0ef6-4932-8bcd-d1d859283e47" type="radio">
+</input><label class="sd-tab-label" for="6a5d420e-e4ff-49d0-9665-a6f2976b7884">
 Windows- option A</label><div class="sd-tab-content docutils">
 <ul class="simple">
 <li><p>Install python via <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda</a> <a class="reference external" href="https://www.youtube.com/watch?v=xxQ0mzZ8UvA">video install </a></p></li>
 <li><p>Git and Bash with <a class="reference external" href="https://gitforwindows.org/">GitBash</a> (<a class="reference external" href="https://youtu.be/339AEqk9c-8">video instructions</a>).</p></li>
 </ul>
 </div>
-<input id="39da54df-8f67-4bc4-b9c2-849b347c5421" name="ecc2028a-cfe9-43cb-b8e9-b9bba0efa6b7" type="radio">
-</input><label class="sd-tab-label" for="39da54df-8f67-4bc4-b9c2-849b347c5421">
+<input id="1dc4bfc5-d117-4c42-9a3a-fae9bb930276" name="958251e5-0ef6-4932-8bcd-d1d859283e47" type="radio">
+</input><label class="sd-tab-label" for="1dc4bfc5-d117-4c42-9a3a-fae9bb930276">
 Windows - option B</label><div class="sd-tab-content docutils">
 <p>Create a <a class="reference external" href="https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview">bootable usb stick with Linux</a></p>
 <p>or use <a class="reference external" href="https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-11-with-gui-support#1-overview">windows subsystem for linux</a></p>
 <p>and then follow linux instructions</p>
 </div>
-<input id="4ae1a4f2-55eb-43f5-968f-c5abfc029bdd" name="ecc2028a-cfe9-43cb-b8e9-b9bba0efa6b7" type="radio">
-</input><label class="sd-tab-label" for="4ae1a4f2-55eb-43f5-968f-c5abfc029bdd">
+<input id="d4e7c983-8aa0-4e6f-aae4-608e624a5464" name="958251e5-0ef6-4932-8bcd-d1d859283e47" type="radio">
+</input><label class="sd-tab-label" for="d4e7c983-8aa0-4e6f-aae4-608e624a5464">
 MacOS</label><div class="sd-tab-content docutils">
 <p>Video install instructions for Anaconda:</p>
 <ul class="simple">
@@ -740,15 +747,15 @@ MacOS</label><div class="sd-tab-content docutils">
 </ul>
 <p>On Mac,  to install python via environment, <a class="reference external" href="https://opensource.com/article/19/5/python-3-default-mac">this article may be helpful</a></p>
 </div>
-<input id="fc3d0ddd-e240-4be3-b3ec-3f11915aa494" name="ecc2028a-cfe9-43cb-b8e9-b9bba0efa6b7" type="radio">
-</input><label class="sd-tab-label" for="fc3d0ddd-e240-4be3-b3ec-3f11915aa494">
+<input id="ef134607-09c9-4e1d-9887-679bfbf2943c" name="958251e5-0ef6-4932-8bcd-d1d859283e47" type="radio">
+</input><label class="sd-tab-label" for="ef134607-09c9-4e1d-9887-679bfbf2943c">
 Linux</label><div class="sd-tab-content docutils">
 <ul class="simple">
 <li><p>Install python via <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda</a></p></li>
 </ul>
 </div>
-<input id="589c7710-2c3e-4b9e-98e4-970ad637e8ee" name="ecc2028a-cfe9-43cb-b8e9-b9bba0efa6b7" type="radio">
-</input><label class="sd-tab-label" for="589c7710-2c3e-4b9e-98e4-970ad637e8ee">
+<input id="f4164dfb-1ca1-485a-9ba0-a61a5e2a5089" name="958251e5-0ef6-4932-8bcd-d1d859283e47" type="radio">
+</input><label class="sd-tab-label" for="f4164dfb-1ca1-485a-9ba0-a61a5e2a5089">
 Chrome OS</label><div class="sd-tab-content docutils">
 <ol>
 <li><p>Find Linux (Beta) in your settings and turn that on.</p></li>

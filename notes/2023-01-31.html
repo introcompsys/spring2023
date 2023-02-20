@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="4. How can I work with branches offline?" href="2023-02-02.html" />
@@ -133,6 +135,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../syllabus/grading.html">
    Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/badges.html">
+   (experimental) Badge Visualizations
   </a>
  </li>
  <li class="toctree-l1">
@@ -734,18 +741,18 @@ title="Print to PDF"
 <section id="open-a-terminal">
 <h2><span class="section-number">3.1. </span>Open a Terminal<a class="headerlink" href="#open-a-terminal" title="Permalink to this headline">#</a></h2>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="6a798bf2-e1b4-464c-8c0a-6486f1583a3b" name="a8efa2c9-150a-4794-9e20-90adfa897e89" type="radio">
-</input><label class="sd-tab-label" for="6a798bf2-e1b4-464c-8c0a-6486f1583a3b">
+<input checked="checked" id="bde8e242-c963-4702-90b0-1ef97b03a7a2" name="5d5128bb-2119-4343-99e2-00708fb5f9bb" type="radio">
+</input><label class="sd-tab-label" for="bde8e242-c963-4702-90b0-1ef97b03a7a2">
 Windows</label><div class="sd-tab-content docutils">
 <p>Use Git for Windows aka GitBash. This program emulates bash for you.</p>
 </div>
-<input id="41880a53-8202-482c-a747-8988a484fdbd" name="a8efa2c9-150a-4794-9e20-90adfa897e89" type="radio">
-</input><label class="sd-tab-label" for="41880a53-8202-482c-a747-8988a484fdbd">
+<input id="bb3f501e-4f85-4f7d-84c5-f2e2e7ae8ac8" name="5d5128bb-2119-4343-99e2-00708fb5f9bb" type="radio">
+</input><label class="sd-tab-label" for="bb3f501e-4f85-4f7d-84c5-f2e2e7ae8ac8">
 Windows with WSL</label><div class="sd-tab-content docutils">
 <p>Your linux terminal should work.</p>
 </div>
-<input id="99f5a7de-0570-404c-9cc8-d5ba03dd961d" name="a8efa2c9-150a-4794-9e20-90adfa897e89" type="radio">
-</input><label class="sd-tab-label" for="99f5a7de-0570-404c-9cc8-d5ba03dd961d">
+<input id="d8ed6444-93fd-48c2-89f9-1d5f773370ab" name="5d5128bb-2119-4343-99e2-00708fb5f9bb" type="radio">
+</input><label class="sd-tab-label" for="d8ed6444-93fd-48c2-89f9-1d5f773370ab">
 MacOS</label><div class="sd-tab-content docutils">
 <p>On mac open a terminal window. By default your terminal uses zsh. You may change to bash using the <code class="docutils literal notranslate"><span class="pre">bash</span></code> command or use <code class="docutils literal notranslate"><span class="pre">zsh</span></code>.  They are mostly the same.</p>
 </div>
@@ -879,17 +886,17 @@ path, from the home directory.</p>
 <li><p>GitBash built in authentication</p></li>
 </ol>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="80e35525-ba43-407e-b84c-607f5f9f7681" name="381ee4d7-e3ca-43f8-9560-b9ee9e5684a2" type="radio">
-</input><label class="sd-tab-label" for="80e35525-ba43-407e-b84c-607f5f9f7681">
+<input checked="checked" id="4175198a-358d-4d4e-92f8-b56e15b1d36e" name="f05ca145-045c-4f14-a7bf-5581d7e32bd8" type="radio">
+</input><label class="sd-tab-label" for="4175198a-358d-4d4e-92f8-b56e15b1d36e">
 Windows (GitBash)</label><div class="sd-tab-content docutils">
 <p>Skip straight to clone, then follow the prompts, choosing to authenticate in Browser.</p>
 </div>
-<input id="7b736d40-1994-4641-bf3b-96dd7abdf89b" name="381ee4d7-e3ca-43f8-9560-b9ee9e5684a2" type="radio">
-</input><label class="sd-tab-label" for="7b736d40-1994-4641-bf3b-96dd7abdf89b">
+<input id="3a9e58f5-94de-4daf-a6bc-730be1548bb9" name="f05ca145-045c-4f14-a7bf-5581d7e32bd8" type="radio">
+</input><label class="sd-tab-label" for="3a9e58f5-94de-4daf-a6bc-730be1548bb9">
 Windows (WSL)</label><div class="sd-tab-content docutils">
 </div>
-<input id="d0212df3-9700-4a33-95fa-d743f56fc9f6" name="381ee4d7-e3ca-43f8-9560-b9ee9e5684a2" type="radio">
-</input><label class="sd-tab-label" for="d0212df3-9700-4a33-95fa-d743f56fc9f6">
+<input id="870f6b06-99cd-4072-a2ea-e84904566830" name="f05ca145-045c-4f14-a7bf-5581d7e32bd8" type="radio">
+</input><label class="sd-tab-label" for="870f6b06-99cd-4072-a2ea-e84904566830">
 MacOS X</label><div class="sd-tab-content docutils">
 <p>GitHub CLI: enter the following and follow the prompts.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```
@@ -898,8 +905,8 @@ gh auth login
 </pre></div>
 </div>
 </div>
-<input id="805c6ebc-c650-4bee-954d-a3a3c60432e3" name="381ee4d7-e3ca-43f8-9560-b9ee9e5684a2" type="radio">
-</input><label class="sd-tab-label" for="805c6ebc-c650-4bee-954d-a3a3c60432e3">
+<input id="5ab42952-a933-4edf-9d80-27649a0d1d74" name="f05ca145-045c-4f14-a7bf-5581d7e32bd8" type="radio">
+</input><label class="sd-tab-label" for="5ab42952-a933-4edf-9d80-27649a0d1d74">
 If nothing else works</label><div class="sd-tab-content docutils">
 <p>Create a <a class="reference external" href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">personal access token</a>. This is a special one time password that you can use like a password, but it is limited in scope and will expire (as long as you choose settings well).</p>
 <p>Then proceed to the clone step. You may need to configure an identity later with <a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup"><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span></code></a></p>

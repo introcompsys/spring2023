@@ -1,0 +1,901 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>(experimental) Badge Visualizations &#8212; Computer Systems and Programming Tools</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course_admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Schedule" href="schedule.html" />
+    <link rel="prev" title="Grading" href="grading.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/systools.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computer Systems and Programming Tools</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Site
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="about.html">
+   Computer Systems and Programming Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   (experimental) Badge Visualizations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="communication.html">
+   Office Hours &amp; Communication
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/2023-01-24.html">
+   1. Welcome and Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/2023-01-26.html">
+   2. Course Logistics and Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/2023-01-31.html">
+   3. Bash intro &amp; git offline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/2023-02-02.html">
+   4. How can I work with branches offline?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/2023-02-07.html">
+   5. When do I get an advantage from git and bash?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/2023-02-09.html">
+   6. What if I edit the file in two places?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/2023-02-14.html">
+   7. Why are these tools like this?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/2023-02-16.html">
+   8. How do programmers communicate about code?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Activities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/kwl.html">
+   KWL Chart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/team.html">
+   Team Repo
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/review.html">
+   Review Badges
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/prepare.html">
+   Prepare for the next class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/practice.html">
+   More Practice Badges
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../genindex.html">
+   KWL File Information
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/explore.html">
+   Explore Badges
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/build.html">
+   Build Badges
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/github.html">
+   GitHub Interface reference
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/more_info_on_cpus.html">
+   More info on cpus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/windows.html">
+   Windows Help &amp; Notes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://introcompsys.github.io/spring2022/resources/testimonials.html">
+   Advice from Spring 2022 Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/introcompsys/spring2023# The URL to your book's repository/main?urlpath=tree/syllabus/badges.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/introcompsys/spring2023# The URL to your book's repository"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/introcompsys/spring2023# The URL to your book's repository/issues/new?title=Issue%20on%20page%20%2Fsyllabus/badges.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/introcompsys/spring2023# The URL to your book's repository/edit/main/syllabus/badges.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/syllabus/badges.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/syllabus/badges.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#badge-stat">
+   Badge stat
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-work-and-experience-badges">
+   Prepare work and Experience Badges
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>(experimental) Badge Visualizations</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#badge-stat">
+   Badge stat
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-work-and-experience-badges">
+   Prepare work and Experience Badges
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="experimental-badge-visualizations">
+<h1>(experimental) Badge Visualizations<a class="headerlink" href="#experimental-badge-visualizations" title="Permalink to this headline">#</a></h1>
+<section id="badge-stat">
+<h2>Badge stat<a class="headerlink" href="#badge-stat" title="Permalink to this headline">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>this is not guaranteed to stay up to date with current, but the listed date is accurate.
+You can see the code that generates the figure behind the “click to show” button.  It is  Python code that you should be able to run anywhere with the required libraries installed.</p>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span><span class="n">timedelta</span>
+<span class="kn">import</span> <span class="nn">calendar</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="c1"># style note: when I wrote this code, it was not all one cell. I merged the cells</span>
+<span class="c1"># for display on the course website, since Python is not the main outcome of this course</span>
+
+<span class="c1"># semester settings</span>
+<span class="n">first_day</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">last_day</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">meeting_days</span> <span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># datetime has 0=Monday</span>
+<span class="n">spring_break</span> <span class="o">=</span> <span class="p">(</span><span class="n">date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">11</span><span class="p">),</span><span class="n">date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">19</span><span class="p">))</span>
+<span class="n">penalty_free_end</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+
+
+<span class="c1"># enumerate weeks</span>
+<span class="n">weeks</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">last_day</span><span class="o">-</span><span class="n">first_day</span><span class="p">)</span><span class="o">.</span><span class="n">days</span><span class="o">/</span><span class="mi">7</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># create differences</span>
+<span class="n">mtg_delta</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">meeting_days</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">meeting_days</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">week_delta</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="c1"># function to check if a date is during spring break</span>
+<span class="n">during_sb</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">spring_break</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;</span><span class="n">d</span><span class="o">&lt;</span><span class="n">spring_break</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># generate the number of weeks worth of dates</span>
+<span class="n">possible</span> <span class="o">=</span> <span class="p">[(</span><span class="n">first_day</span><span class="o">+</span><span class="n">week_delta</span><span class="o">*</span><span class="n">w</span><span class="p">,</span> <span class="n">first_day</span><span class="o">+</span><span class="n">mtg_delta</span><span class="o">+</span><span class="n">week_delta</span><span class="o">*</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">weeks</span><span class="p">)]</span>
+<span class="c1"># rm spring break dates</span>
+<span class="n">weekly_meetings</span> <span class="o">=</span> <span class="p">[[</span><span class="n">c1</span><span class="p">,</span><span class="n">c2</span><span class="p">]</span> <span class="k">for</span> <span class="n">c1</span><span class="p">,</span><span class="n">c2</span> <span class="ow">in</span> <span class="n">possible</span> <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">during_sb</span><span class="p">(</span><span class="n">c1</span><span class="p">))]</span>
+<span class="c1">#unpack into single list</span>
+<span class="n">meetings</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">weekly_meetings</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">w</span><span class="p">]</span>
+
+
+<span class="c1"># build a table for the dates</span>
+<span class="n">badge_types</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;experience&#39;</span><span class="p">,</span> <span class="s1">&#39;review&#39;</span><span class="p">,</span> <span class="s1">&#39;practice&#39;</span><span class="p">]</span>
+<span class="n">target_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;review_target&#39;</span><span class="p">,</span><span class="s1">&#39;practice_target&#39;</span><span class="p">]</span>
+<span class="n">df_cols</span> <span class="o">=</span> <span class="n">badge_types</span> <span class="o">+</span> <span class="n">target_cols</span>
+<span class="n">badge_target_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">meetings</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">[[</span><span class="s1">&#39;future&#39;</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">df_cols</span><span class="p">)]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">meetings</span><span class="p">),</span>
+                                <span class="n">columns</span><span class="o">=</span><span class="n">df_cols</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+                                   <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;date&#39;</span><span class="p">})</span>
+<span class="c1"># set relative dates</span>
+<span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+<span class="n">start_deadline</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">complete_deadline</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># mark eligible experience badges</span>
+<span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;experience&#39;</span><span class="p">][</span><span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">today</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;eligible&#39;</span>
+<span class="c1"># mark targets, cascading from most recent to oldest to not have to check &lt; and &gt;</span>
+<span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;review_target&#39;</span><span class="p">][</span><span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">today</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;active&#39;</span>
+<span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;practice_target&#39;</span><span class="p">][</span><span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">today</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;active&#39;</span>
+<span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;review_target&#39;</span><span class="p">][</span><span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span>
+                          <span class="o">&lt;=</span> <span class="n">start_deadline</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;started&#39;</span>
+<span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;practice_target&#39;</span><span class="p">][</span><span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span>
+                            <span class="o">&lt;=</span> <span class="n">start_deadline</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;started&#39;</span>
+<span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;review_target&#39;</span><span class="p">][</span><span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span>
+                          <span class="o">&lt;=</span> <span class="n">complete_deadline</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;completed&#39;</span>
+<span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;practice_target&#39;</span><span class="p">][</span><span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span>
+                            <span class="o">&lt;=</span> <span class="n">complete_deadline</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;completed&#39;</span>
+<span class="c1"># mark enforced deadlines</span>
+<span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;review&#39;</span><span class="p">][</span><span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">today</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;active&#39;</span>
+<span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;practice&#39;</span><span class="p">][</span><span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">today</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;active&#39;</span>
+<span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;review&#39;</span><span class="p">][</span><span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span>
+                          <span class="o">&lt;=</span> <span class="n">start_deadline</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;started&#39;</span>
+<span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;practice&#39;</span><span class="p">][</span><span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span>
+                            <span class="o">&lt;=</span> <span class="n">start_deadline</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;started&#39;</span>
+<span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;review&#39;</span><span class="p">][</span><span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span>
+                          <span class="o">&lt;=</span> <span class="n">complete_deadline</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;completed&#39;</span>
+<span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;practice&#39;</span><span class="p">][</span><span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span>
+                            <span class="o">&lt;=</span> <span class="n">complete_deadline</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;completed&#39;</span>
+<span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;review&#39;</span><span class="p">][</span><span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span>
+                          <span class="o">&lt;=</span> <span class="n">penalty_free_end</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;penalty free&#39;</span>
+<span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;practice&#39;</span><span class="p">][</span><span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span>
+                          <span class="o">&lt;=</span> <span class="n">penalty_free_end</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;penalty free&#39;</span>
+
+<span class="c1"># convert to numbers and set dates as index for heatmap compatibility</span>
+<span class="n">status_numbers_hm</span> <span class="o">=</span> <span class="p">{</span><span class="n">status</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">status</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s1">&#39;future&#39;</span><span class="p">,</span><span class="s1">&#39;eligible&#39;</span><span class="p">,</span><span class="s1">&#39;active&#39;</span><span class="p">,</span><span class="s1">&#39;penalty free&#39;</span><span class="p">,</span><span class="s1">&#39;started&#39;</span><span class="p">,</span><span class="s1">&#39;completed&#39;</span><span class="p">])}</span>
+<span class="n">badge_target_df_hm</span> <span class="o">=</span> <span class="n">badge_target_df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">status_numbers_hm</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
+
+<span class="c1"># set column names to shorter ones to fit better</span>
+<span class="n">badge_target_df_hm</span> <span class="o">=</span> <span class="n">badge_target_df_hm</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;review&#39;</span><span class="p">:</span><span class="s1">&#39;review(e)&#39;</span><span class="p">,</span><span class="s1">&#39;practice&#39;</span><span class="p">:</span><span class="s1">&#39;practice(e)&#39;</span><span class="p">,</span>
+                                                       <span class="s1">&#39;review_target&#39;</span><span class="p">:</span><span class="s1">&#39;review(t)&#39;</span><span class="p">,</span><span class="s1">&#39;practice_target&#39;</span><span class="p">:</span><span class="s1">&#39;practice(t)&#39;</span><span class="p">,})</span>
+<span class="c1"># build a custom color bar </span>
+<span class="n">n_statuses</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">status_numbers_hm</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">manual_palette</span> <span class="o">=</span> <span class="p">[</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;pastel&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)[</span><span class="mi">7</span><span class="p">],</span>
+                 <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;colorblind&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)[</span><span class="mi">2</span><span class="p">],</span>
+                 <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;muted&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)[</span><span class="mi">2</span><span class="p">],</span>
+                 <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;colorblind&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)[</span><span class="mi">9</span><span class="p">],</span>
+                 <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;colorblind&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)[</span><span class="mi">8</span><span class="p">],</span>
+                 <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;colorblind&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)[</span><span class="mi">3</span><span class="p">]]</span>
+<span class="c1"># generate the figure, with the colorbar and spacing</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">badge_target_df_hm</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">manual_palette</span><span class="p">,</span><span class="n">linewidths</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># mote titles from bottom tot op</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">tick_top</span><span class="p">()</span>
+<span class="c1"># pull the colorbar object for handling</span>
+<span class="n">colorbar</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">colorbar</span> 
+<span class="c1"># fix the location fo the labels on the colorbar</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">colorbar</span><span class="o">.</span><span class="n">vmax</span> <span class="o">-</span> <span class="n">colorbar</span><span class="o">.</span><span class="n">vmin</span> 
+<span class="n">colorbar</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">([</span><span class="n">colorbar</span><span class="o">.</span><span class="n">vmin</span> <span class="o">+</span> <span class="n">r</span> <span class="o">/</span> <span class="n">n_statuses</span> <span class="o">*</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_statuses</span><span class="p">)])</span>
+<span class="n">colorbar</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">status_numbers_hm</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+<span class="c1"># add a title</span>
+<span class="n">today_string</span> <span class="o">=</span> <span class="n">today</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+<span class="n">glue</span><span class="p">(</span><span class="s1">&#39;today&#39;</span><span class="p">,</span><span class="n">today_string</span><span class="p">,</span><span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">glue</span><span class="p">(</span><span class="s1">&#39;today_notdisplayed&#39;</span><span class="p">,</span><span class="s2">&quot;not today&quot;</span><span class="p">,</span><span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Badge Status as of &#39;</span><span class="o">+</span> <span class="n">today_string</span><span class="p">);</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># style note: when I wrote this code, it was not all one cell. I merged the cells</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># for display on the course website, since Python is not the main outcome of this course</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> 
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># semester settings</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The (e) columns are what will be enforced, the (t) columns is ideal, see the <a class="reference internal" href="grading.html#rp-status"><span class="std std-ref">deadlines section of the syllabus for more on the statuses</span></a> for more detail.</p>
+<p>The following table shows, as of  , the number of badges with each status.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">status_list_summary</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;eligible&#39;</span><span class="p">,</span> <span class="s1">&#39;penalty free&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="s1">&#39;started&#39;</span><span class="p">,</span> <span class="s1">&#39;completed&#39;</span><span class="p">]</span>
+<span class="n">badge_count_df</span> <span class="o">=</span> <span class="n">badge_target_df</span><span class="p">[</span><span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="n">today</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">value_counts</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">status_list_summary</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span>
+                    <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+
+<span class="n">glue</span><span class="p">(</span><span class="s1">&#39;exp_ontrack&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">badge_count_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;eligible&#39;</span><span class="p">,</span><span class="s1">&#39;experience&#39;</span><span class="p">]),</span><span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">glue</span><span class="p">(</span><span class="s1">&#39;exp_min&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">badge_count_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;eligible&#39;</span><span class="p">,</span><span class="s1">&#39;experience&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">3</span><span class="p">),</span><span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">glue</span><span class="p">(</span><span class="s1">&#39;rp_completed&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">badge_count_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;completed&#39;</span><span class="p">,</span><span class="s1">&#39;review_target&#39;</span><span class="p">]),</span><span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">glue</span><span class="p">(</span><span class="s1">&#39;rp_started&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">badge_count_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;started&#39;</span><span class="p">,</span><span class="s1">&#39;review_target&#39;</span><span class="p">]),</span><span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">badge_count_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">status_list_summary</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;eligible&#39;</span><span class="p">,</span> <span class="s1">&#39;penalty free&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="s1">&#39;started&#39;</span><span class="p">,</span> <span class="s1">&#39;completed&#39;</span><span class="p">]</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">badge_count_df</span> <span class="o">=</span> <span class="n">badge_target_df</span><span class="p">[</span><span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="n">today</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">value_counts</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">status_list_summary</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>                     <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">glue</span><span class="p">(</span><span class="s1">&#39;exp_ontrack&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">badge_count_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;eligible&#39;</span><span class="p">,</span><span class="s1">&#39;experience&#39;</span><span class="p">]),</span><span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">glue</span><span class="p">(</span><span class="s1">&#39;exp_min&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">badge_count_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;eligible&#39;</span><span class="p">,</span><span class="s1">&#39;experience&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">3</span><span class="p">),</span><span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;badge_target_df&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This date is formatted like this because it comes from the code</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Remember, there will be 26 badge opportunities, but do not need all of them.  See the <a class="reference internal" href="grading.html#badgecounts"><span class="std std-ref">Learning Badges</span></a> section of the syllabus for how they map into letter grades</p>
+</div>
+</aside>
+<p>This means that, as of  you are fully caught up if you have:</p>
+<ul class="simple">
+<li><p> experience badges submitted.</p></li>
+<li><p> total review and practice badges completed.</p></li>
+<li><p> additional review and/or practice badges started and in progress.</p></li>
+</ul>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>If you do not have at least  experience badges earned, you should visit office hours to get caught up.</p></li>
+<li><p>There are are 6 review and practice badges that are from the penalty free zone, so they never expire.</p></li>
+<li><p>Most of your experience and completed badges should be earned, but there is no deadline to fix issues with them.</p></li>
+</ul>
+</section>
+<section id="prepare-work-and-experience-badges">
+<h2>Prepare work and Experience Badges<a class="headerlink" href="#prepare-work-and-experience-badges" title="Permalink to this headline">#</a></h2>
+<p>This is for a single example with specific dates, but it is similar for all future dates</p>
+<p>The columns (and purple boxes) correspond to branches in your KWL repo and the yellow boxes are the things that you have to do. The “critical” box is what you hvae to wait for us on. The arrows represent PRs (or a local merge for the first one)</p>
+<div class="mermaid">
+            sequenceDiagram
+    participant P as prepare Feb 7
+    participant E as experience Feb 9
+    participant M as main 
+    note over P: complete prepare work&lt;br/&gt; between feb 7 and 9
+    note over E: run experience badge workflow &lt;br/&gt; at the end of class feb 9
+    P -&gt;&gt; E: local merge or PR you that &lt;br/&gt; does not need approval
+    note over E: fill in experience reflection 
+    critical Badge review by instructor or TA
+        E -&gt;&gt; M: Experience badge PR
+    option if edits requested
+        note over E: make requested edits
+    option when approved 
+        note over M: merge badge PR
+    end
+        </div></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./syllabus"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="grading.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Grading</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="schedule.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Schedule</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Professor Sarah M Brown<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
