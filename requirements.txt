@@ -5,3 +5,4 @@ pandas
 lxml
 jupyter-book
 sphinx-panels
+sphinxcontrib-mermaid
