@@ -4,5 +4,6 @@ pyppeteer
 pandas
 lxml
 jupyter-book
+seaborn
 sphinx-panels
 sphinxcontrib-mermaid
