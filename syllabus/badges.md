@@ -173,11 +173,11 @@ Notes:
 -  Most of your experience and completed badges should be earned, but there is no deadline to fix issues with them. 
 
 
-## Prepare work and Experience Badges
+## Prepare work and Experience Badges Process
 
 This is for a single example with specific dates, but it is similar for all future dates
 
-The columns (and purple boxes) correspond to branches in your KWL repo and the yellow boxes are the things that you have to do. The "critical" box is what you hvae to wait for us on. The arrows represent PRs (or a local merge for the first one)
+The columns (and purple boxes) correspond to branches in your KWL repo and the yellow boxes are the things that you have to do. The "critical" box is what you have to wait for us on. The arrows represent PRs (or a local merge for the first one)
 
 ```{mermaid}
 sequenceDiagram
@@ -197,3 +197,243 @@ sequenceDiagram
     end
 ```
 
+## Review and Practice Badge 
+
+
+Legend:
+```{mermaid}
+flowchart TD
+    badgestatus[[Badge Status]]
+    passive[/ something that has to occur<br/> not done by student /]      
+    student[Something for you to do]
+
+    style badgestatus fill:#2cf
+
+    decisionnode{Decision/if}
+      sta[action a]
+      stb[action b]
+      decisionnode --> |condition a|sta
+      decisionnode --> |condition b|stb
+    subgraph phase[Phase]
+      st[step in phase]
+    end
+```
+
+This is the general process for review and practice badges 
+
+```{mermaid}
+flowchart TD
+%%    subgraph work[Steps to complete]
+    subgraph posting[Dr Brown will post the Badge]
+      direction TB
+      write[/Dr Brown finalizes tasks after class/]
+      post[/Dr. Brown pushes to github/]
+      link[/notes are posted  with badge steps/]
+      posted[[Posted: on badge date]]
+      write -->post
+      post -->link
+      post --o posted
+    end
+    subgraph planning[Plan the badge]
+      direction TB
+      create[/Dr Brown runs your workflow/]
+      decide{Do you need this badge?}
+      close[close the issue]
+      branch[create branch]
+      planned[[Planned: on badge date]]
+      create -->decide
+      decide -->|no| close
+      decide -->|yes| branch
+    create --o planned
+    end
+    subgraph work[Work on the badge]
+      direction TB
+      start[do one task]
+      commit[commit work to the branch]
+      moretasks[complete the other tasks]
+      ccommit[commit them to the branch]
+      reqreview[request a review]
+      started[[Started <br/> due within one week <br/> of posted date]]
+      completed[[Completed <br/>due  within two weeks <br/> of posted date]]
+      wait[/wait for feedback/]
+      start --> commit
+      commit -->moretasks
+      commit --o started
+      moretasks -->ccommit
+      ccommit -->reqreview
+      reqreview --> wait
+      reqreview --o completed
+    end
+    subgraph review[Revise your completed badges]
+      direction TB
+      prreview[Read review feedback]
+      approvedq{what type of review}
+      merge[Merge the PR]
+      edit[complete requested edits]
+      earned[[Earned <br/> due by final grading]]
+      discuss[reply to comments]
+      prreview -->approvedq
+      approvedq -->|changes requested|edit
+      edit -->|last date to edit: May 1| prreview
+      approvedq -->|comment|discuss
+      discuss -->prreview
+      approvedq -->|approved|merge
+      merge --o earned
+    end
+
+    posting ==> planning
+    planning ==> work
+    work ==> review
+
+%% styling 
+style earned fill:#2cf
+style completed fill:#2cf
+style started fill:#2cf
+style posted fill:#2cf
+style planned fill:#2cf
+```
+
+
+## Explore Badges
+
+
+```{mermaid}
+flowchart TD
+    subgraph proposal[Propose the Topic and Product]
+      issue[create an issue]
+      proposed[[Proposed]]
+      reqproposalreview[Assign it to Dr. Brown]
+      waitp[/wait for feedback/]
+      proceedcheck{Did Dr. Brown apply a proceed label?}
+      branch[start a branch]
+      progress[[In Progress ]]
+      iterate[reply to comments and revise]
+      issue --> reqproposalreview
+      reqproposalreview --> waitp
+      reqproposalreview --> proposed
+      waitp --> proceedcheck
+      proceedcheck -->|no| iterate
+      proceedcheck -->|yes| branch
+      branch --> progress
+      iterate -->waitp
+    end
+    subgraph work[Work on the badge]
+      direction TB
+      moretasks[complete the work]
+      ccommit[commit work to the branch]
+      reqreview[request a review]
+      wait[/wait for feedback/]
+      complete[[Complete]]
+      moretasks -->ccommit
+      ccommit -->reqreview
+      reqreview --o complete
+      reqreview --> wait
+    end
+    subgraph review[Revise your work]
+      direction TB
+      prreview[Read review feedback]
+      approvedq{what type of review}
+      revision[[In revision]]
+      merge[Merge the PR]
+      edit[complete requested edits]
+      earned[[Earned <br/> due by final grading]]
+      prreview -->approvedq
+      approvedq -->|changes requested|edit
+      edit --> prreview
+      edit --o revision
+      approvedq -->|approved| merge
+      merge --o earned
+    end
+
+    proposal ==> work
+    work ==> review
+
+%% styling 
+style proposed fill:#2cf
+style progress fill:#2cf
+style complete fill:#2cf
+style revision fill:#2cf
+style earned fill:#2cf
+
+```
+
+
+
+## Build Badges 
+
+
+```{mermaid}
+flowchart TD
+    subgraph proposal[Propose the Topic and Product]
+      issue[create an issue]
+      proposed[[Proposed]]
+      reqproposalreview[Assign it ]
+      waitp[/wait for feedback/]
+      proceedcheck{Did Dr. Brown apply a proceed label?}
+      branch[start a branch]
+      progress[[In Progress ]]
+      iterate[reply to comments and revise]
+      issue --> reqproposalreview
+      reqproposalreview --> waitp
+      reqproposalreview --> proposed
+      waitp --> proceedcheck
+      proceedcheck -->|no| iterate
+      proceedcheck -->|yes| branch
+      branch --> progress
+      iterate -->waitp
+    end
+    subgraph work[Work on the badge]
+      direction TB
+      commit[commit work to the branch]
+      moretasks[complete the work]
+      draftpr[Open a draft PR and <br/> request a review]
+      ccommit[incorporate feedback]
+      reqreview[request a review]
+      wait[/wait for feedback/]
+      complete[[Complete]]
+      commit -->moretasks
+      commit -->draftpr
+      draftpr -->ccommit
+      moretasks -->reqreview
+      ccommit -->reqreview
+      reqreview --> complete
+      reqreview --> wait
+    end
+    subgraph review[Revise your work]
+      direction TB
+      prreview[Read review feedback]
+      approvedq{what type of review}
+      revision[[In revision]]
+      merge[Merge the PR]
+      edit[complete requested edits]
+      earned[[Earned <br/> due by final grading]]
+      prreview -->approvedq
+      approvedq -->|changes requested|edit
+      edit --> prreview
+      edit -->revision
+      approvedq -->|approved| merge
+      merge --o earned
+    end
+
+    proposal ==> work
+    work ==> review
+
+%% styling 
+style proposed fill:#2cf
+style progress fill:#2cf
+style complete fill:#2cf
+style revision fill:#2cf
+style earned fill:#2cf
+
+```
+
+      
+
+
+
+
+  
+    
+    
+
+    
