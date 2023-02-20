@@ -571,8 +571,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prepare-work-and-experience-badges">
-   Prepare work and Experience Badges
+  <a class="reference internal nav-link" href="#prepare-work-and-experience-badges-process">
+   Prepare work and Experience Badges Process
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-and-practice-badge">
+   Review and Practice Badge
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explore-badges">
+   Explore Badges
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-badges">
+   Build Badges
   </a>
  </li>
 </ul>
@@ -600,8 +615,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prepare-work-and-experience-badges">
-   Prepare work and Experience Badges
+  <a class="reference internal nav-link" href="#prepare-work-and-experience-badges-process">
+   Prepare work and Experience Badges Process
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-and-practice-badge">
+   Review and Practice Badge
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explore-badges">
+   Explore Badges
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-badges">
+   Build Badges
   </a>
  </li>
 </ul>
@@ -854,10 +884,10 @@ You can see the code that generates the figure behind the “click to show” bu
 <li><p>Most of your experience and completed badges should be earned, but there is no deadline to fix issues with them.</p></li>
 </ul>
 </section>
-<section id="prepare-work-and-experience-badges">
-<h2>Prepare work and Experience Badges<a class="headerlink" href="#prepare-work-and-experience-badges" title="Permalink to this headline">#</a></h2>
+<section id="prepare-work-and-experience-badges-process">
+<h2>Prepare work and Experience Badges Process<a class="headerlink" href="#prepare-work-and-experience-badges-process" title="Permalink to this headline">#</a></h2>
 <p>This is for a single example with specific dates, but it is similar for all future dates</p>
-<p>The columns (and purple boxes) correspond to branches in your KWL repo and the yellow boxes are the things that you have to do. The “critical” box is what you hvae to wait for us on. The arrows represent PRs (or a local merge for the first one)</p>
+<p>The columns (and purple boxes) correspond to branches in your KWL repo and the yellow boxes are the things that you have to do. The “critical” box is what you have to wait for us on. The arrows represent PRs (or a local merge for the first one)</p>
 <div class="mermaid">
             sequenceDiagram
     participant P as prepare Feb 7
@@ -874,6 +904,224 @@ You can see the code that generates the figure behind the “click to show” bu
     option when approved 
         note over M: merge badge PR
     end
+        </div></section>
+<section id="review-and-practice-badge">
+<h2>Review and Practice Badge<a class="headerlink" href="#review-and-practice-badge" title="Permalink to this headline">#</a></h2>
+<p>Legend:</p>
+<div class="mermaid">
+            flowchart TD
+    badgestatus[[Badge Status]]
+    passive[/ something that has to occur&lt;br/&gt; not done by student /]      
+    student[Something for you to do]
+
+    style badgestatus fill:#2cf
+
+    decisionnode{Decision/if}
+      sta[action a]
+      stb[action b]
+      decisionnode --&gt; |condition a|sta
+      decisionnode --&gt; |condition b|stb
+    subgraph phase[Phase]
+      st[step in phase]
+    end
+        </div><p>This is the general process for review and practice badges</p>
+<div class="mermaid">
+            flowchart TD
+%%    subgraph work[Steps to complete]
+    subgraph posting[Dr Brown will post the Badge]
+      direction TB
+      write[/Dr Brown finalizes tasks after class/]
+      post[/Dr. Brown pushes to github/]
+      link[/notes are posted  with badge steps/]
+      posted[[Posted: on badge date]]
+      write --&gt;post
+      post --&gt;link
+      post --o posted
+    end
+    subgraph planning[Plan the badge]
+      direction TB
+      create[/Dr Brown runs your workflow/]
+      decide{Do you need this badge?}
+      close[close the issue]
+      branch[create branch]
+      planned[[Planned: on badge date]]
+      create --&gt;decide
+      decide --&gt;|no| close
+      decide --&gt;|yes| branch
+    create --o planned
+    end
+    subgraph work[Work on the badge]
+      direction TB
+      start[do one task]
+      commit[commit work to the branch]
+      moretasks[complete the other tasks]
+      ccommit[commit them to the branch]
+      reqreview[request a review]
+      started[[Started &lt;br/&gt; due within one week &lt;br/&gt; of posted date]]
+      completed[[Completed &lt;br/&gt;due  within two weeks &lt;br/&gt; of posted date]]
+      wait[/wait for feedback/]
+      start --&gt; commit
+      commit --&gt;moretasks
+      commit --o started
+      moretasks --&gt;ccommit
+      ccommit --&gt;reqreview
+      reqreview --&gt; wait
+      reqreview --o completed
+    end
+    subgraph review[Revise your completed badges]
+      direction TB
+      prreview[Read review feedback]
+      approvedq{what type of review}
+      merge[Merge the PR]
+      edit[complete requested edits]
+      earned[[Earned &lt;br/&gt; due by final grading]]
+      discuss[reply to comments]
+      prreview --&gt;approvedq
+      approvedq --&gt;|changes requested|edit
+      edit --&gt;|last date to edit: May 1| prreview
+      approvedq --&gt;|comment|discuss
+      discuss --&gt;prreview
+      approvedq --&gt;|approved|merge
+      merge --o earned
+    end
+
+    posting ==&gt; planning
+    planning ==&gt; work
+    work ==&gt; review
+
+%% styling 
+style earned fill:#2cf
+style completed fill:#2cf
+style started fill:#2cf
+style posted fill:#2cf
+style planned fill:#2cf
+        </div></section>
+<section id="explore-badges">
+<h2>Explore Badges<a class="headerlink" href="#explore-badges" title="Permalink to this headline">#</a></h2>
+<div class="mermaid">
+            flowchart TD
+    subgraph proposal[Propose the Topic and Product]
+      issue[create an issue]
+      proposed[[Proposed]]
+      reqproposalreview[Assign it to Dr. Brown]
+      waitp[/wait for feedback/]
+      proceedcheck{Did Dr. Brown apply a proceed label?}
+      branch[start a branch]
+      progress[[In Progress ]]
+      iterate[reply to comments and revise]
+      issue --&gt; reqproposalreview
+      reqproposalreview --&gt; waitp
+      reqproposalreview --&gt; proposed
+      waitp --&gt; proceedcheck
+      proceedcheck --&gt;|no| iterate
+      proceedcheck --&gt;|yes| branch
+      branch --&gt; progress
+      iterate --&gt;waitp
+    end
+    subgraph work[Work on the badge]
+      direction TB
+      moretasks[complete the work]
+      ccommit[commit work to the branch]
+      reqreview[request a review]
+      wait[/wait for feedback/]
+      complete[[Complete]]
+      moretasks --&gt;ccommit
+      ccommit --&gt;reqreview
+      reqreview --o complete
+      reqreview --&gt; wait
+    end
+    subgraph review[Revise your work]
+      direction TB
+      prreview[Read review feedback]
+      approvedq{what type of review}
+      revision[[In revision]]
+      merge[Merge the PR]
+      edit[complete requested edits]
+      earned[[Earned &lt;br/&gt; due by final grading]]
+      prreview --&gt;approvedq
+      approvedq --&gt;|changes requested|edit
+      edit --&gt; prreview
+      edit --o revision
+      approvedq --&gt;|approved| merge
+      merge --o earned
+    end
+
+    proposal ==&gt; work
+    work ==&gt; review
+
+%% styling 
+style proposed fill:#2cf
+style progress fill:#2cf
+style complete fill:#2cf
+style revision fill:#2cf
+style earned fill:#2cf
+
+        </div></section>
+<section id="build-badges">
+<h2>Build Badges<a class="headerlink" href="#build-badges" title="Permalink to this headline">#</a></h2>
+<div class="mermaid">
+            flowchart TD
+    subgraph proposal[Propose the Topic and Product]
+      issue[create an issue]
+      proposed[[Proposed]]
+      reqproposalreview[Assign it ]
+      waitp[/wait for feedback/]
+      proceedcheck{Did Dr. Brown apply a proceed label?}
+      branch[start a branch]
+      progress[[In Progress ]]
+      iterate[reply to comments and revise]
+      issue --&gt; reqproposalreview
+      reqproposalreview --&gt; waitp
+      reqproposalreview --&gt; proposed
+      waitp --&gt; proceedcheck
+      proceedcheck --&gt;|no| iterate
+      proceedcheck --&gt;|yes| branch
+      branch --&gt; progress
+      iterate --&gt;waitp
+    end
+    subgraph work[Work on the badge]
+      direction TB
+      commit[commit work to the branch]
+      moretasks[complete the work]
+      draftpr[Open a draft PR and &lt;br/&gt; request a review]
+      ccommit[incorporate feedback]
+      reqreview[request a review]
+      wait[/wait for feedback/]
+      complete[[Complete]]
+      commit --&gt;moretasks
+      commit --&gt;draftpr
+      draftpr --&gt;ccommit
+      moretasks --&gt;reqreview
+      ccommit --&gt;reqreview
+      reqreview --&gt; complete
+      reqreview --&gt; wait
+    end
+    subgraph review[Revise your work]
+      direction TB
+      prreview[Read review feedback]
+      approvedq{what type of review}
+      revision[[In revision]]
+      merge[Merge the PR]
+      edit[complete requested edits]
+      earned[[Earned &lt;br/&gt; due by final grading]]
+      prreview --&gt;approvedq
+      approvedq --&gt;|changes requested|edit
+      edit --&gt; prreview
+      edit --&gt;revision
+      approvedq --&gt;|approved| merge
+      merge --o earned
+    end
+
+    proposal ==&gt; work
+    work ==&gt; review
+
+%% styling 
+style proposed fill:#2cf
+style progress fill:#2cf
+style complete fill:#2cf
+style revision fill:#2cf
+style earned fill:#2cf
+
         </div></section>
 </section>
 
