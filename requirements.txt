@@ -6,4 +6,4 @@ lxml
 jupyter-book
 seaborn
 sphinx-panels
-sphinxcontrib-mermaid
+git+https://github.com/brownsarahm/sphinxcontrib-mermaid@cdnupdate
