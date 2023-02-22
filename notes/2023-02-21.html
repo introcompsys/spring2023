@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>What is git? &#8212; Computer Systems and Programming Tools</title>
+    <title>9. What is git? &#8212; Computer Systems and Programming Tools</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,6 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="KWL Chart" href="../activities/kwl.html" />
+    <link rel="prev" title="8. How do programmers communicate about code?" href="2023-02-16.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -166,7 +168,7 @@ const thebe_selector_output = ".output, .cell_output"
   Notes
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="2023-01-24.html">
    1. Welcome and Introduction
@@ -205,6 +207,15 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="2023-02-16.html">
    8. How do programmers communicate about code?
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   9. What
+   <em>
+    is
+   </em>
+   git?
   </a>
  </li>
 </ul>
@@ -519,65 +530,66 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#admin">
-   Admin
+   9.1. Admin
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#get-credit-for-this-class-toward-your-major">
-     get credit for this class toward your major
+     9.1.1. get credit for this class toward your major
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#progress">
-     Progress
+     9.1.2. Progress
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#logistics-clarification">
-     Logistics Clarification
+     9.1.3. Logistics Clarification
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#git-is-a-file-system">
-   Git is a File system
+   9.2. Git is a File system
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#git-is-a-version-control-system">
-   Git is a Version Control System
+   9.3. Git is a Version Control System
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#git-has-two-sets-of-commands">
-   Git has two sets of commands
+   9.4. Git has two sets of commands
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#git-is-distributed">
-   Git is distributed
+   9.5. Git is distributed
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#subversion-workflow">
-     Subversion  WOrkflow
+     9.5.1. Subversion  WOrkflow
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#integration-manager">
-     Integration Manager
+     9.5.2. Integration Manager
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dictator-and-lieutenants">
-     dictator and lieutenants
+     9.5.3. dictator and lieutenants
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#how-does-git-do-all-these-things">
+   9.6.
    <em>
     How does git do all these things?
    </em>
@@ -585,102 +597,102 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#git-head">
-   Git HEAD
+   9.7. Git HEAD
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#branches-are-pointers">
-   Branches are pointers
+   9.8. Branches are pointers
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#review-todays-class">
-   Review today’s class
+   9.9. Review today’s class
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prepare-for-next-class">
-   Prepare for Next Class
+   9.10. Prepare for Next Class
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#more-practice">
-   More Practice
+   9.11. More Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#experience-report-evidence">
-   Experience Report Evidence
+   9.12. Experience Report Evidence
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-todays-class">
-   Questions After Today’s Class
+   9.13. Questions After Today’s Class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#is-the-head-file-shared-across-all-branches-and-updated-every-time-we-checkout-a-new-branch-or-does-each-branch-have-its-own-head-file-that-stores-its-own-path">
-     Is the head file shared across all branches and updated every time we checkout a new branch or does each branch have its own head file that stores its own path?
+     9.13.1. Is the head file shared across all branches and updated every time we checkout a new branch or does each branch have its own head file that stores its own path?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#will-checking-the-commit-hash-locally-and-in-the-remote-version-of-the-branch-play-a-role-in-going-back-in-history-if-you-messed-something-up">
-     Will checking the commit hash locally and in the remote version of the branch play a role in going back in history if you messed something up?
+     9.13.2. Will checking the commit hash locally and in the remote version of the branch play a role in going back in history if you messed something up?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#can-look-go-directly-to-the-git-refs-main-file-instead-of-also-looking-the-head-before">
-     Can look go directly to the git/refs/main file instead of also looking the /HEAD  before?
+     9.13.3. Can look go directly to the git/refs/main file instead of also looking the /HEAD  before?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#just-a-little-bit-more-clarification-on-what-commands-porcelain-and-plumbing-have">
-     Just a little bit more clarification on what commands Porcelain and Plumbing have.
+     9.13.4. Just a little bit more clarification on what commands Porcelain and Plumbing have.
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#are-the-names-dictator-and-lieutenant-really-used">
-     Are the names dictator and lieutenant really used?
+     9.13.5. Are the names dictator and lieutenant really used?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-is-a-snapshot">
-     What is a snapshot?
+     9.13.6. What is a snapshot?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#when-i-set-rebase-to-true-should-i-set-it-back-to-false">
-     when I set rebase to true, should i set it back to false?
+     9.13.7. when I set rebase to true, should i set it back to false?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-did-git-come-to-such-prominence">
-     How did git come to such prominence?
+     9.13.8. How did git come to such prominence?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-is-the-difference-between-the-head-and-orig-head-in-the-main-branch">
-     what is the difference between the HEAD and ORIG_HEAD in the main branch?
+     9.13.9. what is the difference between the HEAD and ORIG_HEAD in the main branch?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#do-we-have-to-link-the-prepare-issue-for-this-class-day-to-this-pr-after-it-is-done">
-     Do we have to link the prepare issue for this class day to this PR after it is done?
+     9.13.10. Do we have to link the prepare issue for this class day to this PR after it is done?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#is-there-a-limit-to-how-many-branches-that-one-repo-can-have">
-     Is there a limit to how many branches that one repo can have?
+     9.13.11. Is there a limit to how many branches that one repo can have?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#will-what-we-learned-today-help-to-correct-mistakes-we-make-while-using-git-locally">
-     Will what we learned today help to correct mistakes we make while using Git locally?
+     9.13.12. Will what we learned today help to correct mistakes we make while using Git locally?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#will-local-commit-hashes-always-match-with-the-git-servers">
-     will local commit hashes always match with the git servers?
+     9.13.13. will local commit hashes always match with the git servers?
     </a>
    </li>
   </ul>
@@ -706,65 +718,66 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#admin">
-   Admin
+   9.1. Admin
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#get-credit-for-this-class-toward-your-major">
-     get credit for this class toward your major
+     9.1.1. get credit for this class toward your major
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#progress">
-     Progress
+     9.1.2. Progress
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#logistics-clarification">
-     Logistics Clarification
+     9.1.3. Logistics Clarification
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#git-is-a-file-system">
-   Git is a File system
+   9.2. Git is a File system
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#git-is-a-version-control-system">
-   Git is a Version Control System
+   9.3. Git is a Version Control System
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#git-has-two-sets-of-commands">
-   Git has two sets of commands
+   9.4. Git has two sets of commands
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#git-is-distributed">
-   Git is distributed
+   9.5. Git is distributed
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#subversion-workflow">
-     Subversion  WOrkflow
+     9.5.1. Subversion  WOrkflow
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#integration-manager">
-     Integration Manager
+     9.5.2. Integration Manager
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dictator-and-lieutenants">
-     dictator and lieutenants
+     9.5.3. dictator and lieutenants
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#how-does-git-do-all-these-things">
+   9.6.
    <em>
     How does git do all these things?
    </em>
@@ -772,102 +785,102 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#git-head">
-   Git HEAD
+   9.7. Git HEAD
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#branches-are-pointers">
-   Branches are pointers
+   9.8. Branches are pointers
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#review-todays-class">
-   Review today’s class
+   9.9. Review today’s class
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prepare-for-next-class">
-   Prepare for Next Class
+   9.10. Prepare for Next Class
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#more-practice">
-   More Practice
+   9.11. More Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#experience-report-evidence">
-   Experience Report Evidence
+   9.12. Experience Report Evidence
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-todays-class">
-   Questions After Today’s Class
+   9.13. Questions After Today’s Class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#is-the-head-file-shared-across-all-branches-and-updated-every-time-we-checkout-a-new-branch-or-does-each-branch-have-its-own-head-file-that-stores-its-own-path">
-     Is the head file shared across all branches and updated every time we checkout a new branch or does each branch have its own head file that stores its own path?
+     9.13.1. Is the head file shared across all branches and updated every time we checkout a new branch or does each branch have its own head file that stores its own path?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#will-checking-the-commit-hash-locally-and-in-the-remote-version-of-the-branch-play-a-role-in-going-back-in-history-if-you-messed-something-up">
-     Will checking the commit hash locally and in the remote version of the branch play a role in going back in history if you messed something up?
+     9.13.2. Will checking the commit hash locally and in the remote version of the branch play a role in going back in history if you messed something up?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#can-look-go-directly-to-the-git-refs-main-file-instead-of-also-looking-the-head-before">
-     Can look go directly to the git/refs/main file instead of also looking the /HEAD  before?
+     9.13.3. Can look go directly to the git/refs/main file instead of also looking the /HEAD  before?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#just-a-little-bit-more-clarification-on-what-commands-porcelain-and-plumbing-have">
-     Just a little bit more clarification on what commands Porcelain and Plumbing have.
+     9.13.4. Just a little bit more clarification on what commands Porcelain and Plumbing have.
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#are-the-names-dictator-and-lieutenant-really-used">
-     Are the names dictator and lieutenant really used?
+     9.13.5. Are the names dictator and lieutenant really used?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-is-a-snapshot">
-     What is a snapshot?
+     9.13.6. What is a snapshot?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#when-i-set-rebase-to-true-should-i-set-it-back-to-false">
-     when I set rebase to true, should i set it back to false?
+     9.13.7. when I set rebase to true, should i set it back to false?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-did-git-come-to-such-prominence">
-     How did git come to such prominence?
+     9.13.8. How did git come to such prominence?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-is-the-difference-between-the-head-and-orig-head-in-the-main-branch">
-     what is the difference between the HEAD and ORIG_HEAD in the main branch?
+     9.13.9. what is the difference between the HEAD and ORIG_HEAD in the main branch?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#do-we-have-to-link-the-prepare-issue-for-this-class-day-to-this-pr-after-it-is-done">
-     Do we have to link the prepare issue for this class day to this PR after it is done?
+     9.13.10. Do we have to link the prepare issue for this class day to this PR after it is done?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#is-there-a-limit-to-how-many-branches-that-one-repo-can-have">
-     Is there a limit to how many branches that one repo can have?
+     9.13.11. Is there a limit to how many branches that one repo can have?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#will-what-we-learned-today-help-to-correct-mistakes-we-make-while-using-git-locally">
-     Will what we learned today help to correct mistakes we make while using Git locally?
+     9.13.12. Will what we learned today help to correct mistakes we make while using Git locally?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#will-local-commit-hashes-always-match-with-the-git-servers">
-     will local commit hashes always match with the git servers?
+     9.13.13. will local commit hashes always match with the git servers?
     </a>
    </li>
   </ul>
@@ -883,11 +896,11 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="what-is-git">
-<h1>What <em>is</em> git?<a class="headerlink" href="#what-is-git" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">9. </span>What <em>is</em> git?<a class="headerlink" href="#what-is-git" title="Permalink to this headline">#</a></h1>
 <section id="admin">
-<h2>Admin<a class="headerlink" href="#admin" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.1. </span>Admin<a class="headerlink" href="#admin" title="Permalink to this headline">#</a></h2>
 <section id="get-credit-for-this-class-toward-your-major">
-<h3>get credit for this class toward your major<a class="headerlink" href="#get-credit-for-this-class-toward-your-major" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.1.1. </span>get credit for this class toward your major<a class="headerlink" href="#get-credit-for-this-class-toward-your-major" title="Permalink to this headline">#</a></h3>
 <p>If you have not already [get the “curriculum modification” form from the college]](<a class="reference external" href="https://web.uri.edu/artsci/academics/student-resources/forms/">https://web.uri.edu/artsci/academics/student-resources/forms/</a>). Fill it out in the following way:</p>
 <ul class="simple">
 <li><p>substitution of: CSC392 Intro to Computer Systems For: 300 level elective</p></li>
@@ -896,7 +909,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="progress">
-<h3>Progress<a class="headerlink" href="#progress" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.1.2. </span>Progress<a class="headerlink" href="#progress" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>find an issue from me on your KWL repo with titled “progress as of 2023-02-18 HH:MM:SS” ask questions there.</p></li>
 <li><p>merge PR from me titled “udpate experience report action”</p></li>
@@ -907,7 +920,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="logistics-clarification">
-<h3>Logistics Clarification<a class="headerlink" href="#logistics-clarification" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.1.3. </span>Logistics Clarification<a class="headerlink" href="#logistics-clarification" title="Permalink to this headline">#</a></h3>
 <p><a class="reference external" href="https://introcompsys.github.io/spring2023/syllabus/badges.html">badge info</a></p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
@@ -933,7 +946,7 @@ submitted a <a class="reference external" href="https://github.com/mgaitan/sphin
 </section>
 </section>
 <section id="git-is-a-file-system">
-<h2>Git is a File system<a class="headerlink" href="#git-is-a-file-system" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.2. </span>Git is a File system<a class="headerlink" href="#git-is-a-file-system" title="Permalink to this headline">#</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p><a class="reference external" href="https://git-scm.com/book/en/v2">git book</a> is the official reference on git.</p>
@@ -970,14 +983,14 @@ what types of programming have you seen that use key- value pairs?<div class="sd
 <p>What this means is that you can insert any kind of content into a Git repository, for which Git will hand you back a unique key you can use later to retrieve that content.</p>
 </section>
 <section id="git-is-a-version-control-system">
-<h2>Git is a Version Control System<a class="headerlink" href="#git-is-a-version-control-system" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.3. </span>Git is a Version Control System<a class="headerlink" href="#git-is-a-version-control-system" title="Permalink to this headline">#</a></h2>
 <p>git stores <strong>snapshots</strong> of your work each time you commit.</p>
 <p><img alt="snapshot of 5 version sof 3 files" src="https://git-scm.com/book/en/v2/images/snapshots.png" /></p>
 <p>it uses 3 stages:</p>
 <p><img alt="3 stages in git" src="https://git-scm.com/book/en/v2/images/areas.png" /></p>
 </section>
 <section id="git-has-two-sets-of-commands">
-<h2>Git has two sets of commands<a class="headerlink" href="#git-has-two-sets-of-commands" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.4. </span>Git has two sets of commands<a class="headerlink" href="#git-has-two-sets-of-commands" title="Permalink to this headline">#</a></h2>
 <p>Porcelain: the user friendly VCS</p>
 <p>Plumbing: the internal workings- a toolkit for a VCS</p>
 <p>We have so far used git as a version control system.  A version control system, in general, will have operations like commit, push, pull, clone.  These may work differently under the hood or be called different things, but those are what something needs to have in order to keep track of different versions.</p>
@@ -985,7 +998,7 @@ what types of programming have you seen that use key- value pairs?<div class="sd
 <p>You can think of the plumbing vs porcelain commands like public/private methods.  As a user, you only need the public methods (porcelain commands) but those use the private ones to get things done (plumbing commands).  We will use the plumbing commands over the next few classes to examine what git <em>really</em> does when we call the porcelain commands that we will typically use.</p>
 </section>
 <section id="git-is-distributed">
-<h2>Git is distributed<a class="headerlink" href="#git-is-distributed" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.5. </span>Git is distributed<a class="headerlink" href="#git-is-distributed" title="Permalink to this headline">#</a></h2>
 <p>What does that mean?</p>
 <p>Git runs locally.  It can run in many places, and has commands to help sync across remotes, but git does not require one copy of the repository to be the “official” copy and the others to be subordinate.  git just sees repositories.</p>
 <p>For human reasons, we like to have one “official” copy and treat the others as local copies, but that is a social choice, not a technological requirement of git. Even though we will typically use it with an offical copy and other copies, having a tool tht does not care, makes the tool more flexible and allows us to create workflows, or networks of copies that have any relationship we want.</p>
@@ -999,20 +1012,20 @@ what types of programming have you seen that use key- value pairs?<div class="sd
 </aside>
 <p>Some example workflows</p>
 <section id="subversion-workflow">
-<h3>Subversion  WOrkflow<a class="headerlink" href="#subversion-workflow" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.5.1. </span>Subversion  WOrkflow<a class="headerlink" href="#subversion-workflow" title="Permalink to this headline">#</a></h3>
 <p><img alt="subversion workflow" src="https://git-scm.com/images/about/workflow-a&#64;2x.png" /></p>
 </section>
 <section id="integration-manager">
-<h3>Integration Manager<a class="headerlink" href="#integration-manager" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.5.2. </span>Integration Manager<a class="headerlink" href="#integration-manager" title="Permalink to this headline">#</a></h3>
 <p><img alt="integration manager workflow" src="https://git-scm.com/images/about/workflow-b&#64;2x.png" /></p>
 </section>
 <section id="dictator-and-lieutenants">
-<h3>dictator and lieutenants<a class="headerlink" href="#dictator-and-lieutenants" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.5.3. </span>dictator and lieutenants<a class="headerlink" href="#dictator-and-lieutenants" title="Permalink to this headline">#</a></h3>
 <p><img alt="dictator and lieutenants workflow" src="https://git-scm.com/images/about/workflow-c&#64;2x.png" /></p>
 </section>
 </section>
 <section id="how-does-git-do-all-these-things">
-<h2><em>How does git do all these things?</em><a class="headerlink" href="#how-does-git-do-all-these-things" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.6. </span><em>How does git do all these things?</em><a class="headerlink" href="#how-does-git-do-all-these-things" title="Permalink to this headline">#</a></h2>
 <p>Let’s look at git again in our <code class="docutils literal notranslate"><span class="pre">github-inclass</span></code> repo</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../</span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span>
 </pre></div>
@@ -1090,7 +1103,7 @@ what types of programming have you seen that use key- value pairs?<div class="sd
 <p>This is a consequence of git taking snap shots and tracking both the actual contents of our working directory <strong>and</strong> our commit messages and other meta data about each commit.</p>
 </section>
 <section id="git-head">
-<h2>Git HEAD<a class="headerlink" href="#git-head" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.7. </span>Git HEAD<a class="headerlink" href="#git-head" title="Permalink to this headline">#</a></h2>
 <p>First lets get a a clean working directory</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1171,7 +1184,7 @@ what types of programming have you seen that use key- value pairs?<div class="sd
 <p>As expected.</p>
 </section>
 <section id="branches-are-pointers">
-<h2>Branches are pointers<a class="headerlink" href="#branches-are-pointers" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.8. </span>Branches are pointers<a class="headerlink" href="#branches-are-pointers" title="Permalink to this headline">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="n">create</span><span class="o">-</span><span class="n">an</span><span class="o">-</span><span class="n">about</span><span class="o">-</span><span class="n">file</span> 
 </pre></div>
 </div>
@@ -1388,7 +1401,7 @@ what types of programming have you seen that use key- value pairs?<div class="sd
 </div>
 </section>
 <section id="review-todays-class">
-<h2>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.9. </span>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>Review the notes</p></li>
 <li><p>Update your kwl chart with what you have learned or new questions</p></li>
@@ -1397,14 +1410,14 @@ what types of programming have you seen that use key- value pairs?<div class="sd
 </ol>
 </section>
 <section id="prepare-for-next-class">
-<h2>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.10. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>In a <span class="target" id="index-2"></span>gitunderstanding.md list 3-5 items from the following categories (a) things you have had trouble with in git in the past and how they relate to your new understanding (b) things that your understanding has changed based on today’s class © things about git you still have questions about</p></li>
 <li><p>Follow up on your progress issue and plan for the course</p></li>
 </ol>
 </section>
 <section id="more-practice">
-<h2>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.11. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>Review the notes</p></li>
 <li><p>Update your kwl chart with what you have learned or new questions</p></li>
@@ -1422,48 +1435,48 @@ what types of programming have you seen that use key- value pairs?<div class="sd
 </div>
 </section>
 <section id="experience-report-evidence">
-<h2>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.12. </span>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="questions-after-todays-class">
-<h2>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.13. </span>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
 <section id="is-the-head-file-shared-across-all-branches-and-updated-every-time-we-checkout-a-new-branch-or-does-each-branch-have-its-own-head-file-that-stores-its-own-path">
-<h3>Is the head file shared across all branches and updated every time we checkout a new branch or does each branch have its own head file that stores its own path?<a class="headerlink" href="#is-the-head-file-shared-across-all-branches-and-updated-every-time-we-checkout-a-new-branch-or-does-each-branch-have-its-own-head-file-that-stores-its-own-path" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.13.1. </span>Is the head file shared across all branches and updated every time we checkout a new branch or does each branch have its own head file that stores its own path?<a class="headerlink" href="#is-the-head-file-shared-across-all-branches-and-updated-every-time-we-checkout-a-new-branch-or-does-each-branch-have-its-own-head-file-that-stores-its-own-path" title="Permalink to this headline">#</a></h3>
 <p>The head file is like a variable that <code class="docutils literal notranslate"><span class="pre">git</span></code> writes to every time it checks out a new branch.</p>
 </section>
 <section id="will-checking-the-commit-hash-locally-and-in-the-remote-version-of-the-branch-play-a-role-in-going-back-in-history-if-you-messed-something-up">
-<h3>Will checking the commit hash locally and in the remote version of the branch play a role in going back in history if you messed something up?<a class="headerlink" href="#will-checking-the-commit-hash-locally-and-in-the-remote-version-of-the-branch-play-a-role-in-going-back-in-history-if-you-messed-something-up" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.13.2. </span>Will checking the commit hash locally and in the remote version of the branch play a role in going back in history if you messed something up?<a class="headerlink" href="#will-checking-the-commit-hash-locally-and-in-the-remote-version-of-the-branch-play-a-role-in-going-back-in-history-if-you-messed-something-up" title="Permalink to this headline">#</a></h3>
 <p>That is exactly what we will do next</p>
 </section>
 <section id="can-look-go-directly-to-the-git-refs-main-file-instead-of-also-looking-the-head-before">
-<h3>Can look go directly to the git/refs/main file instead of also looking the /HEAD  before?<a class="headerlink" href="#can-look-go-directly-to-the-git-refs-main-file-instead-of-also-looking-the-head-before" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.13.3. </span>Can look go directly to the git/refs/main file instead of also looking the /HEAD  before?<a class="headerlink" href="#can-look-go-directly-to-the-git-refs-main-file-instead-of-also-looking-the-head-before" title="Permalink to this headline">#</a></h3>
 <p>Yes, these are both files that we looked at, we can look at them in any order.</p>
 </section>
 <section id="just-a-little-bit-more-clarification-on-what-commands-porcelain-and-plumbing-have">
-<h3>Just a little bit more clarification on what commands Porcelain and Plumbing have.<a class="headerlink" href="#just-a-little-bit-more-clarification-on-what-commands-porcelain-and-plumbing-have" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.13.4. </span>Just a little bit more clarification on what commands Porcelain and Plumbing have.<a class="headerlink" href="#just-a-little-bit-more-clarification-on-what-commands-porcelain-and-plumbing-have" title="Permalink to this headline">#</a></h3>
 <p>We’ll use porcelain commands next class, that should help make the definitions more clear.</p>
 </section>
 <section id="are-the-names-dictator-and-lieutenant-really-used">
-<h3>Are the names dictator and lieutenant really used?<a class="headerlink" href="#are-the-names-dictator-and-lieutenant-really-used" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.13.5. </span>Are the names dictator and lieutenant really used?<a class="headerlink" href="#are-the-names-dictator-and-lieutenant-really-used" title="Permalink to this headline">#</a></h3>
 <p>It’s the name of the workflow, but probably if a team is using it they use other terms like team lead or something.</p>
 </section>
 <section id="what-is-a-snapshot">
-<h3>What is a snapshot?<a class="headerlink" href="#what-is-a-snapshot" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.13.6. </span>What is a snapshot?<a class="headerlink" href="#what-is-a-snapshot" title="Permalink to this headline">#</a></h3>
 <p>A “snapshot” is all of the details of the project (repo) at a given time. The term is derived from photography, a picture (aka snapshot) captures a moment in time.</p>
 <p><a class="reference external" href="https://tom.preston-werner.com/2009/05/19/the-git-parable.html">the git parable</a> uses a story to explain git.</p>
 <p><a class="reference external" href="https://github.blog/2020-12-17-commits-are-snapshots-not-diffs/">this GitHub blog post</a> might also be helpful.</p>
 </section>
 <section id="when-i-set-rebase-to-true-should-i-set-it-back-to-false">
-<h3>when I set rebase to true, should i set it back to false?<a class="headerlink" href="#when-i-set-rebase-to-true-should-i-set-it-back-to-false" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.13.7. </span>when I set rebase to true, should i set it back to false?<a class="headerlink" href="#when-i-set-rebase-to-true-should-i-set-it-back-to-false" title="Permalink to this headline">#</a></h3>
 <p>Depends if you think you will ever want to not default to true.</p>
 </section>
 <section id="how-did-git-come-to-such-prominence">
-<h3>How did git come to such prominence?<a class="headerlink" href="#how-did-git-come-to-such-prominence" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.13.8. </span>How did git come to such prominence?<a class="headerlink" href="#how-did-git-come-to-such-prominence" title="Permalink to this headline">#</a></h3>
 <p>It is actually, truly, SO MUCH BETTER than what we had before.  It is complicated, but so is every other version control system.  <em>versioning</em> is hard no matter how you do it.</p>
 <p>In addition to what we discussed today <a class="reference external" href="https://git-scm.com/about/small-and-fast">git is extremely fast</a>.</p>
 <p>It also helps that <a class="reference external" href="https://gitgitgadget.github.io/">git is open source</a>. Notice that git uses an integration manager type workflow.</p>
 </section>
 <section id="what-is-the-difference-between-the-head-and-orig-head-in-the-main-branch">
-<h3>what is the difference between the HEAD and ORIG_HEAD in the main branch?<a class="headerlink" href="#what-is-the-difference-between-the-head-and-orig-head-in-the-main-branch" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.13.9. </span>what is the difference between the HEAD and ORIG_HEAD in the main branch?<a class="headerlink" href="#what-is-the-difference-between-the-head-and-orig-head-in-the-main-branch" title="Permalink to this headline">#</a></h3>
 <p>These files are not in the working directory or <em>on</em> any branch.  These tell us what branch is currently checked out locally and what reference the origin head branch is.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">ORIG_HEAD</span>
 </pre></div>
@@ -1474,19 +1487,19 @@ what types of programming have you seen that use key- value pairs?<div class="sd
 <p>Notice that this gives a commit directly, not another branch. When we do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> we compare this to the local main to find out if we are up to date or not.</p>
 </section>
 <section id="do-we-have-to-link-the-prepare-issue-for-this-class-day-to-this-pr-after-it-is-done">
-<h3>Do we have to link the prepare issue for this class day to this PR after it is done?<a class="headerlink" href="#do-we-have-to-link-the-prepare-issue-for-this-class-day-to-this-pr-after-it-is-done" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.13.10. </span>Do we have to link the prepare issue for this class day to this PR after it is done?<a class="headerlink" href="#do-we-have-to-link-the-prepare-issue-for-this-class-day-to-this-pr-after-it-is-done" title="Permalink to this headline">#</a></h3>
 <p>You should link the prepare issue from February 16 to today’s (Feburary 21) experience badge PR.</p>
 </section>
 <section id="is-there-a-limit-to-how-many-branches-that-one-repo-can-have">
-<h3>Is there a limit to how many branches that one repo can have?<a class="headerlink" href="#is-there-a-limit-to-how-many-branches-that-one-repo-can-have" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.13.11. </span>Is there a limit to how many branches that one repo can have?<a class="headerlink" href="#is-there-a-limit-to-how-many-branches-that-one-repo-can-have" title="Permalink to this headline">#</a></h3>
 <p>No.</p>
 </section>
 <section id="will-what-we-learned-today-help-to-correct-mistakes-we-make-while-using-git-locally">
-<h3>Will what we learned today help to correct mistakes we make while using Git locally?<a class="headerlink" href="#will-what-we-learned-today-help-to-correct-mistakes-we-make-while-using-git-locally" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.13.12. </span>Will what we learned today help to correct mistakes we make while using Git locally?<a class="headerlink" href="#will-what-we-learned-today-help-to-correct-mistakes-we-make-while-using-git-locally" title="Permalink to this headline">#</a></h3>
 <p>Yes.</p>
 </section>
 <section id="will-local-commit-hashes-always-match-with-the-git-servers">
-<h3>will local commit hashes always match with the git servers?<a class="headerlink" href="#will-local-commit-hashes-always-match-with-the-git-servers" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.13.13. </span>will local commit hashes always match with the git servers?<a class="headerlink" href="#will-local-commit-hashes-always-match-with-the-git-servers" title="Permalink to this headline">#</a></h3>
 <p>Unless there is some hacking going on, yes.</p>
 </section>
 </section>
@@ -1519,6 +1532,20 @@ what types of programming have you seen that use key- value pairs?<div class="sd
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="2023-02-16.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">8. </span>How do programmers communicate about code?</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../activities/kwl.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">KWL Chart</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
