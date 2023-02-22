@@ -179,13 +179,6 @@ This is for a single example with specific dates, but it is similar for all futu
 
 The columns (and purple boxes) correspond to branches in your KWL repo and the yellow boxes are the things that you have to do. The "critical" box is what you have to wait for us on. The arrows represent PRs (or a local merge for the first one)
 
-```{warning}
-the diagrams are not currently rendering and I cannot figure out why exactly. 
-
-It previously worked, which suggests that an update in one of the dependencies broke the rendering somehow
-```
-
-
 
 ```{mermaid}
 sequenceDiagram
