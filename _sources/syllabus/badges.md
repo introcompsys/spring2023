@@ -182,11 +182,11 @@ The columns (and purple boxes) correspond to branches in your KWL repo and the y
 
 ```{mermaid}
 sequenceDiagram
-    participant P as prepare Feb 7
-    participant E as experience Feb 9
+    participant P as prepare Feb 21
+    participant E as experience Feb 23
     participant M as main 
-    note over P: complete prepare work<br/> between feb 7 and 9
-    note over E: run experience badge workflow <br/> at the end of class feb 9
+    note over P: complete prepare work<br/> between feb 21 and 23
+    note over E: run experience badge workflow <br/> at the end of class feb 23
     P ->> E: local merge or PR you that <br/> does not need approval
     note over E: fill in experience reflection 
     critical Badge review by instructor or TA
@@ -197,6 +197,29 @@ sequenceDiagram
         note over M: merge badge PR
     end
 ```
+
+In the end the commit sequence for this will look like the following:
+
+```{mermaid}
+gitGraph
+   commit
+   commit
+   checkout main
+   branch prepare-2023-02-21
+   checkout prepare-2023-02-21
+   commit id: "gitunderstanding.md"
+   branch experience-2023-02-23
+   checkout experience-2023-02-23
+   commit id: "initexp"
+   merge prepare-2023-02-21
+   commit id: "fillinexp"
+   commit id: "revisions" tag:"approved"
+   checkout main
+   merge experience-2023-02-23
+```
+
+Where the "approved" tag represents and approving reivew on the PR. 
+
 
 ## Review and Practice Badge 
 

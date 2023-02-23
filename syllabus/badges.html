@@ -899,11 +899,11 @@ You can see the code that generates the figure behind the “click to show” bu
 <p>The columns (and purple boxes) correspond to branches in your KWL repo and the yellow boxes are the things that you have to do. The “critical” box is what you have to wait for us on. The arrows represent PRs (or a local merge for the first one)</p>
 <div class="mermaid">
             sequenceDiagram
-    participant P as prepare Feb 7
-    participant E as experience Feb 9
+    participant P as prepare Feb 21
+    participant E as experience Feb 23
     participant M as main 
-    note over P: complete prepare work&lt;br/&gt; between feb 7 and 9
-    note over E: run experience badge workflow &lt;br/&gt; at the end of class feb 9
+    note over P: complete prepare work&lt;br/&gt; between feb 21 and 23
+    note over E: run experience badge workflow &lt;br/&gt; at the end of class feb 23
     P -&gt;&gt; E: local merge or PR you that &lt;br/&gt; does not need approval
     note over E: fill in experience reflection 
     critical Badge review by instructor or TA
@@ -913,7 +913,25 @@ You can see the code that generates the figure behind the “click to show” bu
     option when approved 
         note over M: merge badge PR
     end
-        </div></section>
+        </div><p>In the end the commit sequence for this will look like the following:</p>
+<div class="mermaid">
+            gitGraph
+   commit
+   commit
+   checkout main
+   branch prepare-2023-02-21
+   checkout prepare-2023-02-21
+   commit id: &quot;gitunderstanding.md&quot;
+   branch experience-2023-02-23
+   checkout experience-2023-02-23
+   commit id: &quot;initexp&quot;
+   merge prepare-2023-02-21
+   commit id: &quot;fillinexp&quot;
+   commit id: &quot;revisions&quot; tag:&quot;approved&quot;
+   checkout main
+   merge experience-2023-02-23
+        </div><p>Where the “approved” tag represents and approving reivew on the PR.</p>
+</section>
 <section id="review-and-practice-badge">
 <h2>Review and Practice Badge<a class="headerlink" href="#review-and-practice-badge" title="Permalink to this headline">#</a></h2>
 <p>Legend:</p>
