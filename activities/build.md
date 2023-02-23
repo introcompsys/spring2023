@@ -46,7 +46,7 @@ These can be whatever form is appropriate to your specific project. Your proposa
 ## Summary Report
 
 
-This summary report will be added to the grading contract repo as a new file `build_report_title.md` where `title` is the (title or a shortened version) from the proposal.  
+This summary report will be added to your kwl repo as a new file `build_report_title.md` where `title` is the (title or a shortened version) from the proposal.  
 
 This summary report have the following sections.  
 1. **Abstract** a one paragraph "abstract" type overview of what your project consists of.  This should be written for a general audience, something that anyone who has taken up to 211 could understand. It should follow guidance of a scientific abstract.
