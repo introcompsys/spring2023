@@ -421,3 +421,11 @@ You may earn at most one build badge per month, with final grading in May. To ea
 ```{important}
 this includes minor corrections relative to the readme in the template provided
 ``` -->
+
+## Academic Honesty Violation Penalty
+
+If you are found to submit prismia responses that do not reflect your own thinking or that of discussion with peers as directed, the experience badge for that class session will be ineligible. 
+
+If you are found to submit work that is not your own for a review or prepare badge, the review and prepare badges for that date will be ineligible and the penalty free zone terms will no longer apply to the first six badges. 
+
+If you are found to submit work that is not your own for an explore or build  badge, that badge will not be awarded and your maximum badges at the level possible will drop to 2/3 of the maximum possible. 
