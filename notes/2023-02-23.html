@@ -7,30 +7,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>10. How does git really work? &#8212; Computer Systems and Programming Tools</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/course_admonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -38,12 +45,12 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -53,61 +60,746 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2023-02-23';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="KWL Chart" href="../activities/kwl.html" />
     <link rel="prev" title="9. What is git?" href="2023-02-21.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="None">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/systools.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/systools.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
         
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../syllabus/about.html">
+                        Computer Systems and Programming Tools
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../syllabus/tools.html">
+                        Tools and Resources
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../syllabus/grading.html">
+                        Grading
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../syllabus/badges.html">
+                        (experimental) Badge Visualizations
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../syllabus/schedule.html">
+                        Schedule
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../syllabus/uri_resources.html">
+                        Support
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../syllabus/uri_statements.html">
+                        General URI Policies
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../syllabus/communication.html">
+                        Office Hours & Communication
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="2023-01-24.html">
+                        Welcome and Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="2023-01-26.html">
+                        Course Logistics and Learning
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="2023-01-31.html">
+                        Bash intro & git offline
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="2023-02-02.html">
+                        How can I work with branches offline?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="2023-02-07.html">
+                        When do I get an advantage from git and bash?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="2023-02-09.html">
+                        What if I edit the file in two places?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="2023-02-14.html">
+                        Why are these tools like this?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="2023-02-16.html">
+                        How do programmers communicate about code?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="2023-02-21.html">
+                        What is git?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        How does git really work?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../activities/kwl.html">
+                        KWL Chart
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../activities/team.html">
+                        Team Repo
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../activities/review.html">
+                        Review Badges
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../activities/prepare.html">
+                        Prepare for the next class
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../activities/practice.html">
+                        More Practice Badges
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../genindex.html">
+                        KWL File Information
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../activities/explore.html">
+                        Explore Badges
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../activities/build.html">
+                        Build Badges
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../faq/syllabus.html">
+                        Syllabus and Grading FAQ
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../faq/github.html">
+                        Git and GitHub
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../resources/glossary.html">
+                        Glossary
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../resources/tips.html">
+                        General Tips and Resources
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../resources/learning.html">
+                        How to Study in this class
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../resources/github.html">
+                        GitHub Interface reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../resources/gettinghelp.html">
+                        Getting Help with Programming
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../resources/organization.html">
+                        Getting Organized for class
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../resources/more_info_on_cpus.html">
+                        More info on cpus
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../resources/windows.html">
+                        Windows Help & Notes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://introcompsys.github.io/spring2022/resources/testimonials.html">
+                        Advice from Spring 2022 Students
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
       
       
-      <img src="../_static/systools.png" class="logo" alt="logo">
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
       
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
       
-      <h1 class="site-logo" id="site-title">Computer Systems and Programming Tools</h1>
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../syllabus/about.html">
+                        Computer Systems and Programming Tools
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../syllabus/tools.html">
+                        Tools and Resources
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../syllabus/grading.html">
+                        Grading
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../syllabus/badges.html">
+                        (experimental) Badge Visualizations
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../syllabus/schedule.html">
+                        Schedule
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../syllabus/uri_resources.html">
+                        Support
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../syllabus/uri_statements.html">
+                        General URI Policies
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../syllabus/communication.html">
+                        Office Hours & Communication
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="2023-01-24.html">
+                        Welcome and Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="2023-01-26.html">
+                        Course Logistics and Learning
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="2023-01-31.html">
+                        Bash intro & git offline
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="2023-02-02.html">
+                        How can I work with branches offline?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="2023-02-07.html">
+                        When do I get an advantage from git and bash?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="2023-02-09.html">
+                        What if I edit the file in two places?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="2023-02-14.html">
+                        Why are these tools like this?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="2023-02-16.html">
+                        How do programmers communicate about code?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="2023-02-21.html">
+                        What is git?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        How does git really work?
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../activities/kwl.html">
+                        KWL Chart
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../activities/team.html">
+                        Team Repo
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../activities/review.html">
+                        Review Badges
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../activities/prepare.html">
+                        Prepare for the next class
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../activities/practice.html">
+                        More Practice Badges
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../genindex.html">
+                        KWL File Information
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../activities/explore.html">
+                        Explore Badges
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../activities/build.html">
+                        Build Badges
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../faq/syllabus.html">
+                        Syllabus and Grading FAQ
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../faq/github.html">
+                        Git and GitHub
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../resources/glossary.html">
+                        Glossary
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../resources/tips.html">
+                        General Tips and Resources
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../resources/learning.html">
+                        How to Study in this class
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../resources/github.html">
+                        GitHub Interface reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../resources/gettinghelp.html">
+                        Getting Help with Programming
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../resources/organization.html">
+                        Getting Organized for class
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../resources/more_info_on_cpus.html">
+                        More info on cpus
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../resources/windows.html">
+                        Windows Help & Notes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://introcompsys.github.io/spring2022/resources/testimonials.html">
+                        Advice from Spring 2022 Students
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">
+  
+
+
+<a class="navbar-brand logo" href="../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/systools.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/systools.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    </div>
+    <div class="sidebar-start-items__item">
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -116,784 +808,385 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Syllabus
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../syllabus/about.html">
-   Computer Systems and Programming Tools
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../syllabus/tools.html">
-   Tools and Resources
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../syllabus/grading.html">
-   Grading
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../syllabus/badges.html">
-   (experimental) Badge Visualizations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../syllabus/schedule.html">
-   Schedule
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../syllabus/uri_resources.html">
-   Support
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../syllabus/uri_statements.html">
-   General URI Policies
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../syllabus/communication.html">
-   Office Hours &amp; Communication
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/about.html">Computer Systems and Programming Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/tools.html">Tools and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/badges.html">(experimental) Badge Visualizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/schedule.html">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_resources.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_statements.html">General URI Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/communication.html">Office Hours &amp; Communication</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Notes
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="2023-01-24.html">
-   1. Welcome and Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2023-01-26.html">
-   2. Course Logistics and Learning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2023-01-31.html">
-   3. Bash intro &amp; git offline
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2023-02-02.html">
-   4. How can I work with branches offline?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2023-02-07.html">
-   5. When do I get an advantage from git and bash?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2023-02-09.html">
-   6. What if I edit the file in two places?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2023-02-14.html">
-   7. Why are these tools like this?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2023-02-16.html">
-   8. How do programmers communicate about code?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2023-02-21.html">
-   9. What
-   <em>
-    is
-   </em>
-   git?
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   10. How does git
-   <em>
-    really
-   </em>
-   work?
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="2023-01-24.html">1. Welcome and Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-01-26.html">2. Course Logistics and Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-01-31.html">3. Bash intro &amp; git offline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-02.html">4. How can I work with branches offline?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-07.html">5. When do I get an advantage from git and bash?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-09.html">6. What if I edit the file in two places?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-14.html">7. Why are these tools like this?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-16.html">8. How do programmers communicate about code?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-21.html">9. What <em>is</em> git?</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. How does git <em>really</em> work?</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Activities
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Activities</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../activities/kwl.html">
-   KWL Chart
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../activities/team.html">
-   Team Repo
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../activities/review.html">
-   Review Badges
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../activities/prepare.html">
-   Prepare for the next class
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../activities/practice.html">
-   More Practice Badges
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../genindex.html">
-   KWL File Information
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../activities/explore.html">
-   Explore Badges
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../activities/build.html">
-   Build Badges
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/kwl.html">KWL Chart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/team.html">Team Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/review.html">Review Badges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/prepare.html">Prepare for the next class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/practice.html">More Practice Badges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">KWL File Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/explore.html">Explore Badges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/build.html">Build Badges</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  FAQ
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../faq/syllabus.html">
-   Syllabus and Grading FAQ
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../faq/github.html">
-   Git and GitHub
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/syllabus.html">Syllabus and Grading FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/github.html">Git and GitHub</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Resources
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../resources/glossary.html">
-   Glossary
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../resources/tips.html">
-   General Tips and Resources
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../resources/learning.html">
-   How to Study in this class
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../resources/github.html">
-   GitHub Interface reference
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../resources/gettinghelp.html">
-   Getting Help with Programming
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../resources/organization.html">
-   Getting Organized for class
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../resources/more_info_on_cpus.html">
-   More info on cpus
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../resources/windows.html">
-   Windows Help &amp; Notes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://introcompsys.github.io/spring2022/resources/testimonials.html">
-   Advice from Spring 2022 Students
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/tips.html">General Tips and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/learning.html">How to Study in this class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/github.html">GitHub Interface reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/gettinghelp.html">Getting Help with Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/organization.html">Getting Organized for class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/more_info_on_cpus.html">More info on cpus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/windows.html">Windows Help &amp; Notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://introcompsys.github.io/spring2022/resources/testimonials.html">Advice from Spring 2022 Students</a></li>
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
+</nav>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  </div>
+  
 
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
 
-          
+  
+  <div id="rtd-footer-container"></div>
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
+      </div>
+      <main id="main-content" class="bd-main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
 
 
 
 <div class="col py-1 d-flex header-article-main">
     <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
+            <span class="fa-solid fa-bars"></span>
+        </label>
     </div>
     <div class="header-article__right">
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
+  class="btn btn-sm"
   data-toggle="tooltip"
 data-placement="bottom"
 title="Fullscreen mode"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<div class="dropdown dropdown-repository-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/introcompsys/spring2023# The URL to your book's repository"
-   class="headerbtn"
+  <ul class="dropdown-menu">
+      <li><a href="https://github.com/introcompsys/spring2023# The URL to your book's repository" target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Source repository"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
-<span class="headerbtn__text-container">repository</span>
+<span class="btn__text-container">repository</span>
 </a>
-
-      </li>
+</a>
       
-      <li>
-        <a href="https://github.com/introcompsys/spring2023# The URL to your book's repository/issues/new?title=Issue%20on%20page%20%2Fnotes/2023-02-23.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
+      <li><a href="https://github.com/introcompsys/spring2023# The URL to your book's repository/issues/new?title=Issue%20on%20page%20%2Fnotes/2023-02-23.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Open an issue"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-lightbulb"></i>
   </span>
-<span class="headerbtn__text-container">open issue</span>
+<span class="btn__text-container">open issue</span>
 </a>
-
-      </li>
+</a>
       
-      <li>
-        <a href="https://github.com/introcompsys/spring2023# The URL to your book's repository/edit/main/notes/2023-02-23.md"
-   class="headerbtn"
+      <li><a href="https://github.com/introcompsys/spring2023# The URL to your book's repository/edit/main/notes/2023-02-23.md" target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Edit this page"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-pencil-alt"></i>
   </span>
-<span class="headerbtn__text-container">suggest edit</span>
+<span class="btn__text-container">suggest edit</span>
 </a>
-
-      </li>
+</a>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/notes/2023-02-23.md"
-   class="headerbtn"
+  <ul class="dropdown-menu">
+      <li><a href="../_sources/notes/2023-02-23.md" target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Download source file"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="btn__text-container">.md</span>
 </a>
-
-      </li>
+</a>
       
       <li>
-        
 <button onclick="printPdf(this)"
-  class="headerbtn"
+  class="btn btn-sm dropdown-item"
   data-toggle="tooltip"
 data-placement="left"
 title="Print to PDF"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</a>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
+            <span class="fa-solid fa-list"></span>
+        </label>
     </div>
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   10. How does git
-   <em>
-    really
-   </em>
-   work?
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-a-repo-from-scratch">
-     10.1. Creating a repo from scratch
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#searching-the-file-system">
-     10.2. Searching the file system
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#git-objects">
-     10.3. Git Objects
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#hashing-objects">
-       10.3.1. Hashing objects
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#viewing-git-objects">
-       10.3.2. Viewing git objects
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hashing-a-file">
-   11. Hashing a file
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#updating-the-index">
-     11.1. Updating the Index
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-a-commit-manually">
-     11.2. Creating a commit manually
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#there-are-many-git-objects">
-       11.2.1. There are many git objects
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#review-todays-class">
-     11.3. Review today’s class
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#prepare-for-next-class">
-     11.4. Prepare for Next Class
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#more-practice">
-     11.5. More Practice
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#experience-report-evidence">
-     11.6. Experience Report Evidence
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#questions-after-todays-class">
-     11.7. Questions After Today’s Class
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#why-is-git-so-fast-it-does-lots-of-reading-and-writing-from-files-which-is-a-relatively-slow-process-but-does-this-all-very-quickly">
-       11.7.1. Why is Git so fast? It does lots of reading and writing from files which is a (relatively) slow process but does this all very quickly.
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#what-scenarios-would-we-use-this-over-the-way-we-have-done-them-before">
-       11.7.2. What scenarios would we use this over the way we have done them before?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-does-the-tree-structure-properly-become-formatted-without-specifying-the-branch-that-you-want-it-to-start-at-or-be-based-on">
-       11.7.3. How does the tree structure properly become formatted without specifying the branch that you want it to start at or be based on?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#when-files-that-are-not-staged-get-staged-does-the-file-thats-already-staged-change">
-       11.7.4. When files that are not staged get staged, does the file thats already staged change?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#are-hashes-just-a-number-indentifier-for-an-object-is-there-a-way-to-change-them">
-       11.7.5. Are hashes just a number indentifier for an object? Is there a way to change them?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#what-is-the-difference-between-random-and-deterministic">
-       11.7.6. What is the difference between random and deterministic?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-does-the-connection-work-between-our-devices-and-github">
-       11.7.7. How does the connection work between our devices and GitHub?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-is-this-useful-on-the-day-to-day">
-       11.7.8. How is this useful on the day to day?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-common-is-it-to-use-git-plumbing-commands">
-       11.7.9. How common is it to use git plumbing commands?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#when-does-hashing-occur-after-any-change-is-made-to-a-file-or-when-a-git-command-is-ran">
-       11.7.10. When does hashing occur, after any change is made to a file? Or when a git command is ran?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#what-happens-if-two-hashes-are-the-same">
-       11.7.11. What happens if two hashes are the same?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#is-a-tree-a-snapshot-of-the-repo-at-the-time">
-       11.7.12. Is a tree a snapshot of the repo at the time?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#if-hashes-generated-by-git-are-deterministic-why-is-it-impossible-to-convert-a-hash-back-into-the-commits-contents">
-       11.7.13. if hashes generated by git are deterministic, why is it impossible to convert a hash back into the commit’s contents?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-to-access-remote-branches-located-in-at-origin">
-       11.7.14. How to access remote branches located in/at origin?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#is-using-the-write-tree-command-the-same-as-creating-a-new-branch">
-       11.7.15. Is using the write tree command the same as creating a new branch?
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
-</div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>How does git really work?</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   10. How does git
-   <em>
-    really
-   </em>
-   work?
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-a-repo-from-scratch">
-     10.1. Creating a repo from scratch
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#searching-the-file-system">
-     10.2. Searching the file system
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#git-objects">
-     10.3. Git Objects
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#hashing-objects">
-       10.3.1. Hashing objects
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#viewing-git-objects">
-       10.3.2. Viewing git objects
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hashing-a-file">
-   11. Hashing a file
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#updating-the-index">
-     11.1. Updating the Index
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-a-commit-manually">
-     11.2. Creating a commit manually
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#there-are-many-git-objects">
-       11.2.1. There are many git objects
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#review-todays-class">
-     11.3. Review today’s class
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#prepare-for-next-class">
-     11.4. Prepare for Next Class
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#more-practice">
-     11.5. More Practice
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#experience-report-evidence">
-     11.6. Experience Report Evidence
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#questions-after-todays-class">
-     11.7. Questions After Today’s Class
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#why-is-git-so-fast-it-does-lots-of-reading-and-writing-from-files-which-is-a-relatively-slow-process-but-does-this-all-very-quickly">
-       11.7.1. Why is Git so fast? It does lots of reading and writing from files which is a (relatively) slow process but does this all very quickly.
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#what-scenarios-would-we-use-this-over-the-way-we-have-done-them-before">
-       11.7.2. What scenarios would we use this over the way we have done them before?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-does-the-tree-structure-properly-become-formatted-without-specifying-the-branch-that-you-want-it-to-start-at-or-be-based-on">
-       11.7.3. How does the tree structure properly become formatted without specifying the branch that you want it to start at or be based on?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#when-files-that-are-not-staged-get-staged-does-the-file-thats-already-staged-change">
-       11.7.4. When files that are not staged get staged, does the file thats already staged change?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#are-hashes-just-a-number-indentifier-for-an-object-is-there-a-way-to-change-them">
-       11.7.5. Are hashes just a number indentifier for an object? Is there a way to change them?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#what-is-the-difference-between-random-and-deterministic">
-       11.7.6. What is the difference between random and deterministic?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-does-the-connection-work-between-our-devices-and-github">
-       11.7.7. How does the connection work between our devices and GitHub?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-is-this-useful-on-the-day-to-day">
-       11.7.8. How is this useful on the day to day?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-common-is-it-to-use-git-plumbing-commands">
-       11.7.9. How common is it to use git plumbing commands?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#when-does-hashing-occur-after-any-change-is-made-to-a-file-or-when-a-git-command-is-ran">
-       11.7.10. When does hashing occur, after any change is made to a file? Or when a git command is ran?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#what-happens-if-two-hashes-are-the-same">
-       11.7.11. What happens if two hashes are the same?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#is-a-tree-a-snapshot-of-the-repo-at-the-time">
-       11.7.12. Is a tree a snapshot of the repo at the time?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#if-hashes-generated-by-git-are-deterministic-why-is-it-impossible-to-convert-a-hash-back-into-the-commits-contents">
-       11.7.13. if hashes generated by git are deterministic, why is it impossible to convert a hash back into the commit’s contents?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-to-access-remote-branches-located-in-at-origin">
-       11.7.14. How to access remote branches located in/at origin?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#is-using-the-write-tree-command-the-same-as-creating-a-new-branch">
-       11.7.15. Is using the write tree command the same as creating a new branch?
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
             </div>
-            <main id="main-content" role="main">
-                
-              <div>
-                
+            
+            
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>How does git really work?</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-repo-from-scratch">
+   10.1. Creating a repo from scratch
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#searching-the-file-system">
+   10.2. Searching the file system
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-objects">
+   10.3. Git Objects
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hashing-objects">
+     10.3.1. Hashing objects
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#viewing-git-objects">
+     10.3.2. Viewing git objects
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hashing-a-file">
+     10.3.3. Hashing a file
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#updating-the-index">
+   10.4. Updating the Index
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-commit-manually">
+   10.5. Creating a commit manually
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#there-are-many-git-objects">
+     10.5.1. There are many git objects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-todays-class">
+   10.6. Review today’s class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   10.7. Prepare for Next Class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   10.8. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experience-report-evidence">
+   10.9. Experience Report Evidence
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-todays-class">
+   10.10. Questions After Today’s Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-is-git-so-fast-it-does-lots-of-reading-and-writing-from-files-which-is-a-relatively-slow-process-but-does-this-all-very-quickly">
+     10.10.1. Why is Git so fast? It does lots of reading and writing from files which is a (relatively) slow process but does this all very quickly.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-scenarios-would-we-use-this-over-the-way-we-have-done-them-before">
+     10.10.2. What scenarios would we use this over the way we have done them before?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-does-the-tree-structure-properly-become-formatted-without-specifying-the-branch-that-you-want-it-to-start-at-or-be-based-on">
+     10.10.3. How does the tree structure properly become formatted without specifying the branch that you want it to start at or be based on?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-files-that-are-not-staged-get-staged-does-the-file-thats-already-staged-change">
+     10.10.4. When files that are not staged get staged, does the file thats already staged change?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-hashes-just-a-number-indentifier-for-an-object-is-there-a-way-to-change-them">
+     10.10.5. Are hashes just a number indentifier for an object? Is there a way to change them?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-difference-between-random-and-deterministic">
+     10.10.6. What is the difference between random and deterministic?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-does-the-connection-work-between-our-devices-and-github">
+     10.10.7. How does the connection work between our devices and GitHub?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-is-this-useful-on-the-day-to-day">
+     10.10.8. How is this useful on the day to day?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-common-is-it-to-use-git-plumbing-commands">
+     10.10.9. How common is it to use git plumbing commands?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-does-hashing-occur-after-any-change-is-made-to-a-file-or-when-a-git-command-is-ran">
+     10.10.10. When does hashing occur, after any change is made to a file? Or when a git command is ran?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-happens-if-two-hashes-are-the-same">
+     10.10.11. What happens if two hashes are the same?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-a-tree-a-snapshot-of-the-repo-at-the-time">
+     10.10.12. Is a tree a snapshot of the repo at the time?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-hashes-generated-by-git-are-deterministic-why-is-it-impossible-to-convert-a-hash-back-into-the-commits-contents">
+     10.10.13. if hashes generated by git are deterministic, why is it impossible to convert a hash back into the commit’s contents?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-access-remote-branches-located-in-at-origin">
+     10.10.14. How to access remote branches located in/at origin?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-using-the-write-tree-command-the-same-as-creating-a-new-branch">
+     10.10.15. Is using the write tree command the same as creating a new branch?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+            <article class="bd-article" role="main">
+              
   <section class="tex2jax_ignore mathjax_ignore" id="how-does-git-really-work">
 <h1><span class="section-number">10. </span>How does git <em>really</em> work?<a class="headerlink" href="#how-does-git-really-work" title="Permalink to this headline">#</a></h1>
 <p>Today we will dig into how git really works.  This will be a deep dive and provide a lot of details about git.  It will conceptually reinforce important concepts and practically give you some ideas about how you might fix things when things go wrong.</p>
@@ -1161,10 +1454,8 @@ title="Print to PDF"
 </div>
 <p>This is the content that we put in, as expected.</p>
 </section>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="hashing-a-file">
-<h1><span class="section-number">11. </span>Hashing a file<a class="headerlink" href="#hashing-a-file" title="Permalink to this headline">#</a></h1>
+<section id="hashing-a-file">
+<h3><span class="section-number">10.3.3. </span>Hashing a file<a class="headerlink" href="#hashing-a-file" title="Permalink to this headline">#</a></h3>
 <p>let’s create a file</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;version 1&quot;</span> <span class="o">&gt;</span> <span class="n">test</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
@@ -1278,8 +1569,10 @@ title="Print to PDF"
     class 4b825d{
         (tree)
     }
-        </div><section id="updating-the-index">
-<h2><span class="section-number">11.1. </span>Updating the Index<a class="headerlink" href="#updating-the-index" title="Permalink to this headline">#</a></h2>
+        </div></section>
+</section>
+<section id="updating-the-index">
+<h2><span class="section-number">10.4. </span>Updating the Index<a class="headerlink" href="#updating-the-index" title="Permalink to this headline">#</a></h2>
 <p>Now, we can add our file as it is to the index.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">update</span><span class="o">-</span><span class="n">index</span> <span class="o">--</span><span class="n">add</span> <span class="o">--</span><span class="n">cacheinfo</span> <span class="mi">100644</span> \
  <span class="mi">83</span><span class="n">baae61804e65cc73a7201a7252750c76066a30</span> <span class="n">test</span><span class="o">.</span><span class="n">txt</span>
@@ -1472,7 +1765,7 @@ title="Print to PDF"
         </div><p>This only keeps track of th objects, there are also still the HEAD that we have not dealt with and the index.</p>
 </section>
 <section id="creating-a-commit-manually">
-<h2><span class="section-number">11.2. </span>Creating a commit manually<a class="headerlink" href="#creating-a-commit-manually" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">10.5. </span>Creating a commit manually<a class="headerlink" href="#creating-a-commit-manually" title="Permalink to this headline">#</a></h2>
 <p>We can echo a commit message through a pipe into the commit-tree plumbing function to commit a particular hashed object.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;first commit&quot;</span> <span class="o">|</span> <span class="n">git</span> <span class="n">commit</span><span class="o">-</span><span class="n">tree</span> <span class="n">d8329</span>
 </pre></div>
@@ -1540,13 +1833,13 @@ title="Print to PDF"
     }
     class 188a75{
         tree d8329f
-        author time
+        author name
         commiter time
     }
     d8329f --|&gt; 83baae
     188a75 --|&gt; d8329f
         </div><section id="there-are-many-git-objects">
-<h3><span class="section-number">11.2.1. </span>There are many git objects<a class="headerlink" href="#there-are-many-git-objects" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">10.5.1. </span>There are many git objects<a class="headerlink" href="#there-are-many-git-objects" title="Permalink to this headline">#</a></h3>
 <p>Remember how many objects thre weere in the github inclass repo</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../</span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span>
 </pre></div>
@@ -1642,8 +1935,8 @@ title="Print to PDF"
 </section>
 </section>
 <section id="review-todays-class">
-<h2><span class="section-number">11.3. </span>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h2>
-<ol class="simple">
+<h2><span class="section-number">10.6. </span>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h2>
+<ol class="arabic simple">
 <li><p>Review the notes</p></li>
 <li><p>Make a table in <span class="target" id="index-0"></span>gitplumbingreview.md in your KWL repo that relates the two types of git commands we have seen: plubming and porcelain. The table should have two columns, one for each type of commands.  Each row should have one git plumbing command and at least one of the corresponding git porcelain command(s). Include three rows: git add, git commit, and git status.</p></li>
 <li><p>Contribute to your group repo and review a classmate’s contribution. Include a link to your contribution and review in your badge PR comment using markdown link syntax.</p></li>
@@ -1653,8 +1946,8 @@ title="Print to PDF"
 </div>
 </section>
 <section id="prepare-for-next-class">
-<h2><span class="section-number">11.4. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
-<ol class="simple">
+<h2><span class="section-number">10.7. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
+<ol class="arabic simple">
 <li><p>Start recording notes on <em>how</em> you use IDEs for the next couple of weeks using the template file in the course notes (will provide prompts and tips). We will come back to these notes in class later, but it is best to record over a time period instead of trying to remember at that time. Store your notes in your kwl repo in <span class="target" id="index-1"></span>idethoughts.md on an <code class="docutils literal notranslate"><span class="pre">ide_prep</span></code> branch. <strong>This is prep for the week after spring break, it does not have to be in the Feb 28 Experience Badge.</strong></p></li>
 <li><p>make sure that you have a <code class="docutils literal notranslate"><span class="pre">test</span></code> git repo that matches the notes. <strong>this is very important and if you do not have it you will not be able to follow along in class on Feb 28</strong></p></li>
 </ol>
@@ -1670,8 +1963,8 @@ title="Print to PDF"
 </div>
 </section>
 <section id="more-practice">
-<h2><span class="section-number">11.5. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
-<ol class="simple">
+<h2><span class="section-number">10.8. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
+<ol class="arabic simple">
 <li><p>Review the notes</p></li>
 <li><p>Read about <a class="reference external" href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects">git internals</a> to review what we did in class in greater detail. Make <span class="target" id="index-2"></span>gitplumbingdetail.md. Create a visualization that is compatible with version control (eg can be viewed in plain text and compared line by line, such as table or mermaid graph) that shows the relationship between at least three porcelain commands and their corresponding plumbing commands.</p></li>
 <li><p>Create <span class="target" id="index-3"></span>gitislike.md and explain main git operations we have seen (add, commit, push) in your own words in a way that will either help you remember or how you would explain it to someone else at a high level. This might be analogies or explanations using other programming concepts or concepts from a hobby.</p></li>
@@ -1679,7 +1972,7 @@ title="Print to PDF"
 </ol>
 </section>
 <section id="experience-report-evidence">
-<h2><span class="section-number">11.6. </span>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">10.9. </span>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>You need to have a test repo that matches this for class on tuesday.</p>
@@ -1689,72 +1982,73 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>then append the contents of your commit object to that file.</p>
+<p>Move the <code class="docutils literal notranslate"><span class="pre">testobj.md</span></code> to your kwl repo in the experiences folder.</p>
 </section>
 <section id="questions-after-todays-class">
-<h2><span class="section-number">11.7. </span>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">10.10. </span>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
 <section id="why-is-git-so-fast-it-does-lots-of-reading-and-writing-from-files-which-is-a-relatively-slow-process-but-does-this-all-very-quickly">
-<h3><span class="section-number">11.7.1. </span>Why is Git so fast? It does lots of reading and writing from files which is a (relatively) slow process but does this all very quickly.<a class="headerlink" href="#why-is-git-so-fast-it-does-lots-of-reading-and-writing-from-files-which-is-a-relatively-slow-process-but-does-this-all-very-quickly" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">10.10.1. </span>Why is Git so fast? It does lots of reading and writing from files which is a (relatively) slow process but does this all very quickly.<a class="headerlink" href="#why-is-git-so-fast-it-does-lots-of-reading-and-writing-from-files-which-is-a-relatively-slow-process-but-does-this-all-very-quickly" title="Permalink to this headline">#</a></h3>
 <p>It is all structured files that are designed to be fast. Most are small and they are all written by git, there is no case handling or user decisions to parse.</p>
 </section>
 <section id="what-scenarios-would-we-use-this-over-the-way-we-have-done-them-before">
-<h3><span class="section-number">11.7.2. </span>What scenarios would we use this over the way we have done them before?<a class="headerlink" href="#what-scenarios-would-we-use-this-over-the-way-we-have-done-them-before" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">10.10.2. </span>What scenarios would we use this over the way we have done them before?<a class="headerlink" href="#what-scenarios-would-we-use-this-over-the-way-we-have-done-them-before" title="Permalink to this headline">#</a></h3>
 <p>You would not use this way very often.  It is helpful to work through it to build up an understanding of what actually happens.  It basically allows us to slow down and do things one step at a time.</p>
 </section>
 <section id="how-does-the-tree-structure-properly-become-formatted-without-specifying-the-branch-that-you-want-it-to-start-at-or-be-based-on">
-<h3><span class="section-number">11.7.3. </span>How does the tree structure properly become formatted without specifying the branch that you want it to start at or be based on?<a class="headerlink" href="#how-does-the-tree-structure-properly-become-formatted-without-specifying-the-branch-that-you-want-it-to-start-at-or-be-based-on" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">10.10.3. </span>How does the tree structure properly become formatted without specifying the branch that you want it to start at or be based on?<a class="headerlink" href="#how-does-the-tree-structure-properly-become-formatted-without-specifying-the-branch-that-you-want-it-to-start-at-or-be-based-on" title="Permalink to this headline">#</a></h3>
 <p>The tree is a part of the <em>snapshot</em> of the files, it looks only at what is in the index.  That is why our first one was empty.  The tree is independent from branches, we will see how branches relate to this next week.</p>
 </section>
 <section id="when-files-that-are-not-staged-get-staged-does-the-file-thats-already-staged-change">
-<h3><span class="section-number">11.7.4. </span>When files that are not staged get staged, does the file thats already staged change?<a class="headerlink" href="#when-files-that-are-not-staged-get-staged-does-the-file-thats-already-staged-change" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">10.10.4. </span>When files that are not staged get staged, does the file thats already staged change?<a class="headerlink" href="#when-files-that-are-not-staged-get-staged-does-the-file-thats-already-staged-change" title="Permalink to this headline">#</a></h3>
 <p>When you add a file to the staging area, it writes it to the <code class="docutils literal notranslate"><span class="pre">.git</span></code> direcotry, but it does not tell you what the hash of it is.  So, it is stored, but you have no way to know how to get it back directly.</p>
 <p>Remember, in the case we had today, we staged the already hashed version 1 of the file when our working directory already had only version 2.</p>
 <p>In our example, we had a version of test.txt that wasn’t staged and version that was committed. If we staged the second version of test.txt what would hapen to the already staged version. Since the first version is committed, we could still get back to that version.  Each one of these is an object in the .git directory so it comes down to a matter of finding it in there.</p>
 </section>
 <section id="are-hashes-just-a-number-indentifier-for-an-object-is-there-a-way-to-change-them">
-<h3><span class="section-number">11.7.5. </span>Are hashes just a number indentifier for an object? Is there a way to change them?<a class="headerlink" href="#are-hashes-just-a-number-indentifier-for-an-object-is-there-a-way-to-change-them" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">10.10.5. </span>Are hashes just a number indentifier for an object? Is there a way to change them?<a class="headerlink" href="#are-hashes-just-a-number-indentifier-for-an-object-is-there-a-way-to-change-them" title="Permalink to this headline">#</a></h3>
 <p>git primarily uses them as an identifier, but it also uses it to verify that the content is what it should be. There is no way to change them becaus that would break the security.</p>
 </section>
 <section id="what-is-the-difference-between-random-and-deterministic">
-<h3><span class="section-number">11.7.6. </span>What is the difference between random and deterministic?<a class="headerlink" href="#what-is-the-difference-between-random-and-deterministic" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">10.10.6. </span>What is the difference between random and deterministic?<a class="headerlink" href="#what-is-the-difference-between-random-and-deterministic" title="Permalink to this headline">#</a></h3>
 <p>Random means that it comes from probability, for example rolling a die or flipping a coin. Deterministic dervies from determined, it means there is a fixed outcome.</p>
 <p>If you run a random function two times with the same input, it can give different values.</p>
 <p>If you run a deterministic two times (or as many as you want) it will always have the same value.</p>
 </section>
 <section id="how-does-the-connection-work-between-our-devices-and-github">
-<h3><span class="section-number">11.7.7. </span>How does the connection work between our devices and GitHub?<a class="headerlink" href="#how-does-the-connection-work-between-our-devices-and-github" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">10.10.7. </span>How does the connection work between our devices and GitHub?<a class="headerlink" href="#how-does-the-connection-work-between-our-devices-and-github" title="Permalink to this headline">#</a></h3>
 <p>git does not require that at all.  SO far in the test repo it is all 100% local. git uses regular web protocols HTTPS and SSH to send content to servers.</p>
 </section>
 <section id="how-is-this-useful-on-the-day-to-day">
-<h3><span class="section-number">11.7.8. </span>How is this useful on the day to day?<a class="headerlink" href="#how-is-this-useful-on-the-day-to-day" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">10.10.8. </span>How is this useful on the day to day?<a class="headerlink" href="#how-is-this-useful-on-the-day-to-day" title="Permalink to this headline">#</a></h3>
 <p>Understanding th different types of objects in git means that you will understand what git does and know how to accomplish different goals.</p>
 <p>For example, once on a collaborative project, I realized that a collaborator had deleted content that we actually needed and added content we needed to keep in the same commit.  Then we had made several more commits that impacted both files.  Because I understood how git actually works, I was able to use the staging area and git revert carefully in order to undo the delete part of the commit and keep the adding part of that commit.</p>
 </section>
 <section id="how-common-is-it-to-use-git-plumbing-commands">
-<h3><span class="section-number">11.7.9. </span>How common is it to use git plumbing commands?<a class="headerlink" href="#how-common-is-it-to-use-git-plumbing-commands" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">10.10.9. </span>How common is it to use git plumbing commands?<a class="headerlink" href="#how-common-is-it-to-use-git-plumbing-commands" title="Permalink to this headline">#</a></h3>
 <p>First note that this is still not manually editing the .git directory.  We are still relying on git, just smaller bits at a time.  It is a thing to do in a pinch, when things are stuck or you get in a tricky thing you need to undo.</p>
 </section>
 <section id="when-does-hashing-occur-after-any-change-is-made-to-a-file-or-when-a-git-command-is-ran">
-<h3><span class="section-number">11.7.10. </span>When does hashing occur, after any change is made to a file? Or when a git command is ran?<a class="headerlink" href="#when-does-hashing-occur-after-any-change-is-made-to-a-file-or-when-a-git-command-is-ran" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">10.10.10. </span>When does hashing occur, after any change is made to a file? Or when a git command is ran?<a class="headerlink" href="#when-does-hashing-occur-after-any-change-is-made-to-a-file-or-when-a-git-command-is-ran" title="Permalink to this headline">#</a></h3>
 <p>Only when a git command is run.</p>
 </section>
 <section id="what-happens-if-two-hashes-are-the-same">
-<h3><span class="section-number">11.7.11. </span>What happens if two hashes are the same?<a class="headerlink" href="#what-happens-if-two-hashes-are-the-same" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">10.10.11. </span>What happens if two hashes are the same?<a class="headerlink" href="#what-happens-if-two-hashes-are-the-same" title="Permalink to this headline">#</a></h3>
 <p>this is called a collision. We will talk about it next week. git is set up to prevent this.</p>
 </section>
 <section id="is-a-tree-a-snapshot-of-the-repo-at-the-time">
-<h3><span class="section-number">11.7.12. </span>Is a tree a snapshot of the repo at the time?<a class="headerlink" href="#is-a-tree-a-snapshot-of-the-repo-at-the-time" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">10.10.12. </span>Is a tree a snapshot of the repo at the time?<a class="headerlink" href="#is-a-tree-a-snapshot-of-the-repo-at-the-time" title="Permalink to this headline">#</a></h3>
 <p>it is a snapshot of everything that is staged.  it is the whole files, not only the changes.  git status shows us the fils changes, but the tree also points to the corresponding version of the other files.</p>
 </section>
 <section id="if-hashes-generated-by-git-are-deterministic-why-is-it-impossible-to-convert-a-hash-back-into-the-commits-contents">
-<h3><span class="section-number">11.7.13. </span>if hashes generated by git are deterministic, why is it impossible to convert a hash back into the commit’s contents?<a class="headerlink" href="#if-hashes-generated-by-git-are-deterministic-why-is-it-impossible-to-convert-a-hash-back-into-the-commits-contents" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">10.10.13. </span>if hashes generated by git are deterministic, why is it impossible to convert a hash back into the commit’s contents?<a class="headerlink" href="#if-hashes-generated-by-git-are-deterministic-why-is-it-impossible-to-convert-a-hash-back-into-the-commits-contents" title="Permalink to this headline">#</a></h3>
 <p>It is an assymetric algorithm. We will talk more about hashes next week to see more about what this means.</p>
 </section>
 <section id="how-to-access-remote-branches-located-in-at-origin">
-<h3><span class="section-number">11.7.14. </span>How to access remote branches located in/at origin?<a class="headerlink" href="#how-to-access-remote-branches-located-in-at-origin" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">10.10.14. </span>How to access remote branches located in/at origin?<a class="headerlink" href="#how-to-access-remote-branches-located-in-at-origin" title="Permalink to this headline">#</a></h3>
 <p>You can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-r</span></code> to viw remote branches.</p>
 </section>
 <section id="is-using-the-write-tree-command-the-same-as-creating-a-new-branch">
-<h3><span class="section-number">11.7.15. </span>Is using the write tree command the same as creating a new branch?<a class="headerlink" href="#is-using-the-write-tree-command-the-same-as-creating-a-new-branch" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">10.10.15. </span>Is using the write tree command the same as creating a new branch?<a class="headerlink" href="#is-using-the-write-tree-command-the-same-as-creating-a-new-branch" title="Permalink to this headline">#</a></h3>
 <p>No, we have not done anything with branches so far.  <code class="docutils literal notranslate"><span class="pre">write-tree</span></code> is one of the things that happens when we do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code></p>
 </section>
 </section>
@@ -1780,50 +2074,251 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
-              
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
+            </article>
+            
+
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="2023-02-21.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">9. </span>What <em>is</em> git?</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../activities/kwl.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">KWL Chart</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+  <a class='left-prev' id="prev-link" href="2023-02-21.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title"><span class="section-number">9. </span>What <em>is</em> git?</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="../activities/kwl.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">KWL Chart</p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
 </div>
             </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
   
-    By Professor Sarah M Brown<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-repo-from-scratch">
+   10.1. Creating a repo from scratch
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#searching-the-file-system">
+   10.2. Searching the file system
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-objects">
+   10.3. Git Objects
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hashing-objects">
+     10.3.1. Hashing objects
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#viewing-git-objects">
+     10.3.2. Viewing git objects
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hashing-a-file">
+     10.3.3. Hashing a file
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#updating-the-index">
+   10.4. Updating the Index
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-commit-manually">
+   10.5. Creating a commit manually
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#there-are-many-git-objects">
+     10.5.1. There are many git objects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-todays-class">
+   10.6. Review today’s class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   10.7. Prepare for Next Class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   10.8. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experience-report-evidence">
+   10.9. Experience Report Evidence
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-todays-class">
+   10.10. Questions After Today’s Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-is-git-so-fast-it-does-lots-of-reading-and-writing-from-files-which-is-a-relatively-slow-process-but-does-this-all-very-quickly">
+     10.10.1. Why is Git so fast? It does lots of reading and writing from files which is a (relatively) slow process but does this all very quickly.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-scenarios-would-we-use-this-over-the-way-we-have-done-them-before">
+     10.10.2. What scenarios would we use this over the way we have done them before?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-does-the-tree-structure-properly-become-formatted-without-specifying-the-branch-that-you-want-it-to-start-at-or-be-based-on">
+     10.10.3. How does the tree structure properly become formatted without specifying the branch that you want it to start at or be based on?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-files-that-are-not-staged-get-staged-does-the-file-thats-already-staged-change">
+     10.10.4. When files that are not staged get staged, does the file thats already staged change?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-hashes-just-a-number-indentifier-for-an-object-is-there-a-way-to-change-them">
+     10.10.5. Are hashes just a number indentifier for an object? Is there a way to change them?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-difference-between-random-and-deterministic">
+     10.10.6. What is the difference between random and deterministic?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-does-the-connection-work-between-our-devices-and-github">
+     10.10.7. How does the connection work between our devices and GitHub?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-is-this-useful-on-the-day-to-day">
+     10.10.8. How is this useful on the day to day?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-common-is-it-to-use-git-plumbing-commands">
+     10.10.9. How common is it to use git plumbing commands?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-does-hashing-occur-after-any-change-is-made-to-a-file-or-when-a-git-command-is-ran">
+     10.10.10. When does hashing occur, after any change is made to a file? Or when a git command is ran?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-happens-if-two-hashes-are-the-same">
+     10.10.11. What happens if two hashes are the same?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-a-tree-a-snapshot-of-the-repo-at-the-time">
+     10.10.12. Is a tree a snapshot of the repo at the time?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-hashes-generated-by-git-are-deterministic-why-is-it-impossible-to-convert-a-hash-back-into-the-commits-contents">
+     10.10.13. if hashes generated by git are deterministic, why is it impossible to convert a hash back into the commit’s contents?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-access-remote-branches-located-in-at-origin">
+     10.10.14. How to access remote branches located in/at origin?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-using-the-write-tree-command-the-same-as-creating-a-new-branch">
+     10.10.15. Is using the write tree command the same as creating a new branch?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
 </div>
 
-
-      </div>
-    </div>
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+<div class="bd-footer-content__inner container">
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Professor Sarah M Brown
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+Last updated on None.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </div>
+        </footer>
+        
+
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
 
   </body>
 </html>
