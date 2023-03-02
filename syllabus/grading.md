@@ -132,32 +132,32 @@ This is important information and it is also new in spring 2023.  I would like a
 ````
 
 To earn a D you must complete:
-- 24 experience badges
+- 23 experience badges
 
 To earn a C you must complete:
-- 24 experience badges
+- 23 experience badges
 - 18 review badges
 
 
 To earn a B you must complete:
-- 24 experience badges
+- 23 experience badges
 - your choice: 
   - 18 practice badges
   - 12 review + 12 practice
 
 For an A you must complete:
-- 24 experience badges
+- 23 experience badges
 - your choice: 
-    - 18 practice badges + 9 explore badges
+    - 18 practice badges + 6 explore badges
     - 18 review badges + 3 build badges
     - 6 review badges + 12 practice badges +  6 explore badges + 1 build badges
-    - 12 review badges + 6 practice  badges+ 3 explore badges + 2 build badges
+    - 12 review badges + 6 practice  badges+ 4 explore badges + 2 build badges
 
 
 You can also mix and match to get +/-. For example
-(all examples assume 24 experience badges)
-- A-: 18 practice + 6 explore
-- A-: 6 review + 12 practice +  9 explore
+(all examples assume 23 experience badges)
+- A-: 18 practice + 1 explore
+- A-: 6 review + 12 practice +  4 explore
 - B-: 6 review + 12 practice 
 - B+: 24 practice 
 - C+: 12 review + 6 practice

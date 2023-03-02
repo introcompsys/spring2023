@@ -49,16 +49,19 @@ weeks = int((last_day-first_day).days/7+1)
 # create differences
 mtg_delta = timedelta(meeting_days[1]-meeting_days[0])
 week_delta = timedelta(7)
+skips = [date(2023,2,28)]
+weeks = int((last_day-first_day).days/7+1)
 
-# function to check if a date is during spring break
+meeting_days =[1,3]
+mtg_delta = timedelta(meeting_days[1]-meeting_days[0])
+week_delta = timedelta(7)
+
 during_sb = lambda d: spring_break[0]<d<spring_break[1]
 
-# generate the number of weeks worth of dates
+
 possible = [(first_day+week_delta*w, first_day+mtg_delta+week_delta*w) for w in range(weeks)]
-# rm spring break dates
 weekly_meetings = [[c1,c2] for c1,c2 in possible if not(during_sb(c1))]
-#unpack into single list
-meetings = [m for w in weekly_meetings for m in w]
+meetings = [m for w in weekly_meetings for m in w if not(m in skips)]
 
 
 # build a table for the dates
@@ -466,11 +469,16 @@ You must have:
 - 24 experience badges to earn a D or above
 - at least 18 additional total across reivew and practice to earn above C or above
 
-Only community badges can make exceptions to these thresholds. So if you are missing learning badges required to get to a threshold, your community badges will fill in for those, at a low weight.  If you meet all of the thresholds, the community badges will be applied with more weight to give you a step up (eg C to C+ or B+ to A-). 
+Only community badges can make exceptions to these thresholds. So if you are missing learning badges required to get to a threshold, your community badges will fill in for those.  If you meet all of the thresholds, the community badges will be applied with more weight to give you a step up (eg C to C+ or B+ to A-). 
 
 Community badges have the most weight if you are on track for a grade between D and B+  
 
 If you are on track for an A, community badges can be used to fill in for learning badges, so for example, at the end of the semester, you might be able to skip some the low complexity learning badges (experience, review, practice) and focus on your high complexity ones to ensure you get an A. 
+
+More precisely the order of application for community badges: 
+- to make up missing experience badges 
+- to make up for missing reivew or experience
+
 
 
 
