@@ -477,7 +477,9 @@ If you are on track for an A, community badges can be used to fill in for learni
 
 More precisely the order of application for community badges: 
 - to make up missing experience badges 
-- to make up for missing reivew or experience
+- to make up for missing review or practice badge to reach a total of 18 between these two types
+- to upgrade review to practice to meet a threshold
+- to give a step up (highest weight)
 
 
 
