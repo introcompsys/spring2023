@@ -1,0 +1,1198 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>11. How do git references work? &#8212; Computer Systems and Programming Tools</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course_admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2023-03-02';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="12. What is a commit number?" href="2023-03-07.html" />
+    <link rel="prev" title="10. How does git really work?" href="2023-02-23.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/systools.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/systools.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Site
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/about.html">Computer Systems and Programming Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/tools.html">Tools and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/badges.html">(experimental) Badge Visualizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/schedule.html">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_resources.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_statements.html">General URI Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/communication.html">Office Hours &amp; Communication</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2023-01-24.html">1. Welcome and Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-01-26.html">2. Course Logistics and Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-01-31.html">3. Bash intro &amp; git offline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-02.html">4. How can I work with branches offline?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-07.html">5. When do I get an advantage from git and bash?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-09.html">6. What if I edit the file in two places?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-14.html">7. Why are these tools like this?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-16.html">8. How do programmers communicate about code?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-21.html">9. What <em>is</em> git?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-23.html">10. How does git <em>really</em> work?</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. How do git references work?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-03-07.html">12. What is a commit number?</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Activities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../activities/kwl.html">KWL Chart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/team.html">Team Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/review.html">Review Badges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/prepare.html">Prepare for the next class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/practice.html">More Practice Badges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">KWL File Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/explore.html">Explore Badges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/build.html">Build Badges</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq/syllabus.html">Syllabus and Grading FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/github.html">Git and GitHub</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/tips.html">General Tips and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/learning.html">How to Study in this class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/github.html">GitHub Interface reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/gettinghelp.html">Getting Help with Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/organization.html">Getting Organized for class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/more_info_on_cpus.html">More info on cpus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/windows.html">Windows Help &amp; Notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://introcompsys.github.io/spring2022/resources/testimonials.html">Advice from Spring 2022 Students</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/introcompsys/spring2023# The URL to your book's repository" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/introcompsys/spring2023# The URL to your book's repository/edit/main/notes/2023-03-02.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/introcompsys/spring2023# The URL to your book's repository/issues/new?title=Issue%20on%20page%20%2Fnotes/2023-03-02.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notes/2023-03-02.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>How do git references work?</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-git-status-do">11.1. What does git status do?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-references">11.2. Git References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-another-commit">11.3. Making another commit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-all-this-get-me">11.4. What does all this get me?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#we-can-checkout-any-commit-not-jsut-branches">11.4.1. We can checkout any commit, not jsut branches</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-this-mean">11.5. What does this mean?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#we-can-move-pointers-around-freely">11.6. We can move pointers around freely</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">11.7. Review today’s class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">11.8. Prepare for Next Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">11.9. More Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">11.10. Experience Report Evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">11.11. Questions After Today’s Class</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="how-do-git-references-work">
+<h1><span class="section-number">11. </span>How do git references work?<a class="headerlink" href="#how-do-git-references-work" title="Permalink to this headline">#</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This picks up directly from where we left off in: <a class="reference internal" href="2023-02-23.html"><span class="doc std std-doc">How does git really work?</span></a></p>
+</div>
+<p>We start in the <code class="docutils literal notranslate"><span class="pre">test</span></code> repo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">test</span>
+<span class="n">ls</span> <span class="o">-</span><span class="n">a</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span>		<span class="o">..</span>		<span class="o">.</span><span class="n">git</span>		<span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>We have one file, <code class="docutils literal notranslate"><span class="pre">test.txt</span></code>, but we were working more inside the <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory.</p>
+<p>Remember: git objects</p>
+<div class="mermaid">
+            classDiagram
+    class tree{
+    List: 
+      - hash: blob
+      - string: type
+      - string:file name 
+    }
+    class commit{
+        hash: parent
+        hash: tree
+        string: message
+        string: author 
+        string: time
+    }
+    class blob{
+        binary: contents
+    }
+    class object{
+        hash: name
+
+    }
+    object &lt;|-- blob
+    object &lt;|-- tree
+    object &lt;|-- commit
+        </div><p>There are 3 types:</p>
+<ul class="simple">
+<li><p>blob objects: the content of your files (data)</p></li>
+<li><p>tree objects: stores file names and groups files together (organization)</p></li>
+<li><p>Commit Objects: stores information about the sha values of the snapshots</p></li>
+</ul>
+<p>Recall the <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory has many other files in it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HEAD</span>		<span class="n">description</span>	<span class="n">index</span>		<span class="n">objects</span>
+<span class="n">config</span>		<span class="n">hooks</span>		<span class="n">info</span>		<span class="n">refs</span>
+</pre></div>
+</div>
+<section id="what-does-git-status-do">
+<h2><span class="section-number">11.1. </span>What does git status do?<a class="headerlink" href="#what-does-git-status-do" title="Permalink to this headline">#</a></h2>
+<p><em>compares the working directory to the current state of the active branch</em></p>
+<ul class="simple">
+<li><p>we cansee the working directory with: <code class="docutils literal notranslate"><span class="pre">ls</span></code></p></li>
+<li><p>we can see the active branch in the <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> file</p></li>
+<li><p>what is its status?</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+
+<span class="n">No</span> <span class="n">commits</span> <span class="n">yet</span>
+
+<span class="n">Changes</span> <span class="n">to</span> <span class="n">be</span> <span class="n">committed</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git rm --cached &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">unstage</span><span class="p">)</span>
+	<span class="n">new</span> <span class="n">file</span><span class="p">:</span>   <span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="n">Changes</span> <span class="ow">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git restore &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">working</span> <span class="n">directory</span><span class="p">)</span>
+	<span class="n">modified</span><span class="p">:</span>   <span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+
+</pre></div>
+</div>
+<p>we see it is “on main” this is because we set the branch to main , but since we have not written there, we have to do it directly. Notice that when we use the porcelain command for commit, it does this automatically; the porcelain commands do many things.</p>
+<p>In our case because we made the commit manually, we did not update the branch, so it says we have no commits…</p>
+<p>Notice, we have no commits yet even though we had written a commit.  This is because the main branch does not point to any commit.</p>
+<p>We can verify by looking at the <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">HEAD</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ref</span><span class="p">:</span> <span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">main</span>
+</pre></div>
+</div>
+<p>and then viewing that file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">main</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span><span class="p">:</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">main</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span>
+</pre></div>
+</div>
+<p>which does not even exist!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">refs</span><span class="o">/</span><span class="n">heads</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>nothing exists there yet!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">refs</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">heads</span>	<span class="n">tags</span>
+</pre></div>
+</div>
+<p>we can see the objects though:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">/</span> <span class="o">-</span><span class="nb">type</span> <span class="n">f</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="mi">0</span><span class="n">c</span><span class="o">/</span><span class="mf">1e7391</span><span class="n">ca4e59584f8b773ecdbbb9467eba1547</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="n">d6</span><span class="o">/</span><span class="mi">70460</span><span class="n">b4b4aece5915caf5c68d12f560a9fe3e4</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="n">d8</span><span class="o">/</span><span class="mi">329</span><span class="n">fc1cc938780ffdd9f94e0d364e0ea74f579</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="mi">18</span><span class="o">/</span><span class="mi">8</span><span class="n">a75ef66b6a85be0ab68d8575ec27808881dfc</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="mi">4</span><span class="n">b</span><span class="o">/</span><span class="mi">825</span><span class="n">dc642cb6eb9a060e54bf8d69288fbee4904</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="mi">83</span><span class="o">/</span><span class="n">baae61804e65cc73a7201a7252750c76066a30</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">cat</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">t</span> <span class="mi">188</span><span class="n">a</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">commit</span>
+</pre></div>
+</div>
+<p>This is our repo currently, but the branches are not there!</p>
+<div class="mermaid">
+            classDiagram
+    class d67046{
+        test content
+        (blob)
+    }
+    class 83baae{
+        Version 1
+        (blob)
+    }
+    class 4b825d{
+        (tree)
+    }
+    class d8329f{
+        blob: 83baae
+        filename: test.txt
+        (tree)
+    }
+    class 0c1e73{
+        Version 1
+        Verson 2
+        (blob)
+    }
+    class 188a75{
+        tree d8329f
+        author name
+        commiter time
+    }
+    d8329f --|&gt; 83baae
+    188a75 --|&gt; d8329f
+        </div></section>
+<section id="git-references">
+<h2><span class="section-number">11.2. </span>Git References<a class="headerlink" href="#git-references" title="Permalink to this headline">#</a></h2>
+<hr class="docutils" />
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="mi">188</span><span class="n">a75ef66b6a85be0ab68d8575ec27808881dfc</span> <span class="o">&gt;</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">main</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Changes</span> <span class="ow">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git restore &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">working</span> <span class="n">directory</span><span class="p">)</span>
+	<span class="n">modified</span><span class="p">:</span>   <span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="s2">&quot;git commit -a&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can see that indeed we have one object that is a commit</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">cat</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">p</span> <span class="mi">188</span><span class="n">a</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tree</span> <span class="n">d8329fc1cc938780ffdd9f94e0d364e0ea74f579</span>
+<span class="n">author</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span> <span class="mi">1677177139</span> <span class="o">-</span><span class="mi">0500</span>
+<span class="n">committer</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span> <span class="mi">1677177139</span> <span class="o">-</span><span class="mi">0500</span>
+
+<span class="n">first</span> <span class="n">commit</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">cat</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">p</span> <span class="n">d8329</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">100644</span> <span class="n">blob</span> <span class="mi">83</span><span class="n">baae61804e65cc73a7201a7252750c76066a30</span>	<span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">cat</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">p</span> <span class="mi">83</span><span class="n">baa</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">version</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>So we now have HEAD-&gt; main and main -&gt; our commit -&gt; tree –&gt; blob.</p>
+</section>
+<section id="making-another-commit">
+<h2><span class="section-number">11.3. </span>Making another commit<a class="headerlink" href="#making-another-commit" title="Permalink to this headline">#</a></h2>
+<p>First lets find the hash for the version 2 of test.txt</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">/</span> <span class="o">-</span><span class="nb">type</span> <span class="n">f</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="mi">0</span><span class="n">c</span><span class="o">/</span><span class="mf">1e7391</span><span class="n">ca4e59584f8b773ecdbbb9467eba1547</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="n">d6</span><span class="o">/</span><span class="mi">70460</span><span class="n">b4b4aece5915caf5c68d12f560a9fe3e4</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="n">d8</span><span class="o">/</span><span class="mi">329</span><span class="n">fc1cc938780ffdd9f94e0d364e0ea74f579</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="mi">18</span><span class="o">/</span><span class="mi">8</span><span class="n">a75ef66b6a85be0ab68d8575ec27808881dfc</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="mi">4</span><span class="n">b</span><span class="o">/</span><span class="mi">825</span><span class="n">dc642cb6eb9a060e54bf8d69288fbee4904</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="mi">83</span><span class="o">/</span><span class="n">baae61804e65cc73a7201a7252750c76066a30</span>
+</pre></div>
+</div>
+<p>We can display objects to see that it is what we want.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">cat</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">p</span> <span class="mi">0</span><span class="n">c1e</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">version</span> <span class="mi">1</span>
+<span class="n">version</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>Then we add it to the index</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Review the previous class if this part is confusing</p>
+</div>
+</aside>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">update</span><span class="o">-</span><span class="n">index</span> <span class="o">--</span><span class="n">add</span> <span class="o">--</span><span class="n">cacheinfo</span> <span class="mi">100644</span> \
+ <span class="mi">0</span><span class="n">c1e7391ca4e59584f8b773ecdbbb9467eba1547</span> <span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Let’s also add a second file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;new file&quot;</span> <span class="o">&gt;</span> <span class="n">new</span><span class="o">.</span><span class="n">txt</span> 
+</pre></div>
+</div>
+<p>and hash that and write it to the repo</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="nb">hash</span><span class="o">-</span><span class="nb">object</span> <span class="o">-</span><span class="n">w</span> <span class="n">new</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fa49b077972391ad58037050f2a75f74e3671e92</span>
+</pre></div>
+</div>
+<p>and stage it as well</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">update</span><span class="o">-</span><span class="n">index</span> <span class="o">--</span><span class="n">add</span> <span class="o">--</span><span class="n">cacheinfo</span> <span class="mi">100644</span> \
+<span class="o">&gt;</span>  <span class="n">fa49b077972391ad58037050f2a75f74e3671e92</span> <span class="n">new</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Now we have two files stages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Changes</span> <span class="n">to</span> <span class="n">be</span> <span class="n">committed</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git restore --staged &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">unstage</span><span class="p">)</span>
+	<span class="n">new</span> <span class="n">file</span><span class="p">:</span>   <span class="n">new</span><span class="o">.</span><span class="n">txt</span>
+	<span class="n">modified</span><span class="p">:</span>   <span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+
+</pre></div>
+</div>
+<p>and in our repo</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">new</span><span class="o">.</span><span class="n">txt</span>		<span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Now we will write a tree object from all of the staged things:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">write</span><span class="o">-</span><span class="n">tree</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">163</span><span class="n">b45f0a0925b0655da232ea8a4188ccec615f5</span>
+</pre></div>
+</div>
+<p>and make a second comit.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;second commit&quot;</span> <span class="o">|</span> <span class="n">git</span> <span class="n">commit</span><span class="o">-</span><span class="n">tree</span> <span class="mi">163</span><span class="n">b</span> <span class="o">-</span><span class="n">p</span> <span class="mi">188</span><span class="n">a</span>
+</pre></div>
+</div>
+<p>This command:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">echo</span></code> sends “second commit” to stdout</p></li>
+<li><p>the pipe <code class="docutils literal notranslate"><span class="pre">|</span></code> connects that std out to stdin of the next command</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit-tree</span></code> needs a tree (<code class="docutils literal notranslate"><span class="pre">163b</span></code>) as its input</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">-p</span></code> option specifies the parent which is in this case our previous commit (mines is <code class="docutils literal notranslate"><span class="pre">188a</span></code>)</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">90</span><span class="n">f8d145f3b264e99832b47a662ed5d50b687e7a</span>
+</pre></div>
+</div>
+<p>and it returns the commit hash, which as with the first comit is unique to each of us.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Changes</span> <span class="n">to</span> <span class="n">be</span> <span class="n">committed</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git restore --staged &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">unstage</span><span class="p">)</span>
+	<span class="n">new</span> <span class="n">file</span><span class="p">:</span>   <span class="n">new</span><span class="o">.</span><span class="n">txt</span>
+	<span class="n">modified</span><span class="p">:</span>   <span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+
+</pre></div>
+</div>
+<p>THen we can set our main branch to point to the new commit so that it will see what we expect</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">update</span><span class="o">-</span><span class="n">ref</span> <span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">main</span> <span class="mi">90</span><span class="n">f8</span>
+</pre></div>
+</div>
+<p>and we can also use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> now</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">commit</span> <span class="mi">90</span><span class="n">f8d145f3b264e99832b47a662ed5d50b687e7a</span> <span class="p">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">main</span><span class="p">)</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Mar</span> <span class="mi">2</span> <span class="mi">13</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">39</span> <span class="mi">2023</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">second</span> <span class="n">commit</span>
+
+<span class="n">commit</span> <span class="mi">188</span><span class="n">a75ef66b6a85be0ab68d8575ec27808881dfc</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">23</span> <span class="mi">13</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">19</span> <span class="mi">2023</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">first</span> <span class="n">commit</span>
+</pre></div>
+</div>
+</section>
+<section id="what-does-all-this-get-me">
+<h2><span class="section-number">11.4. </span>What does all this get me?<a class="headerlink" href="#what-does-all-this-get-me" title="Permalink to this headline">#</a></h2>
+<p>We can create a new branch at a previous point:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">update</span><span class="o">-</span><span class="n">ref</span> <span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">test</span> <span class="mi">188</span><span class="n">a</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">commit</span> <span class="mi">90</span><span class="n">f8d145f3b264e99832b47a662ed5d50b687e7a</span> <span class="p">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">main</span><span class="p">)</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Mar</span> <span class="mi">2</span> <span class="mi">13</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">39</span> <span class="mi">2023</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">second</span> <span class="n">commit</span>
+
+<span class="n">commit</span> <span class="mi">188</span><span class="n">a75ef66b6a85be0ab68d8575ec27808881dfc</span> <span class="p">(</span><span class="n">test</span><span class="p">)</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">23</span> <span class="mi">13</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">19</span> <span class="mi">2023</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">first</span> <span class="n">commit</span>
+</pre></div>
+</div>
+<p>We see the file for each branch points to the commit</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">test</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">188</span><span class="n">a75ef66b6a85be0ab68d8575ec27808881dfc</span>
+</pre></div>
+</div>
+<p>We can change them around as we like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">update</span><span class="o">-</span><span class="n">ref</span> <span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">main</span> <span class="mi">188</span><span class="n">a</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">commit</span> <span class="mi">188</span><span class="n">a75ef66b6a85be0ab68d8575ec27808881dfc</span> <span class="p">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">main</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">23</span> <span class="mi">13</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">19</span> <span class="mi">2023</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">first</span> <span class="n">commit</span>
+</pre></div>
+</div>
+<p>This does not lose any of our data, it just makes it harder to access, we have to know the hashes of thigns to find them if we did not have the branch structure to traverse the structure.</p>
+<p>We can put this back</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">update</span><span class="o">-</span><span class="n">ref</span> <span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">main</span> <span class="mi">90</span><span class="n">f8</span>
+<span class="n">git</span> <span class="n">log</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">commit</span> <span class="mi">90</span><span class="n">f8d145f3b264e99832b47a662ed5d50b687e7a</span> <span class="p">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">main</span><span class="p">)</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Mar</span> <span class="mi">2</span> <span class="mi">13</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">39</span> <span class="mi">2023</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">second</span> <span class="n">commit</span>
+
+<span class="n">commit</span> <span class="mi">188</span><span class="n">a75ef66b6a85be0ab68d8575ec27808881dfc</span> <span class="p">(</span><span class="n">test</span><span class="p">)</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">23</span> <span class="mi">13</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">19</span> <span class="mi">2023</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">first</span> <span class="n">commit</span>
+</pre></div>
+</div>
+<p>and see that the files are as expected:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">new</span><span class="o">.</span><span class="n">txt</span>		<span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span><span class="p">,</span> <span class="n">working</span> <span class="n">tree</span> <span class="n">clean</span>
+</pre></div>
+</div>
+<section id="we-can-checkout-any-commit-not-jsut-branches">
+<h3><span class="section-number">11.4.1. </span>We can checkout any commit, not jsut branches<a class="headerlink" href="#we-can-checkout-any-commit-not-jsut-branches" title="Permalink to this headline">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="mi">188</span><span class="n">a</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Note</span><span class="p">:</span> <span class="n">switching</span> <span class="n">to</span> <span class="s1">&#39;188a&#39;</span><span class="o">.</span>
+
+<span class="n">You</span> <span class="n">are</span> <span class="ow">in</span> <span class="s1">&#39;detached HEAD&#39;</span> <span class="n">state</span><span class="o">.</span> <span class="n">You</span> <span class="n">can</span> <span class="n">look</span> <span class="n">around</span><span class="p">,</span> <span class="n">make</span> <span class="n">experimental</span>
+<span class="n">changes</span> <span class="ow">and</span> <span class="n">commit</span> <span class="n">them</span><span class="p">,</span> <span class="ow">and</span> <span class="n">you</span> <span class="n">can</span> <span class="n">discard</span> <span class="nb">any</span> <span class="n">commits</span> <span class="n">you</span> <span class="n">make</span> <span class="ow">in</span> <span class="n">this</span>
+<span class="n">state</span> <span class="n">without</span> <span class="n">impacting</span> <span class="nb">any</span> <span class="n">branches</span> <span class="n">by</span> <span class="n">switching</span> <span class="n">back</span> <span class="n">to</span> <span class="n">a</span> <span class="n">branch</span><span class="o">.</span>
+
+<span class="n">If</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">branch</span> <span class="n">to</span> <span class="n">retain</span> <span class="n">commits</span> <span class="n">you</span> <span class="n">create</span><span class="p">,</span> <span class="n">you</span> <span class="n">may</span>
+<span class="n">do</span> <span class="n">so</span> <span class="p">(</span><span class="n">now</span> <span class="ow">or</span> <span class="n">later</span><span class="p">)</span> <span class="n">by</span> <span class="n">using</span> <span class="o">-</span><span class="n">c</span> <span class="k">with</span> <span class="n">the</span> <span class="n">switch</span> <span class="n">command</span><span class="o">.</span> <span class="n">Example</span><span class="p">:</span>
+
+  <span class="n">git</span> <span class="n">switch</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">new</span><span class="o">-</span><span class="n">branch</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
+
+<span class="n">Or</span> <span class="n">undo</span> <span class="n">this</span> <span class="n">operation</span> <span class="k">with</span><span class="p">:</span>
+
+  <span class="n">git</span> <span class="n">switch</span> <span class="o">-</span>
+
+<span class="n">Turn</span> <span class="n">off</span> <span class="n">this</span> <span class="n">advice</span> <span class="n">by</span> <span class="n">setting</span> <span class="n">config</span> <span class="n">variable</span> <span class="n">advice</span><span class="o">.</span><span class="n">detachedHead</span> <span class="n">to</span> <span class="n">false</span>
+
+<span class="n">HEAD</span> <span class="ow">is</span> <span class="n">now</span> <span class="n">at</span> <span class="mi">188</span><span class="n">a75e</span> <span class="n">first</span> <span class="n">commit</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">HEAD</span> 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">188</span><span class="n">a75ef66b6a85be0ab68d8575ec27808881dfc</span>
+</pre></div>
+</div>
+<p>This changes the head pointer directly to the commit.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>and checkout also updates the working directory</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="n">txt</span> 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">version</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">test</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Switched</span> <span class="n">to</span> <span class="n">branch</span> <span class="s1">&#39;test&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="n">txt</span> 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">version</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="what-does-this-mean">
+<h2><span class="section-number">11.5. </span>What does this mean?<a class="headerlink" href="#what-does-this-mean" title="Permalink to this headline">#</a></h2>
+<p>We tend to think of comits like this:</p>
+<div class="mermaid">
+            flowchart RL
+subgraph A[first commit]
+%% commitA
+file1v1
+%% treeA
+%% blob1
+end 
+subgraph B[second commit]
+file1v2
+file2v1
+file3v1
+%% commitB
+%% treeB
+%% blob2
+end
+B--&gt; A
+        </div><p>In reality</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flowchart</span> <span class="n">RL</span>
+<span class="n">subgraph</span> <span class="n">A</span><span class="p">[</span><span class="n">first</span> <span class="n">commit</span><span class="p">]</span>
+<span class="n">commitA</span>
+<span class="o">%%</span> <span class="n">file1v1</span>
+<span class="n">treeA</span>
+<span class="n">blob1</span>
+<span class="n">commitA</span><span class="o">--&gt;</span><span class="n">treeA</span>
+<span class="n">treeA</span><span class="o">--&gt;</span><span class="n">blob1</span>
+<span class="n">end</span> 
+<span class="n">subgraph</span> <span class="n">B</span><span class="p">[</span><span class="n">second</span> <span class="n">commit</span><span class="p">]</span>
+<span class="o">%%</span> <span class="n">file1v2</span>
+<span class="o">%%</span> <span class="n">file2v1</span>
+<span class="o">%%</span> <span class="n">file3v1</span>
+<span class="n">commitB</span>
+<span class="n">treeB</span>
+<span class="n">blob1v2</span>
+<span class="n">blob2</span>
+<span class="n">blob3</span>
+<span class="n">commitB</span><span class="o">--&gt;</span><span class="n">treeB</span>
+<span class="n">treeB</span><span class="o">--&gt;</span><span class="n">blob1v2</span>
+<span class="n">treeB</span><span class="o">---&gt;</span><span class="n">blob2</span>
+<span class="n">treeB</span><span class="o">--&gt;</span><span class="n">blob3</span>
+<span class="n">end</span>
+<span class="o">%%</span> <span class="n">B</span><span class="o">--&gt;</span> <span class="n">A</span>
+<span class="n">commitB</span> <span class="o">--&gt;</span><span class="n">commitA</span>
+</pre></div>
+</div>
+</section>
+<section id="we-can-move-pointers-around-freely">
+<h2><span class="section-number">11.6. </span>We can move pointers around freely<a class="headerlink" href="#we-can-move-pointers-around-freely" title="Permalink to this headline">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flowchart</span> <span class="n">BT</span>
+<span class="n">blob1</span>
+<span class="n">blob2</span>
+<span class="n">blob3</span>
+<span class="n">subgraph</span> <span class="n">A</span><span class="p">[</span><span class="n">first</span> <span class="n">commit</span><span class="p">]</span>
+    <span class="n">direction</span> <span class="n">TB</span>
+    <span class="n">commitA</span>
+    <span class="o">%%</span> <span class="n">file1v1</span>
+    <span class="n">treeA</span>
+    <span class="n">commitA</span><span class="o">--&gt;</span><span class="n">treeA</span>
+
+<span class="n">end</span> 
+<span class="n">subgraph</span> <span class="n">B</span><span class="p">[</span><span class="n">second</span> <span class="n">commit</span><span class="p">]</span>
+    <span class="n">direction</span> <span class="n">TB</span>
+    <span class="o">%%</span> <span class="n">file1v2</span>
+    <span class="o">%%</span> <span class="n">file2v1</span>
+    <span class="o">%%</span> <span class="n">file3v1</span>
+    <span class="n">commitB</span>
+    <span class="n">treeB</span>
+    <span class="n">commitB</span><span class="o">--&gt;</span><span class="n">treeB</span>
+<span class="n">end</span>
+<span class="o">%%</span> <span class="n">subgraph</span> <span class="n">C</span><span class="p">[</span><span class="n">third</span> <span class="n">commit</span><span class="p">]</span>
+<span class="o">%%</span>     <span class="n">direction</span> <span class="n">TB</span>
+<span class="o">%%</span>     <span class="o">%%</span> <span class="n">file1v2</span>
+<span class="o">%%</span>     <span class="o">%%</span> <span class="n">file2v1</span>
+<span class="o">%%</span>     <span class="o">%%</span> <span class="n">file3v1</span>
+<span class="o">%%</span>     <span class="n">commitC</span>
+<span class="o">%%</span>     <span class="n">commitC</span><span class="o">--&gt;</span><span class="n">treeC</span>
+<span class="o">%%</span> <span class="n">end</span>
+<span class="n">B</span><span class="o">--&gt;</span> <span class="n">A</span>
+
+<span class="o">%%</span> <span class="n">treeC</span><span class="o">--&gt;</span><span class="n">blob1</span>
+<span class="n">treeC</span><span class="o">---&gt;</span><span class="n">blob2</span>
+<span class="n">treeC</span><span class="o">--&gt;</span><span class="n">blob3</span>
+<span class="n">treeB</span><span class="o">--&gt;</span><span class="n">blob1</span>
+<span class="n">treeB</span><span class="o">---&gt;</span><span class="n">blob2</span>
+<span class="n">treeA</span><span class="o">--&gt;</span><span class="n">blob1</span>
+<span class="n">commitB</span> <span class="o">--&gt;</span><span class="n">commitA</span>
+<span class="n">commitC</span><span class="o">--&gt;</span><span class="n">commitB</span>
+<span class="n">treeA</span> <span class="o">~~~</span> <span class="n">treeB</span>
+<span class="n">treeB</span> <span class="o">~~~</span><span class="n">treeC</span>
+<span class="n">main</span> <span class="o">--&gt;</span> <span class="n">commitA</span>
+<span class="n">branchB</span> <span class="o">--&gt;</span> <span class="n">commitB</span>
+<span class="n">branchC</span> <span class="o">--&gt;</span> <span class="n">commitC2</span>
+<span class="n">subgraph</span> <span class="n">C2</span><span class="p">[</span><span class="n">new</span> <span class="n">commit</span><span class="p">]</span>
+<span class="n">commitC2</span> <span class="o">--&gt;</span><span class="n">treeC</span>
+<span class="n">commitC2</span> <span class="o">--&gt;</span><span class="n">commitA</span>
+
+    <span class="n">treeC</span>
+<span class="n">end</span>
+
+<span class="o">%%</span> <span class="n">A</span> <span class="o">~~~</span><span class="n">blob1</span>
+<span class="o">%%</span> <span class="n">B</span> <span class="o">~~~</span><span class="n">blob2</span>
+<span class="o">%%</span> <span class="n">C</span> <span class="o">~~~</span><span class="n">blob3</span>
+</pre></div>
+</div>
+</section>
+<section id="review-todays-class">
+<h2><span class="section-number">11.7. </span>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h2>
+<ol class="arabic simple">
+<li><p>Read the notes and repeat the activity if needed</p></li>
+<li><p>use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">cat-file</span></code> over the objects to draw a graph diagram of your current status in your test directory include your drawing in <span class="target" id="index-0"></span>test_repo_map.md using <a class="reference external" href="https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/">mermaid</a> syntax to diagram it. Name each node in your graph with 5-7 characters of the hash and the type. eg <code class="docutils literal notranslate"><span class="pre">0c913</span> <span class="pre">commit</span></code></p></li>
+</ol>
+</section>
+<section id="prepare-for-next-class">
+<h2><span class="section-number">11.8. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
+<ol class="arabic simple">
+<li><p>Read about the Learn more about the <a class="reference external" href="https://shattered.io/">SHA-1 collision attach</a></p></li>
+<li><p>Think about different ways you know to represent numbers.</p></li>
+</ol>
+</section>
+<section id="more-practice">
+<h2><span class="section-number">11.9. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
+<ol class="arabic simple">
+<li><p>Read the notes and repeat the activity if needed</p></li>
+<li><p>use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">cat-file</span></code> over the objects to draw a graph diagram of your current status in your test directory include your drawing in <span class="target" id="index-1"></span>test_repo_map.md using <a class="reference external" href="https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/">mermaid</a> syntax to diagram it. Name each node in your graph with 5-7 characters of the hash and the type. eg <code class="docutils literal notranslate"><span class="pre">0c913</span> <span class="pre">commit</span></code></p></li>
+<li><p>Add “version 3” to the test.txt file and hash that object</p></li>
+<li><p>Add that to the staging area</p></li>
+<li><p>Add the tree from the first commit to the staging area as a subdirectory with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">read-tree</span> <span class="pre">--prefix=back</span> <span class="pre">&lt;hash&gt;</span></code></p></li>
+<li><p>Write the new tree</p></li>
+<li><p>Make a commit with message “Commit 3” point to that tree and have your second commit as its parent.</p></li>
+<li><p>Update your diagram in <span class="target" id="index-2"></span>test_repo_map.md after the following.</p></li>
+</ol>
+</section>
+<section id="experience-report-evidence">
+<h2><span class="section-number">11.10. </span>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
+<p>write your git status and object list to a file.</p>
+</section>
+<section id="questions-after-todays-class">
+<h2><span class="section-number">11.11. </span>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>I will get to these later</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2023-02-23.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>How does git <em>really</em> work?</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="2023-03-07.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>What is a commit number?</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-git-status-do">11.1. What does git status do?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-references">11.2. Git References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-another-commit">11.3. Making another commit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-all-this-get-me">11.4. What does all this get me?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#we-can-checkout-any-commit-not-jsut-branches">11.4.1. We can checkout any commit, not jsut branches</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-this-mean">11.5. What does this mean?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#we-can-move-pointers-around-freely">11.6. We can move pointers around freely</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">11.7. Review today’s class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">11.8. Prepare for Next Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">11.9. More Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">11.10. Experience Report Evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">11.11. Questions After Today’s Class</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Professor Sarah M Brown
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
