@@ -150,14 +150,14 @@ For an A you must complete:
 - your choice: 
     - 18 practice badges + 6 explore badges
     - 18 review badges + 3 build badges
-    - 6 review badges + 12 practice badges +  6 explore badges + 1 build badges
-    - 12 review badges + 6 practice  badges+ 4 explore badges + 2 build badges
+    - 6 review badges + 12 practice badges +  4 explore badges + 1 build badges
+    - 12 review badges + 6 practice  badges+ 2 explore badges + 2 build badges
 
 
 You can also mix and match to get +/-. For example
 (all examples assume 23 experience badges)
-- A-: 18 practice + 1 explore
-- A-: 6 review + 12 practice +  4 explore
+- A-: 18 practice + 4 explore
+- B+: 6 review + 12 practice +  4 explore
 - B-: 6 review + 12 practice 
 - B+: 24 practice 
 - C+: 12 review + 6 practice
@@ -292,9 +292,9 @@ Community badges can replace missed experience, review, and practice badges, upg
 
 Community Badge values:
 - 3 community = 1 experience badge
-- 5 community = 1 review
+- 4 community = 1 review
 - 7 community = 1 practice. 
-- 5 community badges + 1 review = 1 practice.
+- 3 community badges + 1 review = 1 practice.
 - 10 community =  + step to a D,C, or B, **note that this is more efficient.**
 
 
