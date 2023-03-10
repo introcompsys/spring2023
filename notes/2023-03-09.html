@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Review today’s class &#8212; Computer Systems and Programming Tools</title>
+    <title>13. Bash Scripting &#8212; Computer Systems and Programming Tools</title>
   
   
   
@@ -61,13 +61,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2023-03-09';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="KWL Chart" href="../activities/kwl.html" />
+    <link rel="prev" title="12. What is a commit number?" href="2023-03-07.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -170,7 +170,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../syllabus/communication.html">Office Hours &amp; Communication</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2023-01-24.html">1. Welcome and Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2023-01-26.html">2. Course Logistics and Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2023-01-31.html">3. Bash intro &amp; git offline</a></li>
@@ -183,6 +183,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2023-02-23.html">10. How does git <em>really</em> work?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2023-03-02.html">11. How do git references work?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2023-03-07.html">12. What is a commit number?</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. Bash Scripting</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Activities</span></p>
 <ul class="nav bd-sidenav">
@@ -411,7 +412,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Review today’s class</h1>
+    <h1>Bash Scripting</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,13 +422,34 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Review today’s class</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">Prepare for Next Class</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">More Practice</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">Experience Report Evidence</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">Questions After Today’s Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-in-bash">13.1. Variables in Bash</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-loops">13.2. Bash Loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nesting-commands">13.3. Nesting commands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditionals-in-bash">13.4. Conditionals in bash</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#script-files">13.5. Script files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gh-cli-operations">13.6. <code class="docutils literal notranslate"><span class="pre">gh</span></code> CLI operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#badge-hints">13.7. Badge Hints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">13.8. Review today’s class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">13.9. Prepare for Next Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">13.10. More Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">13.11. Experience Report Evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">13.12. Questions After Today’s Class</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-there-any-structure-tools-to-reverse-the-order-of-if-and-do-in-a-bash-loop-writing-do-if-doesnt-feel-natural-to-me">13.12.1. Is there any structure/tools to reverse the order of if and do in a bash loop? Writing “do if” doesn’t feel natural to me.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#would-the-script-that-we-wrote-into-the-file-still-work-with-semicolons-or-would-adding-them-ruin-the-syntax">13.12.2. Would the script that we wrote into the file still work with semicolons or would adding them ruin the syntax?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-come-we-have-been-using-git-commands-in-stead-of-gh-commands">13.12.3. How come we have been using git commands in stead of gh commands?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-else-can-we-use-this-gh-command-for">13.12.4. What else can we use this gh command for?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-the-mean-since-its-used-in-so-many-places">13.12.5. What does the $ mean since it’s used in so many places?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#are-the-api-md-contributing-md-etc-files-important-they-have-disappeared-from-my-main-branch">13.12.6. Are the API.MD, CONTRIBUTING.MD …etc files important? They have disappeared from my main branch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-the-script-be-in-any-type-of-file-or-does-it-have-to-be-in-a-certain-type-of-file">13.12.7. Can the script be in any type of file or does it have to be in a certain type of file?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-is-this-you-said-fi-is-the-oppisite-if-but-in-a-contect-in-a-if-else-statement-what-do-it-do-like-else-if">13.12.8. How is this you said fi is the oppisite if but in a contect in a if else statement what do it do? (like else if).</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-there-any-major-benefit-in-creating-an-issue-in-a-repo-directly-within-a-terminal-or-is-it-just-a-matter-of-preference">13.12.9. Is there any major benefit in creating an issue in a repo directly within a terminal, or is it just a matter of preference?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-often-would-i-use-bash-programming-as-a-software-engineer">13.12.10. How often would I use bash programming as a software engineer?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-create-classes-and-objects-in-bash">13.12.11. can you create classes and objects in bash?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-the-benefits-if-any-to-bash-scripting-in-the-terminal-rather-then-in-an-ide">13.12.12. what are the benefits, if any, to bash scripting in the terminal rather then in an IDE?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-exactly-does-grep-do-can-it-only-be-used-with-piping">13.12.13. What exactly does grep do, can it only be used with piping?</a></li>
 </ul>
-
+</li>
+</ul>
             </nav>
         </div>
     </div>
@@ -438,579 +460,555 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
+  <section class="tex2jax_ignore mathjax_ignore" id="bash-scripting">
+<h1><span class="section-number">13. </span>Bash Scripting<a class="headerlink" href="#bash-scripting" title="Permalink to this headline">#</a></h1>
+<p>So far we have used bash commands to navigate our file system as a way to learn about the file system itself. To do this we used commands like:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pwd</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ls</span></code></p></li>
+</ul>
+<p>Bash is a unix shell for the GNU operating system and it has been adopted in other contexts as well.  It is the default shell on Ubuntu linux as well for example (and many others). This is why we teach it.</p>
+<p>A Unix shell is both a command interpreter and a programming language. As a command interpreter, the shell provides the user interface to the rich set of GNU utilities. The programming language features allow these utilities to be combined.</p>
+<p>Read the official definition of <code class="docutils literal notranslate"><span class="pre">bash</span></code> and a shell in <a class="reference external" href="https://www.gnu.org/software/bash/manual/bash.html#Introduction">the bash manual</a></p>
+<p>Today we will start from the main course directory</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">systems</span>
+<span class="n">ls</span>
 </pre></div>
 </div>
-<p>cd…</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">example</span>				<span class="n">test</span>
+<span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">-</span><span class="mi">1</span>	<span class="n">testobj</span><span class="o">.</span><span class="n">md</span>
+<span class="n">kwl</span>				<span class="n">tiny</span><span class="o">-</span><span class="n">book</span>
 </pre></div>
 </div>
-<p>bash: cd…: command not found</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
+<section id="variables-in-bash">
+<h2><span class="section-number">13.1. </span>Variables in Bash<a class="headerlink" href="#variables-in-bash" title="Permalink to this headline">#</a></h2>
+<p>We can create variables</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;Sarah&#39;</span>
 </pre></div>
 </div>
-<p>cd …</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>notice that there are <strong>no spaces</strong> around the <code class="docutils literal notranslate"><span class="pre">=</span></code>. spaces in bash separate commands and options, so they cannot be in variable declarations.</p>
+</div>
+<p>and use them with a <code class="docutils literal notranslate"><span class="pre">$</span></code> before the variable name.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo $NAME
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Sarah</span>
 </pre></div>
 </div>
-<p>ls</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<p>This variable is local, in memory, to the current terminal window, so if we open a separate window and try <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">$NAME</span></code> it will not work. We can also see that it does not create any file changes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
 </pre></div>
 </div>
-<p>example				test
-github-in-class-brownsarahm-1	<a class="reference external" href="http://testobj.md">testobj.md</a>
-kwl				tiny-book</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">example</span>				<span class="n">test</span>
+<span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">-</span><span class="mi">1</span>	<span class="n">testobj</span><span class="o">.</span><span class="n">md</span>
+<span class="n">kwl</span>				<span class="n">tiny</span><span class="o">-</span><span class="n">book</span>
 </pre></div>
 </div>
-<p>NAME=‘Sarah’</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<p>We can, however use the variable at differnt working directories. So if we move</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd github-in-class-brownsarahm-1/
+echo $NAME
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Sarah</span>
 </pre></div>
 </div>
-<p>echo $NAME</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<p>it still works.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">$</span></code> is essential syntax for recalling variables in bash. If we forget it, it treats it as a literal</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="n">NAME</span>
 </pre></div>
 </div>
-<p>Sarah</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NAME</span>
 </pre></div>
 </div>
-<p>ls</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<p>so we get the variable <strong>name</strong> out instead of the varialbe <strong>value</strong></p>
+<p>A common mistake is to put a space around the <code class="docutils literal notranslate"><span class="pre">=</span></code> sign, this is actually considered <strong>good style</strong> in many other languages.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">class</span><span class="p">:</span> <span class="n">cell_input</span>
+<span class="n">NAME</span> <span class="o">=</span><span class="s1">&#39;Sarah&#39;</span>
 </pre></div>
 </div>
-<p>example				test
-github-in-class-brownsarahm-1	<a class="reference external" href="http://testobj.md">testobj.md</a>
-kwl				tiny-book</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">class</span><span class="p">:</span> <span class="n">cell_output</span>
+<span class="n">bash</span><span class="p">:</span> <span class="n">NAME</span><span class="p">:</span> <span class="n">command</span> <span class="ow">not</span> <span class="n">found</span>
 </pre></div>
 </div>
-<p>cd github-in-class-brownsarahm-1/</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>echo $NAME</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>Sarah</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>echo NAME</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>NAME</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>for name in Sarah Amoy Scott Bri</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<blockquote>
-<div><p>do
-echo $name
-done
-Sarah
-Amoy
-Scott
-Bri</p>
-</div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>NAME =‘Sarah’</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>bash: NAME: command not found</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>NAME=‘Sarah’</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<p>In bash, however, this creates an error.  When there is a space after <code class="docutils literal notranslate"><span class="pre">NAME</span></code>, <code class="docutils literal notranslate"><span class="pre">bash</span></code> tried to interpet <code class="docutils literal notranslate"><span class="pre">NAME</span></code> as a bash command, but then it does not find it, so it gives an error.</p>
+<p>Removing the space works again:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;Sarah&#39;</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
 </pre></div>
 </div>
-<p>for name in Sarah Amoy Scott Bri Aiden; do echo $name; done</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</section>
+<section id="bash-loops">
+<h2><span class="section-number">13.2. </span>Bash Loops<a class="headerlink" href="#bash-loops" title="Permalink to this headline">#</a></h2>
+<p>We can also make loops:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for name in Sarah Amoy Scott Bri
+&gt; do
+&gt; echo $name
+&gt; done
 </pre></div>
 </div>
-<p>Sarah
-Amoy
-Scott
-Bri
-Aiden</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
+<p>A few important things, to make note of:</p>
+<ul class="simple">
+<li><p>loop variable does not need to be an iterator.  the loop variable here <code class="docutils literal notranslate"><span class="pre">name</span></code> takes each value from a list (<code class="docutils literal notranslate"><span class="pre">Sarah</span> <span class="pre">Amoy</span> <span class="pre">Scott</span> <span class="pre">Bri</span></code>)</p></li>
+<li><p>lists is bash are defined with no brackets and no commas <code class="docutils literal notranslate"><span class="pre">Sarah</span> <span class="pre">Amoy</span> <span class="pre">Scott</span> <span class="pre">Bri</span></code> is a list</p></li>
+<li><p>we start the loop body with <code class="docutils literal notranslate"><span class="pre">do</span></code> and close it with <code class="docutils literal notranslate"><span class="pre">done</span></code> these are like the <code class="docutils literal notranslate"><span class="pre">{</span></code> and <code class="docutils literal notranslate"><span class="pre">}</span></code> in some langauges.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Sarah</span>
+<span class="n">Amoy</span>
+<span class="n">Scott</span>
+<span class="n">Bri</span>
 </pre></div>
 </div>
-<p>ls</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<p>When we get the command back with the up arrow key, it puts it all on one line, because it was one command.  The <code class="docutils literal notranslate"><span class="pre">;</span></code> (semicolon) separates the “lines”</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for name in Sarah Amoy Scott Bri Aiden; do echo $name; done
 </pre></div>
 </div>
-<p><a class="reference external" href="http://API.md">API.md</a>			<a class="reference external" href="http://about.md">about.md</a>		helper_functions.py
-<a class="reference external" href="http://CONTRIBUTING.md">CONTRIBUTING.md</a>		abstract_base_class.py	important_classes.py
-<a class="reference external" href="http://LICENSE.md">LICENSE.md</a>		alternative_classes.py	<a class="reference external" href="http://setup.py">setup.py</a>
-<a class="reference external" href="http://README.md">README.md</a>		docs			tests</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Sarah</span>
+<span class="n">Amoy</span>
+<span class="n">Scott</span>
+<span class="n">Bri</span>
+<span class="n">Aiden</span>
 </pre></div>
 </div>
-<p>for file in $(ls)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
 </pre></div>
 </div>
-<blockquote>
-<div><p>do
-echo $file
-done
-<a class="reference external" href="http://API.md">API.md</a>
-<a class="reference external" href="http://CONTRIBUTING.md">CONTRIBUTING.md</a>
-<a class="reference external" href="http://LICENSE.md">LICENSE.md</a>
-<a class="reference external" href="http://README.md">README.md</a>
-<a class="reference external" href="http://about.md">about.md</a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">API</span><span class="o">.</span><span class="n">md</span>			<span class="n">about</span><span class="o">.</span><span class="n">md</span>		<span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span>
+<span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>		<span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span>	<span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>		<span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span>	<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>		<span class="n">docs</span>			<span class="n">tests</span>
+</pre></div>
+</div>
+</section>
+<section id="nesting-commands">
+<h2><span class="section-number">13.3. </span>Nesting commands<a class="headerlink" href="#nesting-commands" title="Permalink to this headline">#</a></h2>
+<p>We can run a command to generate the list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for file in $(ls)
+&gt; do 
+&gt; echo $file
+&gt; done
+API.md
+CONTRIBUTING.md
+LICENSE.md
+README.md
+about.md
 abstract_base_class.py
 alternative_classes.py
 docs
 helper_functions.py
 important_classes.py
-<a class="reference external" href="http://setup.py">setup.py</a>
-tests</p>
-</div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
+setup.py
+tests
 </pre></div>
 </div>
-<p>for file in <span class="math notranslate nohighlight">\((ls -a); do  echo \)</span>file; done</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<p>the <code class="docutils literal notranslate"><span class="pre">$()</span></code> tells bash to run that command first and then hold its output as a variable for use elsewhere</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>I use this to make the date in the filename of your experience reports and the titles of your badge issues</p>
+</div>
+<div class="community dropdown admonition">
+<p class="admonition-title">Find &amp; Comment</p>
+<p>find where I use this in one of your action files and add a comment explaining the line. Put this commit in its own PR and request a review from &#64;brownsarahm for a community badge!</p>
+</div>
+<p>We can modify what is in the <code class="docutils literal notranslate"><span class="pre">$()</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for file in $(ls -a); do  echo $file; done
 </pre></div>
 </div>
-<p>.
-…
-.git
-.github
-<a class="reference external" href="http://API.md">API.md</a>
-<a class="reference external" href="http://CONTRIBUTING.md">CONTRIBUTING.md</a>
-<a class="reference external" href="http://LICENSE.md">LICENSE.md</a>
-<a class="reference external" href="http://README.md">README.md</a>
-<a class="reference external" href="http://about.md">about.md</a>
-abstract_base_class.py
-alternative_classes.py
-docs
-helper_functions.py
-important_classes.py
-<a class="reference external" href="http://setup.py">setup.py</a>
-tests</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span>
+<span class="o">..</span>
+<span class="o">.</span><span class="n">git</span>
+<span class="o">.</span><span class="n">github</span>
+<span class="n">API</span><span class="o">.</span><span class="n">md</span>
+<span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="n">about</span><span class="o">.</span><span class="n">md</span>
+<span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span>
+<span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">docs</span>
+<span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span>
+<span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="n">tests</span>
 </pre></div>
 </div>
-<p>if test -f docs</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</section>
+<section id="conditionals-in-bash">
+<h2><span class="section-number">13.4. </span>Conditionals in bash<a class="headerlink" href="#conditionals-in-bash" title="Permalink to this headline">#</a></h2>
+<p>We can also do conditional statements</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">test</span> <span class="o">-</span><span class="n">f</span> <span class="n">docs</span>
+<span class="o">&gt;</span> <span class="n">then</span>
+<span class="o">&gt;</span> <span class="n">echo</span> <span class="s2">&quot;file&quot;</span>
+<span class="o">&gt;</span> <span class="n">fi</span> 
 </pre></div>
 </div>
-<blockquote>
-<div><p>then
-echo “file”
-fi</p>
-</div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
+<p>the key parts of this:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">test</span></code> checks if a file or directory exists</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">-f</span></code> option makes it check if the item is a <em>file</em></p></li>
+<li><p>what to do if the condition is met goes after a <code class="docutils literal notranslate"><span class="pre">then</span></code> keyword</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">fi</span></code> (backwards<code class="docutils literal notranslate"><span class="pre">if</span></code>) closes the if statment</p></li>
+</ul>
+<p>This outputs nothing because <code class="docutils literal notranslate"><span class="pre">docs</span></code> is a directory not a file.</p>
+<p>If we switch it, we get output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">test</span> <span class="o">-</span><span class="n">f</span> <span class="n">API</span><span class="o">.</span><span class="n">md</span><span class="p">;</span> <span class="n">then</span> <span class="n">echo</span> <span class="s2">&quot;file&quot;</span><span class="p">;</span> <span class="n">fi</span> 
 </pre></div>
 </div>
-<p>if test -f <a class="reference external" href="http://API.md">API.md</a>; then echo “file”; fi</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">file</span>
 </pre></div>
 </div>
-<p>file</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
+<p>We can put the if inside of the loop.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for file in $(ls); do if test -f $file;  echo $file; fi; done
 </pre></div>
 </div>
-<p>for file in <span class="math notranslate nohighlight">\((ls); do if test -f \)</span>file;  echo $file;fi; done</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>bash: syntax error near unexpected token `fi&#39;
 </pre></div>
 </div>
-<p>bash: syntax error near unexpected token `fi’</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
+<p>I forgot the <code class="docutils literal notranslate"><span class="pre">then</span></code> so bash said it had bad syntax around <code class="docutils literal notranslate"><span class="pre">fi</span></code> this is because it was treating everything after the <code class="docutils literal notranslate"><span class="pre">if</span></code> as the condition and looking for a <code class="docutils literal notranslate"><span class="pre">then</span></code> but when it got to <code class="docutils literal notranslate"><span class="pre">fi</span></code> it knew it was too late and the <code class="docutils literal notranslate"><span class="pre">then</span></code> was not coming because the <code class="docutils literal notranslate"><span class="pre">fi</span></code> is supposed to be after <code class="docutils literal notranslate"><span class="pre">then</span></code>.</p>
+<p>Once we put <code class="docutils literal notranslate"><span class="pre">then</span></code> in, it works:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for file in $(ls); do if test -f $file;then  echo $file; fi; done
 </pre></div>
 </div>
-<p>for file in <span class="math notranslate nohighlight">\((ls); do if test -f \)</span>file;  echo $file; fi; done</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">API</span><span class="o">.</span><span class="n">md</span>
+<span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="n">about</span><span class="o">.</span><span class="n">md</span>
+<span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span>
+<span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span>
+<span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>bash: syntax error near unexpected token `fi’</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
+</section>
+<section id="script-files">
+<h2><span class="section-number">13.5. </span>Script files<a class="headerlink" href="#script-files" title="Permalink to this headline">#</a></h2>
+<p>We can put our script into a file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">filecheck</span><span class="o">.</span><span class="n">sh</span> 
 </pre></div>
 </div>
-<p>for file in <span class="math notranslate nohighlight">\((ls); do if test -f \)</span>file;then  echo $file; fi; done</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p><a class="reference external" href="http://API.md">API.md</a>
-<a class="reference external" href="http://CONTRIBUTING.md">CONTRIBUTING.md</a>
-<a class="reference external" href="http://LICENSE.md">LICENSE.md</a>
-<a class="reference external" href="http://README.md">README.md</a>
-<a class="reference external" href="http://about.md">about.md</a>
-abstract_base_class.py
-alternative_classes.py
-helper_functions.py
-important_classes.py
-<a class="reference external" href="http://setup.py">setup.py</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>for file in <span class="math notranslate nohighlight">\((ls); do if test -f \)</span>file;then  echo $file; fi; done</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p><a class="reference external" href="http://API.md">API.md</a>
-<a class="reference external" href="http://CONTRIBUTING.md">CONTRIBUTING.md</a>
-<a class="reference external" href="http://LICENSE.md">LICENSE.md</a>
-<a class="reference external" href="http://README.md">README.md</a>
-<a class="reference external" href="http://about.md">about.md</a>
-abstract_base_class.py
-alternative_classes.py
-helper_functions.py
-important_classes.py
-<a class="reference external" href="http://setup.py">setup.py</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>echo “for file in <span class="math notranslate nohighlight">\((ls); do if test -f \)</span>file;then  echo $file; fi; done” &gt;&gt; <a class="reference external" href="http://filecheck.sh">filecheck.sh</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>nano <a class="reference external" href="http://filecheck.sh">filecheck.sh</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>bash <a class="reference external" href="http://filecheck.sh">filecheck.sh</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>nano <a class="reference external" href="http://filecheck.sh">filecheck.sh</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>bash <a class="reference external" href="http://filecheck.sh">filecheck.sh</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p><a class="reference external" href="http://API.md">API.md</a>
-<a class="reference external" href="http://CONTRIBUTING.md">CONTRIBUTING.md</a>
-<a class="reference external" href="http://LICENSE.md">LICENSE.md</a>
-<a class="reference external" href="http://README.md">README.md</a>
-<a class="reference external" href="http://about.md">about.md</a>
-abstract_base_class.py
-alternative_classes.py
-<a class="reference external" href="http://filecheck.sh">filecheck.sh</a>
-helper_functions.py
-important_classes.py
-<a class="reference external" href="http://setup.py">setup.py</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>cat <a class="reference external" href="http://filecheck.sh">filecheck.sh</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>for file in <span class="math notranslate nohighlight">\((ls)
+<p>So that the file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for file in $(ls)
 do 
-  if test -f \)</span>file
-then
-echo $file
-fi
-done</p>
+  if test -f $file
+  then
+     echo $file
+  fi
+done
+</pre></div>
+</div>
+<p>and run it with <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">&lt;filename&gt;</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">filecheck</span><span class="o">.</span><span class="n">sh</span> 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">API</span><span class="o">.</span><span class="n">md</span>
+<span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="n">about</span><span class="o">.</span><span class="n">md</span>
+<span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span>
+<span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">filecheck</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span>
+<span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">filecheck</span><span class="o">.</span><span class="n">sh</span> 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for file in $(ls)
+do 
+  if test -f $file
+  then
+     echo $file
+  fi
+done
+</pre></div>
+</div>
+</section>
+<section id="gh-cli-operations">
+<h2><span class="section-number">13.6. </span><code class="docutils literal notranslate"><span class="pre">gh</span></code> CLI operations<a class="headerlink" href="#gh-cli-operations" title="Permalink to this headline">#</a></h2>
+<p>When you are working sometimes it is helpful to be able to manipulate (or create) issues, pull requests or even releases from the command line.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is how I post announcements. I work on the notes (a markdown file) in vs code and then I use the vscode terminal to commit, push, create a tag, and create a release. I can post the notes and notify you all that they are posted without leaving VScode at all; this makes it much simpler/faster than it would be using Brightspace</p>
+</div>
+</aside>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">issue</span> <span class="nb">list</span>
+</pre></div>
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">Showing</span> <span class="mi">1</span> <span class="n">of</span> <span class="mi">1</span> <span class="nb">open</span> <span class="n">issue</span> <span class="ow">in</span> <span class="n">introcompsys</span><span class="o">/</span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">-</span><span class="mi">1</span>
+
+<span class="c1">#3  Create a Add a classmate    about 1 month ago</span>
+</pre></div>
+</div>
+<p>We can also get options</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">issue</span> <span class="nb">list</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>List issues in a GitHub repository.
+
+The search query syntax is documented here:
+&lt;https://docs.github.com/en/search-github/searching-on-github/searching-issues-and-pull-requests&gt;
+
+For more information about output formatting flags, see `gh help formatting`.
+
+USAGE
+  gh issue list [flags]
+
+FLAGS
+      --app string         Filter by GitHub App author
+  -a, --assignee string    Filter by assignee
+  -A, --author string      Filter by author
+  -q, --jq expression      Filter JSON output using a jq expression
+      --json fields        Output JSON with the specified fields
+  -l, --label strings      Filter by label
+  -L, --limit int          Maximum number of issues to fetch (default 30)
+      --mention string     Filter by mention
+  -m, --milestone string   Filter by milestone number or title
+  -S, --search query       Search issues with query
+  -s, --state string       Filter by state: {open|closed|all} (default &quot;open&quot;)
+  -t, --template string    Format JSON output using a Go template; see &quot;gh help formatting&quot;
+  -w, --web                List issues in the web browser
+
+INHERITED FLAGS
+      --help                     Show help for command
+  -R, --repo [HOST/]OWNER/REPO   Select another repository using the [HOST/]OWNER/REPO format
+
+EXAMPLES
+  $ gh issue list --label &quot;bug&quot; --label &quot;help wanted&quot;
+  $ gh issue list --author monalisa
+  $ gh issue list --assignee &quot;@me&quot;
+  $ gh issue list --milestone &quot;The big 1.0&quot;
+  $ gh issue list --search &quot;error no:assignee sort:created-asc&quot;
+
+LEARN MORE
+  Use &#39;gh &lt;command&gt; &lt;subcommand&gt; --help&#39; for more information about a command.
+  Read the manual at https://cli.github.com/manual
 
 </pre></div>
 </div>
-<p>gh issue list</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<p>We can filter them to only the closed ones</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">issue</span> <span class="nb">list</span> <span class="o">-</span><span class="n">s</span> <span class="n">closed</span>
 </pre></div>
 </div>
-<p>Showing 1 of 1 open issue in introcompsys/github-in-class-brownsarahm-1</p>
-<p>#3  Create a Add a classmate    about 1 month ago</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Showing</span> <span class="mi">2</span> <span class="n">of</span> <span class="mi">2</span> <span class="n">issues</span> <span class="ow">in</span> <span class="n">introcompsys</span><span class="o">/</span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">-</span><span class="mi">1</span> <span class="n">that</span> <span class="n">match</span> <span class="n">your</span> <span class="n">search</span>
 
+<span class="c1">#2  Create an about file    about 1 month ago</span>
+<span class="c1">#1  Create a README         about 1 month ago</span>
 </pre></div>
 </div>
-<p>gh issue list –help</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<p>It is simlar for PRs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">pr</span> <span class="nb">list</span> 
 </pre></div>
 </div>
-<p>List issues in a GitHub repository.</p>
-<p>The search query syntax is documented here:
-<a class="reference external" href="https://docs.github.com/en/search-github/searching-on-github/searching-issues-and-pull-requests">https://docs.github.com/en/search-github/searching-on-github/searching-issues-and-pull-requests</a></p>
-<p>For more information about output formatting flags, see <code class="docutils literal notranslate"><span class="pre">gh</span> <span class="pre">help</span> <span class="pre">formatting</span></code>.</p>
-<p>USAGE
-gh issue list [flags]</p>
-<p>FLAGS
-–app string         Filter by GitHub App author
--a, –assignee string    Filter by assignee
--A, –author string      Filter by author
--q, –jq expression      Filter JSON output using a jq expression
-–json fields        Output JSON with the specified fields
--l, –label strings      Filter by label
--L, –limit int          Maximum number of issues to fetch (default 30)
-–mention string     Filter by mention
--m, –milestone string   Filter by milestone number or title
--S, –search query       Search issues with query
--s, –state string       Filter by state: {open|closed|all} (default “open”)
--t, –template string    Format JSON output using a Go template; see “gh help formatting”
--w, –web                List issues in the web browser</p>
-<p>INHERITED FLAGS
-–help                     Show help for command
--R, –repo [HOST/]OWNER/REPO   Select another repository using the [HOST/]OWNER/REPO format</p>
-<p>EXAMPLES
-<span class="math notranslate nohighlight">\( gh issue list --label &quot;bug&quot; --label &quot;help wanted&quot;
-  \)</span> gh issue list –author monalisa
-<span class="math notranslate nohighlight">\( gh issue list --assignee &quot;&#64;me&quot;
-  \)</span> gh issue list –milestone “The big 1.0”
-$ gh issue list –search “error no:assignee sort:created-asc”</p>
-<p>LEARN MORE
-Use ‘gh <command> <subcommand> –help’ for more information about a command.
-Read the manual at <a class="reference external" href="https://cli.github.com/manual">https://cli.github.com/manual</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="nb">open</span> <span class="n">pull</span> <span class="n">requests</span> <span class="ow">in</span> <span class="n">introcompsys</span><span class="o">/</span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>When we use <code class="docutils literal notranslate"><span class="pre">create</span></code> is is interactive (or you can specify the options if you know them).</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can see an example using options this in your get assignment action file.</p>
+</div>
+</aside>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">issue</span> <span class="n">create</span> 
+</pre></div>
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+Creating issue in introcompsys/github-in-class-brownsarahm-1
 
+? Title bug
+? Body &lt;Received&gt;
+? What&#39;s next? Submit
+https://github.com/introcompsys/github-in-class-brownsarahm-1/issues/7
 </pre></div>
 </div>
-<p>gh issue list -s closed</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<p>Now we can see our list of issues</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">issue</span> <span class="nb">list</span> <span class="o">-</span><span class="n">s</span> <span class="nb">all</span>
 </pre></div>
 </div>
-<p>Showing 2 of 2 issues in introcompsys/github-in-class-brownsarahm-1 that match your search</p>
-<p>#2  Create an about file    about 1 month ago
-#1  Create a README         about 1 month ago</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">Showing</span> <span class="mi">4</span> <span class="n">of</span> <span class="mi">4</span> <span class="n">issues</span> <span class="ow">in</span> <span class="n">introcompsys</span><span class="o">/</span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">-</span><span class="mi">1</span> <span class="n">that</span> <span class="n">match</span> <span class="n">your</span> <span class="n">search</span>
 
+<span class="c1">#7  bug                         less than a minute ago</span>
+<span class="c1">#3  Create a Add a classmate    about 1 month ago</span>
+<span class="c1">#2  Create an about file        about 1 month ago</span>
+<span class="c1">#1  Create a README             about 1 month ago</span>
 </pre></div>
 </div>
-<p>gh pr list</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<p>We can also search and filter them by piping the output to <code class="docutils literal notranslate"><span class="pre">grep</span></code> which searches the <strong>contents</strong> of a file (including stdin). We previously searched the file <strong>names</strong> with <code class="docutils literal notranslate"><span class="pre">find</span></code>.  So <code class="docutils literal notranslate"><span class="pre">find</span></code> searches the paths that exist and <code class="docutils literal notranslate"><span class="pre">grep</span></code> actually reads the contents of the files, it does so faster than many other languages would be.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">issue</span> <span class="nb">list</span> <span class="o">-</span><span class="n">s</span> <span class="nb">all</span> <span class="o">|</span> <span class="n">grep</span> <span class="s2">&quot;Create&quot;</span>
 </pre></div>
 </div>
-<p>no open pull requests in introcompsys/github-in-class-brownsarahm-1</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span>	<span class="n">OPEN</span>	<span class="n">Create</span> <span class="n">a</span> <span class="n">Add</span> <span class="n">a</span> <span class="n">classmate</span>		<span class="mi">2023</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">31</span> <span class="mi">18</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">59</span> <span class="o">+</span><span class="mi">0000</span> <span class="n">UTC</span>
+<span class="mi">2</span>	<span class="n">CLOSED</span>	<span class="n">Create</span> <span class="n">an</span> <span class="n">about</span> <span class="n">file</span>		<span class="mi">2023</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">02</span> <span class="mi">18</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">19</span> <span class="o">+</span><span class="mi">0000</span> <span class="n">UTC</span>
+<span class="mi">1</span>	<span class="n">CLOSED</span>	<span class="n">Create</span> <span class="n">a</span> <span class="n">README</span>		<span class="mi">2023</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">31</span> <span class="mi">18</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">20</span> <span class="o">+</span><span class="mi">0000</span> <span class="n">UTC</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">grep</span></code> can be used with pattern matching as well</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Learning more about <code class="docutils literal notranslate"><span class="pre">grep</span></code> is a good explore badge topic</p>
+</div>
+<p>Here are the options</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">issue</span> <span class="n">create</span> <span class="o">--</span><span class="n">hlp</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unknown</span> <span class="n">flag</span><span class="p">:</span> <span class="o">--</span><span class="n">hlp</span>
 
-</pre></div>
-</div>
-<p>gh issue list -s all</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>Showing 3 of 3 issues in introcompsys/github-in-class-brownsarahm-1 that match your search</p>
-<p>#3  Create a Add a classmate    about 1 month ago
-#2  Create an about file        about 1 month ago
-#1  Create a README             about 1 month ago</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">Usage</span><span class="p">:</span>  <span class="n">gh</span> <span class="n">issue</span> <span class="n">create</span> <span class="p">[</span><span class="n">flags</span><span class="p">]</span>
 
+<span class="n">Flags</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">a</span><span class="p">,</span> <span class="o">--</span><span class="n">assignee</span> <span class="n">login</span>   <span class="n">Assign</span> <span class="n">people</span> <span class="n">by</span> <span class="n">their</span> <span class="n">login</span><span class="o">.</span> <span class="n">Use</span> <span class="s2">&quot;@me&quot;</span> <span class="n">to</span> <span class="bp">self</span><span class="o">-</span><span class="n">assign</span><span class="o">.</span>
+  <span class="o">-</span><span class="n">b</span><span class="p">,</span> <span class="o">--</span><span class="n">body</span> <span class="n">string</span>      <span class="n">Supply</span> <span class="n">a</span> <span class="n">body</span><span class="o">.</span> <span class="n">Will</span> <span class="n">prompt</span> <span class="k">for</span> <span class="n">one</span> <span class="n">otherwise</span><span class="o">.</span>
+  <span class="o">-</span><span class="n">F</span><span class="p">,</span> <span class="o">--</span><span class="n">body</span><span class="o">-</span><span class="n">file</span> <span class="n">file</span>   <span class="n">Read</span> <span class="n">body</span> <span class="n">text</span> <span class="kn">from</span> <span class="nn">file</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;-&quot;</span> <span class="n">to</span> <span class="n">read</span> <span class="kn">from</span> <span class="nn">standard</span> <span class="nb">input</span><span class="p">)</span>
+  <span class="o">-</span><span class="n">l</span><span class="p">,</span> <span class="o">--</span><span class="n">label</span> <span class="n">name</span>       <span class="n">Add</span> <span class="n">labels</span> <span class="n">by</span> <span class="n">name</span>
+  <span class="o">-</span><span class="n">m</span><span class="p">,</span> <span class="o">--</span><span class="n">milestone</span> <span class="n">name</span>   <span class="n">Add</span> <span class="n">the</span> <span class="n">issue</span> <span class="n">to</span> <span class="n">a</span> <span class="n">milestone</span> <span class="n">by</span> <span class="n">name</span>
+  <span class="o">-</span><span class="n">p</span><span class="p">,</span> <span class="o">--</span><span class="n">project</span> <span class="n">name</span>     <span class="n">Add</span> <span class="n">the</span> <span class="n">issue</span> <span class="n">to</span> <span class="n">projects</span> <span class="n">by</span> <span class="n">name</span>
+      <span class="o">--</span><span class="n">recover</span> <span class="n">string</span>   <span class="n">Recover</span> <span class="nb">input</span> <span class="kn">from</span> <span class="nn">a</span> <span class="n">failed</span> <span class="n">run</span> <span class="n">of</span> <span class="n">create</span>
+  <span class="o">-</span><span class="n">t</span><span class="p">,</span> <span class="o">--</span><span class="n">title</span> <span class="n">string</span>     <span class="n">Supply</span> <span class="n">a</span> <span class="n">title</span><span class="o">.</span> <span class="n">Will</span> <span class="n">prompt</span> <span class="k">for</span> <span class="n">one</span> <span class="n">otherwise</span><span class="o">.</span>
+  <span class="o">-</span><span class="n">w</span><span class="p">,</span> <span class="o">--</span><span class="n">web</span>              <span class="n">Open</span> <span class="n">the</span> <span class="n">browser</span> <span class="n">to</span> <span class="n">create</span> <span class="n">an</span> <span class="n">issue</span>
+  
 </pre></div>
 </div>
-<p>gh issue create</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</section>
+<section id="badge-hints">
+<h2><span class="section-number">13.7. </span>Badge Hints<a class="headerlink" href="#badge-hints" title="Permalink to this headline">#</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The goal is to put files in your kwl repo for us to review, that summarizes the <em>contributions</em> you have done in your group repo</p>
+</div>
+<ul class="simple">
+<li><p>See the options for <code class="docutils literal notranslate"><span class="pre">gh</span> <span class="pre">pr</span> <span class="pre">list</span></code>.</p></li>
+<li><p>Use two strategies for what you are the author and when you are the reviewer</p></li>
+<li><p>Try the json option on <code class="docutils literal notranslate"><span class="pre">gh</span> <span class="pre">pr</span> <span class="pre">list</span></code> and see how it can help you</p></li>
+<li><p>I use bash in the your experience badge action to make a file with a date in the file name</p></li>
+<li><p>You can run a file from different locations</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../</span><span class="n">test</span>
+<span class="n">bash</span> <span class="o">../</span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">filecheck</span><span class="o">.</span><span class="n">sh</span> 
 </pre></div>
 </div>
-<p>Creating issue in introcompsys/github-in-class-brownsarahm-1</p>
-<p>? Title bug
-? Body <Received>
-? What’s next? Submit
-<a class="github reference external" href="https://github.com/introcompsys/github-in-class-brownsarahm-1/issues/7">introcompsys/github-in-class-brownsarahm-1#7</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">new</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">test</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
-<p>gh issue list -s all</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>Showing 4 of 4 issues in introcompsys/github-in-class-brownsarahm-1 that match your search</p>
-<p>#7  bug                         less than a minute ago
-#3  Create a Add a classmate    about 1 month ago
-#2  Create an about file        about 1 month ago
-#1  Create a README             about 1 month ago</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>gh issue list -s all | grep “Create”</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>3	OPEN	Create a Add a classmate		2023-01-31 18:11:59 +0000 UTC
-2	CLOSED	Create an about file		2023-02-02 18:14:19 +0000 UTC
-1	CLOSED	Create a README		2023-01-31 18:18:20 +0000 UTC</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>gh issue create –hlp</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>unknown flag: –hlp</p>
-<p>Usage:  gh issue create [flags]</p>
-<p>Flags:
--a, –assignee login   Assign people by their login. Use “&#64;me” to self-assign.
--b, –body string      Supply a body. Will prompt for one otherwise.
--F, –body-file file   Read body text from file (use “-” to read from standard input)
--l, –label name       Add labels by name
--m, –milestone name   Add the issue to a milestone by name
--p, –project name     Add the issue to projects by name
-–recover string   Recover input from a failed run of create
--t, –title string     Supply a title. Will prompt for one otherwise.
--w, –web              Open the browser to create an issue</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>ls</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p><a class="reference external" href="http://API.md">API.md</a>			<a class="reference external" href="http://about.md">about.md</a>		<a class="reference external" href="http://filecheck.sh">filecheck.sh</a>		tests
-<a class="reference external" href="http://CONTRIBUTING.md">CONTRIBUTING.md</a>		abstract_base_class.py	helper_functions.py
-<a class="reference external" href="http://LICENSE.md">LICENSE.md</a>		alternative_classes.py	important_classes.py
-<a class="reference external" href="http://README.md">README.md</a>		docs			<a class="reference external" href="http://setup.py">setup.py</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>cd …/test</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>bash …/github-in-class-brownsarahm-1/filecheck.sh</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>new.txt
-test.txt</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>cd …/…/</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>bash systems/github-in-class-brownsarahm-1/filecheck.sh</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>ls</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>fa22		prog4dssp23	systems</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../../</span>
+<span class="n">bash</span> <span class="n">systems</span><span class="o">/</span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">filecheck</span><span class="o">.</span><span class="n">sh</span> 
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fa22</span>		<span class="n">prog4dssp23</span>	<span class="n">systems</span>
+</pre></div>
+</div>
+</section>
 <section id="review-todays-class">
-<h1>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h1>
+<h2><span class="section-number">13.8. </span>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h2>
 <ol class="arabic simple">
 <li><p>Update your KWL Chart learned column with what you’ve learned</p></li>
 <li><p>Write a bash script that can generate a file in your KWL repo with a list of all of your contributed PRs. Save the script as <span class="target" id="index-0"></span>groupcontributions.sh and its output as <span class="target" id="index-1"></span>group_contributions-YYYY-MM-DD.md</p></li>
 </ol>
 </section>
 <section id="prepare-for-next-class">
-<h1>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h1>
+<h2><span class="section-number">13.9. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
 <ol class="arabic simple">
 <li><p>install putty on windows</p></li>
 <li><p>spend 10 minutes after break before class, thinking about what you know about networking and how it works, what examples you have of it.</p></li>
 </ol>
 </section>
 <section id="more-practice">
-<h1>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h1>
+<h2><span class="section-number">13.10. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
 <ol class="arabic simple">
 <li><p>Update your KWL Chart learned column with what you’ve learned</p></li>
 <li><p>Write a bash script that can generate a file in your KWL repo with a list of all of your PRs and PR reviews. Save the script as <span class="target" id="index-2"></span>groupcontributions.sh and its output as <span class="target" id="index-3"></span>group_contributions-YYYY-MM-DD.md</p></li>
 </ol>
 </section>
 <section id="experience-report-evidence">
-<h1>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h1>
+<h2><span class="section-number">13.11. </span>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="questions-after-todays-class">
-<h1>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h1>
+<h2><span class="section-number">13.12. </span>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
+<section id="is-there-any-structure-tools-to-reverse-the-order-of-if-and-do-in-a-bash-loop-writing-do-if-doesnt-feel-natural-to-me">
+<h3><span class="section-number">13.12.1. </span>Is there any structure/tools to reverse the order of if and do in a bash loop? Writing “do if” doesn’t feel natural to me.<a class="headerlink" href="#is-there-any-structure-tools-to-reverse-the-order-of-if-and-do-in-a-bash-loop-writing-do-if-doesnt-feel-natural-to-me" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">do</span></code> is a part of the <code class="docutils literal notranslate"><span class="pre">for</span></code>. We put the <code class="docutils literal notranslate"><span class="pre">if</span></code> in the loop body, as the first thing in there. It could have been like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for file in $(ls)
+do 
+  echo checking $file
+  if test -f $file
+  then
+     echo $file is a file
+  fi
+done
+</pre></div>
+</div>
+</section>
+<section id="would-the-script-that-we-wrote-into-the-file-still-work-with-semicolons-or-would-adding-them-ruin-the-syntax">
+<h3><span class="section-number">13.12.2. </span>Would the script that we wrote into the file still work with semicolons or would adding them ruin the syntax?<a class="headerlink" href="#would-the-script-that-we-wrote-into-the-file-still-work-with-semicolons-or-would-adding-them-ruin-the-syntax" title="Permalink to this headline">#</a></h3>
+<p>This is easily testable.</p>
+</section>
+<section id="how-come-we-have-been-using-git-commands-in-stead-of-gh-commands">
+<h3><span class="section-number">13.12.3. </span>How come we have been using git commands in stead of gh commands?<a class="headerlink" href="#how-come-we-have-been-using-git-commands-in-stead-of-gh-commands" title="Permalink to this headline">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">git</span></code> commands are the core things we have been learning about so that you can use <code class="docutils literal notranslate"><span class="pre">git</span></code> no matter what host you use.  <code class="docutils literal notranslate"><span class="pre">gh</span></code> commands <strong>only</strong> work with GitHub.  They will not work on BitBucket, Gitlab, or any other git host. GitHub is popular, but since Microsoft purcahsed it, some people have left because they do not trust Microsoft.</p>
+</section>
+<section id="what-else-can-we-use-this-gh-command-for">
+<h3><span class="section-number">13.12.4. </span>What else can we use this gh command for?<a class="headerlink" href="#what-else-can-we-use-this-gh-command-for" title="Permalink to this headline">#</a></h3>
+<p>Its most important uses are for issues and pull requests</p>
+</section>
+<section id="what-does-the-mean-since-its-used-in-so-many-places">
+<h3><span class="section-number">13.12.5. </span>What does the $ mean since it’s used in so many places?<a class="headerlink" href="#what-does-the-mean-since-its-used-in-so-many-places" title="Permalink to this headline">#</a></h3>
+<p>It is the syntax for using a value from a variable.</p>
+</section>
+<section id="are-the-api-md-contributing-md-etc-files-important-they-have-disappeared-from-my-main-branch">
+<h3><span class="section-number">13.12.6. </span>Are the <a class="reference external" href="http://API.MD">API.MD</a>, <a class="reference external" href="http://CONTRIBUTING.MD">CONTRIBUTING.MD</a> …etc files important? They have disappeared from my main branch<a class="headerlink" href="#are-the-api-md-contributing-md-etc-files-important-they-have-disappeared-from-my-main-branch" title="Permalink to this headline">#</a></h3>
+<p>No, but I do encourage you to try to get them back. Try using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> to see what might have happened.</p>
+</section>
+<section id="can-the-script-be-in-any-type-of-file-or-does-it-have-to-be-in-a-certain-type-of-file">
+<h3><span class="section-number">13.12.7. </span>Can the script be in any type of file or does it have to be in a certain type of file?<a class="headerlink" href="#can-the-script-be-in-any-type-of-file-or-does-it-have-to-be-in-a-certain-type-of-file" title="Permalink to this headline">#</a></h3>
+<p>They must be in plain text but the file extension does not matter.</p>
+</section>
+<section id="how-is-this-you-said-fi-is-the-oppisite-if-but-in-a-contect-in-a-if-else-statement-what-do-it-do-like-else-if">
+<h3><span class="section-number">13.12.8. </span>How is this you said fi is the oppisite if but in a contect in a if else statement what do it do? (like else if).<a class="headerlink" href="#how-is-this-you-said-fi-is-the-oppisite-if-but-in-a-contect-in-a-if-else-statement-what-do-it-do-like-else-if" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="is-there-any-major-benefit-in-creating-an-issue-in-a-repo-directly-within-a-terminal-or-is-it-just-a-matter-of-preference">
+<h3><span class="section-number">13.12.9. </span>Is there any major benefit in creating an issue in a repo directly within a terminal, or is it just a matter of preference?<a class="headerlink" href="#is-there-any-major-benefit-in-creating-an-issue-in-a-repo-directly-within-a-terminal-or-is-it-just-a-matter-of-preference" title="Permalink to this headline">#</a></h3>
+<p>I use the terminal within vscode to make issues sometimes while I am working on onet thing but I get an idea for a future feature. Using the terminal is helpful because I don’t always have the GitHub web page for thta repo open while I am working, but I do alwasy have a terminal in the folder where I’m working.  So I can quickly take note of an idea and then get back to what I was doing. Less switching contexts helps stay focused and complete tasks faster.</p>
+</section>
+<section id="how-often-would-i-use-bash-programming-as-a-software-engineer">
+<h3><span class="section-number">13.12.10. </span>How often would I use bash programming as a software engineer?<a class="headerlink" href="#how-often-would-i-use-bash-programming-as-a-software-engineer" title="Permalink to this headline">#</a></h3>
+<p>For small bits here and there. You might not write bash scripts often but when you do it will be thing sthat could save you a ton of time.<br />
+A lot of build processes are bash scripts, as we will see soon.</p>
+<p>You will most likely never write a large program in bash, but you will almost definitely write or update small bash scripts on a semi-regular basis.</p>
+</section>
+<section id="can-you-create-classes-and-objects-in-bash">
+<h3><span class="section-number">13.12.11. </span>can you create classes and objects in bash?<a class="headerlink" href="#can-you-create-classes-and-objects-in-bash" title="Permalink to this headline">#</a></h3>
+<p>No bash is not an object oriented language</p>
+</section>
+<section id="what-are-the-benefits-if-any-to-bash-scripting-in-the-terminal-rather-then-in-an-ide">
+<h3><span class="section-number">13.12.12. </span>what are the benefits, if any, to bash scripting in the terminal rather then in an IDE?<a class="headerlink" href="#what-are-the-benefits-if-any-to-bash-scripting-in-the-terminal-rather-then-in-an-ide" title="Permalink to this headline">#</a></h3>
+<p>knowing how to do to it is important becuse sometimes an IDE is not available.  On a regular basis though no difference.</p>
+</section>
+<section id="what-exactly-does-grep-do-can-it-only-be-used-with-piping">
+<h3><span class="section-number">13.12.13. </span>What exactly does grep do, can it only be used with piping?<a class="headerlink" href="#what-exactly-does-grep-do-can-it-only-be-used-with-piping" title="Permalink to this headline">#</a></h3>
+<p>grep searches files.  We’ll come back to it.  It can search the contents of any file, not only stdin</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1041,6 +1039,24 @@ test.txt</p>
                 <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="2023-03-07.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>What is a commit number?</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../activities/kwl.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">KWL Chart</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1056,13 +1072,34 @@ test.txt</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Review today’s class</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">Prepare for Next Class</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">More Practice</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">Experience Report Evidence</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">Questions After Today’s Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-in-bash">13.1. Variables in Bash</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-loops">13.2. Bash Loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nesting-commands">13.3. Nesting commands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditionals-in-bash">13.4. Conditionals in bash</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#script-files">13.5. Script files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gh-cli-operations">13.6. <code class="docutils literal notranslate"><span class="pre">gh</span></code> CLI operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#badge-hints">13.7. Badge Hints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">13.8. Review today’s class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">13.9. Prepare for Next Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">13.10. More Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">13.11. Experience Report Evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">13.12. Questions After Today’s Class</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-there-any-structure-tools-to-reverse-the-order-of-if-and-do-in-a-bash-loop-writing-do-if-doesnt-feel-natural-to-me">13.12.1. Is there any structure/tools to reverse the order of if and do in a bash loop? Writing “do if” doesn’t feel natural to me.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#would-the-script-that-we-wrote-into-the-file-still-work-with-semicolons-or-would-adding-them-ruin-the-syntax">13.12.2. Would the script that we wrote into the file still work with semicolons or would adding them ruin the syntax?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-come-we-have-been-using-git-commands-in-stead-of-gh-commands">13.12.3. How come we have been using git commands in stead of gh commands?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-else-can-we-use-this-gh-command-for">13.12.4. What else can we use this gh command for?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-the-mean-since-its-used-in-so-many-places">13.12.5. What does the $ mean since it’s used in so many places?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#are-the-api-md-contributing-md-etc-files-important-they-have-disappeared-from-my-main-branch">13.12.6. Are the API.MD, CONTRIBUTING.MD …etc files important? They have disappeared from my main branch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-the-script-be-in-any-type-of-file-or-does-it-have-to-be-in-a-certain-type-of-file">13.12.7. Can the script be in any type of file or does it have to be in a certain type of file?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-is-this-you-said-fi-is-the-oppisite-if-but-in-a-contect-in-a-if-else-statement-what-do-it-do-like-else-if">13.12.8. How is this you said fi is the oppisite if but in a contect in a if else statement what do it do? (like else if).</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-there-any-major-benefit-in-creating-an-issue-in-a-repo-directly-within-a-terminal-or-is-it-just-a-matter-of-preference">13.12.9. Is there any major benefit in creating an issue in a repo directly within a terminal, or is it just a matter of preference?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-often-would-i-use-bash-programming-as-a-software-engineer">13.12.10. How often would I use bash programming as a software engineer?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-create-classes-and-objects-in-bash">13.12.11. can you create classes and objects in bash?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-the-benefits-if-any-to-bash-scripting-in-the-terminal-rather-then-in-an-ide">13.12.12. what are the benefits, if any, to bash scripting in the terminal rather then in an IDE?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-exactly-does-grep-do-can-it-only-be-used-with-piping">13.12.13. What exactly does grep do, can it only be used with piping?</a></li>
 </ul>
-
+</li>
+</ul>
   </nav></div>
 
 </div></div>
