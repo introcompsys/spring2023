@@ -430,7 +430,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-permissions">14.5. File permissions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">14.6. Review today’s class</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">14.7. Prepare for Next Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">14.8. More Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice">14.8. Practice</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">14.9. Experience Report Evidence</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">14.10. Questions After Today’s Class</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-meant-by-the-term-gene-symbol">14.10.1. What is meant by the term “gene symbol” ?</a></li>
@@ -881,6 +881,10 @@ drwxr-xr-x. 2 brownsarahm spring2022-csc392       10 Mar  8 13:16 results
 </section>
 <section id="review-todays-class">
 <h2><span class="section-number">14.6. </span>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This is an <a class="reference internal" href="../syllabus/grading.html#integrative"><span class="std std-ref">integrative</span></a> 2x badge.</p>
+</div>
 <ol class="arabic">
 <li><p>File permissions are represented numerically often in octal, by transforming the permissions for each level (owner, group, all) as binary into a number. Add <span class="target" id="index-0"></span>octal-review.md to your KWL repo and answer the following.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1. Transform the permissions [`r--`, `rw-`, `rwx`] to octal, by treating it as three bits.
@@ -919,8 +923,12 @@ drwxr-xr-x. 2 brownsarahm spring2022-csc392       10 Mar  8 13:16 results
 <li><p>Preview the <a class="reference external" href="https://survey.stackoverflow.co/2022/#technology">Stack Overflow Developer Survey</a> Technology section parts that are about tools.</p></li>
 </ol>
 </section>
-<section id="more-practice">
-<h2><span class="section-number">14.8. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
+<section id="practice">
+<h2><span class="section-number">14.8. </span>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">#</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This is an <a class="reference internal" href="../syllabus/grading.html#integrative"><span class="std std-ref">integrative</span></a> 2x badge.</p>
+</div>
 <ol class="arabic">
 <li><p>File permissions are represented numerically often in octal, by transforming the permissions for each level (owner, group, all) as binary into a number. Add <span class="target" id="index-1"></span>octal-practice.md to your KWL repo and answer the following.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1. Transform the permissions [`r--`, `rw-`, `rwx`] to octal, by treating it as three bits.
@@ -955,6 +963,7 @@ drwxr-xr-x. 2 brownsarahm spring2022-csc392       10 Mar  8 13:16 results
 </section>
 <section id="experience-report-evidence">
 <h2><span class="section-number">14.9. </span>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
+<p>No specific files.</p>
 </section>
 <section id="questions-after-todays-class">
 <h2><span class="section-number">14.10. </span>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
@@ -964,7 +973,7 @@ drwxr-xr-x. 2 brownsarahm spring2022-csc392       10 Mar  8 13:16 results
 </section>
 <section id="how-would-we-change-permissions-for-just-one-type-of-user-with-chmod-instead-of-all-users">
 <h3><span class="section-number">14.10.2. </span>How would we change permissions for just one type of user with chmod instead of all users?<a class="headerlink" href="#how-would-we-change-permissions-for-just-one-type-of-user-with-chmod-instead-of-all-users" title="Permalink to this headline">#</a></h3>
-<p>There are two ways. One is to se the permision you want it to end up at, for exame <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">744</span> <span class="pre">demo.sh</span></code>.</p>
+<p>There are two ways. One is to se the permision you want it to end up at, for exame <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">744</span> <span class="pre">demo.sh</span></code>. Another is to use more of the modifiers:</p>
 <ul class="simple">
 <li><p>“g” is for group</p></li>
 <li><p>“o” is for others</p></li>
@@ -975,6 +984,8 @@ drwxr-xr-x. 2 brownsarahm spring2022-csc392       10 Mar  8 13:16 results
 <li><p>“u” is for user / owner</p></li>
 <li><p>“+” is for adding permissions</p></li>
 </ul>
+<p>So, instead of <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">demo.sh</span></code> you could do <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">u+x</span> <span class="pre">demo.sh</span></code>, or since we already did <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">demo.sh</span></code> you could <em>remove</em> that access from the ones we do not want with <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">go-x</span></code>.</p>
+<p>you can see all of this and examples on the <a class="reference external" href="https://man.freebsd.org/cgi/man.cgi?chmod#:~:text=an%09error%20occurs.-,MODES,-Modes%20may%20be">man page</a></p>
 </section>
 <section id="when-would-i-use-these-remote-servers-most-often">
 <h3><span class="section-number">14.10.3. </span>When would I use these remote servers most often?<a class="headerlink" href="#when-would-i-use-these-remote-servers-most-often" title="Permalink to this headline">#</a></h3>
@@ -1110,7 +1121,7 @@ drwxr-xr-x. 2 brownsarahm spring2022-csc392       10 Mar  8 13:16 results
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-permissions">14.5. File permissions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">14.6. Review today’s class</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">14.7. Prepare for Next Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">14.8. More Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice">14.8. Practice</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">14.9. Experience Report Evidence</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">14.10. Questions After Today’s Class</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-meant-by-the-term-gene-symbol">14.10.1. What is meant by the term “gene symbol” ?</a></li>

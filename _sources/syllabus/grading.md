@@ -171,6 +171,8 @@ These counts assume that the semester goes as planned and that there are 26 avai
 ```
 
 You cannot earn both practice and review badges for the same class session, but most practice badge requirements will include the review requirements plus some extra steps. 
+
+(integrative)=
 At the end of the semester, there will be special *integrative* badge opportunities that have multipliers attached to them. These badges will count for more than one. For example an integrative 2x review badge counts as two review badges.  These badges will be more complex than regular badges and therefore count more.  
 
 ```{admonition} Can you do any combination of badges?
