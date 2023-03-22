@@ -184,6 +184,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../notes/2023-03-02.html">11. How do git references work?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notes/2023-03-07.html">12. What is a commit number?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notes/2023-03-09.html">13. Bash Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/2023-03-21.html">14. How can I work on a remote server?</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Activities</span></p>
 <ul class="nav bd-sidenav">
@@ -567,14 +568,14 @@ You can see the code that generates the figure behind the “click to show” bu
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Badge Status as of 2023-03-21&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Badge Status as of 2023-03-22&#39;)
 </pre></div>
 </div>
-<img alt="../_images/6198a350350f51179f721be868aead32bcb750efbc66c7351beea0d1c375880c.png" src="../_images/6198a350350f51179f721be868aead32bcb750efbc66c7351beea0d1c375880c.png" />
+<img alt="../_images/e56b56fff09dcd684a4ba71bfbc321a440cf864c4482d14d4f958a8caa63eb33.png" src="../_images/e56b56fff09dcd684a4ba71bfbc321a440cf864c4482d14d4f958a8caa63eb33.png" />
 </div>
 </div>
 <p>The (e) columns are what will be enforced, the (t) columns is ideal, see the <a class="reference internal" href="grading.html#rp-status"><span class="std std-ref">deadlines section of the syllabus for more on the statuses</span></a> for more detail.</p>
-<p>The following table shows, as of  <span class="output text_plain">‘2023-03-21’</span>, the number of badges with each status.</p>
+<p>The following table shows, as of  <span class="output text_plain">‘2023-03-22’</span>, the number of badges with each status.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -596,58 +597,75 @@ You can see the code that generates the figure behind the “click to show” bu
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">status_list_summary</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;eligible&#39;</span><span class="p">,</span> <span class="s1">&#39;penalty free&#39;</span><span class="p">,</span> <span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="s1">&#39;started&#39;</span><span class="p">,</span> <span class="s1">&#39;completed&#39;</span><span class="p">]</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">badge_count_df</span> <span class="o">=</span> <span class="n">badge_target_df</span><span class="p">[</span><span class="n">badge_target_df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="n">today</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">value_counts</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">status_list_summary</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>                     <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">glue</span><span class="p">(</span><span class="s1">&#39;exp_ontrack&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">badge_count_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;eligible&#39;</span><span class="p">,</span><span class="s1">&#39;experience&#39;</span><span class="p">]),</span><span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">glue</span><span class="p">(</span><span class="s1">&#39;exp_min&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">badge_count_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;eligible&#39;</span><span class="p">,</span><span class="s1">&#39;experience&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">3</span><span class="p">),</span><span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/pandas/core/indexing.py:1073,</span> in <span class="ni">_LocationIndexer.__getitem__</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1070</span> <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis</span> <span class="ow">or</span> <span class="mi">0</span>
-<span class="g g-Whitespace">   </span><span class="mi">1072</span> <span class="n">maybe_callable</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="n">apply_if_callable</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1073</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_axis</span><span class="p">(</span><span class="n">maybe_callable</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/pandas/core/indexing.py:1301,</span> in <span class="ni">_LocIndexer._getitem_axis</span><span class="nt">(self, key, axis)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1298</span>     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s2">&quot;ndim&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">key</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1299</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot index with multidimensional key&quot;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1301</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_iterable</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1303</span> <span class="c1"># nested tuple slicing</span>
-<span class="g g-Whitespace">   </span><span class="mi">1304</span> <span class="k">if</span> <span class="n">is_nested_tuple</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/pandas/core/indexing.py:1239,</span> in <span class="ni">_LocIndexer._getitem_iterable</span><span class="nt">(self, key, axis)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1236</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_key</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1238</span> <span class="c1"># A collection of keys</span>
-<span class="ne">-&gt; </span><span class="mi">1239</span> <span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_listlike_indexer</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1240</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">_reindex_with_indexers</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1241</span>     <span class="p">{</span><span class="n">axis</span><span class="p">:</span> <span class="p">[</span><span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span><span class="p">]},</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">allow_dups</span><span class="o">=</span><span class="kc">True</span>
-<span class="g g-Whitespace">   </span><span class="mi">1242</span> <span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/pandas/core/indexing.py:1432,</span> in <span class="ni">_LocIndexer._get_listlike_indexer</span><span class="nt">(self, key, axis)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1429</span> <span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">_get_axis</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1430</span> <span class="n">axis_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">_get_axis_name</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1432</span> <span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">_get_indexer_strict</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis_name</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1434</span> <span class="k">return</span> <span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/pandas/core/indexes/base.py:6070,</span> in <span class="ni">Index._get_indexer_strict</span><span class="nt">(self, key, axis_name)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6067</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">6068</span>     <span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">new_indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reindex_non_unique</span><span class="p">(</span><span class="n">keyarr</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">6070</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raise_if_missing</span><span class="p">(</span><span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">axis_name</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6072</span> <span class="n">keyarr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">indexer</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6073</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">Index</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">6074</span>     <span class="c1"># GH 42790 - Preserve name from an Index</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/pandas/core/indexes/base.py:6133,</span> in <span class="ni">Index._raise_if_missing</span><span class="nt">(self, key, indexer, axis_name)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6130</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;None of [</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">] are in the [</span><span class="si">{</span><span class="n">axis_name</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6132</span> <span class="n">not_found</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ensure_index</span><span class="p">(</span><span class="n">key</span><span class="p">)[</span><span class="n">missing_mask</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
-<span class="ne">-&gt; </span><span class="mi">6133</span> <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">not_found</span><span class="si">}</span><span class="s2"> not in index&quot;</span><span class="p">)</span>
-
-<span class="ne">KeyError</span>: &quot;[&#39;active&#39;] not in index&quot;
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>experience</th>
+      <th>review</th>
+      <th>practice</th>
+      <th>review_target</th>
+      <th>practice_target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>eligible</th>
+      <td>15.0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>penalty free</th>
+      <td></td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>active</th>
+      <td></td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>started</th>
+      <td></td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>completed</th>
+      <td></td>
+      <td>7.0</td>
+      <td>7.0</td>
+      <td>13.0</td>
+      <td>13.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
@@ -660,15 +678,15 @@ You can see the code that generates the figure behind the “click to show” bu
 <p>Remember, there will be 26 badge opportunities, but do not need all of them.  See the <a class="reference internal" href="grading.html#badgecounts"><span class="std std-ref">Learning Badges</span></a> section of the syllabus for how they map into letter grades</p>
 </div>
 </aside>
-<p>This means that, as of <span class="output text_plain">‘2023-03-21’</span> you are fully caught up if you have:</p>
+<p>This means that, as of <span class="output text_plain">‘2023-03-22’</span> you are fully caught up if you have:</p>
 <ul class="simple">
-<li><p> experience badges submitted.</p></li>
-<li><p> total review and practice badges completed.</p></li>
-<li><p> additional review and/or practice badges started and in progress.</p></li>
+<li><p><span class="output text_plain">15</span> experience badges submitted.</p></li>
+<li><p><span class="output text_plain">13</span> total review and practice badges completed.</p></li>
+<li><p><span class="output text_plain">1</span> additional review and/or practice badges started and in progress.</p></li>
 </ul>
 <p>Notes:</p>
 <ul class="simple">
-<li><p>If you do not have at least  experience badges earned, you should visit office hours to get caught up.</p></li>
+<li><p>If you do not have at least <span class="output text_plain">12</span> experience badges earned, you should visit office hours to get caught up.</p></li>
 <li><p>There are are 6 review and practice badges that are from the penalty free zone, so they never expire.</p></li>
 <li><p>Most of your experience and completed badges should be earned, but there is no deadline to fix issues with them.</p></li>
 </ul>
