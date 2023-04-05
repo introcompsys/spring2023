@@ -1,0 +1,966 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>17. How do I use a remote server more effectively? &#8212; Computer Systems and Programming Tools</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course_admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2023-03-30';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="18. What Happens when we build code?" href="2023-04-04.html" />
+    <link rel="prev" title="16. Programming Languages" href="2023-03-28.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/systools.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/systools.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Site
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/about.html">Computer Systems and Programming Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/tools.html">Tools and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/badges.html">(experimental) Badge Visualizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/schedule.html">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_resources.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_statements.html">General URI Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/communication.html">Office Hours &amp; Communication</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2023-01-24.html">1. Welcome and Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-01-26.html">2. Course Logistics and Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-01-31.html">3. Bash intro &amp; git offline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-02.html">4. How can I work with branches offline?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-07.html">5. When do I get an advantage from git and bash?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-09.html">6. What if I edit the file in two places?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-14.html">7. Why are these tools like this?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-16.html">8. How do programmers communicate about code?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-21.html">9. What <em>is</em> git?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-23.html">10. How does git <em>really</em> work?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-03-02.html">11. How do git references work?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-03-07.html">12. What is a commit number?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-03-09.html">13. Bash Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-03-21.html">14. How can I work on a remote server?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-03-23.html">15. What is an IDE?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-03-28.html">16. Programming Languages</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">17. How do I use a remote server more effectively?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-04-04.html">18. What Happens when we build code?</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Activities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../activities/kwl.html">KWL Chart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/team.html">Team Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/review.html">Review Badges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/prepare.html">Prepare for the next class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/practice.html">More Practice Badges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">KWL File Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/explore.html">Explore Badges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/build.html">Build Badges</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq/syllabus.html">Syllabus and Grading FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/github.html">Git and GitHub</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/tips.html">General Tips and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/learning.html">How to Study in this class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/github.html">GitHub Interface reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/gettinghelp.html">Getting Help with Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/organization.html">Getting Organized for class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/more_info_on_cpus.html">More info on cpus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/windows.html">Windows Help &amp; Notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://introcompsys.github.io/spring2022/resources/testimonials.html">Advice from Spring 2022 Students</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/introcompsys/spring2023# The URL to your book's repository" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/introcompsys/spring2023# The URL to your book's repository/edit/main/notes/2023-03-30.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/introcompsys/spring2023# The URL to your book's repository/issues/new?title=Issue%20on%20page%20%2Fnotes/2023-03-30.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notes/2023-03-30.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>How do I use a remote server more effectively?</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-ssh-keys">17.1. Creating SSH Keys</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-in">17.2. Logging in</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">17.3. Experience Report Evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">17.4. Questions After Today’s Class</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="how-do-i-use-a-remote-server-more-effectively">
+<h1><span class="section-number">17. </span>How do I use a remote server more effectively?<a class="headerlink" href="#how-do-i-use-a-remote-server-more-effectively" title="Permalink to this headline">#</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Since I’ve been sick, this is not fully filled in yet.  Use a previous semester’s equivalent sessions as a reference for more detail for now. Create a PR that inserts an explanation of a few steps for a community badge.</p>
+<p>Previous notes:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://introcompsys.github.io/spring2022/notes/2022-03-08.html">sp22 server</a></p></li>
+<li><p><a class="reference external" href="https://introcompsys.github.io/spring2022/notes/2022-03-10.html">sp22 ssh keys</a></p></li>
+<li><p><a class="reference external" href="https://introcompsys.github.io/fall2022/notes/2022-10-26.html">f22 server</a></p></li>
+</ul>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">example</span>
+<span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">-</span><span class="mi">1</span>
+<span class="n">kwl</span>
+<span class="n">seawulf</span>
+<span class="n">test</span>
+<span class="n">testobj</span><span class="o">.</span><span class="n">md</span>
+<span class="n">tiny</span><span class="o">-</span><span class="n">book</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">l</span> <span class="n">brownsarahm</span> <span class="n">seawulf</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">edu</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brownsarahm</span><span class="nd">@seawulf</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">edu</span><span class="s1">&#39;s password: </span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Last</span> <span class="n">failed</span> <span class="n">login</span><span class="p">:</span> <span class="n">Thu</span> <span class="n">Mar</span> <span class="mi">30</span> <span class="mi">12</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mi">35</span> <span class="n">EDT</span> <span class="mi">2023</span> <span class="kn">from</span> <span class="nn">pool</span><span class="o">-</span><span class="mi">96</span><span class="o">-</span><span class="mi">238</span><span class="o">-</span><span class="mi">44</span><span class="o">-</span><span class="mf">82.</span><span class="n">prvdri</span><span class="o">.</span><span class="n">fios</span><span class="o">.</span><span class="n">verizon</span><span class="o">.</span><span class="n">net</span> <span class="n">on</span> <span class="n">ssh</span><span class="p">:</span><span class="n">notty</span>
+<span class="n">There</span> <span class="n">was</span> <span class="mi">1</span> <span class="n">failed</span> <span class="n">login</span> <span class="n">attempt</span> <span class="n">since</span> <span class="n">the</span> <span class="n">last</span> <span class="n">successful</span> <span class="n">login</span><span class="o">.</span>
+<span class="n">Last</span> <span class="n">login</span><span class="p">:</span> <span class="n">Thu</span> <span class="n">Mar</span> <span class="mi">30</span> <span class="mi">11</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">40</span> <span class="mi">2023</span> <span class="kn">from</span> <span class="nn">pool</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">87</span><span class="o">-</span><span class="mi">118</span><span class="o">-</span><span class="mf">171.</span><span class="n">prvdri</span><span class="o">.</span><span class="n">fios</span><span class="o">.</span><span class="n">verizon</span><span class="o">.</span><span class="n">net</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ pwd
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">brownsarahm</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ ls
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span><span class="o">-</span><span class="n">lesson</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>                           <span class="n">SRR307024_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="n">bash</span><span class="o">-</span><span class="n">lesson</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span><span class="mf">.1</span>                         <span class="n">SRR307025_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="n">demo</span><span class="o">.</span><span class="n">sh</span>                                      <span class="n">SRR307025_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="n">dmel</span><span class="o">-</span><span class="nb">all</span><span class="o">-</span><span class="n">r6</span><span class="mf">.19</span><span class="o">.</span><span class="n">gtf</span>                           <span class="n">SRR307026_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="n">dmel_unique_protein_isoforms_fb_2016_01</span><span class="o">.</span><span class="n">tsv</span>  <span class="n">SRR307026_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="n">gene_association</span><span class="o">.</span><span class="n">fb</span>                          <span class="n">SRR307027_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="n">linecounts</span><span class="o">.</span><span class="n">txt</span>                               <span class="n">SRR307027_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="n">my_job</span><span class="o">.</span><span class="n">sh</span>                                    <span class="n">SRR307028_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="n">results</span>                                      <span class="n">SRR307028_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="n">slurm</span><span class="o">-</span><span class="mf">23950.</span><span class="n">out</span>                              <span class="n">SRR307029_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="n">SRR307023_1</span><span class="o">.</span><span class="n">fastq</span>                            <span class="n">SRR307029_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="n">SRR307023_2</span><span class="o">.</span><span class="n">fastq</span>                            <span class="n">SRR307030_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="n">SRR307024_1</span><span class="o">.</span><span class="n">fastq</span>                            <span class="n">SRR307030_2</span><span class="o">.</span><span class="n">fastq</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ mkdir example
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ cd example/
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf example]$ pwd
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">brownsarahm</span><span class="o">/</span><span class="n">example</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf example]$ mkdir ex2
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf example]$ cd ex2/
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ex2]$ pwd
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">brownsarahm</span><span class="o">/</span><span class="n">example</span><span class="o">/</span><span class="n">ex2</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ex2]$ cd 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ ls -l
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="mi">150704</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span> <span class="mi">12534006</span> <span class="n">Apr</span> <span class="mi">18</span>  <span class="mi">2021</span> <span class="n">bash</span><span class="o">-</span><span class="n">lesson</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span> <span class="mi">12534006</span> <span class="n">Apr</span> <span class="mi">18</span>  <span class="mi">2021</span> <span class="n">bash</span><span class="o">-</span><span class="n">lesson</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span><span class="mf">.1</span>
+<span class="o">-</span><span class="n">rwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="o">.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>       <span class="mi">20</span> <span class="n">Oct</span> <span class="mi">26</span> <span class="mi">17</span><span class="p">:</span><span class="mi">11</span> <span class="n">demo</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span> <span class="mi">77426528</span> <span class="n">Jan</span> <span class="mi">16</span>  <span class="mi">2018</span> <span class="n">dmel</span><span class="o">-</span><span class="nb">all</span><span class="o">-</span><span class="n">r6</span><span class="mf">.19</span><span class="o">.</span><span class="n">gtf</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>   <span class="mi">721242</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">dmel_unique_protein_isoforms_fb_2016_01</span><span class="o">.</span><span class="n">tsv</span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="o">.</span> <span class="mi">3</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>       <span class="mi">24</span> <span class="n">Mar</span> <span class="mi">30</span> <span class="mi">12</span><span class="p">:</span><span class="mi">59</span> <span class="n">example</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span> <span class="mi">25056938</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">gene_association</span><span class="o">.</span><span class="n">fb</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>      <span class="mi">447</span> <span class="n">Mar</span>  <span class="mi">8</span>  <span class="mi">2022</span> <span class="n">linecounts</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>       <span class="mi">84</span> <span class="n">Mar</span>  <span class="mi">8</span>  <span class="mi">2022</span> <span class="n">my_job</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="o">.</span> <span class="mi">2</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>       <span class="mi">10</span> <span class="n">Mar</span>  <span class="mi">8</span>  <span class="mi">2022</span> <span class="n">results</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>       <span class="mi">89</span> <span class="n">Mar</span>  <span class="mi">8</span>  <span class="mi">2022</span> <span class="n">slurm</span><span class="o">-</span><span class="mf">23950.</span><span class="n">out</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1625262</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307023_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1625262</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307023_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1625376</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307024_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1625376</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307024_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1625286</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307025_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1625286</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307025_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1625302</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307026_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1625302</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307026_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1625312</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307027_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1625312</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307027_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1625338</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307028_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1625338</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307028_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1625390</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307029_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1625390</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307029_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1625318</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307030_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1625318</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307030_2</span><span class="o">.</span><span class="n">fastq</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ ls -l --block-size=M
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="mi">148</span><span class="n">M</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span> <span class="mi">12</span><span class="n">M</span> <span class="n">Apr</span> <span class="mi">18</span>  <span class="mi">2021</span> <span class="n">bash</span><span class="o">-</span><span class="n">lesson</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span> <span class="mi">12</span><span class="n">M</span> <span class="n">Apr</span> <span class="mi">18</span>  <span class="mi">2021</span> <span class="n">bash</span><span class="o">-</span><span class="n">lesson</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span><span class="mf">.1</span>
+<span class="o">-</span><span class="n">rwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="o">.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1</span><span class="n">M</span> <span class="n">Oct</span> <span class="mi">26</span> <span class="mi">17</span><span class="p">:</span><span class="mi">11</span> <span class="n">demo</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span> <span class="mi">74</span><span class="n">M</span> <span class="n">Jan</span> <span class="mi">16</span>  <span class="mi">2018</span> <span class="n">dmel</span><span class="o">-</span><span class="nb">all</span><span class="o">-</span><span class="n">r6</span><span class="mf">.19</span><span class="o">.</span><span class="n">gtf</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1</span><span class="n">M</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">dmel_unique_protein_isoforms_fb_2016_01</span><span class="o">.</span><span class="n">tsv</span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="o">.</span> <span class="mi">3</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1</span><span class="n">M</span> <span class="n">Mar</span> <span class="mi">30</span> <span class="mi">12</span><span class="p">:</span><span class="mi">59</span> <span class="n">example</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span> <span class="mi">24</span><span class="n">M</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">gene_association</span><span class="o">.</span><span class="n">fb</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1</span><span class="n">M</span> <span class="n">Mar</span>  <span class="mi">8</span>  <span class="mi">2022</span> <span class="n">linecounts</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1</span><span class="n">M</span> <span class="n">Mar</span>  <span class="mi">8</span>  <span class="mi">2022</span> <span class="n">my_job</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="o">.</span> <span class="mi">2</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1</span><span class="n">M</span> <span class="n">Mar</span>  <span class="mi">8</span>  <span class="mi">2022</span> <span class="n">results</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1</span><span class="n">M</span> <span class="n">Mar</span>  <span class="mi">8</span>  <span class="mi">2022</span> <span class="n">slurm</span><span class="o">-</span><span class="mf">23950.</span><span class="n">out</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">2</span><span class="n">M</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307023_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">2</span><span class="n">M</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307023_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">2</span><span class="n">M</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307024_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">2</span><span class="n">M</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307024_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">2</span><span class="n">M</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307025_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">2</span><span class="n">M</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307025_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">2</span><span class="n">M</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307026_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">2</span><span class="n">M</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307026_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">2</span><span class="n">M</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307027_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">2</span><span class="n">M</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307027_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">2</span><span class="n">M</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307028_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">2</span><span class="n">M</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307028_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">2</span><span class="n">M</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307029_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">2</span><span class="n">M</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307029_2</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">2</span><span class="n">M</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307030_1</span><span class="o">.</span><span class="n">fastq</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--.</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">2</span><span class="n">M</span> <span class="n">Jan</span> <span class="mi">25</span>  <span class="mi">2016</span> <span class="n">SRR307030_2</span><span class="o">.</span><span class="n">fastq</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ exit
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logout</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Connection</span> <span class="n">to</span> <span class="n">seawulf</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">edu</span> <span class="n">closed</span><span class="o">.</span>
+</pre></div>
+</div>
+<section id="creating-ssh-keys">
+<h2><span class="section-number">17.1. </span>Creating SSH Keys<a class="headerlink" href="#creating-ssh-keys" title="Permalink to this headline">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">f</span> <span class="o">~/</span><span class="n">seawulf</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span> <span class="o">-</span><span class="n">b</span> <span class="mi">1024</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Generating public/private rsa key pair.
+/Users/brownsarahm/seawulf already exists.
+Overwrite (y/n)? y
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /Users/brownsarahm/seawulf.
+Your public key has been saved in /Users/brownsarahm/seawulf.pub.
+The key fingerprint is:
+SHA256:NK9gJGqWW4E2B5AI6Alb7+34JGYQ2QS7BpCM081WQfU brownsarahm@Sarahs-MBP
+The key&#39;s randomart image is:
++---[RSA 1024]----+
+|X=o+.o+o.        |
+|X.oB+    .       |
+|++Oo= . o E      |
+|.= B.+ . o       |
+|  O...o S .      |
+| + +.... .       |
+|  . +o. .        |
+|   o.o.          |
+|     ..          |
++----[SHA256]-----+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">copy</span><span class="o">-</span><span class="nb">id</span> <span class="o">-</span><span class="n">i</span> <span class="o">~/</span><span class="n">seawulf</span> <span class="n">brownsarahm</span><span class="nd">@seawulf</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">edu</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ssh</span><span class="o">-</span><span class="n">copy</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Source</span> <span class="n">of</span> <span class="n">key</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">to</span> <span class="n">be</span> <span class="n">installed</span><span class="p">:</span> <span class="s2">&quot;/Users/brownsarahm/seawulf.pub&quot;</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ssh</span><span class="o">-</span><span class="n">copy</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">attempting</span> <span class="n">to</span> <span class="n">log</span> <span class="ow">in</span> <span class="k">with</span> <span class="n">the</span> <span class="n">new</span> <span class="n">key</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="nb">any</span> <span class="n">that</span> <span class="n">are</span> <span class="n">already</span> <span class="n">installed</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ssh</span><span class="o">-</span><span class="n">copy</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span> <span class="n">INFO</span><span class="p">:</span> <span class="mi">1</span> <span class="n">key</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">remain</span> <span class="n">to</span> <span class="n">be</span> <span class="n">installed</span> <span class="o">--</span> <span class="k">if</span> <span class="n">you</span> <span class="n">are</span> <span class="n">prompted</span> <span class="n">now</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">to</span> <span class="n">install</span> <span class="n">the</span> <span class="n">new</span> <span class="n">keys</span>
+<span class="n">brownsarahm</span><span class="nd">@seawulf</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">edu</span><span class="s1">&#39;s password: </span>
+
+<span class="n">Number</span> <span class="n">of</span> <span class="n">key</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">added</span><span class="p">:</span>        <span class="mi">1</span>
+
+<span class="n">Now</span> <span class="k">try</span> <span class="n">logging</span> <span class="n">into</span> <span class="n">the</span> <span class="n">machine</span><span class="p">,</span> <span class="k">with</span><span class="p">:</span>   <span class="s2">&quot;ssh &#39;brownsarahm@seawulf.uri.edu&#39;&quot;</span>
+<span class="ow">and</span> <span class="n">check</span> <span class="n">to</span> <span class="n">make</span> <span class="n">sure</span> <span class="n">that</span> <span class="n">only</span> <span class="n">the</span> <span class="n">key</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">you</span> <span class="n">wanted</span> <span class="n">were</span> <span class="n">added</span><span class="o">.</span>
+
+</pre></div>
+</div>
+</section>
+<section id="logging-in">
+<h2><span class="section-number">17.2. </span>Logging in<a class="headerlink" href="#logging-in" title="Permalink to this headline">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">brownsarahm</span><span class="nd">@seawulf</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">edu</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brownsarahm</span><span class="nd">@seawulf</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">edu</span><span class="s1">&#39;s password: </span>
+<span class="n">Last</span> <span class="n">login</span><span class="p">:</span> <span class="n">Thu</span> <span class="n">Mar</span> <span class="mi">30</span> <span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">24</span> <span class="mi">2023</span> <span class="kn">from</span> <span class="nn">pool</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="mi">87</span><span class="o">-</span><span class="mi">118</span><span class="o">-</span><span class="mf">171.</span><span class="n">prvdri</span><span class="o">.</span><span class="n">fios</span><span class="o">.</span><span class="n">verizon</span><span class="o">.</span><span class="n">net</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ pwd
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">brownsarahm</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ lshw
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WARNING</span><span class="p">:</span> <span class="n">you</span> <span class="n">should</span> <span class="n">run</span> <span class="n">this</span> <span class="n">program</span> <span class="k">as</span> <span class="nb">super</span><span class="o">-</span><span class="n">user</span><span class="o">.</span>
+<span class="n">seawulf</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">edu</span>             
+    <span class="n">description</span><span class="p">:</span> <span class="n">Computer</span>
+    <span class="n">width</span><span class="p">:</span> <span class="mi">64</span> <span class="n">bits</span>
+    <span class="n">capabilities</span><span class="p">:</span> <span class="n">smp</span> <span class="n">vsyscall32</span>
+  <span class="o">*-</span><span class="n">core</span>
+       <span class="n">description</span><span class="p">:</span> <span class="n">Motherboard</span>
+       <span class="n">physical</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span>
+     <span class="o">*-</span><span class="n">memory</span>
+          <span class="n">description</span><span class="p">:</span> <span class="n">System</span> <span class="n">memory</span>
+          <span class="n">physical</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span>
+          <span class="n">size</span><span class="p">:</span> <span class="mi">32</span><span class="n">GiB</span>
+     <span class="o">*-</span><span class="n">cpu</span><span class="p">:</span><span class="mi">0</span>
+          <span class="n">product</span><span class="p">:</span> <span class="n">Intel</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="n">Xeon</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="n">CPU</span> <span class="n">E5</span><span class="o">-</span><span class="mi">2650</span> <span class="n">v4</span> <span class="o">@</span> <span class="mf">2.20</span><span class="n">GHz</span>
+          <span class="n">vendor</span><span class="p">:</span> <span class="n">Intel</span> <span class="n">Corp</span><span class="o">.</span>
+          <span class="n">vendor_id</span><span class="p">:</span> <span class="n">GenuineIntel</span>
+          <span class="n">physical</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">1</span>
+          <span class="n">bus</span> <span class="n">info</span><span class="p">:</span> <span class="n">cpu</span><span class="o">@</span><span class="mi">0</span>
+          <span class="n">version</span><span class="p">:</span> <span class="mf">6.79.1</span>
+          <span class="n">size</span><span class="p">:</span> <span class="mi">1200</span><span class="n">MHz</span>
+          <span class="n">capacity</span><span class="p">:</span> <span class="mi">2900</span><span class="n">MHz</span>
+          <span class="n">width</span><span class="p">:</span> <span class="mi">64</span> <span class="n">bits</span>
+          <span class="n">capabilities</span><span class="p">:</span> <span class="n">fpu</span> <span class="n">fpu_exception</span> <span class="n">wp</span> <span class="n">vme</span> <span class="n">de</span> <span class="n">pse</span> <span class="n">tsc</span> <span class="n">msr</span> <span class="n">pae</span> <span class="n">mce</span> <span class="n">cx8</span> <span class="n">apic</span> <span class="n">sep</span> <span class="n">mtrr</span> <span class="n">pge</span> <span class="n">mca</span> <span class="n">cmov</span> <span class="n">pat</span> <span class="n">pse36</span> <span class="n">clflush</span> <span class="n">dts</span> <span class="n">acpi</span> <span class="n">mmx</span> <span class="n">fxsr</span> <span class="n">sse</span> <span class="n">sse2</span> <span class="n">ss</span> <span class="n">ht</span> <span class="n">tm</span> <span class="n">pbe</span> <span class="n">syscall</span> <span class="n">nx</span> <span class="n">pdpe1gb</span> <span class="n">rdtscp</span> <span class="n">x86</span><span class="o">-</span><span class="mi">64</span> <span class="n">constant_tsc</span> <span class="n">arch_perfmon</span> <span class="n">pebs</span> <span class="n">bts</span> <span class="n">rep_good</span> <span class="n">nopl</span> <span class="n">xtopology</span> <span class="n">nonstop_tsc</span> <span class="n">aperfmperf</span> <span class="n">eagerfpu</span> <span class="n">pni</span> <span class="n">pclmulqdq</span> <span class="n">dtes64</span> <span class="n">monitor</span> <span class="n">ds_cpl</span> <span class="n">vmx</span> <span class="n">smx</span> <span class="n">est</span> <span class="n">tm2</span> <span class="n">ssse3</span> <span class="n">sdbg</span> <span class="n">fma</span> <span class="n">cx16</span> <span class="n">xtpr</span> <span class="n">pdcm</span> <span class="n">pcid</span> <span class="n">dca</span> <span class="n">sse4_1</span> <span class="n">sse4_2</span> <span class="n">x2apic</span> <span class="n">movbe</span> <span class="n">popcnt</span> <span class="n">tsc_deadline_timer</span> <span class="n">aes</span> <span class="n">xsave</span> <span class="n">avx</span> <span class="n">f16c</span> <span class="n">rdrand</span> <span class="n">lahf_lm</span> <span class="n">abm</span> <span class="mi">3</span><span class="n">dnowprefetch</span> <span class="n">epb</span> <span class="n">cat_l3</span> <span class="n">cdp_l3</span> <span class="n">invpcid_single</span> <span class="n">intel_ppin</span> <span class="n">intel_pt</span> <span class="n">ibrs</span> <span class="n">ibpb</span> <span class="n">stibp</span> <span class="n">tpr_shadow</span> <span class="n">vnmi</span> <span class="n">flexpriority</span> <span class="n">ept</span> <span class="n">vpid</span> <span class="n">fsgsbase</span> <span class="n">tsc_adjust</span> <span class="n">bmi1</span> <span class="n">hle</span> <span class="n">avx2</span> <span class="n">smep</span> <span class="n">bmi2</span> <span class="n">erms</span> <span class="n">invpcid</span> <span class="n">rtm</span> <span class="n">cqm</span> <span class="n">rdt_a</span> <span class="n">rdseed</span> <span class="n">adx</span> <span class="n">smap</span> <span class="n">xsaveopt</span> <span class="n">cqm_llc</span> <span class="n">cqm_occup_llc</span> <span class="n">cqm_mbm_total</span> <span class="n">cqm_mbm_local</span> <span class="n">dtherm</span> <span class="n">ida</span> <span class="n">arat</span> <span class="n">pln</span> <span class="n">pts</span> <span class="n">spec_ctrl</span> <span class="n">intel_stibp</span> <span class="n">cpufreq</span>
+</pre></div>
+</div>
+<p>Truncated output</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ interactive
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">salloc</span><span class="p">:</span> <span class="n">Granted</span> <span class="n">job</span> <span class="n">allocation</span> <span class="mi">26471</span>
+<span class="n">salloc</span><span class="p">:</span> <span class="n">Waiting</span> <span class="k">for</span> <span class="n">resource</span> <span class="n">configuration</span>
+<span class="n">salloc</span><span class="p">:</span> <span class="n">Nodes</span> <span class="n">n005</span> <span class="n">are</span> <span class="n">ready</span> <span class="k">for</span> <span class="n">job</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 ~]$ ls
+bash-lesson.tar.gz                           SRR307024_2.fastq
+bash-lesson.tar.gz.1                         SRR307025_1.fastq
+demo.sh                                      SRR307025_2.fastq
+dmel-all-r6.19.gtf                           SRR307026_1.fastq
+dmel_unique_protein_isoforms_fb_2016_01.tsv  SRR307026_2.fastq
+example                                      SRR307027_1.fastq
+gene_association.fb                          SRR307027_2.fastq
+linecounts.txt                               SRR307028_1.fastq
+my_job.sh                                    SRR307028_2.fastq
+results                                      SRR307029_1.fastq
+slurm-23950.out                              SRR307029_2.fastq
+SRR307023_1.fastq                            SRR307030_1.fastq
+SRR307023_2.fastq                            SRR307030_2.fastq
+SRR307024_1.fastq
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 ~]$ cat demo.sh 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;script works&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 ~]$ ./demo.sh 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">script</span> <span class="n">works</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 ~]$ ls my_job.sh 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_job</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 ~]$ cat my_job.sh 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -t 1:00:00</span>
+<span class="c1">#SBATCH --nodes=1 --ntasks-per-node=1</span>
+<span class="o">./</span><span class="n">single_job</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 ~]$ exit
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logout</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">salloc</span><span class="p">:</span> <span class="n">Relinquishing</span> <span class="n">job</span> <span class="n">allocation</span> <span class="mi">26471</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ interactive -t 0:03:00
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">interactive</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">p</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">J</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">w</span><span class="p">]</span>
+
+<span class="n">Optional</span> <span class="n">arguments</span><span class="p">:</span>
+    <span class="o">-</span><span class="n">c</span><span class="p">:</span> <span class="n">number</span> <span class="n">of</span> <span class="n">CPU</span> <span class="n">cores</span> <span class="n">to</span> <span class="n">request</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="o">-</span><span class="n">p</span><span class="p">:</span> <span class="n">partition</span> <span class="n">to</span> <span class="n">run</span> <span class="n">job</span> <span class="ow">in</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">general</span><span class="p">)</span>
+    <span class="o">-</span><span class="n">J</span><span class="p">:</span> <span class="n">job</span> <span class="n">name</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">interactive</span><span class="p">)</span>
+    <span class="o">-</span><span class="n">w</span><span class="p">:</span> <span class="n">node</span> <span class="n">name</span>
+
+<span class="n">NB</span><span class="p">:</span> <span class="n">interactive</span> <span class="n">jobs</span> <span class="n">have</span> <span class="n">a</span> <span class="n">time</span> <span class="n">limit</span> <span class="n">of</span> <span class="mi">8</span> <span class="n">hours</span><span class="o">.</span>
+
+<span class="n">Written</span> <span class="n">by</span><span class="p">:</span> <span class="n">Alan</span> <span class="n">Orth</span> <span class="o">&lt;</span><span class="n">a</span><span class="o">.</span><span class="n">orth</span><span class="nd">@cgiar</span><span class="o">.</span><span class="n">org</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ interactive -c 4 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">salloc</span><span class="p">:</span> <span class="n">Granted</span> <span class="n">job</span> <span class="n">allocation</span> <span class="mi">26490</span>
+<span class="n">salloc</span><span class="p">:</span> <span class="n">Waiting</span> <span class="k">for</span> <span class="n">resource</span> <span class="n">configuration</span>
+<span class="n">salloc</span><span class="p">:</span> <span class="n">Nodes</span> <span class="n">n005</span> <span class="n">are</span> <span class="n">ready</span> <span class="k">for</span> <span class="n">job</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 ~]$ exit
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logout</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">salloc</span><span class="p">:</span> <span class="n">Relinquishing</span> <span class="n">job</span> <span class="n">allocation</span> <span class="mi">26490</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ interactive
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">salloc</span><span class="p">:</span> <span class="n">Granted</span> <span class="n">job</span> <span class="n">allocation</span> <span class="mi">26499</span>
+<span class="n">salloc</span><span class="p">:</span> <span class="n">Waiting</span> <span class="k">for</span> <span class="n">resource</span> <span class="n">configuration</span>
+<span class="n">salloc</span><span class="p">:</span> <span class="n">Nodes</span> <span class="n">n005</span> <span class="n">are</span> <span class="n">ready</span> <span class="k">for</span> <span class="n">job</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 ~]$ python3
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">3.6.8</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Nov</span> <span class="mi">16</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">16</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">22</span><span class="p">)</span> 
+<span class="p">[</span><span class="n">GCC</span> <span class="mf">4.8.5</span> <span class="mi">20150623</span> <span class="p">(</span><span class="n">Red</span> <span class="n">Hat</span> <span class="mf">4.8.5</span><span class="o">-</span><span class="mi">44</span><span class="p">)]</span> <span class="n">on</span> <span class="n">linux</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">4</span><span class="o">+</span><span class="mi">3</span>
+<span class="mi">7</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">exit</span>
+<span class="n">Use</span> <span class="n">exit</span><span class="p">()</span> <span class="ow">or</span> <span class="n">Ctrl</span><span class="o">-</span><span class="n">D</span> <span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="n">EOF</span><span class="p">)</span> <span class="n">to</span> <span class="n">exit</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">exit</span><span class="p">()(</span>
+<span class="o">...</span> <span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 ~]$ exit
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logout</span>
+<span class="n">salloc</span><span class="p">:</span> <span class="n">Relinquishing</span> <span class="n">job</span> <span class="n">allocation</span> <span class="mi">26499</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ exit
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logout</span>
+<span class="n">Connection</span> <span class="n">to</span> <span class="n">seawulf</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">edu</span> <span class="n">closed</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>No badges today</p>
+</div>
+</section>
+<section id="experience-report-evidence">
+<h2><span class="section-number">17.3. </span>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
+<p>Create ssh keys</p>
+</section>
+<section id="questions-after-todays-class">
+<h2><span class="section-number">17.4. </span>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
+<div class="community admonition">
+<p class="admonition-title">Post via PR</p>
+<p>Submit a PR to the course website with your question as a level 3 heading for one community badge and with an attempted answer (I’ll check it before merging it) for two community badges</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2023-03-28.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>Programming Languages</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="2023-04-04.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>What Happens when we build code?</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-ssh-keys">17.1. Creating SSH Keys</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-in">17.2. Logging in</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">17.3. Experience Report Evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">17.4. Questions After Today’s Class</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Professor Sarah M Brown
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

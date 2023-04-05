@@ -1,0 +1,1108 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>18. What Happens when we build code? &#8212; Computer Systems and Programming Tools</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course_admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2023-04-04';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="KWL Chart" href="../activities/kwl.html" />
+    <link rel="prev" title="17. How do I use a remote server more effectively?" href="2023-03-30.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/systools.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/systools.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    About this Site
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/about.html">Computer Systems and Programming Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/tools.html">Tools and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/grading.html">Grading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/badges.html">(experimental) Badge Visualizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/schedule.html">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_resources.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/uri_statements.html">General URI Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/communication.html">Office Hours &amp; Communication</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2023-01-24.html">1. Welcome and Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-01-26.html">2. Course Logistics and Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-01-31.html">3. Bash intro &amp; git offline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-02.html">4. How can I work with branches offline?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-07.html">5. When do I get an advantage from git and bash?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-09.html">6. What if I edit the file in two places?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-14.html">7. Why are these tools like this?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-16.html">8. How do programmers communicate about code?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-21.html">9. What <em>is</em> git?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-02-23.html">10. How does git <em>really</em> work?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-03-02.html">11. How do git references work?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-03-07.html">12. What is a commit number?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-03-09.html">13. Bash Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-03-21.html">14. How can I work on a remote server?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-03-23.html">15. What is an IDE?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-03-28.html">16. Programming Languages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-03-30.html">17. How do I use a remote server more effectively?</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">18. What Happens when we build code?</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Activities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../activities/kwl.html">KWL Chart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/team.html">Team Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/review.html">Review Badges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/prepare.html">Prepare for the next class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/practice.html">More Practice Badges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">KWL File Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/explore.html">Explore Badges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/build.html">Build Badges</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq/syllabus.html">Syllabus and Grading FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/github.html">Git and GitHub</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/tips.html">General Tips and Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/learning.html">How to Study in this class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/github.html">GitHub Interface reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/gettinghelp.html">Getting Help with Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/organization.html">Getting Organized for class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/more_info_on_cpus.html">More info on cpus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/windows.html">Windows Help &amp; Notes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://introcompsys.github.io/spring2022/resources/testimonials.html">Advice from Spring 2022 Students</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/introcompsys/spring2023# The URL to your book's repository" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/introcompsys/spring2023# The URL to your book's repository/edit/main/notes/2023-04-04.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/introcompsys/spring2023# The URL to your book's repository/issues/new?title=Issue%20on%20page%20%2Fnotes/2023-04-04.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notes/2023-04-04.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>What Happens when we build code?</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ssh-keys">18.1. Using SSH Keys</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-program">18.2. A simple program</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-multiple-files">18.3. Working with Multiple Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">18.4. Review today’s class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">18.5. Prepare for Next Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">18.6. More Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">18.7. Experience Report Evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">18.8. Questions After Today’s Class</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="what-happens-when-we-build-code">
+<h1><span class="section-number">18. </span>What Happens when we build code?<a class="headerlink" href="#what-happens-when-we-build-code" title="Permalink to this headline">#</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Since I’ve been sick, this is not fully filled in yet.  Use a previous semester’s equivalent sessions as a reference for more detail for now. Create a PR that inserts an explanation of a few steps for a community badge.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://introcompsys.github.io/fall2022/notes/2022-10-31.html">f22 build</a></p></li>
+</ul>
+</div>
+<section id="using-ssh-keys">
+<h2><span class="section-number">18.1. </span>Using SSH Keys<a class="headerlink" href="#using-ssh-keys" title="Permalink to this headline">#</a></h2>
+<p>To use it we use he <code class="docutils literal notranslate"><span class="pre">-i</span></code> option and then the path to the private key file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">i</span> <span class="o">~/</span><span class="n">seawulf</span> <span class="n">brownsarahm</span><span class="nd">@seawulf</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">edu</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Last</span> <span class="n">login</span><span class="p">:</span> <span class="n">Tue</span> <span class="n">Apr</span>  <span class="mi">4</span> <span class="mi">11</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mi">06</span> <span class="mi">2023</span> <span class="kn">from</span> <span class="mf">172.20.207.131</span>
+</pre></div>
+</div>
+<p>For today, we will use an interactive session</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ interactive
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">salloc</span><span class="p">:</span> <span class="n">Granted</span> <span class="n">job</span> <span class="n">allocation</span> <span class="mi">26525</span>
+<span class="n">salloc</span><span class="p">:</span> <span class="n">Waiting</span> <span class="k">for</span> <span class="n">resource</span> <span class="n">configuration</span>
+<span class="n">salloc</span><span class="p">:</span> <span class="n">Nodes</span> <span class="n">n005</span> <span class="n">are</span> <span class="n">ready</span> <span class="k">for</span> <span class="n">job</span>
+</pre></div>
+</div>
+<p>We will make an empty directory to work in for today.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 ~]$ mkdir compilec
+[brownsarahm@n005 ~]$ cd compilec/
+[brownsarahm@n005 compilec]$ ls
+</pre></div>
+</div>
+</section>
+<section id="a-simple-program">
+<h2><span class="section-number">18.2. </span>A simple program<a class="headerlink" href="#a-simple-program" title="Permalink to this headline">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ nano hello.c
+</pre></div>
+</div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We will see this is the only file in the folder</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ ls
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ gcc -E hello.c -o hello.i
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ ls
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span><span class="o">.</span><span class="n">c</span>  <span class="n">hello</span><span class="o">.</span><span class="n">i</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ cat hello.i | head 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1 &quot;hello.c&quot;</span>
+<span class="c1"># 1 &quot;&lt;built-in&gt;&quot;</span>
+<span class="c1"># 1 &quot;&lt;command-line&gt;&quot;</span>
+<span class="c1"># 1 &quot;/usr/include/stdc-predef.h&quot; 1 3 4</span>
+<span class="c1"># 1 &quot;&lt;command-line&gt;&quot; 2</span>
+<span class="c1"># 1 &quot;hello.c&quot;</span>
+<span class="c1"># 1 &quot;/usr/include/stdio.h&quot; 1 3 4</span>
+<span class="c1"># 27 &quot;/usr/include/stdio.h&quot; 3 4</span>
+<span class="c1"># 1 &quot;/usr/include/features.h&quot; 1 3 4</span>
+<span class="c1"># 375 &quot;/usr/include/features.h&quot; 3 4</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ cat hello.c
+</pre></div>
+</div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ cat hello.i | tail 
+</pre></div>
+</div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">extern</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">funlockfile</span><span class="w"> </span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">__stream</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="n">__nothrow__</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">__leaf__</span><span class="p">));</span>
+<span class="cp"># 943 &quot;/usr/include/stdio.h&quot; 3 4</span>
+
+<span class="cp"># 2 &quot;hello.c&quot; 2</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ cat hello.i | wc -l
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">842</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ cat hello.c | wc -l
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">6</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ gcc -S hello.i
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ ls
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span><span class="o">.</span><span class="n">c</span>  <span class="n">hello</span><span class="o">.</span><span class="n">i</span>  <span class="n">hello</span><span class="o">.</span><span class="n">s</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ cat hello.s
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>	.file	&quot;hello.c&quot;
+	.section	.rodata
+.LC0:
+	.string	&quot;Hello world&quot;
+	.text
+	.globl	main
+	.type	main, @function
+main:
+.LFB0:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	movl	$.LC0, %edi
+	call	puts
+	popq	%rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE0:
+	.size	main, .-main
+	.ident	&quot;GCC: (GNU) 4.8.5 20150623 (Red Hat 4.8.5-44)&quot;
+	.section	.note.GNU-stack,&quot;&quot;,@progbits
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ cat hello.c
+</pre></div>
+</div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ gcc -c hello.s -o hello.o
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ ls
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span><span class="o">.</span><span class="n">c</span>  <span class="n">hello</span><span class="o">.</span><span class="n">i</span>  <span class="n">hello</span><span class="o">.</span><span class="n">o</span>  <span class="n">hello</span><span class="o">.</span><span class="n">s</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ cat hello.o
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ELF&gt;?@@
+UH???]?Hello worldGCC: (GNU) 4.8.5 20150623 (Red Hat 4.8.5-44)zRx
+K                                                               A?C
+??      hello.cmainputs
+
+
+???????? .symtab.strtab.shstrtab.rela.text.data.bss.rodata.comment.note.GNU-stack.rela.eh_frame @?0
+&amp;PP1P
+     90\.B?W?R@
+?
+	?0a[brownsarahm@n005 compilec]$ 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ gcc -o hello hello.o -lm 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ ls
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span>  <span class="n">hello</span><span class="o">.</span><span class="n">c</span>  <span class="n">hello</span><span class="o">.</span><span class="n">i</span>  <span class="n">hello</span><span class="o">.</span><span class="n">o</span>  <span class="n">hello</span><span class="o">.</span><span class="n">s</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ ./hello 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hello</span> <span class="n">world</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ ls -la
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="mi">48</span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span> <span class="mi">2</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>    <span class="mi">98</span> <span class="n">Apr</span>  <span class="mi">4</span> <span class="mi">13</span><span class="p">:</span><span class="mi">29</span> <span class="o">.</span>
+<span class="n">drwx</span><span class="o">------</span> <span class="mi">7</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">4096</span> <span class="n">Apr</span>  <span class="mi">4</span> <span class="mi">13</span><span class="p">:</span><span class="mi">01</span> <span class="o">..</span>
+<span class="o">-</span><span class="n">rwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">8360</span> <span class="n">Apr</span>  <span class="mi">4</span> <span class="mi">13</span><span class="p">:</span><span class="mi">29</span> <span class="n">hello</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>    <span class="mi">64</span> <span class="n">Apr</span>  <span class="mi">4</span> <span class="mi">13</span><span class="p">:</span><span class="mi">03</span> <span class="n">hello</span><span class="o">.</span><span class="n">c</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span> <span class="mi">16865</span> <span class="n">Apr</span>  <span class="mi">4</span> <span class="mi">13</span><span class="p">:</span><span class="mi">07</span> <span class="n">hello</span><span class="o">.</span><span class="n">i</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>  <span class="mi">1496</span> <span class="n">Apr</span>  <span class="mi">4</span> <span class="mi">13</span><span class="p">:</span><span class="mi">24</span> <span class="n">hello</span><span class="o">.</span><span class="n">o</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">brownsarahm</span> <span class="n">spring2022</span><span class="o">-</span><span class="n">csc392</span>   <span class="mi">433</span> <span class="n">Apr</span>  <span class="mi">4</span> <span class="mi">13</span><span class="p">:</span><span class="mi">14</span> <span class="n">hello</span><span class="o">.</span><span class="n">s</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ ls
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span>  <span class="n">hello</span><span class="o">.</span><span class="n">c</span>  <span class="n">hello</span><span class="o">.</span><span class="n">i</span>  <span class="n">hello</span><span class="o">.</span><span class="n">o</span>  <span class="n">hello</span><span class="o">.</span><span class="n">s</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ rm hello.i hello.s hello.o hello
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ ls
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ gcc --help
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">gcc</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">file</span><span class="o">...</span>
+<span class="n">Options</span><span class="p">:</span>
+  <span class="o">-</span><span class="k">pass</span><span class="o">-</span><span class="n">exit</span><span class="o">-</span><span class="n">codes</span>         <span class="n">Exit</span> <span class="k">with</span> <span class="n">highest</span> <span class="n">error</span> <span class="n">code</span> <span class="kn">from</span> <span class="nn">a</span> <span class="n">phase</span>
+  <span class="o">--</span><span class="n">help</span>                   <span class="n">Display</span> <span class="n">this</span> <span class="n">information</span>
+  <span class="o">--</span><span class="n">target</span><span class="o">-</span><span class="n">help</span>            <span class="n">Display</span> <span class="n">target</span> <span class="n">specific</span> <span class="n">command</span> <span class="n">line</span> <span class="n">options</span>
+  <span class="o">--</span><span class="n">help</span><span class="o">=</span><span class="p">{</span><span class="n">common</span><span class="o">|</span><span class="n">optimizers</span><span class="o">|</span><span class="n">params</span><span class="o">|</span><span class="n">target</span><span class="o">|</span><span class="n">warnings</span><span class="o">|</span><span class="p">[</span><span class="o">^</span><span class="p">]{</span><span class="n">joined</span><span class="o">|</span><span class="n">separate</span><span class="o">|</span><span class="n">undocumented</span><span class="p">}}[,</span><span class="o">...</span><span class="p">]</span>
+                           <span class="n">Display</span> <span class="n">specific</span> <span class="n">types</span> <span class="n">of</span> <span class="n">command</span> <span class="n">line</span> <span class="n">options</span>
+  <span class="p">(</span><span class="n">Use</span> <span class="s1">&#39;-v --help&#39;</span> <span class="n">to</span> <span class="n">display</span> <span class="n">command</span> <span class="n">line</span> <span class="n">options</span> <span class="n">of</span> <span class="n">sub</span><span class="o">-</span><span class="n">processes</span><span class="p">)</span>
+  <span class="o">--</span><span class="n">version</span>                <span class="n">Display</span> <span class="n">compiler</span> <span class="n">version</span> <span class="n">information</span>
+  <span class="o">-</span><span class="n">dumpspecs</span>               <span class="n">Display</span> <span class="nb">all</span> <span class="n">of</span> <span class="n">the</span> <span class="n">built</span> <span class="ow">in</span> <span class="n">spec</span> <span class="n">strings</span>
+  <span class="o">-</span><span class="n">dumpversion</span>             <span class="n">Display</span> <span class="n">the</span> <span class="n">version</span> <span class="n">of</span> <span class="n">the</span> <span class="n">compiler</span>
+  <span class="o">-</span><span class="n">dumpmachine</span>             <span class="n">Display</span> <span class="n">the</span> <span class="n">compiler</span><span class="s1">&#39;s target processor</span>
+  <span class="o">-</span><span class="nb">print</span><span class="o">-</span><span class="n">search</span><span class="o">-</span><span class="n">dirs</span>       <span class="n">Display</span> <span class="n">the</span> <span class="n">directories</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">compiler</span><span class="s1">&#39;s search path</span>
+  <span class="o">-</span><span class="nb">print</span><span class="o">-</span><span class="n">libgcc</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="n">name</span>  <span class="n">Display</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">compiler</span><span class="s1">&#39;s companion library</span>
+  <span class="o">-</span><span class="nb">print</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="n">name</span><span class="o">=&lt;</span><span class="n">lib</span><span class="o">&gt;</span>   <span class="n">Display</span> <span class="n">the</span> <span class="n">full</span> <span class="n">path</span> <span class="n">to</span> <span class="n">library</span> <span class="o">&lt;</span><span class="n">lib</span><span class="o">&gt;</span>
+  <span class="o">-</span><span class="nb">print</span><span class="o">-</span><span class="n">prog</span><span class="o">-</span><span class="n">name</span><span class="o">=&lt;</span><span class="n">prog</span><span class="o">&gt;</span>  <span class="n">Display</span> <span class="n">the</span> <span class="n">full</span> <span class="n">path</span> <span class="n">to</span> <span class="n">compiler</span> <span class="n">component</span> <span class="o">&lt;</span><span class="n">prog</span><span class="o">&gt;</span>
+  <span class="o">-</span><span class="nb">print</span><span class="o">-</span><span class="n">multiarch</span>         <span class="n">Display</span> <span class="n">the</span> <span class="n">target</span><span class="s1">&#39;s normalized GNU triplet, used as</span>
+                           <span class="n">a</span> <span class="n">component</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">library</span> <span class="n">path</span>
+  <span class="o">-</span><span class="nb">print</span><span class="o">-</span><span class="n">multi</span><span class="o">-</span><span class="n">directory</span>   <span class="n">Display</span> <span class="n">the</span> <span class="n">root</span> <span class="n">directory</span> <span class="k">for</span> <span class="n">versions</span> <span class="n">of</span> <span class="n">libgcc</span>
+  <span class="o">-</span><span class="nb">print</span><span class="o">-</span><span class="n">multi</span><span class="o">-</span><span class="n">lib</span>         <span class="n">Display</span> <span class="n">the</span> <span class="n">mapping</span> <span class="n">between</span> <span class="n">command</span> <span class="n">line</span> <span class="n">options</span> <span class="ow">and</span>
+                           <span class="n">multiple</span> <span class="n">library</span> <span class="n">search</span> <span class="n">directories</span>
+  <span class="o">-</span><span class="nb">print</span><span class="o">-</span><span class="n">multi</span><span class="o">-</span><span class="n">os</span><span class="o">-</span><span class="n">directory</span> <span class="n">Display</span> <span class="n">the</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">OS</span> <span class="n">libraries</span>
+  <span class="o">-</span><span class="nb">print</span><span class="o">-</span><span class="n">sysroot</span>           <span class="n">Display</span> <span class="n">the</span> <span class="n">target</span> <span class="n">libraries</span> <span class="n">directory</span>
+  <span class="o">-</span><span class="nb">print</span><span class="o">-</span><span class="n">sysroot</span><span class="o">-</span><span class="n">headers</span><span class="o">-</span><span class="n">suffix</span> <span class="n">Display</span> <span class="n">the</span> <span class="n">sysroot</span> <span class="n">suffix</span> <span class="n">used</span> <span class="n">to</span> <span class="n">find</span> <span class="n">headers</span>
+  <span class="o">-</span><span class="n">Wa</span><span class="p">,</span><span class="o">&lt;</span><span class="n">options</span><span class="o">&gt;</span>            <span class="n">Pass</span> <span class="n">comma</span><span class="o">-</span><span class="n">separated</span> <span class="o">&lt;</span><span class="n">options</span><span class="o">&gt;</span> <span class="n">on</span> <span class="n">to</span> <span class="n">the</span> <span class="n">assembler</span>
+  <span class="o">-</span><span class="n">Wp</span><span class="p">,</span><span class="o">&lt;</span><span class="n">options</span><span class="o">&gt;</span>            <span class="n">Pass</span> <span class="n">comma</span><span class="o">-</span><span class="n">separated</span> <span class="o">&lt;</span><span class="n">options</span><span class="o">&gt;</span> <span class="n">on</span> <span class="n">to</span> <span class="n">the</span> <span class="n">preprocessor</span>
+  <span class="o">-</span><span class="n">Wl</span><span class="p">,</span><span class="o">&lt;</span><span class="n">options</span><span class="o">&gt;</span>            <span class="n">Pass</span> <span class="n">comma</span><span class="o">-</span><span class="n">separated</span> <span class="o">&lt;</span><span class="n">options</span><span class="o">&gt;</span> <span class="n">on</span> <span class="n">to</span> <span class="n">the</span> <span class="n">linker</span>
+  <span class="o">-</span><span class="n">Xassembler</span> <span class="o">&lt;</span><span class="n">arg</span><span class="o">&gt;</span>        <span class="n">Pass</span> <span class="o">&lt;</span><span class="n">arg</span><span class="o">&gt;</span> <span class="n">on</span> <span class="n">to</span> <span class="n">the</span> <span class="n">assembler</span>
+  <span class="o">-</span><span class="n">Xpreprocessor</span> <span class="o">&lt;</span><span class="n">arg</span><span class="o">&gt;</span>     <span class="n">Pass</span> <span class="o">&lt;</span><span class="n">arg</span><span class="o">&gt;</span> <span class="n">on</span> <span class="n">to</span> <span class="n">the</span> <span class="n">preprocessor</span>
+  <span class="o">-</span><span class="n">Xlinker</span> <span class="o">&lt;</span><span class="n">arg</span><span class="o">&gt;</span>           <span class="n">Pass</span> <span class="o">&lt;</span><span class="n">arg</span><span class="o">&gt;</span> <span class="n">on</span> <span class="n">to</span> <span class="n">the</span> <span class="n">linker</span>
+  <span class="o">-</span><span class="n">save</span><span class="o">-</span><span class="n">temps</span>              <span class="n">Do</span> <span class="ow">not</span> <span class="n">delete</span> <span class="n">intermediate</span> <span class="n">files</span>
+  <span class="o">-</span><span class="n">save</span><span class="o">-</span><span class="n">temps</span><span class="o">=&lt;</span><span class="n">arg</span><span class="o">&gt;</span>        <span class="n">Do</span> <span class="ow">not</span> <span class="n">delete</span> <span class="n">intermediate</span> <span class="n">files</span>
+  <span class="o">-</span><span class="n">no</span><span class="o">-</span><span class="n">canonical</span><span class="o">-</span><span class="n">prefixes</span>   <span class="n">Do</span> <span class="ow">not</span> <span class="n">canonicalize</span> <span class="n">paths</span> <span class="n">when</span> <span class="n">building</span> <span class="n">relative</span>
+                           <span class="n">prefixes</span> <span class="n">to</span> <span class="n">other</span> <span class="n">gcc</span> <span class="n">components</span>
+  <span class="o">-</span><span class="n">pipe</span>                    <span class="n">Use</span> <span class="n">pipes</span> <span class="n">rather</span> <span class="n">than</span> <span class="n">intermediate</span> <span class="n">files</span>
+  <span class="o">-</span><span class="n">time</span>                    <span class="n">Time</span> <span class="n">the</span> <span class="n">execution</span> <span class="n">of</span> <span class="n">each</span> <span class="n">subprocess</span>
+  <span class="o">-</span><span class="n">specs</span><span class="o">=&lt;</span><span class="n">file</span><span class="o">&gt;</span>            <span class="n">Override</span> <span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="n">specs</span> <span class="k">with</span> <span class="n">the</span> <span class="n">contents</span> <span class="n">of</span> <span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span>
+  <span class="o">-</span><span class="n">std</span><span class="o">=&lt;</span><span class="n">standard</span><span class="o">&gt;</span>          <span class="n">Assume</span> <span class="n">that</span> <span class="n">the</span> <span class="nb">input</span> <span class="n">sources</span> <span class="n">are</span> <span class="k">for</span> <span class="o">&lt;</span><span class="n">standard</span><span class="o">&gt;</span>
+  <span class="o">--</span><span class="n">sysroot</span><span class="o">=&lt;</span><span class="n">directory</span><span class="o">&gt;</span>    <span class="n">Use</span> <span class="o">&lt;</span><span class="n">directory</span><span class="o">&gt;</span> <span class="k">as</span> <span class="n">the</span> <span class="n">root</span> <span class="n">directory</span> <span class="k">for</span> <span class="n">headers</span>
+                           <span class="ow">and</span> <span class="n">libraries</span>
+  <span class="o">-</span><span class="n">B</span> <span class="o">&lt;</span><span class="n">directory</span><span class="o">&gt;</span>           <span class="n">Add</span> <span class="o">&lt;</span><span class="n">directory</span><span class="o">&gt;</span> <span class="n">to</span> <span class="n">the</span> <span class="n">compiler</span><span class="s1">&#39;s search paths</span>
+  <span class="o">-</span><span class="n">v</span>                       <span class="n">Display</span> <span class="n">the</span> <span class="n">programs</span> <span class="n">invoked</span> <span class="n">by</span> <span class="n">the</span> <span class="n">compiler</span>
+  <span class="o">-</span><span class="c1">###                     Like -v but options quoted and commands not executed</span>
+  <span class="o">-</span><span class="n">E</span>                       <span class="n">Preprocess</span> <span class="n">only</span><span class="p">;</span> <span class="n">do</span> <span class="ow">not</span> <span class="nb">compile</span><span class="p">,</span> <span class="n">assemble</span> <span class="ow">or</span> <span class="n">link</span>
+  <span class="o">-</span><span class="n">S</span>                       <span class="n">Compile</span> <span class="n">only</span><span class="p">;</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">assemble</span> <span class="ow">or</span> <span class="n">link</span>
+  <span class="o">-</span><span class="n">c</span>                       <span class="n">Compile</span> <span class="ow">and</span> <span class="n">assemble</span><span class="p">,</span> <span class="n">but</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">link</span>
+  <span class="o">-</span><span class="n">o</span> <span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span>                <span class="n">Place</span> <span class="n">the</span> <span class="n">output</span> <span class="n">into</span> <span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span>
+  <span class="o">-</span><span class="n">pie</span>                     <span class="n">Create</span> <span class="n">a</span> <span class="n">position</span> <span class="n">independent</span> <span class="n">executable</span>
+  <span class="o">-</span><span class="n">shared</span>                  <span class="n">Create</span> <span class="n">a</span> <span class="n">shared</span> <span class="n">library</span>
+  <span class="o">-</span><span class="n">x</span> <span class="o">&lt;</span><span class="n">language</span><span class="o">&gt;</span>            <span class="n">Specify</span> <span class="n">the</span> <span class="n">language</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="nb">input</span> <span class="n">files</span>
+                           <span class="n">Permissible</span> <span class="n">languages</span> <span class="n">include</span><span class="p">:</span> <span class="n">c</span> <span class="n">c</span><span class="o">++</span> <span class="n">assembler</span> <span class="n">none</span>
+                           <span class="s1">&#39;none&#39;</span> <span class="n">means</span> <span class="n">revert</span> <span class="n">to</span> <span class="n">the</span> <span class="n">default</span> <span class="n">behavior</span> <span class="n">of</span>
+                           <span class="n">guessing</span> <span class="n">the</span> <span class="n">language</span> <span class="n">based</span> <span class="n">on</span> <span class="n">the</span> <span class="n">file</span><span class="s1">&#39;s extension</span>
+
+<span class="n">Options</span> <span class="n">starting</span> <span class="k">with</span> <span class="o">-</span><span class="n">g</span><span class="p">,</span> <span class="o">-</span><span class="n">f</span><span class="p">,</span> <span class="o">-</span><span class="n">m</span><span class="p">,</span> <span class="o">-</span><span class="n">O</span><span class="p">,</span> <span class="o">-</span><span class="n">W</span><span class="p">,</span> <span class="ow">or</span> <span class="o">--</span><span class="n">param</span> <span class="n">are</span> <span class="n">automatically</span>
+ <span class="n">passed</span> <span class="n">on</span> <span class="n">to</span> <span class="n">the</span> <span class="n">various</span> <span class="n">sub</span><span class="o">-</span><span class="n">processes</span> <span class="n">invoked</span> <span class="n">by</span> <span class="n">gcc</span><span class="o">.</span>  <span class="n">In</span> <span class="n">order</span> <span class="n">to</span> <span class="k">pass</span>
+ <span class="n">other</span> <span class="n">options</span> <span class="n">on</span> <span class="n">to</span> <span class="n">these</span> <span class="n">processes</span> <span class="n">the</span> <span class="o">-</span><span class="n">W</span><span class="o">&lt;</span><span class="n">letter</span><span class="o">&gt;</span> <span class="n">options</span> <span class="n">must</span> <span class="n">be</span> <span class="n">used</span><span class="o">.</span>
+
+<span class="n">For</span> <span class="n">bug</span> <span class="n">reporting</span> <span class="n">instructions</span><span class="p">,</span> <span class="n">please</span> <span class="n">see</span><span class="p">:</span>
+<span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">bugzilla</span><span class="o">.</span><span class="n">redhat</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bugzilla</span><span class="o">&gt;.</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ gcc -Wall -g -o hello hello.c -lm
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>hello.c:2:6: warning: return type of ‘main’ is not ‘int’ [-Wmain]
+ void main () {
+      ^
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ ls
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span>  <span class="n">hello</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+</section>
+<section id="working-with-multiple-files">
+<h2><span class="section-number">18.3. </span>Working with Multiple Files<a class="headerlink" href="#working-with-multiple-files" title="Permalink to this headline">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ nano main.c
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ nano help.c
+</pre></div>
+</div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Used to illustrate separate compilation.</span>
+<span class="cm">Created: Joe Zachary, October 22, 1992</span>
+<span class="cm">Modified:</span>
+<span class="cm">*/</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Please enter a small positive integer: &quot;</span><span class="p">);</span>
+<span class="w"> </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The sum of the first n integers is %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The product of the first n integers is %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">product</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>and <code class="docutils literal notranslate"><span class="pre">help.c</span></code></p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Used to illustrate separate compilation</span>
+
+<span class="cm">Created: Joe Zachary, October 22, 1992</span>
+<span class="cm">Modified:</span>
+
+<span class="cm">*/</span>
+
+<span class="cm">/* Requires that &quot;n&quot; be positive. Returns the sum of the</span>
+<span class="cm">  first &quot;n&quot; integers. */</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">  </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w"> </span><span class="k">return</span><span class="p">(</span><span class="n">total</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="cm">/* Requires that &quot;n&quot; be positive. Returns the product of the</span>
+<span class="cm">  first &quot;n&quot; integers. */</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">product</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">  </span><span class="n">total</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w"> </span><span class="k">return</span><span class="p">(</span><span class="n">total</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ gcc -Wall -g -c main.c 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>main.c:14:6: warning: return type of ‘main’ is not ‘int’ [-Wmain]
+ void main () {
+      ^
+main.c: In function ‘main’:
+main.c:18:2: warning: implicit declaration of function ‘sum’ [-Wimplicit-function-declaration]
+  printf(&quot;The sum of the first n integers is %d\n&quot;, sum(n));
+  ^
+main.c:19:2: warning: implicit declaration of function ‘product’ [-Wimplicit-function-declaration]
+  printf(&quot;The product of the first n integers is %d\n&quot;, product(n));
+  ^
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ nano main.c
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ cat main.c
+</pre></div>
+</div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Used to illustrate separate compilation.</span>
+<span class="cm">Created: Joe Zachary, October 22, 1992</span>
+<span class="cm">Modified:</span>
+<span class="cm">*/</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">product</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Please enter a small positive integer: &quot;</span><span class="p">);</span>
+<span class="w"> </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The sum of the first n integers is %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The product of the first n integers is %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">product</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ gcc -Wall -g -c main.c 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>main.c:15:6: warning: return type of ‘main’ is not ‘int’ [-Wmain]
+ void main () {
+      ^
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ gcc -Wall -g -c help.c
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ ls
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span>  <span class="n">hello</span><span class="o">.</span><span class="n">c</span>  <span class="n">help</span><span class="o">.</span><span class="n">c</span>  <span class="n">help</span><span class="o">.</span><span class="n">o</span>  <span class="n">main</span><span class="o">.</span><span class="n">c</span>  <span class="n">main</span><span class="o">.</span><span class="n">o</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ gcc -o demo main.o help.o -lm
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ ls
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">demo</span>  <span class="n">hello</span>  <span class="n">hello</span><span class="o">.</span><span class="n">c</span>  <span class="n">help</span><span class="o">.</span><span class="n">c</span>  <span class="n">help</span><span class="o">.</span><span class="n">o</span>  <span class="n">main</span><span class="o">.</span><span class="n">c</span>  <span class="n">main</span><span class="o">.</span><span class="n">o</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ ./demo 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Please</span> <span class="n">enter</span> <span class="n">a</span> <span class="n">small</span> <span class="n">positive</span> <span class="n">integer</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">The</span> <span class="nb">sum</span> <span class="n">of</span> <span class="n">the</span> <span class="n">first</span> <span class="n">n</span> <span class="n">integers</span> <span class="ow">is</span> <span class="mi">6</span>
+<span class="n">The</span> <span class="n">product</span> <span class="n">of</span> <span class="n">the</span> <span class="n">first</span> <span class="n">n</span> <span class="n">integers</span> <span class="ow">is</span> <span class="mi">6</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ ./demo 6
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Please</span> <span class="n">enter</span> <span class="n">a</span> <span class="n">small</span> <span class="n">positive</span> <span class="n">integer</span><span class="p">:</span> <span class="mi">6</span>
+<span class="n">The</span> <span class="nb">sum</span> <span class="n">of</span> <span class="n">the</span> <span class="n">first</span> <span class="n">n</span> <span class="n">integers</span> <span class="ow">is</span> <span class="mi">21</span>
+<span class="n">The</span> <span class="n">product</span> <span class="n">of</span> <span class="n">the</span> <span class="n">first</span> <span class="n">n</span> <span class="n">integers</span> <span class="ow">is</span> <span class="mi">720</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@n005 compilec]$ exit
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logout</span>
+<span class="n">srun</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">n005</span><span class="p">:</span> <span class="n">task</span> <span class="mi">0</span><span class="p">:</span> <span class="n">Exited</span> <span class="k">with</span> <span class="n">exit</span> <span class="n">code</span> <span class="mi">43</span>
+<span class="n">salloc</span><span class="p">:</span> <span class="n">Relinquishing</span> <span class="n">job</span> <span class="n">allocation</span> <span class="mi">26525</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ exit
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logout</span>
+<span class="n">Connection</span> <span class="n">to</span> <span class="n">seawulf</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">edu</span> <span class="n">closed</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>To make up for missing the badges on Thursday last week, today’s badges are integrative-3. Each will count as 3.</p>
+</div>
+</section>
+<section id="review-todays-class">
+<h2><span class="section-number">18.4. </span>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h2>
+<p><em>note: this is integrative3</em></p>
+<ol class="arabic">
+<li><p>Update  your KWL Chart based on what you have learned.</p></li>
+<li><p>Contribute to your group repo and review a team mate’s PR.</p></li>
+<li><p>Install <a class="reference external" href="https://gcc.gnu.org/install/"> gcc</a> locally and practice using it.  Repeat steps we did in class on your computer and then change the order of parameters; try skipping steps to produce errors, etc. Export the list of variations you tried and summarize what you learned as a list of tips and reminders on what the parameters do/why/when you would need them (or not) in <span class="target" id="index-0"></span>gcctips.md.  (to reinforce what we learned)</p></li>
+<li><p>Create some variations of the <code class="docutils literal notranslate"><span class="pre">hello.c</span></code> we made in class. Make <code class="docutils literal notranslate"><span class="pre">hello2.c</span></code> print twice with 2 print commands. Make <code class="docutils literal notranslate"><span class="pre">hello5.c</span></code> print 5 times with a for loop and <code class="docutils literal notranslate"><span class="pre">hello7.c</span></code> print 7 times with a for loop. Build them all on the command line and make sure they run correctly.</p></li>
+<li><p>Write a bash script, <span class="target" id="index-1"></span>assembly.sh to compile each program to assembly and print the number of lines in each file.</p></li>
+<li><p>Put the output of your script in <span class="target" id="index-2"></span>hello_assembly_compare.md. Add to the file some notes on how they are similar or different based on your own reading of them.</p></li>
+<li><p>Read about <a class="reference external" href="https://web.uri.edu/hpc-research-computing/using-seawulf/#sbatch">sbatch</a>. Answer the following in <span class="target" id="index-3"></span>hpc.md of your KWL repo:  (to think about how the design of the system we used in class impacts programming and connect it to other ideas taught in CS)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1. What kinds of things would your code need to do if you were going to run it on an HPC system?
+2. What Sbatch options seem the most helpful?
+3. How might you go about setting the time limits for a script? How could you estimate how long it will take?
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="prepare-for-next-class">
+<h2><span class="section-number">18.5. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.nand2tetris.org/software">install this hardware simulator</a></p></li>
+<li><p>Create <span class="target" id="index-4"></span>operators.md and make some notes about what you know about operators.  What kinds of operators are you familiar with? Which have you seen in programming? math?</p></li>
+</ol>
+</section>
+<section id="more-practice">
+<h2><span class="section-number">18.6. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
+<p><em>note: this is integrative3</em></p>
+<ol class="arabic">
+<li><p>Update more rows on your KWL Chart based on what we did today.</p></li>
+<li><p>Contribute to your group repo and review a team mate’s PR</p></li>
+<li><p>Install <a class="reference external" href="https://gcc.gnu.org/install/"> gcc</a> locally and practice using it.  Repeat steps we did in class on your computer and then change the order of parameters; try skipping steps to produce errors, etc. Export the list of variations you tried and summarize what you learned as a list of tips and reminders on what the parameters do/why/when you would need them (or not) in {index} <code class="docutils literal notranslate"><span class="pre">gcctips.md</span></code>.  (to reinforce what we learned)</p></li>
+<li><p>Write two short programs that do the same thing in different ways and compile them both to assembly (eg using a for vs while loop to sum numbers up to a number). Check the assembly to see if they produce the same thing or if it’s different. Save your code (in code blocks) and notes about your findings in <code class="docutils literal notranslate"><span class="pre">assemblycompare.md</span></code></p></li>
+<li><p>On Seawulf, modfiy <code class="docutils literal notranslate"><span class="pre">main.c</span></code> from class to accept the integer as a command line argument instead of via input while running the program. <a class="reference external" href="http://crasseux.com/books/ctutorial/argc-and-argv.html">See this tutorial for an example</a>.</p></li>
+<li><p>Write a bash script that runs your compiled program for each integer from 10 to 30 (syntax for a range is <code class="docutils literal notranslate"><span class="pre">{start..end}</span></code> so this would be <code class="docutils literal notranslate"><span class="pre">{10..30}</span></code>)</p></li>
+<li><p>Create an sbatch script to run your script  on a compute node and save the output to a file. The sbatch script should compile and link the program and then call the script. <a class="reference external" href="https://web.uri.edu/hpc-research-computing/using-seawulf/#sbatch">see the options</a></p></li>
+<li><p>use <a class="reference external" href="https://www2.stat.duke.edu/comp/security/scp_man.html">scp</a> to download your modified main, script files, and output to your local computer and include them in your kwl repo.</p></li>
+<li><p>Answer the following in <span class="target" id="index-5"></span>hpc.md of your KWL repo:  (to think about how the design of the system we used in class impacts programming and connect it to other ideas taught in CS)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1. What kinds of things would your code need to do if you were going to run it on an HPC system?
+2. What Sbatch options seem the most helpful?
+3. How might you go about setting the time limits for a script? How could you estimate how long it will take?
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="experience-report-evidence">
+<h2><span class="section-number">18.7. </span>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
+<p>use scp (see badge for instructions) and download the files created in class.</p>
+</section>
+<section id="questions-after-todays-class">
+<h2><span class="section-number">18.8. </span>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
+<div class="community admonition">
+<p class="admonition-title">Post via PR</p>
+<p>Submit a PR to the course website with your question as a level 3 heading for one community badge and with an attempted answer (I’ll check it before merging it) for two community badges</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2023-03-30.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">17. </span>How do I use a remote server more effectively?</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../activities/kwl.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">KWL Chart</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ssh-keys">18.1. Using SSH Keys</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-program">18.2. A simple program</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-multiple-files">18.3. Working with Multiple Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">18.4. Review today’s class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">18.5. Prepare for Next Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">18.6. More Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">18.7. Experience Report Evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">18.8. Questions After Today’s Class</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Professor Sarah M Brown
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

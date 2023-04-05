@@ -187,6 +187,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../notes/2023-03-21.html">14. How can I work on a remote server?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notes/2023-03-23.html">15. What is an IDE?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notes/2023-03-28.html">16. Programming Languages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/2023-03-30.html">17. How do I use a remote server more effectively?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/2023-04-04.html">18. What Happens when we build code?</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Activities</span></p>
 <ul class="current nav bd-sidenav">
@@ -441,6 +443,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2023-03-21</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2023-03-23</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2023-03-28</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2023-04-04</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2023-03-30</a></li>
 </ul>
             </nav>
         </div>
@@ -724,6 +728,34 @@ Start with a file explorer open, but then try to close it and use only command l
 </li>
 </ol>
 </section>
+<section id="id17">
+<h2>2023-04-04<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h2>
+<p><a class="reference internal" href="../notes/2023-04-04.html"><span class="doc std std-doc">related notes</span></a></p>
+<p>Activities:</p>
+<p><em>note: this is integrative3</em></p>
+<ol class="arabic">
+<li><p>Update more rows on your KWL Chart based on what we did today.</p></li>
+<li><p>Contribute to your group repo and review a team mate’s PR</p></li>
+<li><p>Install <a class="reference external" href="https://gcc.gnu.org/install/"> gcc</a> locally and practice using it.  Repeat steps we did in class on your computer and then change the order of parameters; try skipping steps to produce errors, etc. Export the list of variations you tried and summarize what you learned as a list of tips and reminders on what the parameters do/why/when you would need them (or not) in {index} <code class="docutils literal notranslate"><span class="pre">gcctips.md</span></code>.  (to reinforce what we learned)</p></li>
+<li><p>Write two short programs that do the same thing in different ways and compile them both to assembly (eg using a for vs while loop to sum numbers up to a number). Check the assembly to see if they produce the same thing or if it’s different. Save your code (in code blocks) and notes about your findings in <code class="docutils literal notranslate"><span class="pre">assemblycompare.md</span></code></p></li>
+<li><p>On Seawulf, modfiy <code class="docutils literal notranslate"><span class="pre">main.c</span></code> from class to accept the integer as a command line argument instead of via input while running the program. <a class="reference external" href="http://crasseux.com/books/ctutorial/argc-and-argv.html">See this tutorial for an example</a>.</p></li>
+<li><p>Write a bash script that runs your compiled program for each integer from 10 to 30 (syntax for a range is <code class="docutils literal notranslate"><span class="pre">{start..end}</span></code> so this would be <code class="docutils literal notranslate"><span class="pre">{10..30}</span></code>)</p></li>
+<li><p>Create an sbatch script to run your script  on a compute node and save the output to a file. The sbatch script should compile and link the program and then call the script. <a class="reference external" href="https://web.uri.edu/hpc-research-computing/using-seawulf/#sbatch">see the options</a></p></li>
+<li><p>use <a class="reference external" href="https://www2.stat.duke.edu/comp/security/scp_man.html">scp</a> to download your modified main, script files, and output to your local computer and include them in your kwl repo.</p></li>
+<li><p>Answer the following in <span class="target" id="index-20"></span>hpc.md of your KWL repo:  (to think about how the design of the system we used in class impacts programming and connect it to other ideas taught in CS)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1. What kinds of things would your code need to do if you were going to run it on an HPC system?
+2. What Sbatch options seem the most helpful?
+3. How might you go about setting the time limits for a script? How could you estimate how long it will take?
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="id18">
+<h2>2023-03-30<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h2>
+<p><a class="reference internal" href="../notes/2023-03-30.html"><span class="doc std std-doc">related notes</span></a></p>
+<p>Activities:</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -809,6 +841,8 @@ Start with a file explorer open, but then try to close it and use only command l
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2023-03-21</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2023-03-23</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2023-03-28</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2023-04-04</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2023-03-30</a></li>
 </ul>
   </nav></div>
 
