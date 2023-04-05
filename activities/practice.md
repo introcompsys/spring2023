@@ -131,3 +131,17 @@ Activities:
 Activities:
 ```{include} ../_practice/2023-03-28.md
 ```
+## 2023-04-04
+
+[related notes](../notes/2023-04-04)
+
+Activities:
+```{include} ../_practice/2023-04-04.md
+```
+## 2023-03-30
+
+[related notes](../notes/2023-03-30)
+
+Activities:
+```{include} ../_practice/2023-03-30.md
+```
