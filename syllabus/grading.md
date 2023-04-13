@@ -132,32 +132,32 @@ This is important information and it is also new in spring 2023.  I would like a
 ````
 
 To earn a D you must complete:
-- 24 experience badges
+- 23 experience badges
 
 To earn a C you must complete:
-- 24 experience badges
+- 23 experience badges
 - 18 review badges
 
 
 To earn a B you must complete:
-- 24 experience badges
+- 23 experience badges
 - your choice: 
   - 18 practice badges
   - 12 review + 12 practice
 
 For an A you must complete:
-- 24 experience badges
+- 23 experience badges
 - your choice: 
-    - 18 practice badges + 9 explore badges
+    - 18 practice badges + 6 explore badges
     - 18 review badges + 3 build badges
-    - 6 review badges + 12 practice badges +  6 explore badges + 1 build badges
-    - 12 review badges + 6 practice  badges+ 3 explore badges + 2 build badges
+    - 6 review badges + 12 practice badges +  4 explore badges + 1 build badges
+    - 12 review badges + 6 practice  badges+ 2 explore badges + 2 build badges
 
 
 You can also mix and match to get +/-. For example
-(all examples assume 24 experience badges)
-- A-: 18 practice + 6 explore
-- A-: 6 review + 12 practice +  9 explore
+(all examples assume 23 experience badges)
+- A-: 18 practice + 4 explore
+- B+: 6 review + 12 practice +  4 explore
 - B-: 6 review + 12 practice 
 - B+: 24 practice 
 - C+: 12 review + 6 practice
@@ -294,10 +294,10 @@ Community badges can replace missed experience, review, and practice badges, upg
 
 Community Badge values:
 - 3 community = 1 experience badge
-- 5 community = 1 review
+- 4 community = 1 review
 - 7 community = 1 practice. 
-- 5 community badges + 1 review = 1 practice.
-- 10 community =  + step to a D,C, or B, **note that this is more efficient.**
+- 3 community badges + 1 review = 1 practice.
+- 10 community = add a  `+` to a D,C, or B, **note that this is more efficient.**
 
 
 You can earn community badges by: 
@@ -423,3 +423,11 @@ You may earn at most one build badge per month, with final grading in May. To ea
 ```{important}
 this includes minor corrections relative to the readme in the template provided
 ``` -->
+
+## Academic Honesty Violation Penalty
+
+If you are found to submit prismia responses that do not reflect your own thinking or that of discussion with peers as directed, the experience badge for that class session will be ineligible. 
+
+If you are found to submit work that is not your own for a review or prepare badge, the review and prepare badges for that date will be ineligible and the penalty free zone terms will no longer apply to the first six badges. 
+
+If you are found to submit work that is not your own for an explore or build  badge, that badge will not be awarded and your maximum badges at the level possible will drop to 2/3 of the maximum possible. 

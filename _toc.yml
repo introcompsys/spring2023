@@ -8,7 +8,7 @@ parts:
     - file: syllabus/tools
     - file: syllabus/grading
     - file: syllabus/badges
-    - file: syllabus/badge_calc.md
+    - file: syllabus/badge_calc
     - file: syllabus/schedule
     - file: syllabus/uri_resources
     - file: syllabus/uri_statements
