@@ -53,7 +53,7 @@ put this on a branch called `watch_community_badge` and title your PR "Community
 ```{code-cell}
 :tags: ["remove-input"]
 
-help_df.style.hide_index()
+help_df.style.hide(axis="index")
 ``` 
 
 Online office hours locations are linked on the [GitHub Organization Page](https://github.com/introcompsys)

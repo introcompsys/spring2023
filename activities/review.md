@@ -104,3 +104,73 @@ Activities:
 Activities:
 ```{include} ../_review/2023-02-23.md
 ```
+## 2023-03-02
+
+[related notes](../notes/2023-03-02)
+
+Activities:
+```{include} ../_review/2023-03-02.md
+```
+## 2023-03-07
+
+[related notes](../notes/2023-03-07)
+
+Activities:
+```{include} ../_review/2023-03-07.md
+```
+## 2023-03-09
+
+[related notes](../notes/2023-03-09)
+
+Activities:
+```{include} ../_review/2023-03-09.md
+```
+## 2023-03-21
+
+[related notes](../notes/2023-03-21)
+
+Activities:
+```{include} ../_review/2023-03-21.md
+```
+## 2023-03-23
+
+[related notes](../notes/2023-03-23)
+
+Activities:
+```{include} ../_review/2023-03-23.md
+```
+## 2023-03-28
+
+[related notes](../notes/2023-03-28)
+
+Activities:
+```{include} ../_review/2023-03-28.md
+```
+## 2023-04-04
+
+[related notes](../notes/2023-04-04)
+
+Activities:
+```{include} ../_review/2023-04-04.md
+```
+## 2023-03-30
+
+[related notes](../notes/2023-03-30)
+
+Activities:
+```{include} ../_review/2023-03-30.md
+```
+## 2023-04-06
+
+[related notes](../notes/2023-04-06)
+
+Activities:
+```{include} ../_review/2023-04-06.md
+```
+## 2023-04-11
+
+[related notes](../notes/2023-04-11)
+
+Activities:
+```{include} ../_review/2023-04-11.md
+```

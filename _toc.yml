@@ -26,6 +26,16 @@ parts:
       - file: notes/2023-02-16
       - file: notes/2023-02-21
       - file: notes/2023-02-23
+      - file: notes/2023-03-02
+      - file: notes/2023-03-07
+      - file: notes/2023-03-09
+      - file: notes/2023-03-21
+      - file: notes/2023-03-23
+      - file: notes/2023-03-28
+      - file: notes/2023-03-30
+      - file: notes/2023-04-04
+      - file: notes/2023-04-06
+      - file: notes/2023-04-11
   - caption: Activities
     chapters:
     - file: activities/kwl
