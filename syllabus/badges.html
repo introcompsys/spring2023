@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'syllabus/badges';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Schedule" href="schedule.html" />
+    <link rel="next" title="Badge Calculations" href="badge_calc.html" />
     <link rel="prev" title="Grading" href="grading.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -164,6 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="tools.html">Tools and Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="grading.html">Grading</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">(experimental) Badge Visualizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="badge_calc.html">Badge Calculations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schedule.html">Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uri_resources.html">Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uri_statements.html">General URI Policies</a></li>
@@ -493,16 +494,19 @@ You can see the code that generates the figure behind the “click to show” bu
 <span class="c1"># create differences</span>
 <span class="n">mtg_delta</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">meeting_days</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">meeting_days</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">week_delta</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">skips</span> <span class="o">=</span> <span class="p">[</span><span class="n">date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">28</span><span class="p">)]</span>
+<span class="n">weeks</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">last_day</span><span class="o">-</span><span class="n">first_day</span><span class="p">)</span><span class="o">.</span><span class="n">days</span><span class="o">/</span><span class="mi">7</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="c1"># function to check if a date is during spring break</span>
+<span class="n">meeting_days</span> <span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">mtg_delta</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">meeting_days</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">meeting_days</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">week_delta</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+
 <span class="n">during_sb</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">spring_break</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;</span><span class="n">d</span><span class="o">&lt;</span><span class="n">spring_break</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="c1"># generate the number of weeks worth of dates</span>
+
 <span class="n">possible</span> <span class="o">=</span> <span class="p">[(</span><span class="n">first_day</span><span class="o">+</span><span class="n">week_delta</span><span class="o">*</span><span class="n">w</span><span class="p">,</span> <span class="n">first_day</span><span class="o">+</span><span class="n">mtg_delta</span><span class="o">+</span><span class="n">week_delta</span><span class="o">*</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">weeks</span><span class="p">)]</span>
-<span class="c1"># rm spring break dates</span>
 <span class="n">weekly_meetings</span> <span class="o">=</span> <span class="p">[[</span><span class="n">c1</span><span class="p">,</span><span class="n">c2</span><span class="p">]</span> <span class="k">for</span> <span class="n">c1</span><span class="p">,</span><span class="n">c2</span> <span class="ow">in</span> <span class="n">possible</span> <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">during_sb</span><span class="p">(</span><span class="n">c1</span><span class="p">))]</span>
-<span class="c1">#unpack into single list</span>
-<span class="n">meetings</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">weekly_meetings</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">w</span><span class="p">]</span>
+<span class="n">meetings</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">weekly_meetings</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">w</span> <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">m</span> <span class="ow">in</span> <span class="n">skips</span><span class="p">)]</span>
 
 
 <span class="c1"># build a table for the dates</span>
@@ -584,7 +588,7 @@ You can see the code that generates the figure behind the “click to show” bu
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Badge Status as of 2023-04-13&#39;)
 </pre></div>
 </div>
-<img alt="../_images/4f2fc6d9685172e45e890a18a457d7654a8b3052272d7b26355dd9587ad5a237.png" src="../_images/4f2fc6d9685172e45e890a18a457d7654a8b3052272d7b26355dd9587ad5a237.png" />
+<img alt="../_images/bc3118f37fecaf400a0bf2675f4723e8d697566b3288fb8c6cece036a90f72e7.png" src="../_images/bc3118f37fecaf400a0bf2675f4723e8d697566b3288fb8c6cece036a90f72e7.png" />
 </div>
 </div>
 <p>The (e) columns are what will be enforced, the (t) columns is ideal, see the <a class="reference internal" href="grading.html#rp-status"><span class="std std-ref">deadlines section of the syllabus for more on the statuses</span></a> for more detail.</p>
@@ -638,7 +642,7 @@ You can see the code that generates the figure behind the “click to show” bu
   <tbody>
     <tr>
       <th>eligible</th>
-      <td>21.0</td>
+      <td>20.0</td>
       <td></td>
       <td></td>
       <td></td>
@@ -671,10 +675,10 @@ You can see the code that generates the figure behind the “click to show” bu
     <tr>
       <th>completed</th>
       <td></td>
-      <td>12.0</td>
-      <td>12.0</td>
-      <td>18.0</td>
-      <td>18.0</td>
+      <td>11.0</td>
+      <td>11.0</td>
+      <td>17.0</td>
+      <td>17.0</td>
     </tr>
   </tbody>
 </table>
@@ -693,13 +697,13 @@ You can see the code that generates the figure behind the “click to show” bu
 </aside>
 <p>This means that, as of <span class="output text_plain">‘2023-04-13’</span> you are fully caught up if you have:</p>
 <ul class="simple">
-<li><p><span class="output text_plain">21</span> experience badges submitted.</p></li>
-<li><p><span class="output text_plain">18</span> total review and practice badges completed.</p></li>
+<li><p><span class="output text_plain">20</span> experience badges submitted.</p></li>
+<li><p><span class="output text_plain">17</span> total review and practice badges completed.</p></li>
 <li><p><span class="output text_plain">2</span> additional review and/or practice badges started and in progress.</p></li>
 </ul>
 <p>Notes:</p>
 <ul class="simple">
-<li><p>If you do not have at least <span class="output text_plain">18</span> experience badges earned, you should visit office hours to get caught up.</p></li>
+<li><p>If you do not have at least <span class="output text_plain">17</span> experience badges earned, you should visit office hours to get caught up.</p></li>
 <li><p>There are are 6 review and practice badges that are from the penalty free zone, so they never expire.</p></li>
 <li><p>Most of your experience and completed badges should be earned, but there is no deadline to fix issues with them.</p></li>
 </ul>
@@ -1004,11 +1008,11 @@ style earned fill:#2cf
       </div>
     </a>
     <a class="right-next"
-       href="schedule.html"
+       href="badge_calc.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Schedule</p>
+        <p class="prev-next-title">Badge Calculations</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

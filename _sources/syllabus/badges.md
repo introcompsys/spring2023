@@ -49,16 +49,19 @@ weeks = int((last_day-first_day).days/7+1)
 # create differences
 mtg_delta = timedelta(meeting_days[1]-meeting_days[0])
 week_delta = timedelta(7)
+skips = [date(2023,2,28)]
+weeks = int((last_day-first_day).days/7+1)
 
-# function to check if a date is during spring break
+meeting_days =[1,3]
+mtg_delta = timedelta(meeting_days[1]-meeting_days[0])
+week_delta = timedelta(7)
+
 during_sb = lambda d: spring_break[0]<d<spring_break[1]
 
-# generate the number of weeks worth of dates
+
 possible = [(first_day+week_delta*w, first_day+mtg_delta+week_delta*w) for w in range(weeks)]
-# rm spring break dates
 weekly_meetings = [[c1,c2] for c1,c2 in possible if not(during_sb(c1))]
-#unpack into single list
-meetings = [m for w in weekly_meetings for m in w]
+meetings = [m for w in weekly_meetings for m in w if not(m in skips)]
 
 
 # build a table for the dates
@@ -450,14 +453,3 @@ style revision fill:#2cf
 style earned fill:#2cf
 
 ```
-
-      
-
-
-
-
-  
-    
-    
-
-    
