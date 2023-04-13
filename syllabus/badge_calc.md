@@ -193,6 +193,10 @@ fig_cur.update_layout(yaxis = dict(tickmode='array',
 fig_cur
 ```
 
+```{important}
+the labels on the horizontal axis are just example names, they do not have any meaning, I just have not figured out what I want to replace them with that might have meaning and need some sort of unique identifier there for the plot to work. 
+```
+
 ```{code-cell} ipython3
 # fig_cur.to_html('influence.html',include_plotlyjs='cdn',
 #                full_html=False,div_id='badge_grade_graph')
@@ -201,8 +205,7 @@ fig_cur
 
 
 ```{warning}
-Officially what is on the [](grading) page is what applies.  What follows is close to equivalent, but changes some thresholds. This is a *proposed* alternative, that I will adopt
-if it is more clear and students agree it is fair. 
+Officially what is on the [](grading) page is what applies if this page is in conflict with that.  
 ```
 
 The total influence of a badge on your grade is the product of the badge's weight and its complexity.  All learning badges have a weight of 1, but have varying complexity.  All community badges have a complexity of 1, but the weight of a community badge can vary depending on what learning badges you earn. 
