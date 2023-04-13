@@ -295,7 +295,7 @@ Community Badge values:
 - 4 community = 1 review
 - 7 community = 1 practice. 
 - 3 community badges + 1 review = 1 practice.
-- 10 community =  + step to a D,C, or B, **note that this is more efficient.**
+- 10 community = add a  `+` to a D,C, or B, **note that this is more efficient.**
 
 
 You can earn community badges by: 
