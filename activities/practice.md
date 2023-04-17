@@ -159,3 +159,10 @@ Activities:
 Activities:
 ```{include} ../_practice/2023-04-11.md
 ```
+## 2023-04-13
+
+[related notes](../notes/2023-04-13)
+
+Activities:
+```{include} ../_practice/2023-04-13.md
+```
