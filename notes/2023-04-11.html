@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>23. Review today’s class &#8212; Computer Systems and Programming Tools</title>
+    <title>23. Float Representation &#8212; Computer Systems and Programming Tools</title>
   
   
   
@@ -61,6 +61,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2023-04-11';</script>
@@ -194,11 +196,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">23. Review today’s class</a></li>
-
-
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">23. Float Representation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Activities</span></p>
 <ul class="nav bd-sidenav">
@@ -427,7 +425,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Review today’s class</h1>
+    <h1>Float Representation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -437,13 +435,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">23. Review today’s class</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">24. Prepare for Next Class</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">25. More Practice</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">26. Experience Report Evidence</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">27. Questions After Today’s Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-a-fixed-point">23.1. What about a fixed point?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#floating-point-notation">23.2. Floating Point Notation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#floating-point-numbers-are-not-all-exact">23.3. Floating point numbers are not all  exact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#floating-point-ieee-standard">23.4. Floating point IEEE standard</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-read-a-number-like-this">23.4.1. How do we read a number like this?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-get-numbers-into-this-form">23.4.2. How do we get numbers into this form?</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-in-python">23.5. Example In Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">23.6. Review today’s class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">23.7. Prepare for Next Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">23.8. More Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">23.9. Experience Report Evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">23.10. Questions After Today’s Class</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -454,93 +460,290 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
+  <section class="tex2jax_ignore mathjax_ignore" id="float-representation">
+<h1><span class="section-number">23. </span>Float Representation<a class="headerlink" href="#float-representation" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p>floating point</p></li>
+<li><p>IEEE double format</p></li>
+</ul>
+<section id="what-about-a-fixed-point">
+<h2><span class="section-number">23.1. </span>What about a fixed point?<a class="headerlink" href="#what-about-a-fixed-point" title="Permalink to this headline">#</a></h2>
+<p>Let’s experiment with an 8 bit representation with 1 bit for sign and then the next 4 used for the part of the  number greater than 0 and the last 3 for the fractional part.</p>
+<!-- ![]() -->
+<!-- drawing on fixed/flaot -->
+<p>so then the number:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01000001</span>
 </pre></div>
 </div>
-<p>python</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<p>would be</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="o">-</span><span class="mi">1000</span><span class="o">-</span><span class="mi">001</span>
 </pre></div>
 </div>
-<p>Python 3.8.3 (default, Jul  2 2020, 11:26:31)
-[Clang 10.0.0 ] :: Anaconda, Inc. on darwin
-Type “help”, “copyright”, “credits” or “license” for more information.</p>
-<blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><p>2<strong>11
-2048
-2</strong>10
-1024
-.1 + .1 + .1
-0.30000000000000004
-.1 + .1 + .1 == .3
-False
-.3
-0.3
-.1
-0.1
-round(.1,1) <em>3 ==round(.3,1)
-False
-round(.1</em>3, 1)
-0.3
-q,r =divmod(2<strong>56,10)
-q
-7205759403792793
-r
-6
-J = q+1
-len(bin(J))
-55
-52-56+1023
-1019
-float.hex(.1)
-‘0x1.999999999999ap-4’
-1019-1023
--4
-(q+1)/2</strong>56 == .1
-True
-from decimal import Decimal
-from fractions import Fraction
-Fraction.from_float(.1)
-Fraction(3602879701896397, 36028797018963968)
-q+1/2
-7205759403792794.0
-q+1/4
-7205759403792793.0
-(q+1)2
-File “<stdin>”, line 1
-(q+1)2
-^
-SyntaxError: invalid syntax
-(q+1)/2
-3602879701896397.0
-Fraction.from_float(.1)
-Fraction(3602879701896397, 36028797018963968)
-exit()</p>
-</div></blockquote>
-</div></blockquote>
-</div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
+<p>positive, 8.1</p>
+<p>in this then we can represent the numbers 0-8 for the right hand side and 0-15 on the left hand side so we get</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">itertools</span>
+<span class="n">num_list</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">f</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">),[</span><span class="n">i</span><span class="o">/</span><span class="mi">10</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)])]</span>
+<span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">num_list</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;-&#39;</span><span class="o">+</span> <span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">num_list</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">num_list</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>
 </pre></div>
 </div>
+<p>This is far fewer different values than we could represent with 1 bit for sign and 7 bits to represent intergers</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">7</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>Another way we could represent numbers with a fixed point, is to use base two fractions: <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span>, <span class="math notranslate nohighlight">\(\frac{1}{4}\)</span>, <span class="math notranslate nohighlight">\(\frac{1}{8}\)</span> etc.</p>
+<p>In this fixed point we would have, for example:
+<code class="docutils literal notranslate"><span class="pre">0101.1010</span></code> would be $<span class="math notranslate nohighlight">\(0*2^3 + 1*2^2 + 0*2^2 + 1*2^0 + 1*\frac{1}{2^{-1}} + 0*\frac{1}{2^{-2}} + 1*\frac{1}{2^{-}} + 0*\frac{1}{2^{-4}} = 4 + 1 + \frac{1}{2} + \frac{1}{8} = 5 + \frac{5}{8}= 5.625\)</span>$</p>
+<p>In this case we still have a small range of numbers, but it’s a different set of possible numbers.</p>
+</section>
+<section id="floating-point-notation">
+<h2><span class="section-number">23.2. </span>Floating Point Notation<a class="headerlink" href="#floating-point-notation" title="Permalink to this headline">#</a></h2>
+<p>We can write  numbers in many different forms. We have written integers through many different bases so far.</p>
+<p>For example in scientific contexts, we often write numbers (in base 10) like:</p>
+<div class="math notranslate nohighlight">
+\[
+3.45 \times 10^2 = 345
+\]</div>
+<p>We can use a similiar form to represent numbers in binary. Using base 2 instead of base 10.</p>
+</section>
+<section id="floating-point-numbers-are-not-all-exact">
+<h2><span class="section-number">23.3. </span>Floating point numbers are not all  exact<a class="headerlink" href="#floating-point-numbers-are-not-all-exact" title="Permalink to this headline">#</a></h2>
+<p>Let’s look at an example, we add <code class="docutils literal notranslate"><span class="pre">.1</span></code> together 3 times, and we get the expected result.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mf">.1</span> <span class="o">+</span> <span class="mf">.1</span> <span class="o">+</span> <span class="mf">.1</span>
+</pre></div>
+</div>
+<p>However, if we check what it’s equal to, it does not equal .3</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mf">.1</span> <span class="o">+</span> <span class="mf">.1</span> <span class="o">+</span> <span class="mf">.1</span> <span class="o">==</span> <span class="mf">.3</span>
+</pre></div>
+</div>
+<p>This is because the floating point representation is an <em>approximation</em> and there are multiple full numbers that are close to any given number that cannot be expressed exactly.
+However, the display truncates since usually we want only a few significant digits.<br />
+Even rounding does not make it work.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">round</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">round</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">round</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">round</span><span class="p">(</span><span class="mf">.3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">round</span><span class="p">(</span><span class="mf">.1</span> <span class="o">+</span> <span class="mf">.1</span><span class="o">+</span> <span class="mf">.1</span> <span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mf">.1</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="mf">.1</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">num</span>
+</pre></div>
+</div>
+<!-- #region -->
+</section>
+<section id="floating-point-ieee-standard">
+<h2><span class="section-number">23.4. </span>Floating point IEEE standard<a class="headerlink" href="#floating-point-ieee-standard" title="Permalink to this headline">#</a></h2>
+<p>Now, lets see how these numbers are actually represented.</p>
+<p><a class="reference external" href="https://ieeexplore.ieee.org/document/8766229">IEEE Floating Point </a>
+is what basically everyone uses, but it is technically a choice hardware manufacturers can techically make.</p>
+<ul class="simple">
+<li><p>Initially in 1985</p></li>
+<li><p>Reviesd in 2008 after 7 year process that expanded</p></li>
+<li><p>revised in 2019 after 4 year process that mostly clarified</p></li>
+</ul>
+<p><em>IBM mainframes use their own representiton based on Hex</em></p>
+<p>Next revision is projected to 2028.</p>
+<p>this is a double precision float or binary64 inthe current standard.</p>
+<p>it was called double in the original, offiically, so it is commonly called that.</p>
+<p>In this case we will 1 bit for sign, 11 for exponent and 52 for the fraction part</p>
+<p><img alt="float bit image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/IEEE_754_Double_Floating_Point_Format.svg/2560px-IEEE_754_Double_Floating_Point_Format.svg.png" /></p>
+<!-- #endregion -->
+<!-- #region -->
+<section id="how-do-we-read-a-number-like-this">
+<h3><span class="section-number">23.4.1. </span>How do we read a number like this?<a class="headerlink" href="#how-do-we-read-a-number-like-this" title="Permalink to this headline">#</a></h3>
+<p>if the sign bit is <span class="math notranslate nohighlight">\(s\)</span> and the number represented by the exponent bits is <span class="math notranslate nohighlight">\(e\)</span> and the 52 bits are number from right most is 0 and the last one is 52.</p>
+<div class="math notranslate nohighlight">
+\[
+(-1)s + \left(1 + \sum_{i=1}^{52} b_{52-i} 2^{-i}\right) \times 2^{e-1023}
+\]</div>
+<p>Note that this is <span class="math notranslate nohighlight">\(2^{-1}\)</span> so we are working with <em>fractions</em> instead of integers in the sum.</p>
+<p>So if we had:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">01111111111</span> <span class="mi">0000000000000000000000000000000000000000000000000000</span>
+</pre></div>
+</div>
+<p>it would represent:</p>
+<div class="math notranslate nohighlight">
+\[
+(-1)*0 + \left(1 + 0 \cdot 2^{-0} + 0 \cdot 2^{-1} + \ldots  + 0 \cdot 2^{-51) + 0 \cdot 2^{-52) \times 2^{1023-1023} = 0 + (1 + 0) \times 2^0  = 1 \times 1 =  1.0
+\]</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">01111111111</span> <span class="mi">0100000000000000000000000000000000000000000000000000</span>
+</pre></div>
+</div>
+<p>it would represent:
+$<span class="math notranslate nohighlight">\( (-1)*0 + \left(1 + 0\cdot 2^{-0} + 1\cdot 2^{-1} + \ldots  + 0\cdot 2^{-51) + 0\cdot 2^{-52) \times 2^{1023-1023} = 0 + (1 + \frac{1}{2}) \times 2^0  = 1.5 \times 1 =  1.5 \)</span>$</p>
+<!-- #endregion -->
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mb">0b01111111111</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span><span class="o">.</span><span class="n">hex</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mb">0b01111111000</span><span class="o">-</span><span class="mi">1023</span>
+</pre></div>
+</div>
+<!-- #region -->
+</section>
+<section id="how-do-we-get-numbers-into-this-form">
+<h3><span class="section-number">23.4.2. </span>How do we get numbers into this form?<a class="headerlink" href="#how-do-we-get-numbers-into-this-form" title="Permalink to this headline">#</a></h3>
+<p>Now, let’s return to our example of .1.</p>
+<p>First we take the sign of the number for the sign bit, but then to get the exponent and fraction, we have more work to do.</p>
+<p>Let’s take the equation we had from the standard:</p>
+<div class="math notranslate nohighlight">
+\[  \left(1 + \sum_{i=1}^{52} b_{52-i} 2^{-i}\right) \times 2^{e-1023}\]</div>
+<!-- #endregion -->
+<p>If we think about the fraction and how we add fractions, by reaching a common denominator. Since they’re all powers of two, we can use the last one.</p>
+<div class="math notranslate nohighlight">
+\[  \left(1 + \sum_{i=1}^{52} b_{52-i} 2^{-i}\right) \times 2^{e-1023}\]</div>
+<div class="math notranslate nohighlight">
+\[ \left( 1 + \frac{b_{52}}{2^{1}} + \frac{b_{51}}{2^{2}} + \cdots + \frac{b_{1}}{2^{51}} + \frac{b_{0}}{2^{52}} \right) \times 2^{e-1023} \]</div>
+<p>Now with a common denominator:</p>
+<div class="math notranslate nohighlight">
+\[ \left(\frac{2^{52}}{2^{52}} + \frac{2^{51} b_{52}}{2^{52}} + \frac{2^{50} b_{51}}{2^{52}} + \cdots + \frac{2^{1} b_{1}}{2^{52}} + \frac{2^0 b_{0}}{2^{52}}  \right) \times 2^{e-{1023}} \]</div>
+<p>So then this becomes a binary number with 53 bits (the 52 + 1) and a denominator of <span class="math notranslate nohighlight">\(2^{52}\)</span>, let’s call that number J.</p>
+<div class="math notranslate nohighlight">
+\[ \frac{J}{2^{52}}  \times 2^{e-{1023}} \]</div>
+<p>we can then combine the powers of 2.</p>
+<div class="math notranslate nohighlight">
+\[ \frac{J}{2^{52-e+1023}} \]</div>
+<p>So i order to return to our <code class="docutils literal notranslate"><span class="pre">.1</span></code> that we want to represent, we can represent it as a fraction and then estimate it in the form above.</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{10} ~= \frac{ J }{2^N}\]</div>
+<div class="math notranslate nohighlight">
+\[J ~= 2^N / 10\]</div>
+<p>Since we want to use exactly 53 bits to represent <span class="math notranslate nohighlight">\(J\)</span>, we want <span class="math notranslate nohighlight">\(\frac{2^N }{10}\)</span> to be greater than or equalt to <span class="math notranslate nohighlight">\(2^{52}\)</span> and less than <span class="math notranslate nohighlight">\(2^{53}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[ 2^{52} &lt;= \frac{2^N }{10} &lt; 2^{53} \]</div>
+<p>Since <span class="math notranslate nohighlight">\(10 =8+2 =  2^3 +2^1\)</span> then <span class="math notranslate nohighlight">\(2^3&lt;10&lt;2^4\)</span>
+We can say that
+$<span class="math notranslate nohighlight">\( \frac{2^N }{2^4} &lt; \frac{2^N }{10} &lt; \frac{2^N }{2^3} \)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ 2^{N-4} &lt;  \frac{2^N }{10} &lt; 2^{N-3} \]</div>
+<p>so if we want:</p>
+<div class="math notranslate nohighlight">
+\[ 2^{52} &lt;= \frac{2^N }{10} &lt; 2^{53} \]</div>
+<p>then best <span class="math notranslate nohighlight">\(N\)</span> is 56, but we can check it.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**</span><span class="mi">52</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">56</span> <span class="o">//</span><span class="mi">10</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="o">**</span><span class="mi">53</span>
+</pre></div>
+</div>
+<p>Now we can get the number we will use for <span class="math notranslate nohighlight">\(J\)</span>. We want to get as close to .1 with our fraction as possible, so</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">q</span><span class="p">,</span><span class="n">r</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">56</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then we check the remainder to decide if we should round up by 1 or not.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">r</span>
+</pre></div>
+</div>
+<p><span class="math notranslate nohighlight">\( 6 &gt; 5 = \frac{10}{2}\)</span>  so we round up</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">q</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>then we chan check the length in bits of that number</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">q</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span><span class="o">-</span><span class="mi">2</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">bin</span><span class="p">(</span><span class="n">q</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We need <span class="math notranslate nohighlight">\(52-e+1023 = 56\)</span> so</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">52</span><span class="o">-</span><span class="mi">56</span><span class="o">+</span><span class="mi">1023</span>
+</pre></div>
+</div>
+<p>Python doesn’t provide a binary reprsentation of floats, but it does provide a hex representation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span><span class="o">.</span><span class="n">hex</span><span class="p">(</span><span class="mf">.1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If we tak the binary above, it matched this for the part before the p.
+<code class="docutils literal notranslate"><span class="pre">0b1</span> <span class="pre">1001</span> <span class="pre">1001</span> <span class="pre">1001</span> <span class="pre">1001</span> <span class="pre">1001</span> <span class="pre">1001</span> <span class="pre">1001</span> <span class="pre">1001</span> <span class="pre">1001</span> <span class="pre">1001</span> <span class="pre">1001</span> <span class="pre">1001</span> <span class="pre">1010</span></code></p>
+<p>after the p is the exponent of <span class="math notranslate nohighlight">\(-4 = 1019-1023\)</span>. Which matches the approximation we found.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">q</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">**</span><span class="mi">56</span> <span class="o">==</span> <span class="mf">.1</span>
+</pre></div>
+</div>
+<p>this confirms that the approximaiton we found is the same as the float representation of .1.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="s1">&#39;.17f&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can also use built in classes to get at the needed quantitites</p>
+</section>
+</section>
+<section id="example-in-python">
+<h2><span class="section-number">23.5. </span>Example In Python<a class="headerlink" href="#example-in-python" title="Permalink to this headline">#</a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">3.8.3</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Jul</span>  <span class="mi">2</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">11</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">31</span><span class="p">)</span> 
+<span class="p">[</span><span class="n">Clang</span> <span class="mf">10.0.0</span> <span class="p">]</span> <span class="p">::</span> <span class="n">Anaconda</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span> <span class="n">on</span> <span class="n">darwin</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span><span class="o">**</span><span class="mi">11</span>
+<span class="mi">2048</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span><span class="o">**</span><span class="mi">10</span>
+<span class="mi">1024</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mf">.1</span> <span class="o">+</span> <span class="mf">.1</span> <span class="o">+</span> <span class="mf">.1</span>
+<span class="mf">0.30000000000000004</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mf">.1</span> <span class="o">+</span> <span class="mf">.1</span> <span class="o">+</span> <span class="mf">.1</span> <span class="o">==</span> <span class="mf">.3</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mf">.3</span>
+<span class="mf">0.3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mf">.1</span>
+<span class="mf">0.1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span><span class="mi">3</span> <span class="o">==</span><span class="nb">round</span><span class="p">(</span><span class="mf">.3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="mf">.1</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> 
+<span class="mf">0.3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">q</span><span class="p">,</span><span class="n">r</span> <span class="o">=</span><span class="nb">divmod</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">56</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">q</span>
+<span class="mi">7205759403792793</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span>
+<span class="mi">6</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">J</span> <span class="o">=</span> <span class="n">q</span><span class="o">+</span><span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>
+<span class="mi">55</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">52</span><span class="o">-</span><span class="mi">56</span><span class="o">+</span><span class="mi">1023</span>
+<span class="mi">1019</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">float</span><span class="o">.</span><span class="n">hex</span><span class="p">(</span><span class="mf">.1</span><span class="p">)</span>
+<span class="s1">&#39;0x1.999999999999ap-4&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">1019</span><span class="o">-</span><span class="mi">1023</span>
+<span class="o">-</span><span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="n">q</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">**</span><span class="mi">56</span> <span class="o">==</span> <span class="mf">.1</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Fraction</span><span class="o">.</span><span class="n">from_float</span><span class="p">(</span><span class="mf">.1</span><span class="p">)</span>
+<span class="n">Fraction</span><span class="p">(</span><span class="mi">3602879701896397</span><span class="p">,</span> <span class="mi">36028797018963968</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">q</span><span class="o">+</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+<span class="mf">7205759403792794.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">q</span><span class="o">+</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span>
+<span class="mf">7205759403792793.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="n">q</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="mi">2</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="p">(</span><span class="n">q</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="mi">2</span>
+         <span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="n">q</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+<span class="mf">3602879701896397.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Fraction</span><span class="o">.</span><span class="n">from_float</span><span class="p">(</span><span class="mf">.1</span><span class="p">)</span>
+<span class="n">Fraction</span><span class="p">(</span><span class="mi">3602879701896397</span><span class="p">,</span> <span class="mi">36028797018963968</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
 <section id="review-todays-class">
-<h1><span class="section-number">23. </span>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h1>
+<h2><span class="section-number">23.6. </span>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h2>
 <p>Free. You may do the following as a bonus practice badge though.</p>
 <ol class="arabic simple">
 <li><p>Write a C program to compare values as doubles and as float (single precision/32bit) to see that this comparison issue is related to the IEEE standard and is not language specific.  Make notes and comparison around its behavior and include it in a code cell in  <code class="docutils literal notranslate"><span class="pre">cdouble.md</span></code></p></li>
 </ol>
 </section>
 <section id="prepare-for-next-class">
-<h1><span class="section-number">24. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h1>
+<h2><span class="section-number">23.7. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
 <p>None, come as you are.</p>
 </section>
 <section id="more-practice">
-<h1><span class="section-number">25. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h1>
+<h2><span class="section-number">23.8. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
 <p>Free. You may do the following as a bonus practice badge though.</p>
 <ol class="arabic simple">
 <li><p>Write a C program to compare values as doubles and as float (single precision/32bit) to see that this comparison issue is related to the IEEE standard and is not language specific.  Make notes and comparison around its behavior and include it in a code cell in  <code class="docutils literal notranslate"><span class="pre">cdouble.md</span></code></p></li>
@@ -548,10 +751,13 @@ exit()</p>
 </ol>
 </section>
 <section id="experience-report-evidence">
-<h1><span class="section-number">26. </span>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h1>
+<h2><span class="section-number">23.9. </span>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
+<p>Nothing separate</p>
 </section>
 <section id="questions-after-todays-class">
-<h1><span class="section-number">27. </span>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h1>
+<h2><span class="section-number">23.10. </span>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
+<p>Post manually for a community badge.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -621,13 +827,21 @@ exit()</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">23. Review today’s class</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">24. Prepare for Next Class</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">25. More Practice</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">26. Experience Report Evidence</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">27. Questions After Today’s Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-a-fixed-point">23.1. What about a fixed point?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#floating-point-notation">23.2. Floating Point Notation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#floating-point-numbers-are-not-all-exact">23.3. Floating point numbers are not all  exact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#floating-point-ieee-standard">23.4. Floating point IEEE standard</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-read-a-number-like-this">23.4.1. How do we read a number like this?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-get-numbers-into-this-form">23.4.2. How do we get numbers into this form?</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-in-python">23.5. Example In Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">23.6. Review today’s class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">23.7. Prepare for Next Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">23.8. More Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">23.9. Experience Report Evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">23.10. Questions After Today’s Class</a></li>
+</ul>
   </nav></div>
 
 </div></div>
