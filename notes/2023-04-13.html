@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Prepare for Next Class &#8212; Computer Systems and Programming Tools</title>
+    <title>How can we use logical operations? &#8212; Computer Systems and Programming Tools</title>
   
   
   
@@ -61,6 +61,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2023-04-13';</script>
@@ -412,7 +414,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -423,11 +427,30 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Prepare for Next Class</h1>
+    <h1>How can we use logical operations?</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">How can we use logical operations?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-to-think-about-bitwise-operations">Why do we need to think about bitwise operations?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bitwise-operators-review">Bitwise operators review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-with-gates">Adding with gates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">Review today’s class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">Prepare for Next Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">More Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">Experience Report Evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">Questions After Today’s Class</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -437,12 +460,261 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="prepare-for-next-class">
-<h1>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="how-can-we-use-logical-operations">
+<h1>How can we use logical operations?<a class="headerlink" href="#how-can-we-use-logical-operations" title="Permalink to this headline">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="why-do-we-need-to-think-about-bitwise-operations">
+<h1>Why do we need to think about bitwise operations?<a class="headerlink" href="#why-do-we-need-to-think-about-bitwise-operations" title="Permalink to this headline">#</a></h1>
+<p>Understanding them is prereq to what we will see today and that will help you understand hardware overall.</p>
+<p>You of course will not <em>need</em> every single thing we teach you in every single class.</p>
+<ul class="simple">
+<li><p>Seeing topics once at least is the only way you can make an informed decision to study a topic deeper or not.</p></li>
+<li><p>Seeing a topic in more detail than you will use all the time actually helps you build intuition, or deep understanding, of the topic overall, and help you remember what you need to remember</p></li>
+</ul>
+<section id="bitwise-operators-review">
+<h2>Bitwise operators review<a class="headerlink" href="#bitwise-operators-review" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>&amp; : and</p></li>
+<li><p>| : or</p></li>
+<li><p>^ : xor</p></li>
+<li><p>~ : not</p></li>
+<li><blockquote>
+<div><blockquote>
+<div><p>: shift right</p>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p>&lt;&lt;: shift left</p></li>
+</ul>
+<p>Let’s review truth tables for and, or, and xor.</p>
+<table class="table" id="truth-and">
+<caption><span class="caption-text">AND</span><a class="headerlink" href="#truth-and" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>a</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table" id="truth-or">
+<caption><span class="caption-text">OR</span><a class="headerlink" href="#truth-or" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>a</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table" id="truth-xor">
+<caption><span class="caption-text">XOR</span><a class="headerlink" href="#truth-xor" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>a</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>In order to implement more complex calculations, using gates, we can use these tables as building blocks compared to the required output.</p>
+<p>There are more gate operations; you can see a simulation for <a class="reference external" href="https://lodev.org/logicemu/#id=gates16">16 gates</a></p>
+</section>
+<section id="adding-with-gates">
+<h2>Adding with gates<a class="headerlink" href="#adding-with-gates" title="Permalink to this headline">#</a></h2>
+<p>Let’s review adding binary numbers.</p>
+<p><strong>remember, binary is a place-based system like the decimal placed based system you are likely familiar with</strong></p>
+<p>How do you add each of the following:</p>
+<ul class="simple">
+<li><p>2 + 3</p></li>
+<li><p>14 + 17</p></li>
+<li><p>65 +37</p></li>
+</ul>
+<p>Since binary is place-based adding with binary follows the same basic algorithm</p>
+<ul class="simple">
+<li><p>add the two bits</p></li>
+<li><p>carry to the next place if &gt;=2</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ 101 + 100 = 1001 \]</div>
+<p>We first add the ones place and get a 1, then the two’s place and get a zero then the 4’s place and get 0 with a carried one.</p>
+<div class="math notranslate nohighlight">
+\[ 010 + 011 = 101 \]</div>
+<p>In this case in the ones place we add 0 + 1 to get one, the two ones add to 0 with carry then 1 + 0 + 0 gives another 1.</p>
+<p>let’s make a truth table for adding two bits.</p>
+<table class="table" id="truth-add">
+<caption><span class="caption-text">Add</span><a class="headerlink" href="#truth-add" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>a</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>out 2’s</p></th>
+<th class="head"><p>out 1’s</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>Now, what gate can we use to get the output 1’s place bit and what gate can we use to get the output 2’s place bit by comparing to the truth tables above.</p>
+<p>It turns out the one’s place is an xor gate, and the two’s place is an and gate.</p>
+<p>This makes up the <a class="reference external" href="https://lodev.org/logicemu/#id=half_adder">half adder, try one out at this simulator</a>.</p>
+<p>So this lets us as two bits, but what about adding a number with more bits?</p>
+<p>We can put multiple together, but there’s one more wrinkle: the carry.</p>
+<p>That’s what makes a <a class="reference external" href="https://lodev.org/logicemu/#id=full_adder">full adder</a> different.  It adds three single bits, or a carry and two bits and outputs the result as a sum bit and a carry bit.</p>
+<p>Then we can link many of those together to get an <a class="reference external" href="https://lodev.org/logicemu/#id=ripple_carry_adder">8 bit ripple adder</a>.</p>
+<p>Alternatively, we can “lookahead” with the carry bit, passing it forward multiple places all at once, as shown in this <a class="reference external" href="https://lodev.org/logicemu/#id=cla_adder">4 bit carry lookahead adder</a>.</p>
+</section>
+<section id="review-todays-class">
+<h2>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h2>
+<ol class="arabic simple">
+<li><p>While we saw many types of gates today, but we actually could get all of the operations needed using only NAND gates. Work out how to use NAND gates to implement a half adder and describe it in <code class="docutils literal notranslate"><span class="pre">nandhalf.md</span></code></p></li>
+</ol>
+<blockquote>
+<div><p>check that what they describe does the same as an and and an xor, be sure they show how they match.</p>
+</div></blockquote>
+<ol class="arabic">
+<li><p>In <code class="docutils literal notranslate"><span class="pre">addertypes.md</span></code> compare ripple adders and lookahead adders.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">Give</span> <span class="n">a</span> <span class="n">synopsis</span> <span class="n">of</span> <span class="n">each</span> <span class="n">adder</span> <span class="nb">type</span>
+<span class="mf">1.</span> <span class="n">Compare</span> <span class="n">them</span> <span class="ow">in</span> <span class="n">terms</span> <span class="n">of</span> <span class="n">time</span> <span class="p">(</span><span class="n">assume</span> <span class="n">that</span> <span class="n">each</span> <span class="n">gate</span> <span class="n">requires</span> <span class="n">one</span> <span class="n">unite</span> <span class="n">of</span> <span class="n">time</span><span class="p">)</span>
+<span class="mf">1.</span> <span class="n">Compare</span> <span class="n">them</span> <span class="ow">in</span> <span class="n">terms</span> <span class="n">of</span> <span class="n">space</span><span class="o">/</span><span class="n">cost</span> <span class="n">by</span> <span class="n">counting</span> <span class="n">the</span> <span class="n">total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">gates</span> <span class="n">required</span><span class="o">.</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="prepare-for-next-class">
+<h2>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>This link is incorrect in the badge PR issue</p>
 </div>
+<ol class="arabic">
+<li><p>Read <a class="reference external" href="https://hackaday.com/2017/01/03/make-logic-gates-out-of-almost-anything/">gates out of anything</a> and watch the <a class="reference external" href="https://www.youtube.com/watch?v=GcDshWmhF4A">marble adder</a>. Create <code class="docutils literal notranslate"><span class="pre">gates.md</span></code> and answer the questions below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1. What do all of the gates described have in common?
+1. How does the marble adder compare to the half adder and the full adder, which is it most like?
+</pre></div>
+</div>
+</li>
+<li><p>Study the <a class="reference external" href="https://lodev.org/logicemu/#id=alu">8 bit ALU</a>. Try it out and be prepared to answer questions about it in class.  Some questions to guide your exploration: What can it do? Try to compare it to the adder that we have seen. What components does it have that we have not yet seen? How does it represent different operations?</p></li>
+<li><p>(optional, for 3 community badges) Add an additional workflow to your repo creates badge issues triggered by a <code class="docutils literal notranslate"><span class="pre">workflow_dispatch</span></code> and uses <a class="reference external" href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onworkflow_dispatchinputs">inputs</a> of a date formatted like <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD</span></code> and boolean inputs for if review and/or practice should have issue created</p></li>
+</ol>
+</section>
+<section id="more-practice">
+<h2>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
+<ol class="arabic simple">
+<li><p>While we saw many types of gates today, but we actually could get all of the operations needed using only NAND gates. Work out how to use NAND gates to implement a half adder and describe it in <code class="docutils literal notranslate"><span class="pre">nandhalf.md</span></code></p></li>
+</ol>
+<blockquote>
+<div><p>check that what they describe does the same as an and and an xor, be sure they show how they match.</p>
+</div></blockquote>
+<ol class="arabic">
+<li><p>In <code class="docutils literal notranslate"><span class="pre">addertypes.md</span></code> compare ripple adders and lookahead adders.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">Give</span> <span class="n">a</span> <span class="n">synopsis</span> <span class="n">of</span> <span class="n">each</span> <span class="n">adder</span> <span class="nb">type</span>
+<span class="mf">1.</span> <span class="n">Compare</span> <span class="n">them</span> <span class="ow">in</span> <span class="n">terms</span> <span class="n">of</span> <span class="n">time</span> <span class="p">(</span><span class="n">assume</span> <span class="n">that</span> <span class="n">each</span> <span class="n">gate</span> <span class="n">requires</span> <span class="n">one</span> <span class="n">unite</span> <span class="n">of</span> <span class="n">time</span><span class="p">)</span>
+<span class="mf">1.</span> <span class="n">Compare</span> <span class="n">them</span> <span class="ow">in</span> <span class="n">terms</span> <span class="n">of</span> <span class="n">space</span><span class="o">/</span><span class="n">cost</span> <span class="n">by</span> <span class="n">counting</span> <span class="n">the</span> <span class="n">total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">gates</span> <span class="n">required</span><span class="o">.</span>
+</pre></div>
+</div>
+</li>
+<li><p>Compare the 2 bit multiplier to the full adder in <code class="docutils literal notranslate"><span class="pre">multiplication.md</span></code>. Use comparison  with the full adder to explain how the 2bit multiplier works works, relative to the fact that multiplication can be thought of like repeated addition.</p></li>
+</ol>
+</section>
+<section id="experience-report-evidence">
+<h2>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="questions-after-todays-class">
+<h2>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -485,6 +757,31 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">How can we use logical operations?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-to-think-about-bitwise-operations">Why do we need to think about bitwise operations?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bitwise-operators-review">Bitwise operators review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-with-gates">Adding with gates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">Review today’s class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">Prepare for Next Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">More Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">Experience Report Evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">Questions After Today’s Class</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
