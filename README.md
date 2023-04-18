@@ -1,6 +1,4 @@
-# CSC/DSP310 Programming for data Science
-
-Template for creating the course site
+# Computer systems and programming tools sp23
 <!--
 Course Manual For fall 2020
 
