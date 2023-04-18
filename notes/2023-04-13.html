@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>How can we use logical operations? &#8212; Computer Systems and Programming Tools</title>
+    <title>24. How can we use logical operations? &#8212; Computer Systems and Programming Tools</title>
   
   
   
@@ -68,6 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2023-04-13';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="KWL Chart" href="../activities/kwl.html" />
+    <link rel="prev" title="23. Float Representation" href="2023-04-11.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -171,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../syllabus/communication.html">Office Hours &amp; Communication</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2023-01-24.html">1. Welcome and Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2023-01-26.html">2. Course Logistics and Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2023-01-31.html">3. Bash intro &amp; git offline</a></li>
@@ -195,6 +197,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="2023-04-11.html">23. Float Representation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">24. How can we use logical operations?</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Activities</span></p>
 <ul class="nav bd-sidenav">
@@ -433,15 +437,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">How can we use logical operations?</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-to-think-about-bitwise-operations">Why do we need to think about bitwise operations?</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bitwise-operators-review">Bitwise operators review</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-with-gates">Adding with gates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">Review today’s class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">Prepare for Next Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">More Practice</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">Experience Report Evidence</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">Questions After Today’s Class</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">24. How can we use logical operations?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-to-think-about-bitwise-operations">25. Why do we need to think about bitwise operations?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bitwise-operators-review">25.1. Bitwise operators review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-with-gates">25.2. Adding with gates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">25.3. Review today’s class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">25.4. Prepare for Next Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">25.5. More Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">25.6. Experience Report Evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">25.7. Questions After Today’s Class</a></li>
 </ul>
 </li>
 </ul>
@@ -457,10 +461,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="how-can-we-use-logical-operations">
-<h1>How can we use logical operations?<a class="headerlink" href="#how-can-we-use-logical-operations" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">24. </span>How can we use logical operations?<a class="headerlink" href="#how-can-we-use-logical-operations" title="Permalink to this headline">#</a></h1>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="why-do-we-need-to-think-about-bitwise-operations">
-<h1>Why do we need to think about bitwise operations?<a class="headerlink" href="#why-do-we-need-to-think-about-bitwise-operations" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">25. </span>Why do we need to think about bitwise operations?<a class="headerlink" href="#why-do-we-need-to-think-about-bitwise-operations" title="Permalink to this headline">#</a></h1>
 <p>Understanding them is prereq to what we will see today and that will help you understand hardware overall.</p>
 <p>You of course will not <em>need</em> every single thing we teach you in every single class.</p>
 <ul class="simple">
@@ -468,7 +472,7 @@ document.write(`
 <li><p>Seeing a topic in more detail than you will use all the time actually helps you build intuition, or deep understanding, of the topic overall, and help you remember what you need to remember</p></li>
 </ul>
 <section id="bitwise-operators-review">
-<h2>Bitwise operators review<a class="headerlink" href="#bitwise-operators-review" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">25.1. </span>Bitwise operators review<a class="headerlink" href="#bitwise-operators-review" title="Permalink to this headline">#</a></h2>
 <ul>
 <li><p>&amp; : and</p></li>
 <li><p>| : or</p></li>
@@ -484,7 +488,7 @@ document.write(`
 </ul>
 <p>Let’s review truth tables for and, or, and xor.</p>
 <table class="table" id="truth-and">
-<caption><span class="caption-text">AND</span><a class="headerlink" href="#truth-and" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 25.1 </span><span class="caption-text">AND</span><a class="headerlink" href="#truth-and" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -516,7 +520,7 @@ document.write(`
 </tbody>
 </table>
 <table class="table" id="truth-or">
-<caption><span class="caption-text">OR</span><a class="headerlink" href="#truth-or" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 25.2 </span><span class="caption-text">OR</span><a class="headerlink" href="#truth-or" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -548,7 +552,7 @@ document.write(`
 </tbody>
 </table>
 <table class="table" id="truth-xor">
-<caption><span class="caption-text">XOR</span><a class="headerlink" href="#truth-xor" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 25.3 </span><span class="caption-text">XOR</span><a class="headerlink" href="#truth-xor" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -583,7 +587,7 @@ document.write(`
 <p>There are more gate operations; you can see a simulation for <a class="reference external" href="https://lodev.org/logicemu/#id=gates16">16 gates</a></p>
 </section>
 <section id="adding-with-gates">
-<h2>Adding with gates<a class="headerlink" href="#adding-with-gates" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">25.2. </span>Adding with gates<a class="headerlink" href="#adding-with-gates" title="Permalink to this headline">#</a></h2>
 <p>Let’s review adding binary numbers.</p>
 <p><strong>remember, binary is a place-based system like the decimal placed based system you are likely familiar with</strong></p>
 <p>How do you add each of the following:</p>
@@ -605,7 +609,7 @@ document.write(`
 <p>In this case in the ones place we add 0 + 1 to get one, the two ones add to 0 with carry then 1 + 0 + 0 gives another 1.</p>
 <p>let’s make a truth table for adding two bits.</p>
 <table class="table" id="truth-add">
-<caption><span class="caption-text">Add</span><a class="headerlink" href="#truth-add" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 25.4 </span><span class="caption-text">Add</span><a class="headerlink" href="#truth-add" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -652,7 +656,7 @@ document.write(`
 <p>Alternatively, we can “lookahead” with the carry bit, passing it forward multiple places all at once, as shown in this <a class="reference external" href="https://lodev.org/logicemu/#id=cla_adder">4 bit carry lookahead adder</a>.</p>
 </section>
 <section id="review-todays-class">
-<h2>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">25.3. </span>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h2>
 <ol class="arabic simple">
 <li><p>While we saw many types of gates today, but we actually could get all of the operations needed using only NAND gates. Work out how to use NAND gates to implement a half adder and describe it in <code class="docutils literal notranslate"><span class="pre">nandhalf.md</span></code></p></li>
 </ol>
@@ -670,7 +674,7 @@ document.write(`
 </ol>
 </section>
 <section id="prepare-for-next-class">
-<h2>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">25.4. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>This link is incorrect in the badge PR issue</p>
@@ -687,7 +691,7 @@ document.write(`
 </ol>
 </section>
 <section id="more-practice">
-<h2>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">25.5. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
 <ol class="arabic simple">
 <li><p>While we saw many types of gates today, but we actually could get all of the operations needed using only NAND gates. Work out how to use NAND gates to implement a half adder and describe it in <code class="docutils literal notranslate"><span class="pre">nandhalf.md</span></code></p></li>
 </ol>
@@ -706,11 +710,11 @@ document.write(`
 </ol>
 </section>
 <section id="experience-report-evidence">
-<h2>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">25.6. </span>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
 <p>Nothing separate</p>
 </section>
 <section id="questions-after-todays-class">
-<h2>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">25.7. </span>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
 <p>Post manually for a community badge.</p>
 </section>
 </section>
@@ -746,6 +750,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="2023-04-11.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">23. </span>Float Representation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../activities/kwl.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">KWL Chart</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -764,15 +786,15 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">How can we use logical operations?</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-to-think-about-bitwise-operations">Why do we need to think about bitwise operations?</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bitwise-operators-review">Bitwise operators review</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-with-gates">Adding with gates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">Review today’s class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">Prepare for Next Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">More Practice</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">Experience Report Evidence</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">Questions After Today’s Class</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">24. How can we use logical operations?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-to-think-about-bitwise-operations">25. Why do we need to think about bitwise operations?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bitwise-operators-review">25.1. Bitwise operators review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-with-gates">25.2. Adding with gates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">25.3. Review today’s class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">25.4. Prepare for Next Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">25.5. More Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">25.6. Experience Report Evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">25.7. Questions After Today’s Class</a></li>
 </ul>
 </li>
 </ul>
