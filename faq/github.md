@@ -75,10 +75,12 @@ If there's an error your notebook it can't complete running. You can allow it to
 
 
 (preemptive-merge)=
-## Help! I accidentally merged the Feedback Pull Request before my assignment was graded
+## Help! I accidentally merged the Badge Pull Request before my assignment was graded
 ````{toggle}
 
 That's ok. You can fix it.
+
+**note: these instructions use the main branch the way we use the badge branches and the feedback branch the way we use the main branch in this course**
 
 You'll have to work offline and use GitHub in your browser together for this fix. The following instuctions will work in terminal on Mac or Linux or in GitBash for Windows. (see [Programming Environment section on the tools page](programming-env)).
 
