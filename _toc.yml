@@ -36,6 +36,7 @@ parts:
       - file: notes/2023-04-04
       - file: notes/2023-04-06
       - file: notes/2023-04-11
+      - file: notes/2023-04-13
   - caption: Activities
     chapters:
     - file: activities/kwl
