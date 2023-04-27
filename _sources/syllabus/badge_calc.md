@@ -80,6 +80,13 @@ influence_df = pd.concat([learning_df,comm_df]).fillna(1).rename(columns={'index
 influence_df['influence'] = influence_df['complexity']*influence_df['weight']
 ```
 
+Grade cutorrs are:
+```{code-cell} ipython3
+:tags: ["hide-input"]
+th_list = [[k,v] for k,v in thresh_mrw.items()]
+pd.DataFrame(th_list, columns = ['letter','threshold']).sort_values(by='threshold').set_index('letter')
+```
+
 The total influence of each badge is as follows:
 
 ```{code-cell} ipython3
