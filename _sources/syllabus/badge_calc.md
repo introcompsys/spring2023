@@ -32,9 +32,9 @@ import plotly.express as px
 # learning complexities
 weights_mrw = {'experience' :2,'review': 3,'practice': 6,'explore': 9,'build' :36}
 # base grade influence cutoffs
-thresh_mrw = {'D ':24*weights_mrw['experience'], 'C ':24*weights_mrw['experience']+18*weights_mrw['review'],
-          'B ':24*weights_mrw['experience']+18*weights_mrw['practice'],
-          'A ': 24*weights_mrw['experience']+18*weights_mrw['practice'] + 6*weights_mrw['explore']}
+thresh_mrw = {'D ':23*weights_mrw['experience'], 'C ':23*weights_mrw['experience']+18*weights_mrw['review'],
+          'B ':23*weights_mrw['experience']+18*weights_mrw['practice'],
+          'A ': 23*weights_mrw['experience']+18*weights_mrw['practice'] + 6*weights_mrw['explore']}
 
 examples_mrw = [[24,0,0,0,0],[24,18,0,0,0],[24,24,0,0,0],[24,18,6,0,0],
                 [24,18,0,0,1],[24,0,18,0,0],[24,12,12,0,0],[24,0,24,0,0],
