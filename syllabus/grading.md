@@ -344,6 +344,7 @@ These free corrections are used at the instructional team's discretion and are n
 This means that, for example, the same mistake the first time, might get a {fa}`gift`  and a third or fourth time might be a regular revision where we ask you to go review prior assignments to figure out what you need to fix with a broad hint instead of the specific suggestion
 ```
 
+(incentive)=
 ```{admonition} IDEA
 :class: anchor, dropdown
 
