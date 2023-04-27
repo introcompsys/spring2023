@@ -230,6 +230,9 @@ Where the "approved" tag represents and approving reivew on the PR.
 Legend:
 ```{mermaid}
 flowchart TD
+    accTitle: Legend
+      accDescr {
+        example of each style of shape that is used in the following diagrams}
     badgestatus[[Badge Status]]
     passive[/ something that has to occur<br/> not done by student /]      
     student[Something for you to do]
@@ -250,6 +253,9 @@ This is the general process for review and practice badges
 
 ```{mermaid}
 flowchart TD
+      accTitle: Flowchart for review and practice badges
+      accDescr {Four phases: posting, planning, working on, revising. 
+      Each of the four phases has mulitple steps. This visualizes the deadline section of the syllabus. }
 %%    subgraph work[Steps to complete]
     subgraph posting[Dr Brown will post the Badge]
       direction TB
@@ -326,6 +332,8 @@ style planned fill:#2cf
 
 ```{mermaid}
 flowchart TD
+      accTitle: Flowchart for explore badges
+      accDescr {This is a visual representation of the deadline section on explore badges on the grading page of the syllabus. }
     subgraph proposal[Propose the Topic and Product]
       issue[create an issue]
       proposed[[Proposed]]
@@ -391,6 +399,8 @@ style earned fill:#2cf
 
 ```{mermaid}
 flowchart TD
+      accTitle: Legend
+      accDescr {}
     subgraph proposal[Propose the Topic and Product]
       issue[create an issue]
       proposed[[Proposed]]
