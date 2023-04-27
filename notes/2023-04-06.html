@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>19. Prepare for Next Class &#8212; Computer Systems and Programming Tools</title>
+    <title>19. Hardware Simulator &#8212; Computer Systems and Programming Tools</title>
   
   
   
@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2023-04-06';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="23. Float Representation" href="2023-04-11.html" />
+    <link rel="next" title="20. How do I represent non integer quantities?" href="2023-04-11.html" />
     <link rel="prev" title="18. What Happens when we build code?" href="2023-04-04.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -190,15 +190,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2023-03-28.html">16. Programming Languages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2023-03-30.html">17. How do I use a remote server more effectively?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2023-04-04.html">18. What Happens when we build code?</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">19. Prepare for Next Class</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">19. Hardware Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-04-11.html">20. How do I represent non integer quantities?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-04-13.html">21. How can we use logical operations?</a></li>
 
-
-
-<li class="toctree-l1"><a class="reference internal" href="2023-04-11.html">23. Float Representation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2023-04-13.html">24. How can we use logical operations?</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="2023-04-18.html">26. What <em>is</em> a computer?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2023-04-20.html">27. Feedback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-04-18.html">23. What <em>is</em> a computer?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2023-04-20.html">24. Feedback</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Activities</span></p>
 <ul class="nav bd-sidenav">
@@ -427,7 +424,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Prepare for Next Class</h1>
+    <h1>Hardware Simulator</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -437,12 +434,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">19. Prepare for Next Class</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">20. More Practice</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">21. Experience Report Evidence</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">22. Questions After Today’s Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-the-computer-actually-add-constants">19.1. How does the computer actually add constants?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-representation">19.2. Machine Representation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelude-repl">19.3. Prelude: REPL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#characters-to-integers">19.4. Characters to Integers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-the-object-file-not-human-readable">19.5. Why is the object file not human readable?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bit-level-operations">19.6. Bit level Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">19.7. Review today’s class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">19.8. Prepare for Next Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">19.9. More Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">19.10. Experience Report Evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">19.11. Questions After Today’s Class</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -453,196 +456,385 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+  <section class="tex2jax_ignore mathjax_ignore" id="hardware-simulator">
+<h1><span class="section-number">19. </span>Hardware Simulator<a class="headerlink" href="#hardware-simulator" title="Permalink to this headline">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">example</span>				<span class="n">seawulf</span>
+<span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">-</span><span class="mi">1</span>	<span class="n">test</span>
+<span class="n">kwl</span>				<span class="n">testobj</span><span class="o">.</span><span class="n">md</span>
+<span class="n">nand2tetris</span>			<span class="n">tiny</span><span class="o">-</span><span class="n">book</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">nand2tetris</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">projects</span>	<span class="n">tools</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">tools</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Assembler</span><span class="o">.</span><span class="n">bat</span>		<span class="n">JackCompiler</span><span class="o">.</span><span class="n">bat</span>	<span class="n">VMEmulator</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">Assembler</span><span class="o">.</span><span class="n">sh</span>		<span class="n">JackCompiler</span><span class="o">.</span><span class="n">sh</span>		<span class="nb">bin</span>
+<span class="n">CPUEmulator</span><span class="o">.</span><span class="n">bat</span>		<span class="n">OS</span>			<span class="n">builtInChips</span>
+<span class="n">CPUEmulator</span><span class="o">.</span><span class="n">sh</span>		<span class="n">TextComparer</span><span class="o">.</span><span class="n">bat</span>	<span class="n">builtInVMCode</span>
+<span class="n">HardwareSimulator</span><span class="o">.</span><span class="n">bat</span>	<span class="n">TextComparer</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">HardwareSimulator</span><span class="o">.</span><span class="n">sh</span>	<span class="n">VMEmulator</span><span class="o">.</span><span class="n">bat</span>
+</pre></div>
+</div>
+<p>and then</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">CPUEmulator</span><span class="o">.</span><span class="n">sh</span> 
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>On windows you need to use the .bat file</p>
+</div>
+<p>On Windows:
+Double click on the CPUEmulator.bat file</p>
+<p>We’re going to use the test cases from the book’s project 5:</p>
+<ol class="arabic simple">
+<li><p>Load Program</p></li>
+<li><p>Navigate to nand2tetris/projects/05</p></li>
+</ol>
+<p>We’re not going to <em>do</em> project 5, which is to build a CPU, but instead to use the test.</p>
+<p>For more on how the emulator works see the <a class="reference external" href="https://www.nand2tetris.org/_files/ugd/44046b_24b3a15aa628404fbf6dacd86d7da3af.pdf">CPU Emulator Tutorial</a>.</p>
+<p>For much more detail about how this all works <a class="reference external" href="https://www.nand2tetris.org/_files/ugd/44046b_d70026d8c1424487a451eaba3e372132.pdf">chapter 4</a> of the related text book has description of the machine code and assembly language.</p>
+<section id="how-does-the-computer-actually-add-constants">
+<h2><span class="section-number">19.1. </span>How does the computer actually add constants?<a class="headerlink" href="#how-does-the-computer-actually-add-constants" title="Permalink to this headline">#</a></h2>
+<p>We’ll use <code class="docutils literal notranslate"><span class="pre">add.hack</span></code> first.</p>
+<p>This program adds constants, 2+3.</p>
+<p>It is a program, assembly code that we are loading to the simulator’s ROM, which is memory that gets read only by the CPU.</p>
+<p>Run the simulator and watch what each line of the program does.</p>
+<p>Notice the following:</p>
+<ul class="simple">
+<li><p>to compute with a constant, that number only exists in ROM in the instructions</p></li>
+<li><p>to write a value to memory the address register first has to be pointed to what where in the memory the value will go, then the value can be sent there</p></li>
+</ul>
+<p>The simulator has a few key parts:</p>
+<ul class="simple">
+<li><p>address register</p></li>
+<li><p>program counter</p></li>
+</ul>
+<p>If you prefer to read, see <a class="reference external" href="https://www.nand2tetris.org/_files/ugd/44046b_b2cad2eea33847869b86c541683551a7.pdf">section 5.2.1- 5.2.6 of nan2tetris book</a></p>
+<ul class="simple">
+<li><p>This program the first instruction puts 2 in the address register from the instructions in ROM.</p></li>
+<li><p>Then it moves the 2 through the ALU to the data register (D)</p></li>
+<li><p>then it puts 3 on the address register</p></li>
+<li><p>then it adds the numbers at D and A</p></li>
+<li><p>then it puts 0 on the address register</p></li>
+<li><p>then it write the output from the ALU (D) to memory (at the location indicated by the A register)</p></li>
+</ul>
+<div class="admonition-explore-badge-idea admonition">
+<p class="admonition-title">Explore Badge Idea</p>
+<p>Create some experiments in the simulator and write new programs.  Here are some ideas, but you can try anything you are curious about.</p>
+<ul class="simple">
+<li><p>What line do you change to change where it outputs the data?</p></li>
+<li><p>How could you add a third number?</p></li>
+<li><p>How could you add two pairs, saving the intermediate numbers?</p></li>
+<li><p>How could you do (4+4)*(3+2)?</p></li>
+</ul>
+</div>
+</section>
+<section id="machine-representation">
+<h2><span class="section-number">19.2. </span>Machine Representation<a class="headerlink" href="#machine-representation" title="Permalink to this headline">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>
+</pre></div>
+</div>
+</section>
+<section id="prelude-repl">
+<h2><span class="section-number">19.3. </span>Prelude: REPL<a class="headerlink" href="#prelude-repl" title="Permalink to this headline">#</a></h2>
+<p>One way we can use many interpreted languages, including Python is to treat the interpreter like an application and then interact with it in the terminal.</p>
+<p>This is called the Read, Execute, Print Loop or REPL.</p>
+<p>We can execute simple expressions like mathemeatical expressions:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">3.8.3</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Jul</span>  <span class="mi">2</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">11</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">31</span><span class="p">)</span> 
+<span class="p">[</span><span class="n">Clang</span> <span class="mf">10.0.0</span> <span class="p">]</span> <span class="p">::</span> <span class="n">Anaconda</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span> <span class="n">on</span> <span class="n">darwin</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span><span class="o">+</span><span class="mi">3</span>
+</pre></div>
+</div>
+<p>and it will print the result</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span>
+</pre></div>
+</div>
+<p>We can create variables</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">name</span> <span class="o">=</span>   <span class="s1">&#39;sarah&#39;</span>
+</pre></div>
+</div>
+<p>but assignment does not return anything, so nothing is printed.</p>
+<p>We can see the value of a variable, by typing its name</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">name</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;sarah&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="characters-to-integers">
+<h2><span class="section-number">19.4. </span>Characters to Integers<a class="headerlink" href="#characters-to-integers" title="Permalink to this headline">#</a></h2>
+<p>Python provides a builtin function <a class="reference external" href="https://docs.python.org/3.10/library/functions.html?highlight=ord#ord"><code class="docutils literal notranslate"><span class="pre">ord</span></code></a> to find the Unicode key for that character.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>This structure, the <code class="docutils literal notranslate"><span class="pre">[]</span></code> is called a list comprehension. It
+executes a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop in order to build a <code class="docutils literal notranslate"><span class="pre">list</span></code>.  In the REPL,
+it will then print out the list.</p>
+</div>
+</aside>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+<span class="mi">115</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">115</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">114</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">104</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Note that it’s important to try multiple things if you aren’t sure the format you are getting back or to check the official documents, as Denno found by testing this with his name in lowercase.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">name</span> <span class="o">=</span><span class="s1">&#39;denno&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
+<span class="go">[100, 101, 110, 110, 111]</span>
+</pre></div>
+</div>
+<p>Coincidentally, the letters in his name all fall into the hundreds and only require 0 and 1 in decimal, so it looks like they could be 3 bit binary numbers.</p>
+</section>
+<section id="why-is-the-object-file-not-human-readable">
+<h2><span class="section-number">19.5. </span>Why is the object file not human readable?<a class="headerlink" href="#why-is-the-object-file-not-human-readable" title="Permalink to this headline">#</a></h2>
+<p>The object file displays as random weird characters because it is written to disk in a different format than our terminal reads it in.
+It is the specific instructions (from the assembly) and memory addresses written to a file in binary.
+Our terminal reads it one byte (8bits) at a time and interprets those as characters.</p>
+<p>Today, we will see how characters are represented as integers, then binary, and read and write files in binary of strings we know to see how it what happens and mimic something like how that object file happened by writing as binary and then reading it as characters.</p>
+<p>Python also allows us to change content into a byte array:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nb">bytearray</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span>
+<span class="nb">bytearray</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can also apply this to a whole string worth of integers</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">name_ints</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">name_ints</span>
+<span class="p">[</span><span class="mi">115</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">114</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">104</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>We can then write this to a file, by getting the actual byes of each item.
+First, we will save our list in a variable.</p>
+<p>We will use the Python <code class="docutils literal notranslate"><span class="pre">with</span></code> keyword to open the file so that we do not to need to separately open and close the file.
+in the <code class="docutils literal notranslate"><span class="pre">open</span></code> function, the first parameter is the file name and the second is the mode.  In this case, we want to write (‘w’) in binary (‘b’). <code class="docutils literal notranslate"><span class="pre">f</span></code> is the filestream.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;name.txt&#39;</span><span class="p">,</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="o">...</span>   <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">(</span><span class="n">name_ints</span><span class="p">))</span>
+<span class="o">...</span> 
+<span class="o">...</span> 
+<span class="o">...</span> 
+<span class="o">...</span> 
+<span class="o">...</span> 
+<span class="ne">KeyboardInterrupt</span>
+</pre></div>
+</div>
+<p>I forgot the final closing <code class="docutils literal notranslate"><span class="pre">)</span></code> but did not see my own error, so I used crt+c to quit and get a fresh start.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;name.txt&#39;</span><span class="p">,</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="o">...</span>   <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">(</span><span class="n">name_ints</span><span class="p">)))</span>
+<span class="o">...</span> 
+</pre></div>
+</div>
+<p>it returns 5 in this case, because it wrote out 5 bytes, one per character.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">name_ints</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="s1">&#39;asldfkaslfjs&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;name.txt&#39;</span><span class="p">,</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="o">...</span>   <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">(</span><span class="n">name_ints</span><span class="p">)))</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>with more characters, more bytes</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">12</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">name_ints</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;name.txt&#39;</span><span class="p">,</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="o">...</span>   <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">(</span><span class="n">name_ints</span><span class="p">)))</span>
+<span class="o">...</span> 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If we exit python we can look at the file and see how it is interpreted.</p>
+<p>Remember we wrote, as binary, the numbers, <code class="docutils literal notranslate"><span class="pre">115,</span> <span class="pre">97,</span> <span class="pre">114,</span> <span class="pre">97,</span> <span class="pre">104</span></code> to the file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">name</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>but it is interpretted as the string  by the terminal.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>sarah</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">Back</span> <span class="ow">in</span> <span class="n">python</span>
 
-</pre></div>
-</div>
-<p>ls</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>example				seawulf
-github-in-class-brownsarahm-1	test
-kwl				<a class="reference external" href="http://testobj.md">testobj.md</a>
-nand2tetris			tiny-book</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>cd nand2tetris/</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>ls</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>projects	tools</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>cd tools</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>bash <a class="reference external" href="http://CPUEmulator.sh">CPUEmulator.sh</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>lc</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>bash: lc: command not found</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>ls</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>Assembler.bat		JackCompiler.bat	<a class="reference external" href="http://VMEmulator.sh">VMEmulator.sh</a>
-<a class="reference external" href="http://Assembler.sh">Assembler.sh</a>		<a class="reference external" href="http://JackCompiler.sh">JackCompiler.sh</a>		bin
-CPUEmulator.bat		OS			builtInChips
-<a class="reference external" href="http://CPUEmulator.sh">CPUEmulator.sh</a>		TextComparer.bat	builtInVMCode
-HardwareSimulator.bat	<a class="reference external" href="http://TextComparer.sh">TextComparer.sh</a>
-<a class="reference external" href="http://HardwareSimulator.sh">HardwareSimulator.sh</a>	VMEmulator.bat</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 
 </pre></div>
 </div>
 <p>python</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>Python 3.8.3 (default, Jul  2 2020, 11:26:31)
-[Clang 10.0.0 ] :: Anaconda, Inc. on darwin
-Type “help”, “copyright”, “credits” or “license” for more information.</p>
-<blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><p>2+3
-5
-name =   ‘sarah’
-name
-‘sarah’
-ord(‘s’)
-115
-[ord(char) for char in name]
-[115, 97, 114, 97, 104]
-name =‘denno’
-[ord(char) for char in name]
-[100, 101, 110, 110, 111]
-bytearray(34)
-bytearray(b’\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00’)
-name =   ‘sarah’
-name_ints = [ord(char) for char in name]
-name_ints
-[115, 97, 114, 97, 104]
-with open(‘name.txt’,‘wb’) as f:
-…   f.write(bytes(bytearray(name_ints))
-…
-…
-…
-…
-…
-KeyboardInterrupt
-with open(‘name.txt’,‘wb’) as f:
-…   f.write(bytes(bytearray(name_ints)))
-…
-5
-name_ints = [ord(char) for char in ‘asldfkaslfjs’]
-with open(‘name.txt’,‘wb’) as f:
-…   f.write(bytes(bytearray(name_ints)))
-…
-12
-name_ints = [ord(char) for char in name]
-with open(‘name.txt’,‘wb’) as f:
-…   f.write(bytes(bytearray(name_ints)))
-…
-5
-exit()</p>
-</div></blockquote>
-</div></blockquote>
-</div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-</pre></div>
-</div>
-<p>cat name.txt</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>sarah```</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Python 3.8.3 (default, Jul  2 2020, 11:26:31) 
+Back in Python, we can read the file as binary or as regular, first reading it as a string, we  et the char characters
+```Python
+Python 3.8.3 (default, Jul  2 2020, 11:26:31) 
 [Clang 10.0.0 ] :: Anaconda, Inc. on darwin
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
 &gt;&gt;&gt; with open(&#39;name.txt&#39;,&#39;r&#39;) as f:
 ...    print(f.read())
 ... 
-sarah
-&gt;&gt;&gt; with open(&#39;name.txt&#39;,&#39;r&#39;) as f:
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sarah</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; with open(&#39;name.txt&#39;,&#39;r&#39;) as f:
 ...    name_in  = f.read()
 ... 
 &gt;&gt;&gt; type(name_in)
 &lt;class &#39;str&#39;&gt;
-&gt;&gt;&gt; with open(&#39;name.txt&#39;,&#39;rb&#39;) as f:
-...    name_in_bin  = f.read()
-... 
-&gt;&gt;&gt; type(name_in_bin)
-&lt;class &#39;bytes&#39;&gt;
-&gt;&gt;&gt; 
-&gt;&gt;&gt; 
-&gt;&gt;&gt; 3 &gt;&gt; 1
-1
-&gt;&gt;&gt; 3&lt;&lt; 1
-6
-&gt;&gt;&gt; 1 &amp; 0 
-0
-&gt;&gt;&gt; 7 &amp; 15
-7
-&gt;&gt;&gt; 3.4 &amp; 4.5
-Traceback (most recent call last):
-  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
-TypeError: unsupported operand type(s) for &amp;: &#39;float&#39; and &#39;float&#39;
-&gt;&gt;&gt; 3^3
-0
-&gt;&gt;&gt; 3 | 1
-3
-&gt;&gt;&gt; 3|6
-7
-&gt;&gt;&gt; ~4
--5
-&gt;&gt;&gt; exit()
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<p>by checking the type we can confirm by defualt it reads the bytes in and finds a string.</p>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">rb</span></code> as the mode to read it as binary</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;name.txt&#39;</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="o">...</span>    <span class="n">name_in_bin</span>  <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="o">...</span> 
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## Review today&#39;s class
-
-```{include} ../_review/2023-04-06.md
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">name_in_bin</span><span class="p">)</span>
+<span class="go">&lt;class &#39;bytes&#39;&gt;</span>
 </pre></div>
 </div>
+<p>This is binary, but the python interpreter also <em>prints</em> it as a string, the <code class="docutils literal notranslate"><span class="pre">b</span></code> indicates the object is actually binary type.</p>
+</section>
+<section id="bit-level-operations">
+<h2><span class="section-number">19.6. </span>Bit level Operations<a class="headerlink" href="#bit-level-operations" title="Permalink to this headline">#</a></h2>
+<p>We can operate on integers bit by bit.</p>
+<p>If we shift 3 one to the right we transform from <code class="docutils literal notranslate"><span class="pre">11</span></code> to <code class="docutils literal notranslate"><span class="pre">1</span></code>, we can use the <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> operator to do this.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">3</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>We can shift it the other way too: <code class="docutils literal notranslate"><span class="pre">11</span></code> to <code class="docutils literal notranslate"><span class="pre">110</span></code> so we get from 3 to 6</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">3</span><span class="o">&lt;&lt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">6</span>
+</pre></div>
+</div>
+<p>We can also use logical operators</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">0</span> 
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">7</span> <span class="o">&amp;</span> <span class="mi">15</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">7</span>
+</pre></div>
+</div>
+<p>But these do not work for non integer values. We will look at how these work next class and see why.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">3.4</span> <span class="o">&amp;</span> <span class="mf">4.5</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">unsupported</span> <span class="n">operand</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="o">&amp;</span><span class="p">:</span> <span class="s1">&#39;float&#39;</span> <span class="ow">and</span> <span class="s1">&#39;float&#39;</span>
+</pre></div>
+</div>
+<p>This is exclusive or, or xor, where it is only a 1 if exactly one bit of the inputs is a one.  For the same number it will always be a zero</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span><span class="o">^</span><span class="mi">3</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>
+</pre></div>
+</div>
+<div class="admonition-inplace-swap admonition">
+<p class="admonition-title">inplace swap</p>
+<p>you can use xor to inplace swap two values, instead of using a temp variable</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">|</span></code> does or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">|</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span><span class="o">|</span><span class="mi">6</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">7</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">~</span></code> does negate.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="o">~</span><span class="mi">4</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="mi">5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="review-todays-class">
+<h2><span class="section-number">19.7. </span>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h2>
+<ol class="arabic">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">bitwise.md</span></code> to your kwl and write the bitwise operations required for the following transformations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">-&gt;</span> <span class="mi">128</span>
+<span class="mi">12493</span> <span class="o">-</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">12494</span>
+<span class="mi">127</span> <span class="o">-&gt;</span> <span class="mi">15</span>
+<span class="mi">7</span> <span class="o">-&gt;</span> <span class="mi">56</span>
+<span class="mi">4</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="mi">5</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<blockquote>
+<div><p>shifts</p>
+</div></blockquote>
+<ol class="arabic">
+<li><p>For the following figure out the bitwise operator:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">45</span> <span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="mi">37</span> <span class="o">=</span> <span class="mi">37</span>
+<span class="mi">45</span> <span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="mi">37</span> <span class="o">=</span> <span class="mi">45</span>
+<span class="mi">3</span> <span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="mi">5</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="mi">6</span> <span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="mi">8</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="mi">10</span> <span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="mi">5</span> <span class="o">=</span> <span class="mi">15</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<blockquote>
+<div><p>ands/ors</p>
+</div></blockquote>
+<ol class="arabic">
+<li><p>Create <code class="docutils literal notranslate"><span class="pre">readingbytes.md</span></code> and answer the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1. if a file had the following binary contents, what would it display in the terminal? Describe how you can figure this out manually and check it using C or Python. &#39;01110011011110010111001101110100011001010110110101110011&#39;
+1. What is the contents of the `sample.bn` if `cat sample.bn` is: ` ¢¶&quot;*`
+</pre></div>
+</div>
+</li>
+<li><p>Read about integer overflow and in <code class="docutils literal notranslate"><span class="pre">overflow.md</span></code> describe what it is, use an example assuming an 8 bit system.</p></li>
+</ol>
+</section>
 <section id="prepare-for-next-class">
-<h1><span class="section-number">19. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h1>
+<h2><span class="section-number">19.8. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
 <ol class="arabic simple">
 <li><p>In <span class="target" id="index-0"></span>fractionalbinary.md use 8 bits to represent the following numbers by using 4 bits as usual (8,2,4,1) and the other 4 bits are 1/2, 1/4, 1/8, 1/16th:</p></li>
 </ol>
@@ -657,7 +849,7 @@ TypeError: unsupported operand type(s) for &amp;: &#39;float&#39; and &#39;float
 </ol>
 </section>
 <section id="more-practice">
-<h1><span class="section-number">20. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h1>
+<h2><span class="section-number">19.9. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
 <ol class="arabic">
 <li><p>Add <span class="target" id="index-1"></span>bitwise.md to your kwl and write the bitwise operations required for the following transformations:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">-&gt;</span> <span class="mi">128</span>
@@ -688,10 +880,12 @@ TypeError: unsupported operand type(s) for &amp;: &#39;float&#39; and &#39;float
 </ol>
 </section>
 <section id="experience-report-evidence">
-<h1><span class="section-number">21. </span>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h1>
+<h2><span class="section-number">19.10. </span>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
+<p>none today.</p>
 </section>
 <section id="questions-after-todays-class">
-<h1><span class="section-number">22. </span>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h1>
+<h2><span class="section-number">19.11. </span>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -739,7 +933,7 @@ TypeError: unsupported operand type(s) for &amp;: &#39;float&#39; and &#39;float
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">23. </span>Float Representation</p>
+        <p class="prev-next-title"><span class="section-number">20. </span>How do I represent non integer quantities?</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -761,12 +955,18 @@ TypeError: unsupported operand type(s) for &amp;: &#39;float&#39; and &#39;float
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">19. Prepare for Next Class</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">20. More Practice</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">21. Experience Report Evidence</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">22. Questions After Today’s Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-the-computer-actually-add-constants">19.1. How does the computer actually add constants?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-representation">19.2. Machine Representation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelude-repl">19.3. Prelude: REPL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#characters-to-integers">19.4. Characters to Integers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-the-object-file-not-human-readable">19.5. Why is the object file not human readable?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bit-level-operations">19.6. Bit level Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">19.7. Review today’s class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">19.8. Prepare for Next Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">19.9. More Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">19.10. Experience Report Evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">19.11. Questions After Today’s Class</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
