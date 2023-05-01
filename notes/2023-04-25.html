@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>How does timing work? &#8212; Computer Systems and Programming Tools</title>
+    <title>25. How does timing work? &#8212; Computer Systems and Programming Tools</title>
   
   
   
@@ -66,6 +66,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/2023-04-25';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="28. Final Review" href="2023-04-27.html" />
+    <link rel="prev" title="24. Feedback" href="2023-04-20.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -169,7 +171,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../syllabus/communication.html">Office Hours &amp; Communication</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2023-01-24.html">1. Welcome and Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2023-01-26.html">2. Course Logistics and Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2023-01-31.html">3. Bash intro &amp; git offline</a></li>
@@ -194,6 +196,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="2023-04-18.html">23. What <em>is</em> a computer?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2023-04-20.html">24. Feedback</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">25. How does timing work?</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="2023-04-27.html">28. Final Review</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Activities</span></p>
 <ul class="nav bd-sidenav">
@@ -432,27 +438,27 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">How does timing work?</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-clocks-impact-computing">How do clocks impact computing?</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-our-model-computer">Recall our model Computer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-unit">Control Unit</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-signals">What signals?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-timing-signals">Why Timing signals?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">25. How does timing work?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-clocks-impact-computing">26. How do clocks impact computing?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-our-model-computer">26.1. Recall our model Computer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-unit">26.2. Control Unit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-signals">26.2.1. What signals?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-timing-signals">26.2.2. Why Timing signals?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-clock">What is a clock?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-times">Execution Times</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systems-vs-application-programming">Systems vs Application Programming</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threading">Threading</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#locking">Locking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-clock">26.3. What is a clock?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-times">26.4. Execution Times</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systems-vs-application-programming">26.5. Systems vs Application Programming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threading">26.6. Threading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#locking">26.7. Locking</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#does-the-locking-one-take-longer">Does the locking one take longer?</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">Review today’s class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">Prepare for Next Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">More Practice</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">Experience Report Evidence</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">Questions After Today’s Class</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#does-the-locking-one-take-longer">27. Does the locking one take longer?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">27.1. Review today’s class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">27.2. Prepare for Next Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">27.3. More Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">27.4. Experience Report Evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">27.5. Questions After Today’s Class</a></li>
 </ul>
 </li>
 </ul>
@@ -468,14 +474,14 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="how-does-timing-work">
-<h1>How does timing work?<a class="headerlink" href="#how-does-timing-work" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">25. </span>How does timing work?<a class="headerlink" href="#how-does-timing-work" title="Permalink to this headline">#</a></h1>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="how-do-clocks-impact-computing">
-<h1>How do clocks impact computing?<a class="headerlink" href="#how-do-clocks-impact-computing" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">26. </span>How do clocks impact computing?<a class="headerlink" href="#how-do-clocks-impact-computing" title="Permalink to this headline">#</a></h1>
 <hr class="docutils" />
 <section id="recall-our-model-computer">
-<h2>Recall our model Computer<a class="headerlink" href="#recall-our-model-computer" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">26.1. </span>Recall our model Computer<a class="headerlink" href="#recall-our-model-computer" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p><img alt="von Neumann Architecture" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Von_Neumann_Architecture.svg/2560px-Von_Neumann_Architecture.svg.png" /></p>
 <hr class="docutils" />
@@ -485,20 +491,20 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="control-unit">
-<h2>Control Unit<a class="headerlink" href="#control-unit" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">26.2. </span>Control Unit<a class="headerlink" href="#control-unit" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>The control unit converts binary instructions to signals and timing to direct the other components.</p>
 <hr class="docutils" />
 <hr class="docutils" />
 <section id="what-signals">
-<h3>What signals?<a class="headerlink" href="#what-signals" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">26.2.1. </span>What signals?<a class="headerlink" href="#what-signals" title="Permalink to this headline">#</a></h3>
 <hr class="docutils" />
 <p>We will go to the ALU again since the control unit serves it to figure out what it needs.<br />
 Remember in the ALU, has input signals that determine which calculation it will execute based on the input.</p>
 </section>
 <hr class="docutils" />
 <section id="why-timing-signals">
-<h3>Why Timing signals?<a class="headerlink" href="#why-timing-signals" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">26.2.2. </span>Why Timing signals?<a class="headerlink" href="#why-timing-signals" title="Permalink to this headline">#</a></h3>
 <hr class="docutils" />
 <p>Again, the ALU itself tells us why we need this, we saw that different calculations the ALU does take different amount of times to propagate through the circuit.</p>
 <hr class="docutils" />
@@ -509,7 +515,7 @@ Remember in the ALU, has input signals that determine which calculation it will 
 </section>
 <hr class="docutils" />
 <section id="what-is-a-clock">
-<h2>What is a clock?<a class="headerlink" href="#what-is-a-clock" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">26.3. </span>What is a clock?<a class="headerlink" href="#what-is-a-clock" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>In a computer the clock refers to a clock signal, historically this was called a logic beat. This is represented by a sinusoidal (sine wave) or square (on, off, on, off) signal that operates with a constant frequency.</p>
 <hr class="docutils" />
@@ -524,7 +530,7 @@ Remember in the ALU, has input signals that determine which calculation it will 
 </section>
 <hr class="docutils" />
 <section id="execution-times">
-<h2>Execution Times<a class="headerlink" href="#execution-times" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">26.4. </span>Execution Times<a class="headerlink" href="#execution-times" title="Permalink to this headline">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
 </pre></div>
 </div>
@@ -602,14 +608,14 @@ sys	0m0.015s
 <p>The real time includes the user time, the system time, and any scheduling or waiting time that that occurs.</p>
 </section>
 <section id="systems-vs-application-programming">
-<h2>Systems vs Application Programming<a class="headerlink" href="#systems-vs-application-programming" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">26.5. </span>Systems vs Application Programming<a class="headerlink" href="#systems-vs-application-programming" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>most of you will do a lot more application programming than systems programming</p></li>
 <li><p>knowing how the systems stuff works is important because you will need to interact with it.</p></li>
 </ul>
 </section>
 <section id="threading">
-<h2>Threading<a class="headerlink" href="#threading" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">26.6. </span>Threading<a class="headerlink" href="#threading" title="Permalink to this headline">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">sq_sum_threaded</span><span class="o">.</span><span class="n">c</span>
 </pre></div>
 </div>
@@ -787,7 +793,7 @@ Doing a more involved investigation here is a possible explore badge opportunity
 <p>So, we end up losing some of the values.</p>
 </section>
 <section id="locking">
-<h2>Locking<a class="headerlink" href="#locking" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">26.7. </span>Locking<a class="headerlink" href="#locking" title="Permalink to this headline">#</a></h2>
 <p>We can instead change our <code class="docutils literal notranslate"><span class="pre">square</span></code> function. First we copy it</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">sq_sum_threaded</span><span class="o">.</span><span class="n">c</span> <span class="n">sq_sum_locked</span><span class="o">.</span><span class="n">c</span>
 </pre></div>
@@ -843,7 +849,7 @@ Doing a more involved investigation here is a possible explore badge opportunity
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="does-the-locking-one-take-longer">
-<h1>Does the locking one take longer?<a class="headerlink" href="#does-the-locking-one-take-longer" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">27. </span>Does the locking one take longer?<a class="headerlink" href="#does-the-locking-one-take-longer" title="Permalink to this headline">#</a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">./</span><span class="n">sqsum</span>
 </pre></div>
 </div>
@@ -891,21 +897,21 @@ Doing a more involved investigation here is a possible explore badge opportunity
 <p>This is a good topic to explore further for an explore badge.  Under what conditions does the locking take more time? does it ever?</p>
 </div>
 <section id="review-todays-class">
-<h2>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">27.1. </span>Review today’s class<a class="headerlink" href="#review-todays-class" title="Permalink to this headline">#</a></h2>
 <ol class="arabic simple">
 <li><p>Update your KWL chart.</p></li>
 <li><p>Simulate a more computationally intensive program using the <code class="docutils literal notranslate"><span class="pre">sleep</span></code> function in C and compare the time of a threaded vs single threaded (ie serial, no intentional threading) version of the program. Include your two programs and the bash script to show how you tested it with notes on the performance in <span class="target" id="index-0"></span>threaded.md (to better illustrate the impact of the threads)</p></li>
 </ol>
 </section>
 <section id="prepare-for-next-class">
-<h2>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">27.2. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">#</a></h2>
 <ol class="arabic simple">
 <li><p>(optional, get a head start on the final review/practice badges) Bring 2 multiple choice questions about computer systems, machine representation, or building code to class.</p></li>
 <li><p>(optional, community badge opportunity) Try out the Pycharm extenstion created by one of your classmates as a build badge. You can download it by searching “gcc integration” in pycharm directly in the plugin marketplace or by <a class="reference external" href="https://mike-fmh.github.io/gcc-integration/#installation">following the  instructions on the documentation website</a>. If you succeed, comment on your prepare issue with which technique (pluging marketpalce or manual) you used to install it  and tag Professor Brown.  If it does not work, open an <a class="reference external" href="https://github.com/mike-fmh/gcc-integration/issues">issue</a> that describes what you did, what happened, and what you expected instead and link to that issue on your prepare issue and tag Professor Brown for the community badge. (write a long full review of the extension comparing it to similar available tools for an explore badge)</p></li>
 </ol>
 </section>
 <section id="more-practice">
-<h2>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">27.3. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">#</a></h2>
 <ol class="arabic simple">
 <li><p>Update your KWL chart.</p></li>
 <li><p>Simulate a more computationally intensive program using the <code class="docutils literal notranslate"><span class="pre">sleep</span></code> function in C and compare the time of a threaded vs single threaded (ie serial, no intentional threading) version of the program. Include your two programs and the bash script to show how you tested it with notes on the performance in <span class="target" id="index-1"></span>threaded.md (to better illustrate the impact of the threads)</p></li>
@@ -914,11 +920,11 @@ Doing a more involved investigation here is a possible explore badge opportunity
 </ol>
 </section>
 <section id="experience-report-evidence">
-<h2>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">27.4. </span>Experience Report Evidence<a class="headerlink" href="#experience-report-evidence" title="Permalink to this headline">#</a></h2>
 <p>cat your experiment loop result and timing results to a file.</p>
 </section>
 <section id="questions-after-todays-class">
-<h2>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">27.5. </span>Questions After Today’s Class<a class="headerlink" href="#questions-after-todays-class" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 
@@ -953,6 +959,24 @@ Doing a more involved investigation here is a possible explore badge opportunity
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="2023-04-20.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">24. </span>Feedback</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="2023-04-27.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">28. </span>Final Review</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -971,27 +995,27 @@ Doing a more involved investigation here is a possible explore badge opportunity
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">How does timing work?</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-clocks-impact-computing">How do clocks impact computing?</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-our-model-computer">Recall our model Computer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-unit">Control Unit</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-signals">What signals?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-timing-signals">Why Timing signals?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">25. How does timing work?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-clocks-impact-computing">26. How do clocks impact computing?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-our-model-computer">26.1. Recall our model Computer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-unit">26.2. Control Unit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-signals">26.2.1. What signals?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-timing-signals">26.2.2. Why Timing signals?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-clock">What is a clock?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-times">Execution Times</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systems-vs-application-programming">Systems vs Application Programming</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threading">Threading</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#locking">Locking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-clock">26.3. What is a clock?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-times">26.4. Execution Times</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systems-vs-application-programming">26.5. Systems vs Application Programming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threading">26.6. Threading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#locking">26.7. Locking</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#does-the-locking-one-take-longer">Does the locking one take longer?</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">Review today’s class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">Prepare for Next Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">More Practice</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">Experience Report Evidence</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">Questions After Today’s Class</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#does-the-locking-one-take-longer">27. Does the locking one take longer?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-todays-class">27.1. Review today’s class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-for-next-class">27.2. Prepare for Next Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-practice">27.3. More Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-report-evidence">27.4. Experience Report Evidence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-after-todays-class">27.5. Questions After Today’s Class</a></li>
 </ul>
 </li>
 </ul>
