@@ -5,6 +5,12 @@ I would suggest doing every badge you can in the beginning of the semester so yo
 In general I would suggest doing everything that you can to get as comfortable with the terminal as quickly as possible. Go to office hours, do as many badges as you can right away, really use the first couple of weeks to get as much of a solid base as you can. Set up a plan for what grade you are looking for and do whatever you can to make it happen as early as possible. If you can't do a certain badge, do not stress. There are some that are able to be skipped. But don't skip a badge just because it looks hard. Make a genuine effort to complete the badge and if it is still hard for you to complete, either go to office hours for help or commit what you have done and wait for help. There are several resources for the class that can help you do as well as you wnat to, but you have to put in the effort to make it happen.
 
 
+
+
+A simple, but very effective suggestion I have would be to just read through the actual course website itself. There can be a lot of misinterpretation later in the semester if you don't read the expectations of the class clearly. This is especially important for understanding how to the grading works and knowing the process of submitting work and getting it approved. Not knowing how to submit or asking for a review will end up being a hassle to keep backtracking, especially if you are not too organized. As much as you can be set behind by other classes, it's important to still try to understand a good amount of the material in each class. In this way, even if you are a bit behind in work, it is still possible to catch up. The first few weeks are the most important content, so be sure to do your best to understand the material so you do not fall behind early. 
+
+
+
 When creating your assignment schedule at the start of the semester, avoid letting work pile up for the end. If you stray from your schedule, don't feel disheartened. Get as much done as you can and ask the TAs for help. I highly recommend that anyone aiming for a high grade (by doing explore and/or build badges) hands in their ideas and work as early as possible. Whether the work is just a simple outline, or not as complete as you want it to be, it's much better to get feedback to point you in the right direction. Remember that assignments can be resubmitted.  
 
 
