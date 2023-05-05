@@ -60,7 +60,7 @@ This summary report have the following sections.
 - make a [vs code extension](https://code.visualstudio.com/api/get-started/your-first-extension) for this class or another URI CS course
 - port the courseutils to rust. [crate clap](https://docs.rs/clap/latest/clap/) is like the python click package I used to develop the course utils
 - buld a polished documentation website for your CSC212 project with [sphinx](https://devblogs.microsoft.com/cppblog/clear-functional-c-documentation-with-sphinx-breathe-doxygen-cmake/) or another static site generator 
-- Create a half adder using a breadboard. For hardware, Amazon is highly recommended for fast shipping and reasonable prices. You can search by part number, you can also buy breadboard starting kits which include lots of components for many different hardware projects.
+- Implement a circuit we study (half adder, full adder, ...) using a breadboard. For hardware, Amazon is highly recommended for fast shipping and reasonable prices. You can search by part number, you can also buy breadboard starting kits which include lots of components for many different hardware projects.
 
 
 <!-- 
