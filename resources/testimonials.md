@@ -7,5 +7,12 @@ In general I would suggest doing everything that you can to get as comfortable w
 
 
 
-
 A simple, but very effective suggestion I have would be to just read through the actual course website itself. There can be a lot of misinterpretation later in the semester if you don't read the expectations of the class clearly. This is especially important for understanding how to the grading works and knowing the process of submitting work and getting it approved. Not knowing how to submit or asking for a review will end up being a hassle to keep backtracking, especially if you are not too organized. As much as you can be set behind by other classes, it's important to still try to understand a good amount of the material in each class. In this way, even if you are a bit behind in work, it is still possible to catch up. The first few weeks are the most important content, so be sure to do your best to understand the material so you do not fall behind early. 
+
+
+
+When creating your assignment schedule at the start of the semester, avoid letting work pile up for the end. If you stray from your schedule, don't feel disheartened. Get as much done as you can and ask the TAs for help. I highly recommend that anyone aiming for a high grade (by doing explore and/or build badges) hands in their ideas and work as early as possible. Whether the work is just a simple outline, or not as complete as you want it to be, it's much better to get feedback to point you in the right direction. Remember that assignments can be resubmitted.  
+
+
+In order to succeed on this class, I strongly suggest to start doing practice badges every day after class so that that way you do not have to rush at the end of the semester to do all of the work last minute. I struggled a lot in the beggining because I did not know how the practice badges worked too well so I just wouldnt do them. I would aslo try to not miss a single lecture because even though you can make up the experience report, it is kinda annoying to do it as sometimes they require evidence which is annoying to get. Overall if you stick with not skipping classes, doing practice badges every day after class, you should be all set to pass this class. 
+
