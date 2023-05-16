@@ -65,6 +65,7 @@ parts:
     - file: resources/organization
     - file: resources/more_info_on_cpus
     - file: resources/windows
+    - file: resources/testimonials
     - url: https://introcompsys.github.io/spring2022/resources/testimonials.html
       title: Advice from Spring 2022 Students
     # - file: letters/index
