@@ -223,12 +223,29 @@ covered well enough to think of hypothetical scenarios or options or what might 
 The tasks for these badges will be defined at the bottom of the notes for each class session *and* aggregated to badge-type specific pages on the left hand side. 
 
 You can earn review and practice badges by:
-- creating an issue for the badge you plan to work on
-- completing the tasks
-- submitting files to your KWL on a new branch
-- creating a PR, linking the issue, and requesting a review
-- revising the PR until it is approved 
-- merging the PR after it is approved
+1. Create an issue for the badge you plan to work on/Focus on a practice or prepare badge you plan to work on
+2. Completing the tasks
+3. Create a new branch for the badge through the main page of your KWL repository
+4. Add the new file from the badge instructions to the new branch, and within that file have its contents be a task within that badge (for example, answering questions, making notes, or output from running something) 
+5. After creating the file, a new button should appear for the option of creating a new pull request, which you should click and open
+6. Then create the pull request. Make the title match the badge name
+7. Assign/merge any more files you may need into this pull request
+8. Link badge the issue, by clicking the settings icon on the "development" tab (right side)
+9. To "submit," request a review, by clicking the settings icon on the "reviewers" tab (right side)
+10. Then you should keep revising the PR until it is approved
+11. Then merge the PR after it is approved
+
+```{admonition} How do I make a new branch on github?
+:class: checkin, dropdown
+
+Through the main ("<code>") page of your KWL repository, click the rectange on the top left of your screen that says "main". You then type in the new unique branch name you wish to make. You then click below where it says "create branch".
+```
+```{admonition} How do I Assign/merge files into another pull request
+:class: checkin, dropdown
+
+Go to the pull request you wish to move. In the upper right part of your screen there should be a button that says edit. You shoudl click that, then click the button that says 'base: main". You then type in the name of the new pull request's branch you would like to move it to. 
+```
+
 
 ```{admonition} Where do you find assignments?
 :class: checkin, dropdown
