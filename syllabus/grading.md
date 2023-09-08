@@ -226,7 +226,7 @@ You can earn review and practice badges by:
 1. Create an issue for the badge you plan to work on/Focus on a practice or prepare badge you plan to work on
 2. Completing the tasks
 3. Create a new branch for the badge through the main page of your KWL repository
-4. Add a new file inside the new branch, and within that file have its contents be a task within that badge
+4. Add the new file from the badge instructions to the new branch, and within that file have its contents be a task within that badge (for example, answering questions, making notes, or output from running something) 
 5. After creating the file, a new button should appear for the option of creating a new pull request, which you should click and open
 6. Then create the pull request. Make the title match the badge name
 7. Assign/merge any more files you may need into this pull request
