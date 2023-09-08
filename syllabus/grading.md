@@ -230,8 +230,8 @@ You can earn review and practice badges by:
 5. After creating the file, a new button should appear for the option of creating a new pull request, which you should click and open
 6. Then create the pull request. Make the title match the badge name
 7. Assign/merge any more files you may need into this pull request
-8. You should then link the issue, by clicking the settings icon on the "development" tap(right side)
-9. You should then request a review, by clicking the settings icon on the "reviewers" tap(right side)
+8. Link badge the issue, by clicking the settings icon on the "development" tab (right side)
+9. To "submit," request a review, by clicking the settings icon on the "reviewers" tab (right side)
 10. Then you should keep revising the PR until it is approved
 11. Then merge the PR after it is approved
 
